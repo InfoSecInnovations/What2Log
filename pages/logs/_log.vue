@@ -8,7 +8,7 @@
       <p>{{article.collect_reason}}</p>
       <div class="columns">
         <template v-for="(section, index) of content">
-          <p :key="`enable-txt-${index}`">{{section.txt}}</p>
+          <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)"></div>
           <img :key="`enable-img-${index}`" :src="`/${section.img}`">
         </template>
       </div>

@@ -39,7 +39,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    'nuxt-i18n'
+    'nuxt-i18n',
+    '@nuxtjs/markdownit'
   ],
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -60,6 +61,10 @@ export default {
     ],
     defaultLocale: 'en',
     noPrefixDefaultLocale: true,
+  },
+
+  markdownit: {
+    linkify: true
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
