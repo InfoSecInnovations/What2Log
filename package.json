@@ -1,0 +1,18 @@
+{
+  "name": "what2log",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@ltd/j-toml": "^1.12.2",
+    "@nuxt/content": "^1.14.0",
+    "core-js": "^3.9.1",
+    "nuxt": "^2.15.3",
+    "nuxt-i18n": "^6.27.0"
+  }
+}

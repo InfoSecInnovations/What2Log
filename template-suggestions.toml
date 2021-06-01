@@ -1,0 +1,81 @@
+#This is the template for What2Log entries
+
+# Meta data about this w2l entry
+title = "" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author.name = "" #Your name
+author.organization = "" #Your organization
+credits = [ "" ] #Any special callouts
+release.version = 0.1
+release.date = 2021-05-21 #Todays date
+
+
+# About this log type
+suggested_log_level = "" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.service = "" #Service that generates log
+source.log = "" #Log file or channel
+default_enabled = true #true or false
+collect_reason = """\
+
+  """
+
+# Compliance & framework information
+
+# Format is compliance.name.level and compliance.name.reference.
+# Only include relevant frameworks
+
+compliance.XXXX.level = " " # Compliance requirement
+compliance.XXXX.reference = "URL here" # Reference for compliance
+# repeat as needed
+
+
+# Additional References Go Here
+references = [
+  "blah",
+  "blah2"
+]
+
+# Log Pile
+[log_pile]
+language = "" #Language for Log Pile
+view_logs = """ """ #How to view log
+check_status = """ """" #How to check if log is enabled
+enable_logging = """ """ #How to enable log
+disable_logging = """ """ #How to disable log
+
+
+# Enable via GUI
+[[GUI.enable]]
+img = "link to img 1"
+txt = "text for step1 here"
+
+[[GUI.enable]]
+img = "link to img 2"
+txt = "text for step 2 here"
+
+# repeat as needed
+
+
+# Enable via CLI
+[[CLI.enable]]
+img = " "
+txt = " "
+
+# repeat as needed
+
+
+# View via GUI
+[[GUI.view]]
+img = " "
+txt = " "
+
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = " "
+txt = " "
+
+# repeat as needed
