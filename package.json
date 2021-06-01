@@ -13,6 +13,8 @@
     "@nuxt/content": "^1.14.0",
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
-    "nuxt-i18n": "^6.27.0"
+    "nuxt-i18n": "^6.27.0",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^4.3.3"
   }
 }
