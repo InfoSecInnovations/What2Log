@@ -6,8 +6,8 @@
 
         <!-- Main page image container-->
         <div id="splash-container">
-          <h1>What2Log</h1>
-          <h2>Logging made easy</h2>
+          <h1 class="home">What2Log</h1>
+          <h2 class="home">Logging made easy</h2>
           <NuxtLink to="about" class="button">Learn More</NuxtLink>
           <NuxtLink to="logs" class="button">View the Logs</NuxtLink>
         </div>
@@ -15,15 +15,17 @@
         <!-- Three column layout-->
         <div class="row">
           <div class="column">
-            <h2>OS Tools</h2>
+            <h2 class="home">OS Tools</h2>
             <p>Click here to learn more about the tools of our supported Operating Systems.</p>
             <NuxtLink to="ostools" class="button">Learn More</NuxtLink>
           </div>
-          <div class="column"><h2>The Log Pile</h2>
-            <p>Click here to learn more about The Log Pile. </p>
+          <div class="column">
+            <h2 class="home">The Log Pile</h2>
+            <p>Click here to learn more about The Log Pile and build custom scripts for your system.</p>
             <NuxtLink to="logpile" class="button">Learn More</NuxtLink>
           </div>
-          <div class="column"><h2>Log Blog</h2>
+          <div class="column">
+            <h2 class="home">Log Blog</h2>
             <p>Click here to learn more about what you should be logging. </p>
             <a href="https://blog.what2log.com/" class="button">Learn More</a>
           </div>
@@ -34,8 +36,8 @@
   </div>
 </template>
 
-<style lang="stylus" scoped>
-  @require '~/assets/index.styl'
+<style lang="stylus">
+  @require '~/assets/main.styl'
 </style>
 
 <script>

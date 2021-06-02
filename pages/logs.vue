@@ -1,6 +1,7 @@
 <template>
   <div>
     <W2LHeader />
+    <Navbar />
     <div id="container">
       <div id="sidebar">
         <div v-for="(top_value, top_key) of sidebar" :key="top_key">

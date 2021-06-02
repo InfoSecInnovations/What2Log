@@ -1,9 +1,5 @@
 @require 'common'
 
-h1_size = 45px
-h2_size = 35px
-h3_size = 25px
-
 sidebar_width = 300px
 
 body
@@ -20,12 +16,33 @@ body
   h2
   h3
     margin: 0
-    text-align: center
+    text-align: center  
   h1
-    color: secondary_color 
+    font-size: h1_size
+    color: secondary_color
   h2
-  h3
+    font-size: h2_size
     color: title_color
+  h3
+    font-size: h3_size
+    color: title_color
+
+  h1.home
+    font-size: large_h1_size
+  h2.home
+    font-size: large_h2_size
+  h3.home
+    font-size: large_h3_size
+
+  .button
+    color: secondary_font_color
+    background-color: secondary_color
+    display: block
+    padding: button_padding
+    border: button_border
+    border-radius: button_radius
+    cursor: pointer
+    text-align: center
 
   pre
     padding: small_padding
@@ -38,6 +55,30 @@ body
 
   #container
     display: flex
+    justify-content: center
+    #inner-container
+      flex: 1
+      display: flex
+      flex-direction: column
+      margin: container_margin
+      max-width: container_width
+      #splash-container
+        display: flex
+        flex-direction: column
+        align-items: center
+        background-image: url("https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+        background-position: center
+        color: secondary_font_color
+        padding: splash_padding
+        gap: splash_spacing
+        .button
+          background-color: splash_button_background 
+          color: secondary_font_color
+          font-size: splash_button_font_size
+        h1
+        h2
+        h3
+          color: secondary_font_color
     #sidebar
       display: flex
       flex-direction: column
@@ -66,7 +107,7 @@ body
         background-color: alternate_background
         color: main_font_color
         font-size: small_font_size
-    .main-content
+    #main-content
       flex: 1
       display: flex
       flex-direction: column
@@ -95,3 +136,35 @@ body
           grid-column: 1
         &>*:nth-child(4n - 1):last-child
           grid-column: 1
+  .about-section
+    font-size: about_font_size
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: secondary_background;
+    padding: main_padding about_section_padding about_section_padding
+    gap: extra_padding
+    margin: extra_padding about_section_margin
+
+  .row
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    gap: main_padding 0
+    margin: main_padding 0
+    .column
+      flex: 1 1 column_width
+      display: flex
+      flex-direction: column
+      align-items: center
+      font-size: column_font_size
+      color: column_font_color
+      padding: column_padding
+      gap: main_padding
+      &:nth-child(odd)
+        background-color: secondary_background
+      h2
+        color: title_color
+      p
+        flex: 1

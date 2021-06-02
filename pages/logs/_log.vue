@@ -1,5 +1,5 @@
 <template>
-  <div class="main-content">
+  <div id="main-content">
     <div class="title-block">
       <h1>{{article.title}}</h1>
       <div>
