@@ -1,7 +1,5 @@
 @require 'common'
 
-sidebar_width = 300px
-
 body
   background-color: background
   margin: 0
@@ -117,7 +115,14 @@ body
       .title-block
         display: flex
         flex-direction: column
+        align-items: center
         gap: extra_padding
+        width: 100%
+        .info
+          background-color: secondary_background
+          padding: medium_padding
+          width: info_width
+          text-align: center
       .columns
         display: grid
         grid-template-columns: 1fr 1fr
@@ -146,7 +151,6 @@ body
     padding: main_padding about_section_padding about_section_padding
     gap: extra_padding
     margin: extra_padding about_section_margin
-
   .row
     display: flex
     flex-wrap: wrap
@@ -168,3 +172,51 @@ body
         color: title_color
       p
         flex: 1
+  .logpile-section
+    display: flex
+    flex-direction: column
+    width: info_width
+    background-color: tertiary_color
+    padding: medium_padding
+    gap: medium_padding
+    font-size: small_font_size
+    .script-language
+      font-size: main_font_size
+      color: secondary_font_color
+    .button
+      padding: button_padding
+    .disabled
+      background-color: top_level_background
+    .enabled
+      background-color: logpile_enabled_color
+    .script-info
+      display: flex
+      justify-content: space-between
+      align-items: center
+      gap: medium_padding
+      background-color: transparent
+    .quick-script
+      display: flex
+      align-items: flex-start
+      gap: medium_padding
+      pre
+        flex: 1
+        padding: code_padding
+      .quick-script-controls
+        flex-basis: logpile_controls_size
+        display: flex
+        flex-direction: column
+        gap: medium_padding
+        .script-label
+          color: secondary_font_color
+          font-size: main_font_size
+        .quick-script-icon-buttons
+          display: flex
+          gap: medium_padding
+          .icon-button
+            width: logpile_icon_button_size
+            height: logpile_icon_button_size 
+            background-color: background
+            padding: logpile_icon_button_padding
+            cursor: pointer
+  

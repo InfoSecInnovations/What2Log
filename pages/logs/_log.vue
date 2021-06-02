@@ -5,13 +5,23 @@
       <div>
         <h2 v-for="os of article.source.os" :key="os">{{os}}</h2>
       </div>
-      <p>{{article.collect_reason}}</p>
+      <p class="info">{{article.collect_reason}}</p>
     </div>
     <div class="columns">
       <template v-for="(section, index) of content">
         <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)"></div>
         <img :key="`enable-img-${index}`" :src="`/images/${section.img}`">
       </template>
+    </div>
+    <div v-if="article.log_pile.view_logs || article.log_pile.check_status || article.log_pile.enable_logs || article.log_pile.disable_logs" class="logpile-section">
+      <LogpileScript v-if="article.log_pile.view_logs" :script="article.log_pile.view_logs" script_type="view" :script_language="article.log_pile.language" />
+      <LogpileScript v-if="article.log_pile.check_status" :script="article.log_pile.check_status" script_type="check" :script_language="article.log_pile.language" />
+      <LogpileScript v-if="article.log_pile.disable_logging" :script="article.log_pile.disable_logging" script_type="disable" :script_language="article.log_pile.language" />
+      <LogpileScript v-if="article.log_pile.enable_logging" :script="article.log_pile.enable_logging" script_type="enable" :script_language="article.log_pile.language" />
+      <div class="script-info">
+        <div class="script-language">Language: {{article.log_pile.language}}</div>
+        <NuxtLink class="button" to="/logpile">View Log Pile</NuxtLink>
+      </div>
     </div>
   </div>
 </template>
