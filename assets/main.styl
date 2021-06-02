@@ -1,0 +1,97 @@
+@require 'common'
+
+h1_size = 45px
+h2_size = 35px
+h3_size = 25px
+
+sidebar_width = 300px
+
+body
+  background-color: background
+  margin: 0
+  font-family: main_font
+  font-size: main_font_size
+  color: main_font_color
+
+  a
+    text-decoration: none
+    color: secondary_color
+  h1
+  h2
+  h3
+    margin: 0
+    text-align: center
+  h1
+    color: secondary_color 
+  h2
+  h3
+    color: title_color
+
+  pre
+    padding: small_padding
+    background-color: secondary_background
+    margin: 0
+    overflow-x: auto
+  code
+    margin: small_padding 0
+    display: block
+
+  .container
+    display: flex
+    .sidebar
+      display: flex
+      flex-direction: column
+      width: sidebar_width
+      input[type="checkbox"]
+        display: none
+        & ~ label:after
+          content: '-'
+        &:checked 
+          & ~ .sidebar-list
+            display: none
+          & ~ label:after
+            content: '+'
+      .sidebar-element
+        display: flex
+        justify-content: space-between
+        padding: small_padding
+      .top-level
+        background-color: top_level_background
+        color: secondary_font_color
+        font-weight: bold
+      .mid-level
+        background-color: second_level_background
+        color: secondary_font_color
+      .inner-level
+        background-color: alternate_background
+        color: main_font_color
+        font-size: small_font_size
+    .main-content
+      flex: 1
+      display: flex
+      flex-direction: column
+      align-items: center
+      padding: main_padding
+      gap: main_padding
+      .title-block
+        display: flex
+        flex-direction: column
+        gap: extra_padding
+      .columns
+        display: grid
+        grid-template-columns: 1fr 1fr
+        grid-auto-flow: dense
+        place-items: center stretch
+        gap: main_padding
+        width: 100%
+        img
+          width: 100%
+        p
+          background-color: secondary_background
+          padding: extra_padding
+        &>*:nth-child(4n - 1)
+          grid-column: 2
+        &>*:nth-child(4n)
+          grid-column: 1
+        &>*:nth-child(4n - 1):last-child
+          grid-column: 1
