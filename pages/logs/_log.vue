@@ -10,7 +10,7 @@
     <div class="columns">
       <template v-for="(section, index) of content">
         <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)"></div>
-        <img :key="`enable-img-${index}`" :src="`/${section.img}`">
+        <img :key="`enable-img-${index}`" :src="`/images/${section.img}`">
       </template>
     </div>
   </div>
@@ -34,6 +34,9 @@ export default {
       article,
       content
     }
+  },
+  head() {
+    return { title: this.article ? this.article.title : '' }
   }
 }
 </script>

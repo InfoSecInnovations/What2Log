@@ -6,7 +6,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'What2Log',
+    titleTemplate: 'What2Log - %s',
     htmlAttrs: {
       lang: 'en'
     },

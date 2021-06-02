@@ -1,17 +1,20 @@
 <template>
-  <div class="container">
-    <div class="sidebar">
-      <div v-for="(top_value, top_key) of sidebar" :key="top_key">
-        <input type="checkbox" :id="top_key">
-        <label :for="top_key" class="top-level sidebar-element">{{top_key}}</label>
-        <div v-for="(mid_value, mid_key) of top_value" :key="`${top_key}-${mid_key}`" class="sidebar-list">
-          <input type="checkbox" :id="`${top_key}-${mid_key}`">
-          <label :for="`${top_key}-${mid_key}`" class="mid-level sidebar-element">{{mid_key}}</label>
-          <NuxtLink :to="item.slug" v-for="item of mid_value" :key="`${top_key}-${mid_key}-${item.title}`" class="inner-level sidebar-element sidebar-list">{{item.title}}</NuxtLink>
+  <div>
+    <W2LHeader />
+    <div id="container">
+      <div id="sidebar">
+        <div v-for="(top_value, top_key) of sidebar" :key="top_key">
+          <input type="checkbox" :id="top_key">
+          <label :for="top_key" class="top-level sidebar-element">{{top_key}}</label>
+          <div v-for="(mid_value, mid_key) of top_value" :key="`${top_key}-${mid_key}`" class="sidebar-list">
+            <input type="checkbox" :id="`${top_key}-${mid_key}`">
+            <label :for="`${top_key}-${mid_key}`" class="mid-level sidebar-element">{{mid_key}}</label>
+            <NuxtLink :to="item.slug" v-for="item of mid_value" :key="`${top_key}-${mid_key}-${item.title}`" class="inner-level sidebar-element sidebar-list">{{item.title}}</NuxtLink>
+          </div>
         </div>
       </div>
+      <NuxtChild />
     </div>
-    <NuxtChild />
   </div>
 </template>
 

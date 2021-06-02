@@ -1,0 +1,27 @@
+@require 'common'
+
+header_icon_size = 100px
+header_title_size = 40px
+header_padding = 40px
+social_icon_size = 40px
+
+#header-bar
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: small_padding header_padding
+  .header-link
+    display: flex
+    align-items: center
+    gap: medium_padding
+    font-size: header_title_size
+    font-weight: bold
+    img
+      width: header_icon_size
+      height: header_icon_size
+  .social
+    display: flex
+    gap: medium_padding
+    img
+      width: social_icon_size
+      height: social_icon_size

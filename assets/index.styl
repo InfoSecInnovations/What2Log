@@ -1,0 +1,89 @@
+@require 'common'
+
+container_margin = 20px 100px
+container_width = 1400px
+
+h1_size = 80px
+h2_size = 60px
+h3_size = 40px
+
+splash_padding = 150px 80px 80px
+splash_spacing = 50px
+splash_button_background =  #9c9c9c
+splash_button_font_size = 30px
+
+column_width = 400px
+column_font_size = 20px
+column_font_color = #828282
+column_padding = 50px 20px 30px
+
+button_padding = 24px 48px
+button_border = solid 2px gray
+button_radius = 2px
+
+h1
+  font-size: h1_size
+h2
+  font-size: h2_size
+h3
+  font-size: h3_size
+
+.button
+  color: secondary_font_color
+  background-color: secondary_color
+  display: block
+  padding: button_padding
+  border: button_border
+  border-radius: button_radius
+  cursor: pointer
+  text-align: center
+
+#container
+  display: flex
+  justify-content: center
+  #inner-container
+    flex: 1
+    display: flex
+    flex-direction: column
+    margin: container_margin
+    max-width: container_width
+    #splash-container
+      display: flex
+      flex-direction: column
+      align-items: center
+      background-image: url("https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+      background-position: center
+      color: secondary_font_color
+      padding: splash_padding
+      gap: splash_spacing
+      .button
+        background-color: splash_button_background 
+        color: secondary_font_color
+        font-size: splash_button_font_size
+      h1
+      h2
+      h3
+        color: secondary_font_color
+
+.row
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  gap: main_padding 0
+  margin: main_padding 0
+  .column
+    flex: 1 1 column_width
+    display: flex
+    flex-direction: column
+    align-items: center
+    font-size: column_font_size
+    color: column_font_color
+    padding: column_padding
+    gap: main_padding
+    &:nth-child(odd)
+      background-color: secondary_background
+    h2
+      color: title_color
+    p
+      flex: 1
+
