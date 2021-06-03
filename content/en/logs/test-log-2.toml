@@ -20,13 +20,13 @@ This is where I'd put the logging info if I had some"""
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
-view_logs = "insert actual scripting here" #How to view log
+view_logs = "insert actual scripting here for log 2" #How to view log
 check_status = """
 we can use
 multiline scripts
 too""" #How to check if log is enabled
-enable_logging = "insert actual scripting here" #How to enable log
-disable_logging = "insert more actual scripting here" #How to disable log
+enable_logging = "insert actual scripting here for log 2" #How to enable log
+disable_logging = "insert more actual scripting here for log 2" #How to disable log
 
 
 # Enable via GUI
