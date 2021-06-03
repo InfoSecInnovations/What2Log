@@ -20,7 +20,7 @@
       <LogpileScript v-if="article.log_pile.enable_logging" :script="article.log_pile.enable_logging" script_type="enable" :script_language="article.log_pile.language" />
       <div class="script-info">
         <div class="script-language">Language: {{article.log_pile.language}}</div>
-        <NuxtLink class="button" to="/logpile">View Log Pile</NuxtLink>
+        <NuxtLink class="button" to="/logpile/">View Log Pile</NuxtLink>
       </div>
     </div>
   </div>
@@ -29,11 +29,7 @@
 <script>
 export default {
   async asyncData(context) {
-    const { $content, app, params, redirect, route} = context;
-    if (!params.log) {
-      const slug = (await $content(`${app.i18n.locale}/logs`).only('slug').limit(1).fetch())[0].slug
-      return redirect(`${route.path}/${slug}`)
-    }
+    const { $content, app, params} = context;
     const article = await $content(`${app.i18n.locale}/logs/${params.log}`).fetch();
     let content = []
     if (article.GUI && article.GUI.enable) content = [...content, ...article.GUI.enable]
