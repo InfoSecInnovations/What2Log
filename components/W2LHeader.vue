@@ -10,7 +10,3 @@
     </div>
   </div>
 </template>
-
-<style lang="stylus">
-  @require '~/assets/header.styl'
-</style>

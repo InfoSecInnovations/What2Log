@@ -1,4 +1,4 @@
-@require 'common'
+@require 'parameters'
 
 body
   background-color: background
@@ -51,6 +51,37 @@ body
     margin: small_padding 0
     display: block
 
+  #header-bar
+    display: flex
+    justify-content: space-between
+    align-items: center
+    padding: small_padding header_padding
+    .header-link
+      display: flex
+      align-items: center
+      gap: medium_padding
+      font-size: header_title_size
+      font-weight: bold
+      img
+        width: header_icon_size
+        height: header_icon_size
+    .social
+      display: flex
+      gap: medium_padding
+      img
+        width: social_icon_size
+        height: social_icon_size
+
+  #navbar
+    display: flex
+    justify-content: flex-end
+    background-color: secondary_color
+    padding: small_padding
+    gap: medium_padding
+    font-size: navbar_font_size
+    a
+      color: secondary_font_color
+
   #container
     display: flex
     justify-content: center
@@ -77,6 +108,29 @@ body
         h2
         h3
           color: secondary_font_color
+      &.logpile
+        align-items: center
+        gap: main_padding
+        .logpile-row
+          display: grid
+          grid-template-columns: 2fr 1fr 1fr 1fr 1fr
+          gap: small_padding
+          padding: logpile_row_padding
+          .logpile-header
+            font-weight: bold
+          &.top-level
+            background-color: top_level_background
+            color: secondary_font_color
+          &.second-level
+            background-color: second_level_background
+            color: secondary_font_color
+            .logpile-category
+              padding-left: logpile_list_indent
+          &.child
+            &:nth-child(odd)
+              background-color: alternate_background
+            .logpile-category
+              padding-left: logpile_list_indent * 2
     #sidebar
       display: flex
       flex-direction: column
@@ -112,17 +166,7 @@ body
       align-items: center
       padding: main_padding
       gap: main_padding
-      .title-block
-        display: flex
-        flex-direction: column
-        align-items: center
-        gap: extra_padding
-        width: 100%
-        .info
-          background-color: secondary_background
-          padding: medium_padding
-          width: info_width
-          text-align: center
+
       .columns
         display: grid
         grid-template-columns: 1fr 1fr
@@ -141,6 +185,17 @@ body
           grid-column: 1
         &>*:nth-child(4n - 1):last-child
           grid-column: 1
+  .title-block
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: extra_padding
+    width: 100%
+    .info
+      background-color: secondary_background
+      padding: medium_padding
+      width: info_width
+      text-align: center
   .about-section
     font-size: about_font_size
     display: flex;

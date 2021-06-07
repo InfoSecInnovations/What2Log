@@ -46,7 +46,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus">
-  @require '~/assets/main.styl'
-</style>

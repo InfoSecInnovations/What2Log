@@ -36,10 +36,6 @@
   </div>
 </template>
 
-<style lang="stylus">
-  @require '~/assets/main.styl'
-</style>
-
 <script>
 export default {
   head() {
