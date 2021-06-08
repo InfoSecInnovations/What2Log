@@ -132,6 +132,33 @@ body
               background-color: alternate_background
             .logpile-category
               padding-left: logpile_list_indent * 2
+        .script-block
+          width: 100%
+          display: flex
+          flex-direction: column
+          gap: medium_padding
+          background-color: tertiary_color
+          padding: medium_padding
+          .script-header
+            display: flex
+            align-items: center
+            justify-content: space-between
+            color: secondary_font_color
+            .script-label
+              padding: small_padding
+            .script-controls
+              display: flex
+              gap: medium_padding
+              .button
+                padding: small_padding
+              .icon-button
+                width: logpile_icon_button_size
+                height: logpile_icon_button_size 
+                background-color: background
+                padding: logpile_icon_button_padding
+                cursor: pointer
+          pre
+            font-size: small_font_size
     #sidebar
       display: flex
       flex-direction: column
@@ -191,11 +218,11 @@ body
     align-items: center
     gap: extra_padding
     width: 100%
-    .info
-      background-color: secondary_background
-      padding: medium_padding
-      width: info_width
-      text-align: center
+  .info
+    background-color: secondary_background
+    padding: medium_padding
+    width: info_width
+    text-align: center
   .about-section
     font-size: about_font_size
     display: flex;

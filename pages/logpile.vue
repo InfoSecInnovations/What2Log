@@ -44,21 +44,48 @@
             </template>
           </template>
         </div>
+        <div class="button" id="scripts-button" v-on:click="getScripts"> Get My Script(s)!</div>
+        <template v-if="results">
+          <div class="info" v-if="!results.length">You must select at least one script!</div>
+          <template v-else>
+            <div class="info">Copy paste the scripts below or save them to a file.</div>
+            <div class="script-block" v-for="script of results" :key="`${script.os}-${script.language}-${script.type}`">
+              <div class="script-header">
+                <div class="script-label">{{`${script.type.charAt(0).toUpperCase()}${script.type.slice(1)} selected items for ${script.os}. Language: ${script.language}`}}</div>  
+                <div class="script-controls">
+                <img class="icon-button" src='/images/copy.svg' v-on:click="copy(script.content)">             
+                <a :href="getScriptBlob(script.content)" :download="getScriptName(script.language, script.os, script.type)">
+                  <img class="icon-button" src='/images/download.svg'>
+                </a>
+                </div>
+              </div>
+              <pre>{{script.content}}</pre>
+            </div>
+          </template>
+        </template>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import getScriptBlob from '~/assets/getScriptBlob'
+import copyText from '~/assets/copyText'
 import compareLevels from '~/assets/compareLevels'
 export default {
   head() {
     return { title: 'The Log Pile'}
   },
-  async asyncData({$content, app}) {
-    const scriptData = await $content(`${app.i18n.locale}/logs`).sortBy('title').only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title']).fetch()
+  data() {
     return {
-      categories: scriptData.reduce((result, script) => {
+      results: null
+    }
+  },
+  async asyncData({$content, app}) {
+    const scriptData = await $content('/scripts').fetch()
+    const log = await $content(`${app.i18n.locale}/logs`).sortBy('title').only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title']).fetch()
+    return {
+      categories: log.reduce((result, script) => {
         script.source.os.forEach(os => {
           if (!result[os]) result[os] = {}
           if (!result[os][script.suggested_log_level]) result[os][script.suggested_log_level] = []
@@ -66,7 +93,13 @@ export default {
         })
         return result
       }, {}),
-      scriptLookup: scriptData.reduce((result, script) => ({...result, [script.slug]: script}), {})
+      scriptLookup: log.reduce((result, script) => ({...result, [script.slug]: script}), {}),
+      scriptData
+    }
+  },
+  watch: {
+    results (val) {
+      if (val) this.$nextTick(() => document.getElementById('scripts-button').scrollIntoView(true))
     }
   },
   methods: {
@@ -87,6 +120,60 @@ export default {
     },
     sortLevels(levels) { 
       return Object.entries(levels).sort((a, b) => compareLevels(a[0], b[0])).map(level => ({level: level[0], scripts: level[1]})) 
+    },
+    getScripts() {
+      this.results = Object.entries(this.categories)
+      .map(category => Object.entries(category[1]).map(level => level[1].map(script => {
+        const scripts = []
+        scripts.push({
+          content: this.scriptLookup[script].log_pile.enable_logging, 
+          os: category[0], 
+          type: 'enable', 
+          language: this.scriptLookup[script].log_pile.language
+        })
+        scripts.push({
+          content: this.scriptLookup[script].log_pile.disable_logging, 
+          os: category[0], 
+          type: 'disable', 
+          language: this.scriptLookup[script].log_pile.language
+        })
+        scripts.push({
+          content: this.scriptLookup[script].log_pile.view_logs, 
+          os: category[0], 
+          type: 'view', 
+          language: this.scriptLookup[script].log_pile.language
+        })
+        scripts.push({
+          content: this.scriptLookup[script].log_pile.check_status, 
+          os: category[0], 
+          type: 'check', 
+          language: this.scriptLookup[script].log_pile.language
+        })
+        return scripts
+      })))
+      .flat(4)
+      .reduce((result, item) => {
+        const entry = result.find(r => r.os == item.os && r.language == item.language && r.type == item.type)
+        if (entry) entry.content = `${entry.content}\n\n${item.content}`
+        else result.push(item)
+        return result
+      }, [])
+      .map(item => {
+        if (this.scriptData[item.language][item.type]) {
+          if (this.scriptData[item.language][item.type].header) item.content = `${this.scriptData[item.language][item.type].header}\n\n${item.content}`
+          if (this.scriptData[item.language][item.type].footer) item.content = `${item.content}\n\n${this.scriptData[item.language][item.type].footer}`
+        }
+        return item
+      })
+    },
+    copy(script) {
+      copyText(script)
+    },
+    getScriptBlob(script) {
+      return getScriptBlob(script)
+    },
+    getScriptName(language, os, script_type) {
+      return `what2log-${script_type}-${os.replace(/\s/g, '').toLowerCase()}${this.scriptData[language].extension}`
     }
   }
 }
