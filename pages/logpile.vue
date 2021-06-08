@@ -51,7 +51,7 @@
             <div class="info">Copy paste the scripts below or save them to a file.</div>
             <div class="script-block" v-for="script of results" :key="`${script.os}-${script.language}-${script.type}`">
               <div class="script-header">
-                <div class="script-label">{{`${script.type.charAt(0).toUpperCase()}${script.type.slice(1)} selected items for ${script.os}. Language: ${script.language}`}}</div>  
+                <div class="script-label">{{`${getScriptTypeDescription(script.type)} of selected items for ${script.os}. Language: ${script.language}`}}</div>  
                 <div class="script-controls">
                 <img class="icon-button" src='/images/copy.svg' v-on:click="copy(script.content)">             
                 <a :href="getScriptBlob(script.content)" :download="getScriptName(script.language, script.os, script.type)">
@@ -125,30 +125,20 @@ export default {
       this.results = Object.entries(this.categories)
       .map(category => Object.entries(category[1]).map(level => level[1].map(script => {
         const scripts = []
-        scripts.push({
-          content: this.scriptLookup[script].log_pile.enable_logging, 
-          os: category[0], 
-          type: 'enable', 
-          language: this.scriptLookup[script].log_pile.language
-        })
-        scripts.push({
-          content: this.scriptLookup[script].log_pile.disable_logging, 
-          os: category[0], 
-          type: 'disable', 
-          language: this.scriptLookup[script].log_pile.language
-        })
-        scripts.push({
-          content: this.scriptLookup[script].log_pile.view_logs, 
-          os: category[0], 
-          type: 'view', 
-          language: this.scriptLookup[script].log_pile.language
-        })
-        scripts.push({
-          content: this.scriptLookup[script].log_pile.check_status, 
-          os: category[0], 
-          type: 'check', 
-          language: this.scriptLookup[script].log_pile.language
-        })
+        const os = category[0]
+        const language = this.scriptLookup[script].log_pile.language
+        const handleScript = script_type => {
+          if (this.$store.getters['logpile/getScriptStatus'](os, script, script_type)) scripts.push({
+            content: this.scriptLookup[script].log_pile[script_type == 'enable' ? 'enable_logging' : script_type == 'disable' ? 'disable_logging' : script_type == 'view' ? 'view_logs' : 'check_status'], 
+            os, 
+            type: script_type, 
+            language
+          })
+        }
+        handleScript('enable')
+        handleScript('disable')
+        handleScript('view')
+        handleScript('check')
         return scripts
       })))
       .flat(4)
@@ -174,6 +164,12 @@ export default {
     },
     getScriptName(language, os, script_type) {
       return `what2log-${script_type}-${os.replace(/\s/g, '').toLowerCase()}${this.scriptData[language].extension}`
+    },
+    getScriptTypeDescription(script_type) {
+      if (script_type == 'enable') return 'Enable logging'
+      if (script_type == 'disable') return 'Disable logging'
+      if (script_type == 'view') return 'View logs'
+      return 'Check logging status'
     }
   }
 }
