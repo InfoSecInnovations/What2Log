@@ -67,14 +67,33 @@ export default {
       }, {})
     }
   },
+  computed: {
+    checkedNew() {
+      return Object.entries(this.categories).reduce((result, os) => {
+        return {...result, [os[0]]: Object.entries(os[1]).reduce((result, level) => {
+          return {...result, [level[0]]: level[1].reduce((result, script) => {
+            return {
+              ...result,
+              [script]: {
+                enable: this.$store.state.logpile.enable[`${os[0]}-${script}`],
+                disable: this.$store.state.logpile.disable[`${os[0]}-${script}`],
+                check: this.$store.state.logpile.check[`${os[0]}-${script}`],
+                view: this.$store.state.logpile.view[`${os[0]}-${script}`]
+              }
+            }
+          }, {})}
+        }, {})}
+      }, {})
+    }
+  },
   methods: {
     check(script_type, data, os, event) {
-      if (typeof data == 'string') return this.$store.commit('setScriptStatus', {os, slug: data, script_type, status: event.target.checked})
+      if (typeof data == 'string') return this.$store.commit('logpile/setScriptStatus', {os, slug: data, script_type, status: event.target.checked})
       if (Array.isArray(data)) return data.forEach(script => this.check(script_type, script, os, event))
       Object.values(data).forEach(value => this.check(script_type, value, os, event))
     },
     checked(script_type, os, data) {
-      if (typeof data == 'string') return this.$store.getters.getScriptStatus(os, data, script_type)
+      if (typeof data == 'string') return this.$store.getters['logpile/getScriptStatus'](os, data, script_type)
       if (Array.isArray(data)) return data.some(script => this.checked(script_type, os, script))
       return Object.values(data).some(value => this.checked(script_type, os, value))
     },
