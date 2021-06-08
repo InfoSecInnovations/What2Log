@@ -34,7 +34,7 @@
               </div>
               <template v-for="script of scripts">
                 <div class="logpile-row child" :key="`${os}-${level}-${script}`">
-                  <div class="logpile-category">{{script}}</div>
+                  <div class="logpile-category">{{scriptLookup[script].title}}</div>
                   <input type="checkbox" v-on:change="check('enable', script, os, $event)" :checked="checked('enable', os, script)">
                   <input type="checkbox" v-on:change="check('disable', script, os, $event)" :checked="checked('disable', os, script)">
                   <input type="checkbox" v-on:change="check('view', script, os, $event)" :checked="checked('view', os, script)">
@@ -55,7 +55,7 @@ export default {
     return { title: 'The Log Pile'}
   },
   async asyncData({$content, app}) {
-    const scriptData = await $content(`${app.i18n.locale}/logs`).only(['source', 'log_pile', 'slug', 'suggested_log_level']).fetch()
+    const scriptData = await $content(`${app.i18n.locale}/logs`).only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title']).fetch()
     return {
       categories: scriptData.reduce((result, script) => {
         script.source.os.forEach(os => {
@@ -64,26 +64,8 @@ export default {
           result[os][script.suggested_log_level].push(script.slug)
         })
         return result
-      }, {})
-    }
-  },
-  computed: {
-    checkedNew() {
-      return Object.entries(this.categories).reduce((result, os) => {
-        return {...result, [os[0]]: Object.entries(os[1]).reduce((result, level) => {
-          return {...result, [level[0]]: level[1].reduce((result, script) => {
-            return {
-              ...result,
-              [script]: {
-                enable: this.$store.state.logpile.enable[`${os[0]}-${script}`],
-                disable: this.$store.state.logpile.disable[`${os[0]}-${script}`],
-                check: this.$store.state.logpile.check[`${os[0]}-${script}`],
-                view: this.$store.state.logpile.view[`${os[0]}-${script}`]
-              }
-            }
-          }, {})}
-        }, {})}
-      }, {})
+      }, {}),
+      scriptLookup: scriptData.reduce((result, script) => ({...result, [script.slug]: script}), {})
     }
   },
   methods: {
@@ -100,6 +82,7 @@ export default {
     indeterminate(script_type, os, data) {
       if (!this.checked(script_type, os, data)) return false
       if (Array.isArray(data)) return !data.every(script => this.checked(script_type, os, script))
+      return Object.values(data).every(value => !this.checked(script_type, os, value) || this.indeterminate(script_type, os, value))
     }
   }
 }
