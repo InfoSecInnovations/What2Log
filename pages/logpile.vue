@@ -24,7 +24,7 @@
               <input type="checkbox" v-on:change="check('view', levels, os, $event)" :checked="checked('view', os, levels)" :indeterminate.prop="indeterminate('view', os, levels)">
               <input type="checkbox" v-on:change="check('check', levels, os, $event)" :checked="checked('check', os, levels)" :indeterminate.prop="indeterminate('check', os, levels)">
             </div>
-            <template v-for="(scripts, level) of levels">
+            <template v-for="{level, scripts} of sortLevels(levels)">
               <div class="logpile-row second-level" :key="`${os}-${level}`">
                 <div class="logpile-category">{{level}}</div>
                 <input type="checkbox" v-on:change="check('enable', scripts, os, $event)" :checked="checked('enable', os, scripts)" :indeterminate.prop="indeterminate('enable', os, scripts)">
@@ -50,12 +50,13 @@
 </template>
 
 <script>
+import compareLevels from '~/assets/compareLevels'
 export default {
   head() {
     return { title: 'The Log Pile'}
   },
   async asyncData({$content, app}) {
-    const scriptData = await $content(`${app.i18n.locale}/logs`).only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title']).fetch()
+    const scriptData = await $content(`${app.i18n.locale}/logs`).sortBy('title').only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title']).fetch()
     return {
       categories: scriptData.reduce((result, script) => {
         script.source.os.forEach(os => {
@@ -82,7 +83,10 @@ export default {
     indeterminate(script_type, os, data) {
       if (!this.checked(script_type, os, data)) return false
       if (Array.isArray(data)) return !data.every(script => this.checked(script_type, os, script))
-      return Object.values(data).every(value => !this.checked(script_type, os, value) || this.indeterminate(script_type, os, value))
+      return !Object.values(data).every(value => this.checked(script_type, os, value) && !this.indeterminate(script_type, os, value))
+    },
+    sortLevels(levels) { 
+      return Object.entries(levels).sort((a, b) => compareLevels(a[0], b[0])).map(level => ({level: level[0], scripts: level[1]})) 
     }
   }
 }
