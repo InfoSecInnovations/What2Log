@@ -10,7 +10,7 @@
           <div v-for="{scripts, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
             <input type="checkbox" :id="`${os}-${level}`">
             <label :for="`${os}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink :to="`/logs/${script.slug}/`" v-for="script of scripts" :key="`${os}-${level}-${script.title}`" class="inner-level sidebar-element sidebar-list">{{script.title}}</NuxtLink>
+            <NuxtLink :to="`/logs/${script.slug}/`" v-for="script of scripts" :key="`${os}-${level}-${script.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == script.slug ? 'selected' : ''}`">{{script.title}}</NuxtLink>
           </div>
         </div>
       </div>
