@@ -19,26 +19,26 @@
           <template v-for="(levels, os) of categories">
             <div class="logpile-row top-level" :key="os">
               <div class="logpile-category">{{os}}</div>
-              <input type="checkbox" v-on:change="check('enable', levels, $event)" :checked="checked('enable', levels)">
-              <input type="checkbox" v-on:change="check('disable', levels, $event)" :checked="checked('disable', levels)">
-              <input type="checkbox" v-on:change="check('view', levels, $event)" :checked="checked('view', levels)">
-              <input type="checkbox" v-on:change="check('check', levels, $event)" :checked="checked('check', levels)">
+              <input type="checkbox" v-on:change="check('enable', levels, os, $event)" :checked="checked('enable', os, levels)" :indeterminate.prop="indeterminate('enable', os, levels)">
+              <input type="checkbox" v-on:change="check('disable', levels, os, $event)" :checked="checked('disable', os, levels)" :indeterminate.prop="indeterminate('disable', os, levels)">
+              <input type="checkbox" v-on:change="check('view', levels, os, $event)" :checked="checked('view', os, levels)" :indeterminate.prop="indeterminate('view', os, levels)">
+              <input type="checkbox" v-on:change="check('check', levels, os, $event)" :checked="checked('check', os, levels)" :indeterminate.prop="indeterminate('check', os, levels)">
             </div>
             <template v-for="(scripts, level) of levels">
               <div class="logpile-row second-level" :key="`${os}-${level}`">
                 <div class="logpile-category">{{level}}</div>
-                <input type="checkbox" v-on:change="check('enable', scripts, $event)" :checked="checked('enable', scripts)">
-                <input type="checkbox" v-on:change="check('disable', scripts, $event)" :checked="checked('disable', scripts)">
-                <input type="checkbox" v-on:change="check('view', scripts, $event)" :checked="checked('view', scripts)">
-                <input type="checkbox" v-on:change="check('check', scripts, $event)" :checked="checked('check', scripts)">
+                <input type="checkbox" v-on:change="check('enable', scripts, os, $event)" :checked="checked('enable', os, scripts)" :indeterminate.prop="indeterminate('enable', os, scripts)">
+                <input type="checkbox" v-on:change="check('disable', scripts, os, $event)" :checked="checked('disable', os, scripts)" :indeterminate.prop="indeterminate('disable', os, scripts)">
+                <input type="checkbox" v-on:change="check('view', scripts, os, $event)" :checked="checked('view', os, scripts)" :indeterminate.prop="indeterminate('view', os, scripts)">
+                <input type="checkbox" v-on:change="check('check', scripts, os, $event)" :checked="checked('check', os, scripts)" :indeterminate.prop="indeterminate('check', os, scripts)">
               </div>
               <template v-for="script of scripts">
                 <div class="logpile-row child" :key="`${os}-${level}-${script}`">
                   <div class="logpile-category">{{script}}</div>
-                  <input type="checkbox" v-on:change="check('enable', script, $event)" :checked="checked('enable', script)">
-                  <input type="checkbox" v-on:change="check('disable', script, $event)" :checked="checked('disable', script)">
-                  <input type="checkbox" v-on:change="check('view', script, $event)" :checked="checked('view', script)">
-                  <input type="checkbox" v-on:change="check('check', script, $event)" :checked="checked('check', script)">
+                  <input type="checkbox" v-on:change="check('enable', script, os, $event)" :checked="checked('enable', os, script)">
+                  <input type="checkbox" v-on:change="check('disable', script, os, $event)" :checked="checked('disable', os, script)">
+                  <input type="checkbox" v-on:change="check('view', script, os, $event)" :checked="checked('view', os, script)">
+                  <input type="checkbox" v-on:change="check('check', script, os, $event)" :checked="checked('check', os, script)">
                 </div>
               </template>
             </template>
@@ -68,15 +68,19 @@ export default {
     }
   },
   methods: {
-    check(script_type, data, event) {
-      if (typeof data == 'string') return this.$store.commit('setScriptStatus', {path: data, script_type, status: event.target.checked})
-      if (Array.isArray(data)) return data.forEach(script => this.check(script_type, script, event))
-      Object.values(data).forEach(value => this.check(script_type, value, event))
+    check(script_type, data, os, event) {
+      if (typeof data == 'string') return this.$store.commit('setScriptStatus', {os, slug: data, script_type, status: event.target.checked})
+      if (Array.isArray(data)) return data.forEach(script => this.check(script_type, script, os, event))
+      Object.values(data).forEach(value => this.check(script_type, value, os, event))
     },
-    checked(script_type, data) {
-      if (typeof data == 'string') return this.$store.getters.getScriptStatus(data, script_type)
-      if (Array.isArray(data)) return data.some(script => this.checked(script_type, script))
-      return Object.values(data).some(value => this.checked(script_type, value))
+    checked(script_type, os, data) {
+      if (typeof data == 'string') return this.$store.getters.getScriptStatus(os, data, script_type)
+      if (Array.isArray(data)) return data.some(script => this.checked(script_type, os, script))
+      return Object.values(data).some(value => this.checked(script_type, os, value))
+    },
+    indeterminate(script_type, os, data) {
+      if (!this.checked(script_type, os, data)) return false
+      if (Array.isArray(data)) return !data.every(script => this.checked(script_type, os, script))
     }
   }
 }
