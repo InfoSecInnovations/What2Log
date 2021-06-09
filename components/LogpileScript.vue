@@ -3,11 +3,11 @@
     <div class="quick-script-controls">
       <div class="script-label">{{label}}</div>
       <div class="quick-script-icon-buttons">
-        <img class="icon-button" src="/images/copy.svg" v-on:click="copy">
-        <a v-if="loaded" :href="getScriptBlob()" :download="getScriptName()">
+        <img class="icon-button" src="/images/copy.svg" v-on:click="copy" v-tooltip.bottom="'Copy to clipboard'">
+        <a v-if="loaded" :href="getScriptBlob()" :download="getScriptName()" v-tooltip.bottom="'Download script'">
           <img class="icon-button" src="/images/download.svg">
         </a>
-        <img class="icon-button" :src="enabled? '/images/remove.svg' : '/images/basket.svg'" v-on:click="enable">
+        <img class="icon-button" :src="enabled? '/images/remove.svg' : '/images/basket.svg'" v-on:click="enable"  v-tooltip.bottom="enabled ? 'Remove from Log Pile' : 'Add to Log Pile'">
       </div>
     </div>
     <pre>{{content}}</pre> 
