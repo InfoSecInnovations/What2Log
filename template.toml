@@ -23,7 +23,7 @@ collect.reason = """\
 # Log Pile
 language = "" #Language for Log Pile
 view_logs = """ """ #How to view log
-check_status = """ """" #How to check if log is enabled
+check_status = """ """ #How to check if log is enabled
 enable_logging = """ """ #How to enable log
 disable_logging = """ """ #How to disable log
 

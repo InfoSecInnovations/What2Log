@@ -82,7 +82,7 @@ export default {
     }
   },
   async asyncData({$content, app}) {
-    const scriptData = await $content('/scripts').fetch()
+    const scriptData = await $content('/scripts').fetch().then(res => res.reduce((result, item) => ({...result, [item.name]: item}), {}))
     const log = await $content(`${app.i18n.locale}/logs`).sortBy('title').only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title']).fetch()
     return {
       categories: log.reduce((result, script) => {

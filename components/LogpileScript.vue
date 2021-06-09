@@ -25,8 +25,7 @@ export default {
     }
   },
   async fetch() {
-    const file = await this.$content('/scripts').only([this.script_language]).fetch()
-    this.scriptData = file[this.script_language]
+    this.scriptData = await this.$content('/scripts').where({name: this.script_language}).fetch().then(res => res[0])
   },
   props: ['script', 'script_type', 'script_language', 'oses', 'slug'],
   computed: {

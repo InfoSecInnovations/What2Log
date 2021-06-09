@@ -1,4 +1,4 @@
-[Powershell]
+name="Powershell"
 extension=".ps1"
 enable.header='''
 This is where the multiline
