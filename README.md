@@ -4,6 +4,8 @@ An InfoSec Innovations project to collect information on how to set up logging o
 
 We use the [Nuxt Content](https://content.nuxtjs.org/) module to transform [TOML](https://toml.io/) files into HTML pages.
 
+Join the discussion on [Discord](https://discord.gg/B9yRpw9tYd), [Twitter](https://twitter.com/What2Log) and [Reddit](https://www.reddit.com/r/What2Log/)
+
 ## Planned features
 
 - Select scripts based on compliance frameworks
