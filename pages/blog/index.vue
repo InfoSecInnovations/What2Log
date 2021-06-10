@@ -4,7 +4,7 @@
     <Navbar />
     <div id="container">
       <div id="inner-container">
-        <NuxtLink v-for="post of posts" :key="post.slug" :to="post.slug">{{post.title}}</NuxtLink>
+        <PageCard v-for="post of posts" :article="post" :key="post.slug"/>
       </div>
     </div>
   </div>
@@ -14,7 +14,7 @@
 export default {
   async asyncData({$content, app}) {
     return {
-      posts: await $content(`${app.i18n.locale}/blog`).sortBy('createdAt', 'desc').only(['title', 'slug']).fetch()
+      posts: await $content(`${app.i18n.locale}/blog`).sortBy('createdAt', 'desc').fetch()
     }
   }
 }

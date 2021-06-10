@@ -19,5 +19,10 @@ export default {
     const data = await this.$content('authors').where({name: this.author}).limit(1).fetch()
     this.authorData = data ? data[0] : undefined
   },
+  watch: {
+    author() {
+      this.$fetch()
+    }
+  }
 }
 </script>

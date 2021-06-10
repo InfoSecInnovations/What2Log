@@ -1,4 +1,14 @@
 import TOML from '@ltd/j-toml'
+import remark from 'remark'
+import strip from 'strip-markdown'
+
+const stripMarkdown = markdown => new Promise((resolve, reject) => {
+  const md = remark()
+  md.use(strip).process(markdown, (err, file) => {
+    if (err) return reject(err)
+    resolve(String(file))
+  })
+})
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -77,5 +87,15 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
+
+  hooks: {
+    'content:file:beforeInsert': async (document) => { 
+      if (document.extension === '.md') {
+        const stripped = await stripMarkdown(document.text)
+        const excerptLength = 150
+        document.excerpt = stripped.length < excerptLength ? stripped : stripped.substr(0, stripped.lastIndexOf(' ', excerptLength))
+      }
+    }
+  }
 
 }

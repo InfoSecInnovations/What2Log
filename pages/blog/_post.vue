@@ -16,16 +16,27 @@
           </div>
           <nuxt-content :document="article"/>
         </article>
+
       </div>
     </div>
+    <footer>
+      <PageCard v-if="prev" :article="prev"/>
+      <PageCard v-if="next" :article="next"/>
+    </footer>
   </div>
 </template>
 
 <script>
 export default {
   async asyncData({ $content, params, app }) {
+    const [prev, next] = await $content(`${app.i18n.locale}/blog`)
+      .sortBy('createdAt')
+      .surround(params.post)
+      .fetch()
     return {
-      article: await $content(`${app.i18n.locale}/blog/${params.post}`).fetch()
+      article: await $content(`${app.i18n.locale}/blog/${params.post}`).fetch(),
+      prev,
+      next
     }
   }
 }
