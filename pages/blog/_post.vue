@@ -12,7 +12,7 @@
             </div>
             <div class="author-block">
               <NuxtLink :to="`/authors/${author.slug}/`">
-                <img class="author-icon" v-if="author.icon" :src="`/${author.icon}`" :alt="author.name" />
+                <img class="author-icon" v-if="author.icon" :src="`/images/${author.icon}`" :alt="author.name" />
                 <p>{{author.name}}</p>
               </NuxtLink>
               <p>{{article.createdAt | formatDate}}</p>

@@ -1,9 +1,8 @@
-#This is the template for What2Log entries
+#This is the template for What2Log Tools entries
 
 # Meta data about this App entry
 title = ""
-author.name = ""
-author.organization = ""
+author = ""
 credits = []
 release.date = 2021-05-21
 release.version = 0.1

@@ -1,14 +1,12 @@
-#This is the template for What2Log entries
+#This is the template for What2Log Logs entries
 
 # Meta data about this w2l entry
 title = "" #Name of the log (i.e. User Logon)
 W2L_schema = 1
-author.name = "" #Your name
-author.organization = "" #Your organization
+author = "" #Your name
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-05-21 #Todays date
-
 
 # About this log type
 suggested_log_level = "" #Minimum, Ideal, Extreme, or Special Case
@@ -31,6 +29,10 @@ references = [
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
 [compliance.XXXX]
+level = " " # Compliance requirement
+reference = "URL here" # Reference for compliance
+
+[compliance.YYYY]
 level = " " # Compliance requirement
 reference = "URL here" # Reference for compliance
 # repeat as needed

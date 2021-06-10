@@ -1,0 +1,28 @@
+# Template for scripting language metadata
+
+name="" # This must be unique, add an identifier like "Linux bash" or "OSX bash" if there are multiple profiles using the same language
+extension=".ext" # The extension for the generated files using this language
+
+# Header and footer for scripts that enable logging in this language
+enable.header='''
+'''
+enable.footer='''
+'''
+
+# Header and footer for scripts that disable logging in this language
+disable.header='''
+'''
+disable.footer='''
+'''
+
+# Header and footer for scripts that allow you to check logging status in this language
+check.header='''
+'''
+check.footer='''
+'''
+
+# Header and footer for scripts that allow you to view the logs in this language
+view.header='''
+'''
+view.footer='''
+'''

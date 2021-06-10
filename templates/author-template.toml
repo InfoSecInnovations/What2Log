@@ -1,0 +1,10 @@
+# Template for author metadata, used for site pages and the blog
+
+name = "" # Your full name
+icon = "img1.png" # You can select a cool icon for yourself here (place the corresponding file in static/images)
+organization = "" # If you are acting on behalf of an organization, you can specify that here
+
+# tell us about yourself
+bio.en = """
+"""
+# add more languages if applicable
