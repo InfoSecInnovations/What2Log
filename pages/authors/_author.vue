@@ -1,10 +1,20 @@
 <template>
   <div>
-    <h1>{{author.name}}</h1>
-    <img v-if="author.icon" :src="`/images/${author.icon}`" />
-    <p v-if="author.bio[$i18n.locale]">{{author.bio[$i18n.locale]}}</p>
-    <div v-for="post of posts" :key="post.slug">
-      <NuxtLink :to="`/blog/${post.slug}/`">{{post.title}}</NuxtLink>
+    <W2LHeader />
+    <Navbar />
+    <div id="container">
+      <div id="inner-container">
+        <article>
+          <h1>{{author.name}}</h1>
+          <h2 v-if="author.organization">{{author.organization}}</h2>
+          <img v-if="author.icon" :src="`/images/${author.icon}`" />
+          <p v-if="author.bio[$i18n.locale]">{{author.bio[$i18n.locale]}}</p>
+          <h2>Blog Posts</h2>
+          <div v-for="post of posts" :key="post.slug">
+            <NuxtLink :to="`/blog/${post.slug}/`">{{post.title}}</NuxtLink>
+          </div>
+        </article>
+      </div>
     </div>
   </div>
 </template>

@@ -5,6 +5,7 @@
       <div>
         <h2 v-for="os of article.source.os" :key="os">{{os}}</h2>
       </div>
+      <AuthorCard :author="article.author" :date="article.createdAt" />
       <p class="info">{{article.collect_reason}}</p>
     </div>
     <div class="columns">

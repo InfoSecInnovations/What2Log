@@ -10,13 +10,7 @@
               <NuxtLink to="/blog/">Back to posts</NuxtLink>
               <h1 class="home">{{article.title}}</h1>
             </div>
-            <div class="author-block">
-              <NuxtLink :to="`/authors/${author.slug}/`">
-                <img class="author-icon" v-if="author.icon" :src="`/images/${author.icon}`" :alt="author.name" />
-                <p>{{author.name}}</p>
-              </NuxtLink>
-              <p>{{article.createdAt | formatDate}}</p>
-            </div>
+            <AuthorCard :author="article.author" :date="article.createdAt" />
             <p class="info">{{article.description}}</p>
             <img v-if="article.img" :src="`/${article.img}`" :alt="article.alt"/>
           </div>
@@ -30,11 +24,8 @@
 <script>
 export default {
   async asyncData({ $content, params, app }) {
-    const article = await $content(`${app.i18n.locale}/blog/${params.post}`).fetch()
-    const author = await $content(`/authors`).where({name: article.author}).limit(1).fetch().then(res => res[0])
     return {
-      article,
-      author
+      article: await $content(`${app.i18n.locale}/blog/${params.post}`).fetch()
     }
   }
 }

@@ -1,8 +1,7 @@
 # Meta data about this w2l entry
 title = "Test Log 3" #Name of the log (i.e. User Logon)
 W2L_schema = 1
-author.name = "Sébastien Boutin" #Your name
-author.organization = "InfoSec Innovations" #Your organization
+author = "Sebastian Boutin Blomfield" #Your name
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-05-21 #Todays date
