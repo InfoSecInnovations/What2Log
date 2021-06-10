@@ -1,0 +1,31 @@
+#This is the template for What2Log entries
+
+# Meta data about this App entry
+title = ""
+author.name = ""
+author.organization = ""
+credits = []
+release.date = 2021-05-21
+release.version = 0.1
+
+# About this app
+operating_system = [""]
+default_installed = true #True or false only
+
+#Installation Info
+[[app.install]]
+txt = """
+"""
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+"""
+img = "img1.png"
+
+[[app.info]]
+txt = """
+"""
+img = "img2.png"
+#continue as necessary

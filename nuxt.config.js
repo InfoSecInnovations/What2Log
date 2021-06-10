@@ -27,7 +27,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/v-tooltip.js'
+    '~/plugins/v-tooltip.js',
+    '~/plugins/filters.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -49,6 +50,9 @@ export default {
   content: { 
     extendParser: {
       '.toml': file => TOML.parse(file, 1.0, '\n', false)
+    },
+    markdown: {
+      remarkPlugins: ['remark-unwrap-images']
     }
   },
 

@@ -4,6 +4,6 @@
     <NuxtLink to="/ostools/">OS Tools</Nuxtlink>
     <NuxtLink to="/about/">About Us</NuxtLink>
     <NuxtLink to="/logpile/">The Log Pile</NuxtLink>
-    <a href="https://blog.what2log.com/">Log Blog</a>
+    <NuxtLink to="/blog/">Log Blog</NuxtLink>
   </div>
 </template>

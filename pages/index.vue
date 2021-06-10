@@ -27,7 +27,7 @@
           <div class="column">
             <h2 class="home">Log Blog</h2>
             <p>Click here to learn more about what you should be logging. </p>
-            <a href="https://blog.what2log.com/" class="button">Learn More</a>
+            <NuxtLink to="blog/" class="button">Learn More</NuxtLink>
           </div>
         </div>
 

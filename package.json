@@ -15,6 +15,7 @@
     "core-js": "^3.9.1",
     "nuxt": "^2.15.3",
     "nuxt-i18n": "^6.27.0",
+    "remark-unwrap-images": "^2.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^4.3.3",
     "v-tooltip": "^2.1.3"

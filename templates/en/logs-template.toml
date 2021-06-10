@@ -1,8 +1,8 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "" #Name of the log (i.e. User Logon)
-W2L.schema = 1
+title = "" #Name of the log (i.e. User Logon)
+W2L_schema = 1
 author.name = "" #Your name
 author.organization = "" #Your organization
 credits = [ "" ] #Any special callouts
@@ -16,11 +16,27 @@ source.os = [ "" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application l
 source.service = "" #Service that generates log
 source.log = "" #Log file or channel
 default_enabled = true #true or false
-collect.reason = """\
+collect_reason = """\
 
   """
 
+# Additional References Go Here
+references = [
+  "blah",
+  "blah2"
+]
+
+# Compliance & framework information
+
+# Format is compliance.name.level and compliance.name.reference.
+# Only include relevant frameworks
+[compliance.XXXX]
+level = " " # Compliance requirement
+reference = "URL here" # Reference for compliance
+# repeat as needed
+
 # Log Pile
+[log_pile]
 language = "" #Language for Log Pile
 view_logs = """ """ #How to view log
 check_status = """ """ #How to check if log is enabled
@@ -28,43 +44,37 @@ enable_logging = """ """ #How to enable log
 disable_logging = """ """ #How to disable log
 
 
-# Compliance & framework information
-
-# Format is compliance.name.level and compliance.name.reference.
-# Only include relevant frameworks
-
-compliance.XXXX.level = " " # Compliance requirement
-compliance.XXXX.reference = "URL here" # Reference for compliance
-# repeat as needed
-
-
-# Additional References Go Here
-reference.1 = "blah"
-reference.2 = "blah2"
-# repeat as needed
-
-
 # Enable via GUI
-GUI.enable.step1.img = "link to img 1"
-GUI.enable.step1.txt = "text for step1 here"
-GUI.enable.step2.img = "link to img 2"
-GUI.enable.step2.txt = "text for step 2 here"
+[[GUI.enable]]
+img = "link to img 1"
+txt = "text for step1 here"
+
+[[GUI.enable]]
+img = "link to img 2"
+txt = "text for step 2 here"
+
 # repeat as needed
 
 
 # Enable via CLI
-CLI.enable.step1.img = " "
-CLI.enable.step1.txt = " "
+[[CLI.enable]]
+img = " "
+txt = " "
+
 # repeat as needed
 
 
 # View via GUI
-GUI.view.step1.img = " "
-GUI.view.step1.txt = " "
+[[GUI.view]]
+img = " "
+txt = " "
+
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = " "
-CLI.view.step1.txt = " "
+[[CLI.view]]
+img = " "
+txt = " "
+
 # repeat as needed

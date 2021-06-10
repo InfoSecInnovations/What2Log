@@ -159,6 +159,24 @@ body
                 cursor: pointer
           pre
             font-size: small_font_size
+      article
+        display: flex
+        flex-direction: column
+        gap: extra_padding
+        img
+          width: info_width
+          align-self: center
+      .nuxt-content
+        background-color: secondary_background
+        padding: main_padding
+        display: flex
+        flex-direction: column
+        gap: medium_padding
+        h1
+        h2
+        h3
+          text-align: left
+          color: title_color
     #sidebar
       display: flex
       flex-direction: column
@@ -221,6 +239,21 @@ body
     align-items: center
     gap: extra_padding
     width: 100%
+    .header-block
+      display: flex
+      flex-direction: column
+      align-items: center
+    .author-block
+      display: flex
+      align-items: center
+      width: info_width
+      gap: main_padding
+      a
+        display: flex
+        align-items: center
+        gap: medium_padding
+  .author-icon
+    width: author_icon_size !important
   .info
     background-color: secondary_background
     padding: medium_padding
