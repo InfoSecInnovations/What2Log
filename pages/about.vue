@@ -32,9 +32,9 @@
     </div>
 
     <div class="about-section">
-      <h2 class="home">Who</h2>
-      <p>What2Log is a project of <a href="https://www.infosecinnovations.com">InfoSec Innovations.
-    </a></p>
+      <h2 class="home">Credits</h2>
+      <p>What2Log is a project of <a href="https://www.infosecinnovations.com">InfoSec Innovations.</a></p>
+      <p>The icons used on this site come from the Font Awesome 5 free plan. [License.](https://fontawesome.com/license/free)</p>
     </div>
   </div>
 </template>

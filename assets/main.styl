@@ -7,9 +7,10 @@ body
   font-size: main_font_size
   color: main_font_color
 
-  a
+  a, .nav-link
     text-decoration: none
     color: secondary_color
+    cursor: pointer
   h1
   h2
   h3
@@ -179,6 +180,14 @@ body
         h3
           text-align: left
           color: title_color
+      .page-feed
+        display: flex
+        flex-direction: column
+        gap: main_padding
+        .feed-nav
+          display: flex
+          gap: extra_padding
+          justify-content: center
       .blog-posts
         display: grid
         grid-template-columns: 1fr 1fr
@@ -190,8 +199,9 @@ body
           &:nth-child(even):last-child
             width: 50%
             justify-self: center
-          img
-            width: 100%
+          &:first-child
+            img
+              max-height: page_card_max_image_height
     #sidebar
       display: flex
       flex-direction: column
@@ -381,7 +391,10 @@ body
       gap: small_padding
       padding: medium_padding
       width: 100%
-
+    img
+      width: 100%
+      max-height: page_card_max_image_height
+      object-fit: cover
   .author-block
     display: flex
     align-items: center
@@ -400,3 +413,8 @@ body
     background-color: secondary_color
     .page-card
       width: page_card_width
+  .author-pages
+    display: flex
+    flex-direction: column
+    padding: main_padding 0
+    gap: main_padding

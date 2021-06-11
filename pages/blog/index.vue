@@ -6,7 +6,7 @@
       <div id="inner-container" class="blog">
         <h1>Log Blog</h1>
         <div class="blog-posts">
-          <PageCard v-for="post of posts" :key="post.slug" :article="post"/>
+          <PageCard v-for="post of posts" :key="post.slug" :article="post" :link="`/blog/${post.slug}/`"/>
         </div>
       </div>
     </div>

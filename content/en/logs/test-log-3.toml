@@ -9,7 +9,7 @@ release.date = 2021-05-21 #Todays date
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional", "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.os = [ "Windows 10 Professional", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "Test service" #Service that generates log
 source.log = "Test channel" #Log file or channel
 default_enabled = true #true or false

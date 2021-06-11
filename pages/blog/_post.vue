@@ -20,8 +20,8 @@
       </div>
     </div>
     <footer>
-      <PageCard v-if="prev" :article="prev"/>
-      <PageCard v-if="next" :article="next"/>
+      <PageCard v-if="prev" :article="prev" :link="`/blog/${prev.slug}/`"/>
+      <PageCard v-if="next" :article="next" :link="`/blog/${next.slug}/`"/>
     </footer>
   </div>
 </template>

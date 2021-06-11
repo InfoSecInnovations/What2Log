@@ -5,12 +5,12 @@
     <div id="container">
       <div id="sidebar">
         <div v-for="(levels, os) of sidebar" :key="os">
-          <input type="checkbox" :id="os">
+          <input type="checkbox" :id="os" checked="true">
           <label :for="os" class="top-level sidebar-element">{{os}}</label>
-          <div v-for="{scripts, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
-            <input type="checkbox" :id="`${os}-${level}`">
+          <div v-for="{logs, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
+            <input type="checkbox" :id="`${os}-${level}`" checked="true">
             <label :for="`${os}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink :to="`/logs/${script.slug}/`" v-for="script of scripts" :key="`${os}-${level}-${script.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == script.slug ? 'selected' : ''}`">{{script.title}}</NuxtLink>
+            <NuxtLink :to="`/logs/${log.slug}/`" v-for="log of logs" :key="`${os}-${level}-${log.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default {
   },
   methods: {
     sortLevels(levels) { 
-      return Object.entries(levels).sort((a, b) => compareLevels(a[0], b[0])).map(level => ({level: level[0], scripts: level[1]})) 
+      return Object.entries(levels).sort((a, b) => compareLevels(a[0], b[0])).map(level => ({level: level[0], logs: level[1]})) 
     }
   }
 }

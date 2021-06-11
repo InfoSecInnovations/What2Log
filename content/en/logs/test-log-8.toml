@@ -1,5 +1,5 @@
 # Meta data about this w2l entry
-title = "Test Log 6" #Name of the log (i.e. User Logon)
+title = "Test Log 8" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 author = "Sebastian Boutin Blomfield" #Your name
 credits = [ "" ] #Any special callouts
@@ -9,23 +9,23 @@ release.date = 2021-05-21 #Todays date
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.os = [ "Windows 10 Professional" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "Test service" #Service that generates log
 source.log = "Test channel" #Log file or channel
 default_enabled = true #true or false
 collect_reason = """
-This is where I'd put the logging info if I had some"""
+This isn't the best log in the world, it's just a tribute"""
 
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
-view_logs = "insert actual scripting here for log 2" #How to view log
+view_logs = "insert actual scripting here" #How to view log
 check_status = """
 we can use
 multiline scripts
 too""" #How to check if log is enabled
-enable_logging = "insert actual scripting here for log 2" #How to enable log
-disable_logging = "insert more actual scripting here for log 2" #How to disable log
+enable_logging = "insert actual scripting here" #How to enable log
+disable_logging = "insert more actual scripting here" #How to disable log
 
 
 # Enable via GUI
@@ -35,7 +35,7 @@ txt = "text for step 1 here"
 
 [[GUI.enable]]
 img = "img2.png"
-txt = "text for step 2 here"
+txt = "text for step 2 here ```code block here for testing```"
 
 # repeat as needed
 

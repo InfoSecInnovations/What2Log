@@ -2,6 +2,8 @@ import TOML from '@ltd/j-toml'
 import remark from 'remark'
 import strip from 'strip-markdown'
 
+const excerptLength = 150
+
 const stripMarkdown = markdown => new Promise((resolve, reject) => {
   const md = remark()
   md.use(strip).process(markdown, (err, file) => {
@@ -93,8 +95,10 @@ export default {
       if (document.extension === '.md') {
         const text = document.description ? `${document.description} ${document.text}` : document.text
         const stripped = await stripMarkdown(text)
-        const excerptLength = 150
         document.excerpt = stripped.length < excerptLength ? stripped : stripped.substr(0, stripped.lastIndexOf(' ', excerptLength))
+      }
+      if (document.extension === '.toml') {
+        if (document.collect_reason) document.excerpt = document.collect_reason.length < excerptLength ? document.collect_reason : document.collect_reason.substr(0, document.collect_reason.lastIndexOf(' ', excerptLength))
       }
     }
   }

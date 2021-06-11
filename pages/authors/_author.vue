@@ -9,11 +9,12 @@
           <h2 v-if="author.organization">{{author.organization}}</h2>
           <img v-if="author.icon" :src="`/images/${author.icon}`" />
           <p v-if="author.bio[$i18n.locale]">{{author.bio[$i18n.locale]}}</p>
-          <h2>Blog Posts</h2>
-          <div class="blog-posts">
-            <PageCard v-for="post of posts" :key="post.slug" :article="post"/>
-          </div>
         </article>
+        <div class="author-pages">
+          <PageFeed directory="blog" :items_per_page="5" :query="{author: author.name}" title="Blog Posts"/>
+          <PageFeed directory="logs" :items_per_page="5" :query="{author: author.name}" title="Log Pages"/>
+          <PageFeed directory="tools" :items_per_page="5" :query="{author: author.name}" title="Tool Pages"/>
+        </div>
       </div>
     </div>
   </div>
@@ -21,12 +22,11 @@
 
 <script>
 export default {
-  async asyncData({$content, params, app}) {
+  // TODO: there is no this here, can we use fetch instead?
+  async asyncData({$content, params}) {
     const author = await $content(`authors/${params.author}`).fetch()
-    const posts = await $content(`${app.i18n.locale}/blog`).where({author: author.name}).fetch()
     return {
-      author,
-      posts
+      author
     }
   }
 }
