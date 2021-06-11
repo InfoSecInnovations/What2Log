@@ -7,7 +7,7 @@
         <div v-for="(tools, os) of sidebar" :key="os">
           <input type="checkbox" :id="os" checked="true">
           <label :for="os" class="top-level sidebar-element">{{os}}</label>
-          <NuxtLink :to="`/tools/${tool.slug}/`" v-for="tool of tools" :key="`${os}-${level}-${tool.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
+          <NuxtLink :to="`/tools/${tool.slug}/`" v-for="tool of tools" :key="`${os}-${tool.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
         </div>
       </div>
       <NuxtChild />
