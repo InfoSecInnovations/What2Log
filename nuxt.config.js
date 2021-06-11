@@ -91,7 +91,8 @@ export default {
   hooks: {
     'content:file:beforeInsert': async (document) => { 
       if (document.extension === '.md') {
-        const stripped = await stripMarkdown(document.text)
+        const text = document.description ? `${document.description} ${document.text}` : document.text
+        const stripped = await stripMarkdown(text)
         const excerptLength = 150
         document.excerpt = stripped.length < excerptLength ? stripped : stripped.substr(0, stripped.lastIndexOf(' ', excerptLength))
       }

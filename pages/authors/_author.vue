@@ -10,8 +10,8 @@
           <img v-if="author.icon" :src="`/images/${author.icon}`" />
           <p v-if="author.bio[$i18n.locale]">{{author.bio[$i18n.locale]}}</p>
           <h2>Blog Posts</h2>
-          <div v-for="post of posts" :key="post.slug">
-            <NuxtLink :to="`/blog/${post.slug}/`">{{post.title}}</NuxtLink>
+          <div class="blog-posts">
+            <PageCard v-for="post of posts" :key="post.slug" :article="post"/>
           </div>
         </article>
       </div>

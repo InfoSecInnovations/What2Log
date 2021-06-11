@@ -3,8 +3,11 @@
     <W2LHeader />
     <Navbar />
     <div id="container">
-      <div id="inner-container">
-        <PageCard v-for="post of posts" :article="post" :key="post.slug"/>
+      <div id="inner-container" class="blog">
+        <h1>Log Blog</h1>
+        <div class="blog-posts">
+          <PageCard v-for="post of posts" :key="post.slug" :article="post"/>
+        </div>
       </div>
     </div>
   </div>
