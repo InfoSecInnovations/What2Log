@@ -11,10 +11,11 @@ release.version = 0.1
 operating_system = [""]
 default_installed = true #True or false only
 
-#Installation Info
+#Installation Info (install info is optional, some tools are part of base os)
 [[app.install]]
 txt = """
 """
+img = "img0.png"
 #continue as necessary
 
 # App Info
