@@ -1,0 +1,68 @@
+#This is the template for What2Log entries
+
+# Meta data about this w2l entry
+log.title = "Software Updated" #Name of the log (i.e. User Logon)
+W2L.schema = 1
+author.name = "Flynn Weeks" #Your name
+author.organization = "InfoSec Innovations" #Your organization
+credits = [ "" ] #Any special callouts
+release.version = 0.1
+release.date = 2021-11-10 #Todays date
+
+
+# About this log type
+suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #app.os if application logs
+source.service = "Service Control Manager" #Service that generates log
+source.log = "System" #Log file or channel
+default_enabled = true #true or false
+collect.reason = """\
+Software updates are not always a sign of an attack, but often \
+contain patches for known vulnerabilities. An update may also \
+introduce vulnerabilities and it is important to know if and when \
+that was installed.
+  """
+
+# Log Pile
+language = "Powershell" #Language for Log Pile
+view_logs = """wevtutil qe Application "/q:*[System [(EventID=1036)][Provider[@Name='MsiInstaller']]]" /f:text /c:1""" #How to view log
+check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
+enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
+disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
+
+
+# Compliance & framework information
+
+# Format is compliance.name.level and compliance.name.reference.
+# Only include relevant frameworks
+
+compliance.HIPAA.level = "Recommended" # Compliance requirement
+compliance.HIPAA.reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
+compliance.PCI_DSS.level = "Recommended" # Compliance requirement
+compliance.PCI_DSS.reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
+# repeat as needed
+
+
+# Additional References Go Here
+reference.1 = "blah"
+reference.2 = "blah2"
+# repeat as needed
+
+
+# View via GUI
+GUI.view.step1.img = "/images/SoftwareUpdated/Filter.png"
+GUI.view.step1.txt = "Software updates that are performed through MsiInstaller are \
+automatically logged and can be viewed in the application tab of the Event Viewer. \
+With this log, there is an ID conflict with another application. To view this log, \
+select Filter Current Log and select the Event Sources as MsiInstaller and with the \
+event ID 1036."
+GUI.view.step2.img = "/images/SoftwareUpdated/WEV.png"
+GUI.view.step2.txt = "The image will look like this:"
+# repeat as needed
+
+
+# View via CLI
+CLI.view.step1.img = "/images/SoftwareUpdated/CLI.png"
+CLI.view.step1.txt = '''To view a group change log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command
+wevtutil qe Application "/q:*[System [(EventID=1036)][Provider[@Name='MsiInstaller']]]"'''
+# repeat as needed

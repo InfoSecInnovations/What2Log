@@ -1,0 +1,69 @@
+#This is the template for What2Log entries
+
+# Meta data about this w2l entry
+log.title = "Account Created" #Name of the log (i.e. User Logon)
+W2L.schema = 1
+author.name = "Flynn Weeks" #Your name
+author.organization = "InfoSec Innovations" #Your organization
+credits = [ "" ] #Any special callouts
+release.version = 0.1
+release.date = 2021-09-08 #Todays date
+
+
+# About this log type
+suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Microsoft Windows Security auditing" ]  #app.os if application logs
+source.service = "Microsoft Windows Security auditing" #Service that generates log
+source.log = "Security" #Log file or channel
+default_enabled = true #true or false
+collect.reason = """\
+Account creation logs can indicate a suspicious new account that was \
+created in preparation for an attack or someone trying to do things \
+they necessarily shouldn’t. It is also a good idea to know when there \
+may be new users on the network so you are prepared for their activity. \
+This log is required by NIST SP 800-53, HIPAA and PCI DSS regulations. \
+It is also recommended under the NSA Cyber Event Forwarding Guidance.
+  """
+
+# Log Pile
+language = "Powershell" #Language for Log Pile
+view_logs = """wevtutil qe Security "/q:*[System [(EventID=4720)]]" /f:text /c:1""" #How to view log
+check_status = """auditpol /get /subcategory:"computer account management""""" #How to check if log is enabled
+enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
+disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
+
+
+# Compliance & framework information
+
+# Format is compliance.name.level and compliance.name.reference.
+# Only include relevant frameworks
+
+compliance.HIPAA.level = "Recommended" # Compliance requirement
+compliance.HIPAA.reference = "URL here" # Reference for compliance
+compliance.PCI_DSS.level = "Required"
+compliance.PCI_DSS.reference = "URL here"
+compliance.NSA_event_forwarding.level = "Recommended"
+compliance.NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+compliance.NISTSP800-53.level = "Recommended"
+compliance.NISTSP800-53.reference = "URL here"
+# repeat as needed
+
+
+# Additional References Go Here
+reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+reference.2 = "https://static1.squarespace.com/static/552092d5e4b0661088167e5c/t/5c586681f4e1fced3ce1308b/1549297281905/Windows+Logging+Cheat+Sheet_ver_Feb_2019.pdf"
+# repeat as needed
+
+
+#Enabled by default-section removed
+
+# View via GUI
+GUI.view.step1.img = "/static/images/AccountCreated/WEV.png"
+GUI.view.step1.txt = "Windows 10 Professional logs this by default. To view, navigate to the security tab of the Windows Event Viewer. Sort or filter the logs for event ID **4720**."
+# repeat as needed
+
+
+# View via CLI
+CLI.view.step1.img = "/static/images/AccountCreated/CLI.png "
+CLI.view.step1.txt = 'To view this log in the command line, run the command prompt or powershell as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4720)]]"```'
+# repeat as needed

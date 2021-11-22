@@ -1,0 +1,64 @@
+#This is the template for What2Log entries
+
+# Meta data about this w2l entry
+log.title = "Account Created" #Name of the log (i.e. User Logon)
+W2L.schema = 1
+author.name = "Flynn Weeks" #Your name
+author.organization = "InfoSec Innovations" #Your organization
+credits = [ "" ] #Any special callouts
+release.version = 0.1
+release.date = 2021-09-08 #Todays date
+
+
+# About this log type
+suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #app.os if application logs
+source.service = "Microsoft Windows Security auditing" #Service that generates log
+source.log = "Security" #Log file or channel
+default_enabled = true #true or false
+collect.reason = """\
+Account changes, such as password and username changes may \
+indicate a successful breach and a backdoor setup for a user. \
+This log also can be used to track changes for legitimate users.
+  """
+
+# Log Pile
+language = "Powershell" #Language for Log Pile
+view_logs = """wevtutil qe Security "/q:*[System [(EventID=4738)]]" /f:text /c:1""" #How to view log
+check_status = """auditpol /get /subcategory:"computer account management""""" #How to check if log is enabled
+enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
+disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
+
+
+# Compliance & framework information
+
+# Format is compliance.name.level and compliance.name.reference.
+# Only include relevant frameworks
+
+compliance.PCI_DSS.level = "Required" # Compliance requirement
+compliance.PCI_DSS.reference = "URL here" # Reference for compliance
+compliance.HIPAA.level = "Recommended"
+compliance.HIPAA.reference = "URL here"
+# repeat as needed
+
+
+# Additional References Go Here
+reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+# repeat as needed
+
+
+#Enabled by default-section removed
+
+# View via GUI
+GUI.view.step1.img = "/static/images/AccountChanged/WEV.png"
+GUI.view.step1.txt = "Changes made to an account are logged by default in \
+Windows 10 Professional. To view the logs, navigate to the Event Viewer \
+Security tab and sort of filter by Event ID **4738**."
+# repeat as needed
+
+
+# View via CLI
+CLI.view.step1.img = "/static/images/AccountChanged/CLI.png"
+CLI.view.step1.txt = 'To view this log in the command line, open PowerShell or Command Prompt as an administrator. From here, enter the command
+```wevtutil qe Security "/q:*[System [(EventID=4738)]]"```'
+# repeat as needed
