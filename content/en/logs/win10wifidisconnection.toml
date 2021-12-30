@@ -12,7 +12,7 @@ release.date = 2021-11-22 #Todays date
 
 # About this log type
 suggested_log_level = "Extreme" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.os = [ "Windows 10 Professional" , "Windows 10 Enterprise" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
@@ -23,6 +23,7 @@ potentially start a time line of events.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """$xml = @'
 <QueryList>
@@ -57,19 +58,21 @@ reference.2 = "blah2"
 
 
 # View via GUI
-GUI.view.step1.img = "/images/WiFiConnection/WEVMenu.png"
-GUI.view.step1.txt = "When a user disconnects from WiFi, a log is made in the \
+[[GUI.view]]
+img = "/images/WiFiConnection/WEVMenu.png"
+txt = "When a user disconnects from WiFi, a log is made in the \
 Operational log of the WLAN-AutoConfig folder.
 This folder can be found under the Applications and Services Logs folder, and \
 then the Microsoft and Windows folder, respectively."
-GUI.view.step2.img = "/images/WiFiConnection/WEV2.png"
-GUI.view.step2.txt = "Event ID 8003 is a successful disconnection to a wireless network."
+img = "/images/WiFiConnection/WEV2.png"
+txt = "Event ID 8003 is a successful disconnection to a wireless network."
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/images/WiFiConnection/CLI2.png"
-CLI.view.step1.txt = '''To view a Wireless disconnection log in the command line, launch PowerShell or Command Prompt as an administrator.
+[[CLI.view]]
+img = "/images/WiFiConnection/CLI2.png"
+txt = '''To view a Wireless disconnection log in the command line, launch PowerShell or Command Prompt as an administrator.
 Because this is an application log, there are two commands that are required to view it from the command line. The first command is
 <pre><code>
 $xml = @'
