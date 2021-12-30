@@ -1,7 +1,7 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-title = "Account Created" #Name of the log (i.e. User Logon)
+title = "Account Deleted" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 author = "Flynn Weeks" #Your name
 ##author.organization = "InfoSec Innovations" #Your organization
@@ -61,6 +61,5 @@ txt = "Windows 10 Professional logs this by default. To view this log, navigate 
 # View via CLI
 [[CLI.view]]
 img = "/AccountDel/CLI.png"
-txt = 'To view this log from the command line, launch powershell or the command prompt as an administrator. Enter the command
-```wevtutil qe Security "q:\*[System [(EventID=4726)]]"```'
+txt = 'To view this log from the command line, launch powershell or the command prompt as an administrator. Enter the command ```wevtutil qe Security "q:\*[System [(EventID=4726)]]"```'
 # repeat as needed

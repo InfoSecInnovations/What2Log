@@ -53,9 +53,7 @@ reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/pl
 # View via GUI
 [[GUI.view]]
 img = "/AccountChanged/WEV.png"
-txt = "Changes made to an account are logged by default in \
-Windows 10 Professional. To view the logs, navigate to the Event Viewer \
-Security tab and sort of filter by Event ID **4738**."
+txt = "Changes made to an account are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4738**."
 # repeat as needed
 
 

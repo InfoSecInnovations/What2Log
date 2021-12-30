@@ -29,7 +29,7 @@ It is also recommended under the NSA Cyber Event Forwarding Guidance.
 [log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4720)]]" /f:text /c:1""" #How to view log
-check_status = """auditpol /get /subcategory:"computer account management""""" #How to check if log is enabled
+check_status = 'auditpol /get /subcategory:"computer account management" ' #How to check if log is enabled
 enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
 
