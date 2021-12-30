@@ -50,19 +50,19 @@ reference.2 = "blah2"
 
 
 # View via GUI
-GUI.view.step1.img = "/images/SoftwareUpdated/Filter.png"
-GUI.view.step1.txt = "Software updates that are performed through MsiInstaller are \
+GUIview.step1.img = "/images/SoftwareUpdated/Filter.png"
+GUIview.step1.txt = "Software updates that are performed through MsiInstaller are \
 automatically logged and can be viewed in the application tab of the Event Viewer. \
 With this log, there is an ID conflict with another application. To view this log, \
 select Filter Current Log and select the Event Sources as MsiInstaller and with the \
 event ID 1036."
-GUI.view.step2.img = "/images/SoftwareUpdated/WEV.png"
-GUI.view.step2.txt = "The image will look like this:"
+GUIview.step2.img = "/images/SoftwareUpdated/WEV.png"
+GUIview.step2.txt = "The image will look like this:"
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/images/SoftwareUpdated/CLI.png"
-CLI.view.step1.txt = '''To view a group change log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command
+CLIview.step1.img = "/images/SoftwareUpdated/CLI.png"
+CLIview.step1.txt = '''To view a group change log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command
 wevtutil qe Application "/q:*[System [(EventID=1036)][Provider[@Name='MsiInstaller']]]"'''
 # repeat as needed
