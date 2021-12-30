@@ -15,7 +15,7 @@ suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
-default_enabled = false
+default_enabled = true
 collect_reason = """\
   Failed user logins can show possible password spray and password guessing \
   attacks. Not every failed login is an attack, but they can be early indicators \
