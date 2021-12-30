@@ -27,8 +27,8 @@ This log also can be used to track changes for legitimate users.
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4738)]]" /f:text /c:1""" #How to view log
 check_status = 'auditpol /get /subcategory:"computer account management"'#How to check if log is enabled
-enable_logging = 'auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable' #How to enable log
-disable_logging = 'auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable' #How to disable log
+enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
+disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
 
 
 # Compliance & framework information
