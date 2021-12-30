@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "Account Created" #Name of the log (i.e. User Logon)
-W2L.schema = 1
-author.name = "Flynn Weeks" #Your name
-author.organization = "InfoSec Innovations" #Your organization
+title = "Account Created" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+name = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-09-08 #Todays date
@@ -12,16 +12,17 @@ release.date = 2021-09-08 #Todays date
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #app.os if application logs
+source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect.reason = """\
+collect_reason = """\
 An attacker may attempt to tidy up after themselves by deleting \
 an account or simply disrupt normal workflow by deleting legitimate accounts.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4726)]]" /f:text /c:1""" #How to view log
 check_status = """auditpol /get /subcategory:"computer account management""""" #How to check if log is enabled
@@ -33,11 +34,12 @@ disable_logging = """auditpol /set /subcategory:"computer account management" /S
 
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
-compliance.HIPAA.level = "Recommended"
-compliance.PCI_DSS.level = "Required" # Compliance requirement
-compliance.PCI_DSS.reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599" # Reference for compliance
-compliance.NSA_event_forwarding.level = "Recommended"
-compliance.NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+[compliance]
+HIPAA.level = "Recommended"
+PCI_DSS.level = "Required" # Compliance requirement
+PCI_DSS.reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599" # Reference for compliance
+NSA_event_forwarding.level = "Recommended"
+NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed
 
 
@@ -50,13 +52,15 @@ reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/pl
 
 
 # View via GUI
-GUI.view.step1.img = "/static/images/AccountDeleted/WEV.png"
+[[GUI.view]]
+img = "/AccountDel/WEV.png"
 GUI.view.step1.txt = "Windows 10 Professional logs this by default. To view this log, navigate to the security tab of the Event Viewer. Sort or filter the logs for the event ID **4726**."
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/static/images/AccountDeleted/CLI.png"
-CLI.view.step1.txt = 'To view this log from the command line, launch powershell or the command prompt as an administrator. Enter the command
+[[CLI.view]]
+img = "/AccountDel/CLI.png"
+txt = 'To view this log from the command line, launch powershell or the command prompt as an administrator. Enter the command
 ```wevtutil qe Security "q:\*[System [(EventID=4726)]]"```'
 # repeat as needed

@@ -4,7 +4,7 @@
 title = "Account Changed" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 name = "Flynn Weeks" #Your name
-organization = "InfoSec Innovations" #Your organization
+##organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-09-08 #Todays date
@@ -12,7 +12,7 @@ release.date = 2021-09-08 #Todays date
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional", "Windows 10 Enterprise", "Windows 7" ]  #app.os if application logs
+source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
@@ -52,7 +52,7 @@ reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/pl
 
 # View via GUI
 [[GUI.view]]
-img = "/static/images/AccountChanged/WEV.png"
+img = "/AccountChanged/WEV.png"
 txt = "Changes made to an account are logged by default in \
 Windows 10 Professional. To view the logs, navigate to the Event Viewer \
 Security tab and sort of filter by Event ID **4738**."
@@ -61,7 +61,7 @@ Security tab and sort of filter by Event ID **4738**."
 
 # View via CLI
 [[CLI.view]]
-img = "/static/images/AccountChanged/CLI.png"
+img = "/AccountChanged/CLI.png"
 txt = 'To view this log in the command line, open PowerShell or Command Prompt as an administrator. From here, enter the command
 ```wevtutil qe Security "/q:*[System [(EventID=4738)]]"```'
 # repeat as needed
