@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "Member Added to Group" #Name of the log (i.e. User Logon)
-W2L.schema = 1
-author.name = "Flynn Weeks" #Your name
-author.organization = "InfoSec Innovations" #Your organization
+title = "Member Added to Group" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-09-14 #Todays date
@@ -12,11 +12,11 @@ release.date = 2021-09-14 #Todays date
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #app.os if application logs
+source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect.reason = """\
+collect_reason = """\
 Group membership change can indicate a user adding themselves to an \
 admin group without permissions. It is important to monitor the groups \
 that have escalated permissions. This log is recommended by the NSA Cyber \
@@ -24,9 +24,10 @@ Event Forwarding Guidance.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4732)]]" /f:text /c:1""" #How to view log
-check_status = """auditpol /get /subcategory:"security group management"""" #How to check if log is enabled
+check_status = 'auditpol /get /subcategory:"security group management"' #How to check if log is enabled
 enable_logging = """auditpol /set /subcategory:"security group management" /Success:Enable /Failure:Enable""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"security group management" /Success:Disable /Failure:Disable""" #How to disable log
 
@@ -35,10 +36,11 @@ disable_logging = """auditpol /set /subcategory:"security group management" /Suc
 
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
-compliance.HIPAA.level = "Recommended" # Compliance requirement
-compliance.HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es" # Reference for compliance
-compliance.NSA_event_forwarding.level = "Recommended"
-compliance.NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+[compliance]
+HIPAA.level = "Recommended" # Compliance requirement
+HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es" # Reference for compliance
+NSA_event_forwarding.level = "Recommended"
+NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed
 
 # Additional References Go Here
@@ -48,12 +50,13 @@ reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/pl
 
 
 # View via GUI
-GUI.view.step1.img = "/images/GroupMemChange/WEV1.png"
-GUI.view.step1.txt = "Windows 10 Professional logs group membership changes by default. To view this log, navigate to the Event Viewer security tab. To view the group membership change logs, sort or filter by the IDs **4732**. Event ID 4732 is a log of a user being added to a security group."
+[[GUI.view]]
+img = "/GroupMemChange/WEV1.png"
+txt = "Windows 10 Professional logs group membership changes by default. To view this log, navigate to the Event Viewer security tab. To view the group membership change logs, sort or filter by the IDs **4732**. Event ID 4732 is a log of a user being added to a security group."
 # repeat as needed
 
-
 # View via CLI
-CLI.view.step1.img = "/images/GroupMemChange/CLI1.png"
-CLI.view.step1.txt = 'To view this log, launch PowerShell or the command prompt as an administrator. To view a member being added to a security group enter the command ```wevtutil qe Security "/q:*[System [(EventID=4732)]]" ```'
+[[CLI.view]]
+img = "/GroupMemChange/CLI1.png"
+txt = 'To view this log, launch PowerShell or the command prompt as an administrator. To view a member being added to a security group enter the command ```wevtutil qe Security "/q:*[System [(EventID=4732)]]" ```'
 # repeat as needed

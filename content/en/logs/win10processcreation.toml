@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "Process Creation" #Name of the log (i.e. User Logon)
-W2L.schema = 1
-author.name = "Flynn Weeks" #Your name
-author.organization = "InfoSec Innovations" #Your organization
+title = "Process Creation" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-11-22 #Todays date
@@ -12,7 +12,7 @@ release.date = 2021-11-22 #Todays date
 
 # About this log type
 suggested_log_level = "Extreme" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
@@ -25,7 +25,7 @@ This log allows you to identify if unauthorized or malicious applications were o
 # Log Pile
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4688)]]" /f:text /c:1""" #How to view log
-check_status = """auditpol /get /subcategory:"Process Creation"""" #How to check if log is enabled
+check_status = 'auditpol /get /subcategory:"Process Creation' #How to check if log is enabled
 enable_logging = """auditpol /set /subcategory:"Process Creation" /Success:Enable /Failure:Enable""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"Process Creation" /Success:Disable /Failure:Disable""" #How to disable log
 
@@ -34,28 +34,27 @@ disable_logging = """auditpol /set /subcategory:"Process Creation" /Success:Disa
 
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
-
-compliance.HIPAA.level = "Recommended" # Compliance requirement
-compliance.HIPAA.reference = "" # Reference for compliance
-compliance.PCI_DSS.level = "Recommended" # Compliance requirement
-compliance.PCI_DSS.reference = ""
+[compliace]
+HIPAA.level = "Recommended" # Compliance requirement
+HIPAA.reference = "" # Reference for compliance
+PCI_DSS.level = "Recommended" # Compliance requirement
+PCI_DSS.reference = ""
 # repeat as needed
 
 
 # Additional References Go Here
-reference.1 = "blah"
-reference.2 = "blah2"
 # repeat as needed
 
 
 # Enable via GUI
-GUI.enable.step1.img = "/images/ProcessCreate/GPE.png"
-GUI.enable.step1.txt = "By default, process creation is not logged in Windows 10 \
+[[GUI.enable]]
+img = "/ProcessCreate/GPE.png"
+txt = "By default, process creation is not logged in Windows 10 \
 professional and has to be turned on in the Group Policy Editor. To do so, \
 navigate to the audit policy tab under local policies, security settings, and \
 the windows settings folder. Select audit process tracking, as shown in the photo."
-GUI.enable.step2.img = "/images/ProcessCreate/GPE2.png"
-GUI.enable.step2.txt = "Click on the check box next to success in order to ensure that \
+img = "/ProcessCreate/GPE2.png"
+txt = "Click on the check box next to success in order to ensure that \
 process creation is logged. Then click Apply and Ok to close the pop-up window and \
 apply the change. To ensure the audit policy is updated to incorporate these changes, \
 in a command prompt, enter
@@ -64,15 +63,17 @@ in a command prompt, enter
 
 
 # View via GUI
-GUI.view.step1.img = "/images/ProcessCreate/WEV.png"
-GUI.view.step1.txt = "To view the process creation log, navigate to the Windows Event Viewer \
+[[GUI.view]]
+img = "/ProcessCreate/WEV.png"
+txt = "To view the process creation log, navigate to the Windows Event Viewer \
 and the security tab. Next, sort or filter the log by Event ID **4688**.  "
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/images/ProcessCreate/CLI.png"
-CLI.view.step1.txt = 'To view this event from the command line, launch either \
+[[CLI.view]]
+img = "/ProcessCreate/CLI.png"
+txt = 'To view this event from the command line, launch either \
 PowerShell or Command Prompt as an administrator and enter the command \
 ```wevtutil qe Security "/q:*[System [(EventID=4688)]]"```'
 # repeat as needed
