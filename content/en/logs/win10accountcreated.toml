@@ -12,7 +12,7 @@ release.date = 2021-09-08 #Todays date
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Microsoft Windows Security auditing" ]  #app.os if application logs
+source.os = [ "Windows 10 Enterprise", "Windows 7" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
@@ -26,6 +26,7 @@ It is also recommended under the NSA Cyber Event Forwarding Guidance.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4720)]]" /f:text /c:1""" #How to view log
 check_status = """auditpol /get /subcategory:"computer account management""""" #How to check if log is enabled
@@ -37,15 +38,15 @@ disable_logging = """auditpol /set /subcategory:"computer account management" /S
 
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
-
-compliance.HIPAA.level = "Recommended" # Compliance requirement
-compliance.HIPAA.reference = "URL here" # Reference for compliance
-compliance.PCI_DSS.level = "Required"
-compliance.PCI_DSS.reference = "URL here"
-compliance.NSA_event_forwarding.level = "Recommended"
-compliance.NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
-compliance.NISTSP800-53.level = "Recommended"
-compliance.NISTSP800-53.reference = "URL here"
+[compliance]
+HIPAA.level = "Recommended" # Compliance requirement
+HIPAA.reference = "URL here" # Reference for compliance
+PCI_DSS.level = "Required"
+PCI_DSS.reference = "URL here"
+NSA_event_forwarding.level = "Recommended"
+NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+NISTSP800-53.level = "Recommended"
+NISTSP800-53.reference = "URL here"
 # repeat as needed
 
 
@@ -58,12 +59,14 @@ reference.2 = "https://static1.squarespace.com/static/552092d5e4b0661088167e5c/t
 #Enabled by default-section removed
 
 # View via GUI
-GUI.view.step1.img = "/static/images/AccountCreated/WEV.png"
-GUI.view.step1.txt = "Windows 10 Professional logs this by default. To view, navigate to the security tab of the Windows Event Viewer. Sort or filter the logs for event ID **4720**."
+[[GUI.view]]
+img = "/static/images/AccountCreated/WEV.png"
+txt = "Windows 10 Professional logs this by default. To view, navigate to the security tab of the Windows Event Viewer. Sort or filter the logs for event ID **4720**."
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/static/images/AccountCreated/CLI.png "
-CLI.view.step1.txt = 'To view this log in the command line, run the command prompt or powershell as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4720)]]"```'
+[[CLI.view]]
+img = "/static/images/AccountCreated/CLI.png "
+txt = 'To view this log in the command line, run the command prompt or powershell as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4720)]]"```'
 # repeat as needed
