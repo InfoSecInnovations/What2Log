@@ -12,7 +12,7 @@ release.date = 2021-09-14 #Todays date
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 ", "Windows 7" ]  #app.os if application logs
+source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
