@@ -15,12 +15,12 @@ suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
-default_enabled = true
+default_enabled = false
 collect_reason = """\
-  Failed user logins can show possible password spray and password guessing \
-  attacks. Not every failed login is an attack, but they can be early indicators \
-  of one. This log is required by the PCI DSS regulation and is recommended by \
-  the NSA Cyber Event Forwarding Guidance.
+Failed user logins can show possible password spray and password guessing \
+attacks. Not every failed login is an attack, but they can be early indicators \
+of one. This log is required by the PCI DSS regulation and is recommended by \
+the NSA Cyber Event Forwarding Guidance.
   """
 
 # Log Pile
@@ -40,7 +40,7 @@ PCI_DSS.level = "Required"
 PCI_DSS.reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
 NSA_event_forwarding.level = "Recommended"
 NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
-JPCERT/CC.reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
+JPCERTCC.reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
 
@@ -52,8 +52,7 @@ reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/pl
 # Enable via GUI
 [[GUI.enable]]
 img = "/FailedLogin/GPE.png"
-txt = 'Windows 10 Professional does not log this by default. To enable logging of this activity, launch the Group Policy Editor. From here, expand the Windows settings folder and open the Security Settings tab. Finally, expand the Local Policies tab and click to enter the Audit Policy header.
-In order to turn on login auditing, double click "Audit login events". Clicking the Success box will allow for the auditing of all successful login attempts.'
+txt = 'Windows 10 Professional does not log this by default. To enable logging of this activity, launch the Group Policy Editor. From here, expand the Windows settings folder and open the Security Settings tab. Finally, expand the Local Policies tab and click to enter the Audit Policy header. In order to turn on login auditing, double click "Audit login events". Clicking the Success box will allow for the auditing of all successful login attempts.'
 # repeat as needed
 
 
