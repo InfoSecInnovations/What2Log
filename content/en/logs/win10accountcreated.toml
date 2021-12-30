@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "Account Created" #Name of the log (i.e. User Logon)
-W2L.schema = 1
-author.name = "Flynn Weeks" #Your name
-author.organization = "InfoSec Innovations" #Your organization
+title = "Account Created" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-09-08 #Todays date
@@ -16,7 +16,7 @@ source.os = [ "Windows 10 Enterprise", "Windows 7" ]  #app.os if application log
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect.reason = """\
+collect_reason = """\
 Account creation logs can indicate a suspicious new account that was \
 created in preparation for an attack or someone trying to do things \
 they necessarily shouldn’t. It is also a good idea to know when there \
