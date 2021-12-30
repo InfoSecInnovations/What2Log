@@ -3,7 +3,7 @@
 # Meta data about this w2l entry
 title = "Account Changed" #Name of the log (i.e. User Logon)
 W2L_schema = 1
-name = "Flynn Weeks" #Your name
+author = "Flynn Weeks" #Your name
 ##organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
@@ -26,9 +26,9 @@ This log also can be used to track changes for legitimate users.
 [log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4738)]]" /f:text /c:1""" #How to view log
-check_status = """auditpol /get /subcategory:"computer account management""""" #How to check if log is enabled
-enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
-disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
+check_status = 'auditpol /get /subcategory:"computer account management"'#How to check if log is enabled
+enable_logging = 'auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable' #How to enable log
+disable_logging = 'auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable' #How to disable log
 
 
 # Compliance & framework information
@@ -62,6 +62,5 @@ Security tab and sort of filter by Event ID **4738**."
 # View via CLI
 [[CLI.view]]
 img = "/AccountChanged/CLI.png"
-txt = 'To view this log in the command line, open PowerShell or Command Prompt as an administrator. From here, enter the command
-```wevtutil qe Security "/q:*[System [(EventID=4738)]]"```'
+txt = 'To view this log in the command line, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4738)]]"```'
 # repeat as needed

@@ -67,6 +67,6 @@ txt = "Windows 10 Professional logs this by default. To view, navigate to the se
 
 # View via CLI
 [[CLI.view]]
-img = "/AccountCreated/CLI.png "
+img = "/AccountCreated/CLI.png"
 txt = 'To view this log in the command line, run the command prompt or powershell as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4720)]]"```'
 # repeat as needed
