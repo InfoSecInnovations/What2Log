@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "Failed User Logon"
-W2L.schema = 1
-author.name = "Flynn Weeks"
-author.organization = "InfoSec Innovations"
+title = "Failed User Logon"
+schema = 1
+author = "Flynn Weeks"
+##author.organization = "InfoSec Innovations"
 credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = 0.1
 release.date = 2021-05-27
@@ -12,11 +12,11 @@ release.date = 2021-05-27
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional", "Windows 10 Enterprise" ] # App.os if application logs
+source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing."
 source.log = "Security"
 default_enabled = false
-collect.reason = """\
+collect_reason = """\
   Failed user logins can show possible password spray and password guessing \
   attacks. Not every failed login is an attack, but they can be early indicators \
   of one. This log is required by the PCI DSS regulation and is recommended by \
@@ -24,52 +24,49 @@ collect.reason = """\
   """
 
 # Log Pile
+[log_pile]
 language = "PowerShell"
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4625)]]" /f:text /c:1"""
-check_status = """auditpol /get /subcategory:"logon""""
+check_status = 'auditpol /get /subcategory:"logon"'
 enable_logging = """auditpol /set /subcategory:"logon" /Success:Enable /Failure:Enable"""
 disable_logging = """auditpol /set /subcategory:"logon" /Success:Disable /Failure:Disable"""
 
 
 # Compliance & framework information
-compliance.HIPAA.level = "Recommended"
-compliance.HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es"
-compliance.PCI_DSS.level = "Required"
-compliance.PCI_DSS.reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
-compliance.NSA_event_forwarding.level = "Recommended"
-compliance.NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
-compliance.JPCERT/CC.level = "Recommended"
-compliance.JPCERT/CC.reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
+[compliance]
+HIPAA.level = "Recommended"
+HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es"
+PCI_DSS.level = "Required"
+PCI_DSS.reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
+NSA_event_forwarding.level = "Recommended"
+NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+JPCERT/CC.reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
 
 # Additional References Go Here
 reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
-reference.2 = "bla2"
-reference.3 = "bla3"
 # repeat as needed
 
 
 # Enable via GUI
-GUI.enable.step1.img = "/images/FailedLogin/GPE.png"
-GUI.enable.step1.txt = 'Windows 10 Professional does not log this by default. To enable logging of this activity, launch the Group Policy Editor. From here, expand the Windows settings folder and open the Security Settings tab. Finally, expand the Local Policies tab and click to enter the Audit Policy header.
+[[GUI.enable]]
+img = "/FailedLogin/GPE.png"
+txt = 'Windows 10 Professional does not log this by default. To enable logging of this activity, launch the Group Policy Editor. From here, expand the Windows settings folder and open the Security Settings tab. Finally, expand the Local Policies tab and click to enter the Audit Policy header.
 In order to turn on login auditing, double click "Audit login events". Clicking the Success box will allow for the auditing of all successful login attempts.'
 # repeat as needed
 
 
-# Enable via CLI
-CLI.enable.step1.img
-CLI.enable.step1.txt
-# repeat as needed
-
 
 # View via GUI
-GUI.view.step1.img = "/images/FailedLogin/WEV.png"
-GUI.view.step1.txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4624** , or filter the log for the ID **4624**."
+[[GUI.view]]
+img = "/FailedLogin/WEV.png"
+txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4624** , or filter the log for the ID **4624**."
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/images/FailedLogin/CLI.png"
-CLI.view.step1.txt = 'To view this log in the command line (via powershell or command prompt, enter the command```wevtutil qe Security "/q:*[System [(EventID=4624)]]"```This will show all instances of the event ID **4624** , which is the login log ID.'
+[[CLI.view]]
+img = "/FailedLogin/CLI.png"
+txt = 'To view this log in the command line (via powershell or command prompt, enter the command```wevtutil qe Security "/q:*[System [(EventID=4624)]]"```This will show all instances of the event ID **4624** , which is the login log ID.'
 # repeat as needed

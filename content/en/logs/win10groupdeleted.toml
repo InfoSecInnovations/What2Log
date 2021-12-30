@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "Group Deletion" #Name of the log (i.e. User Logon)
-W2L.schema = 1
-author.name = "Flynn Weeks" #Your name
-author.organization = "InfoSec Innovations" #Your organization
+title = "Group Deletion" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-09-17 #Todays date
@@ -12,20 +12,21 @@ release.date = 2021-09-17 #Todays date
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect.reason = """\
+collect_reason = """\
 Group deletion may signal the cleanup of an attack or someone trying to \
 inconvenience a group of users in a network. It is also good to know what \
 groups are present in a system.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4734)]]" /f:text /c:1""" #How to view log
-check_status = """auditpol /get /subcategory:"security group management"""" #How to check if log is enabled
+check_status = 'auditpol /get /subcategory:"security group management"' #How to check if log is enabled
 enable_logging = """auditpol /set /subcategory:"security group management" /Success:Enable /Failure:Enable""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"security group management" /Success:Disable /Failure:Disable""" #How to disable log
 
@@ -37,7 +38,6 @@ disable_logging = """auditpol /set /subcategory:"security group management" /Suc
 
 # Additional References Go Here
 reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
-reference.2 = "blah2"
 # repeat as needed
 
 
@@ -45,12 +45,14 @@ reference.2 = "blah2"
 
 
 # View via GUI
-GUI.view.step1.img = "/images/GroupDel/WEV.png"
-GUI.view.step1.txt = "Group deletion is automatically logged in Windows 10 and can be viewed in the Event Viewer security tab. To view this log, sort or filter by event ID **4734**."
+[[GUI.view]]
+img = "/GroupDel/WEV.png"
+txt = "Group deletion is automatically logged in Windows 10 and can be viewed in the Event Viewer security tab. To view this log, sort or filter by event ID **4734**."
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/images/GroupDel/CLI.png"
-CLI.view.step1.txt = 'To view a group deletion log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4734)]]"```'
+[[CLI.view]]
+img = "/GroupDel/CLI.png"
+txt = 'To view a group deletion log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4734)]]"```'
 # repeat as needed
