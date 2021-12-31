@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "User Logoff"
-W2L.schema = 1
-author.name = "Flynn Weeks"
-author.organization = "InfoSec Innovations"
+title = "User Logoff"
+W2L_schema = 1
+author = "Flynn Weeks"
+##author.organization = "InfoSec Innovations"
 credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = 0.1
 release.date = 2021-05-28
@@ -12,11 +12,11 @@ release.date = 2021-05-28
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional", "Windows 10 Enterprise" ] # App.os if application logs
+source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing."
 source.log = "Security"
 default_enabled = true
-collect.reason = """\
+collect_reason = """\
   A users log off can indicate the end of an attack or potential system \
   restarts that may have occurred. This can conclude a timeline or give a \
   bit more insight to a users activity. This log is recommended by the NSA \
@@ -24,6 +24,7 @@ collect.reason = """\
   """
 
 # Log Pile
+[log_pile]
 language = "PowerShell"
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4634)]]" /f:text /c:1"""
 check_status = """auditpol /get /subcategory:"logoff""""
@@ -32,50 +33,53 @@ disable_logging = """auditpol /set /subcategory:"logoff" /Success:Disable /Failu
 
 
 # Compliance & framework information
-compliance.HIPAA.level = "Recommended"
-compliance.HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es"
-compliance.PCI_DSS.level = "Required"
-compliance.PCI_DSS.reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
-compliance.NSA_event_forwarding.level = "Recommended"
-compliance.NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
-compliance.JPCERT/CC.level = "Recommended"
-compliance.JPCERT/CC.reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
+[compliance.HIPAA]
+level = "Recommended"
+reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es"
+[compliace.PCIDSS]
+level = "Required"
+reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
+[compliance.NSAEventForwarding]
+level = "Recommended"
+reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+[compliance.JPCERTCC]
+level = "Recommended"
+reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
 
 # Additional References Go Here
 reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
-reference.2 = "bla2"
-reference.3 = "bla3"
 # repeat as needed
 
 
 # Enable via GUI
-GUI.enable.step1.img = "/images/UserLogoff/GPE.png"
-GUI.enable.step1.txt = 'Similar to User logon, Windows 10 professional does not \
+[[GUI.enable]]
+img = "/UserLogoff/GPE.png"
+txt = """Similar to User logon, Windows 10 professional does not \
 log user logoffs of users automatically. To turn this on, follow the steps \
 outlined in “[User Login](../windows10professional-userlogon/)” to toggle \
-login attempts.'
+login attempts."""
 # repeat as needed
 
 
 # Enable via CLI
-CLI.enable.step1.img
-CLI.enable.step1.txt
 # repeat as needed
 
 
 # View via GUI
-GUI.view.step1.img = "/images/UserLogoff/WEV.png"
-GUI.view.step1.txt = "To view this log, navigate to the Event Log Viewer. \
+[[GUI.view]]
+img = "/UserLogoff/WEV.png"
+txt = """To view this log, navigate to the Event Log Viewer. \
 From there, navigate to the Windows Logs heading and the Security tab. Filter, \
-sort, or find the event log ID **4634** to view this log."
+sort, or find the event log ID **4634** to view this log."""
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/images/UserLogoff/CLI.png"
-CLI.view.step1.txt = 'To view this log from the command line, open command \
-prompt or Windows PowerShell as an administrator. To view logout logs enter \
+[[CLI.view]]
+img = "/UserLogoff/CLI.png"
+txt = 'To view this log from the command line, open command
+prompt or Windows PowerShell as an administrator. To view logout logs enter
 the command ```wevtutil qe Security "/q:*[System [(EventID=4634)]]"```'
 # repeat as needed
