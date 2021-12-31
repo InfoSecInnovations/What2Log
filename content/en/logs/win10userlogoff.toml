@@ -79,7 +79,7 @@ sort, or find the event log ID **4634** to view this log."""
 # View via CLI
 [[CLI.view]]
 img = "/UserLogoff/CLI.png"
-txt = 'To view this log from the command line, open command
+txt = """To view this log from the command line, open command
 prompt or Windows PowerShell as an administrator. To view logout logs enter
-the command ```wevtutil qe Security "/q:*[System [(EventID=4634)]]"```'
+the command ```wevtutil qe Security "/q:*[System [(EventID=4634)]]"```"""
 # repeat as needed

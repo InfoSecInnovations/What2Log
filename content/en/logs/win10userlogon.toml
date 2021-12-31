@@ -56,8 +56,12 @@ reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.p
 # Enable via GUI
 [[GUI.enable]]
 img = "/images/UserLogin/GPE.png"
-txt = 'Windows 10 Professional does not log this by default. To enable logging of this activity, launch the Group Policy Editor. From here, expand the Windows settings folder and open the Security Settings tab. Finally, expand the Local Policies tab and click to enter the Audit Policy header.
-In order to turn on login auditing, double click "Audit login events". Clicking the Success box will allow for the auditing of all successful login attempts.'
+txt = """Windows 10 Professional does not log this by default. To enable \
+logging of this activity, launch the Group Policy Editor. From here, expand \
+the Windows settings folder and open the Security Settings tab. Finally, expand \
+the Local Policies tab and click to enter the Audit Policy header. In order to \
+turn on login auditing, double click "Audit login events". Clicking the Success \
+box will allow for the auditing of all successful login attempts."""
 [[GUI.enable]]
 img = "/images/UserLogin/AuditEvents.png"
 txt = "Windows 10 Home does not require login auditing be turned on and is done by default."
@@ -71,12 +75,16 @@ txt = "Windows 10 Home does not require login auditing be turned on and is done 
 # View via GUI
 [[GUI.view]]
 img = "/UserLogin/WEV.png"
-txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4624** , or filter the log for the ID **4624**."
+txt = """To view this log in the Event Viewer, open the event viewer and navigate \
+to the Windows Logs heading and then the Security Tab. From here, select the find \
+function and search for the value **4624** , or filter the log for the ID **4624**."""
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
 img = "/UserLogin/CLI.png"
-txt = 'To view this log in the command line (via powershell or command prompt, enter the command```wevtutil qe Security "/q:*[System [(EventID=4624)]]"```This will show all instances of the event ID **4624** , which is the login log ID.'
+txt = """To view this log in the command line (via powershell or command \
+prompt, enter the command```wevtutil qe Security "/q:*[System [(EventID=4624)]]"```\
+This will show all instances of the event ID **4624** , which is the login log ID."""
 # repeat as needed
