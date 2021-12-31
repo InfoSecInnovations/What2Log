@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "User Logon"
-W2L.schema = 1
-author.name = "Flynn Weeks"
-author.organization = "InfoSec Innovations"
+title = "User Logon"
+W2L_schema = 1
+author = "Flynn Weeks"
+##author.organization = "InfoSec Innovations"
 credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = 0.1
 release.date = 2021-09-08
@@ -12,11 +12,11 @@ release.date = 2021-09-08
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional", "Windows 10 Enterprise" ] # App.os if application logs
+source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing."
 source.log = "Application"
 default_enabled = true
-collect.reason = """\
+collect_reason = """\
 Many attacks rely on software being installed and this log \
 can signal who and what installed the software that may cause \
 a vulnerability. It can also be used to make sure that only authorized \
@@ -24,6 +24,7 @@ apps are being installed.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Application "/q:*[System [(EventID=11707)]]" /f:text /c:1""" #How to view log
 check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
@@ -35,9 +36,9 @@ disable_logging = """Unfortunately, due to current limitations, we do not yet ha
 
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
-
-compliance.HIPAA.level = "Recommended" # Compliance requirement
-compliance.HIPAA.reference = "URL here" # Reference for compliance
+[compliance]
+HIPAA.level = "Recommended" # Compliance requirement
+HIPAA.reference = "URL here" # Reference for compliance
 # repeat as needed
 
 
@@ -49,12 +50,14 @@ reference.1 = "https://docs.microsoft.com/en-us/windows/win32/msi/event-logging"
 #Enabled by default-section removed
 
 # View via GUI
-GUI.view.step1.img = "/images/SoftwareInstall/WEV.png"
-GUI.view.step1.txt = "Changes made to a security group are automatically logged and can be viewed in the application tab of the Event Viewer. However, it is important to note windows only logs events that are done through the MsiInstaller in this log. To view these logs, sort or filter by event ID 11707."
+[[GUI.view]]
+img = "/SoftwareInstall/WEV.png"
+txt = "Changes made to a security group are automatically logged and can be viewed in the application tab of the Event Viewer. However, it is important to note windows only logs events that are done through the MsiInstaller in this log. To view these logs, sort or filter by event ID 11707."
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = "/images/SoftwareInstall/CLI.png"
-CLI.view.step1.txt = 'To view a group change log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command ```wevtutil qe Application "/q:*[System [(EventID=11707)]]"```'
+[[CLI.view]]
+img = "/SoftwareInstall/CLI.png"
+txt = 'To view a group change log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command ```wevtutil qe Application "/q:*[System [(EventID=11707)]]"```'
 # repeat as needed

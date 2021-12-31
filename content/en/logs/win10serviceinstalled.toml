@@ -1,10 +1,10 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-log.title = "Service Installed" #Name of the log (i.e. User Logon)
-W2L.schema = 1
-author.name = "Flynn Weeks" #Your name
-author.organization = "InfoSec Innovations" #Your organization
+title = "Service Installed" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = 0.1
 release.date = 2021-09-17 #Todays date
@@ -12,17 +12,18 @@ release.date = 2021-09-17 #Todays date
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10 Professional, Windows 10 Enterprise" ]  #app.os if application logs
+source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Service Control Manager" #Service that generates log
 source.log = "System" #Log file or channel
 default_enabled = true #true or false
-collect.reason = """\
+collect_reason = """\
 Services on a Windows machine have many purposes and these logs may indicate\
  a malicious service being placed on the computer, such as a virus or other \
  malware. This log is recommended by JPCERT/CC.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe System "/q:*[System [(EventID=7045)]]" /f:text /c:1""" #How to view log
 #Get-WinEvent -FilterHashTable @{LogName='System';ID='7045'} -MaxEvents 1 | Format-List
@@ -35,38 +36,39 @@ disable_logging = """Unfortunately, due to current limitations, we do not yet ha
 
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
-compliance.HIPAA.level = "Recommended" # Compliance requirement
-compliance.HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es" # Reference for compliance
+[compliance]
+HIPAA.level = "Recommended" # Compliance requirement
+HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es" # Reference for compliance
 # repeat as needed
 
 
 # Additional References Go Here
-reference.1 = "blah"
-reference.2 = "blah2"
+
 # repeat as needed
 
 
 # Enable via GUI
-GUI.enable.step1.img = "link to img 1"
-GUI.enable.step1.txt = "text for step1 here"
-GUI.enable.step2.img = "link to img 2"
-GUI.enable.step2.txt = "text for step 2 here"
+[[GUI.enable]]
+img = "/ServiceInstalled/GPE.png"
+txt = "Service Installation is not automatically logged by Windows 10 and needs to be turned on in the group policy editor. To turn on the audit security system extension properties, navigate to the group policy editor. Then, go Computer Configuration > Windows Settings > Advanced Audit Policy Configuration > System Audit Policies-Local Group > System."
+img = "/ServiceInstalled/GPE2.png"
+txt = "Finally, click on Audit Security System Extension and select the check boxes. Then click Apply and Ok to save and apply the changes. To ensure the audit policy is updated to incorporate these changes, in a command prompt, enter
+Gpdupdate /force"
 # repeat as needed
 
 
 # Enable via CLI
-CLI.enable.step1.img = " "
-CLI.enable.step1.txt = " "
-# repeat as needed
+
 
 
 # View via GUI
-GUI.view.step1.img = " "
-GUI.view.step1.txt = " "
+img = "/ServiceInstalled/WEV.png"
+txt = "To view this log, enter the Event Viewer as an administrator and navigate to the Security tab. Sort or filter the logs by Event ID 7045."
 # repeat as needed
 
 
 # View via CLI
-CLI.view.step1.img = " "
-CLI.view.step1.txt = ''
+img = "/ServiceInstalled/CLI.png"
+txt = 'To view a group deletion log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command
+wevtutil qe System "/q:*[System [(EventID=7045)]]"'
 # repeat as needed

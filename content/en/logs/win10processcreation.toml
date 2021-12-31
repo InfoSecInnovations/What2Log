@@ -16,13 +16,14 @@ source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect.reason = """\
+collect_reason = """\
 While applications being opened is a common occurrence on a computer, \
 this log allows you to see if there were unusual applications being opened. \
 This log allows you to identify if unauthorized or malicious applications were opened.
   """
 
 # Log Pile
+[log_pile]
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4688)]]" /f:text /c:1""" #How to view log
 check_status = 'auditpol /get /subcategory:"Process Creation' #How to check if log is enabled
