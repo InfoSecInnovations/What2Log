@@ -67,12 +67,14 @@ enter ```Gpdupdate /force```"""
 
 
 # View via GUI
+[[GUI.view]]
 img = "/ServiceInstalled/WEV.png"
 txt = "To view this log, enter the Event Viewer as an administrator and navigate to the Security tab. Sort or filter the logs by Event ID 7045."
 # repeat as needed
 
 
 # View via CLI
+[[CLI.view]]
 img = "/ServiceInstalled/CLI.png"
 txt = 'To view a group deletion log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command
 wevtutil qe System "/q:*[System [(EventID=7045)]]"'

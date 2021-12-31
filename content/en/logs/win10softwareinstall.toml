@@ -1,7 +1,7 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-title = "User Logon"
+title = "Software Installed"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
