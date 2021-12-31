@@ -12,14 +12,14 @@ release.date = 2021-09-17 #Todays date
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
+source.os = [ "Windows 10" , "Windows 7" ]  #app.os if application logs
 source.service = "Service Control Manager" #Service that generates log
 source.log = "System" #Log file or channel
 default_enabled = true #true or false
 collect_reason = """\
 Services on a Windows machine have many purposes and these logs may indicate\
- a malicious service being placed on the computer, such as a virus or other \
- malware. This log is recommended by JPCERT/CC.
+a malicious service being placed on the computer, such as a virus or other \
+malware. This log is recommended by JPCERTCC.
   """
 
 # Log Pile

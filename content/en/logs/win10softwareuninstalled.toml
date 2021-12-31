@@ -24,7 +24,7 @@ taken off a machine or an attempt to disrupt the normal workflow.
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
-view_logs = """wevtutil qe Application "/q:*[System [(EventID=11724)]]" /f:text /c:1 """ #How to view log
+view_logs = """wevtutil qe Application "/q:*[System [(EventID=11724)]]" /f:text /c:1""" #How to view log
 check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
 enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
 disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
