@@ -50,15 +50,20 @@ HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/adm
 # Enable via GUI
 [[GUI.enable]]
 img = "/ServiceInstalled/GPE.png"
-txt = "Service Installation is not automatically logged by Windows 10 and needs to be turned on in the group policy editor. To turn on the audit security system extension properties, navigate to the group policy editor. Then, go Computer Configuration > Windows Settings > Advanced Audit Policy Configuration > System Audit Policies-Local Group > System."
+txt = """Service Installation is not automatically logged by Windows 10 and needs \
+to be turned on in the group policy editor. To turn on the audit security system \
+extension properties, navigate to the group policy editor. Then, go Computer \
+Configuration > Windows Settings > Advanced Audit Policy Configuration > System \
+Audit Policies-Local Group > System."""
 img = "/ServiceInstalled/GPE2.png"
-txt = "Finally, click on Audit Security System Extension and select the check boxes. Then click Apply and Ok to save and apply the changes. To ensure the audit policy is updated to incorporate these changes, in a command prompt, enter
-Gpdupdate /force"
+txt = """Finally, click on Audit Security System Extension and select the check \
+boxes. Then click Apply and Ok to save and apply the changes. To ensure the \
+audit policy is updated to incorporate these changes, in a command prompt, \
+enter ```Gpdupdate /force```"""
 # repeat as needed
 
 
 # Enable via CLI
-
 
 
 # View via GUI

@@ -50,31 +50,31 @@ PCI_DSS.reference = ""
 # Enable via GUI
 [[GUI.enable]]
 img = "/ProcessCreate/GPE.png"
-txt = "By default, process creation is not logged in Windows 10 \
+txt = """By default, process creation is not logged in Windows 10 \
 professional and has to be turned on in the Group Policy Editor. To do so, \
 navigate to the audit policy tab under local policies, security settings, and \
-the windows settings folder. Select audit process tracking, as shown in the photo."
+the windows settings folder. Select audit process tracking, as shown in the photo."""
 img = "/ProcessCreate/GPE2.png"
-txt = "Click on the check box next to success in order to ensure that \
+txt = """Click on the check box next to success in order to ensure that \
 process creation is logged. Then click Apply and Ok to close the pop-up window and \
 apply the change. To ensure the audit policy is updated to incorporate these changes, \
 in a command prompt, enter
-```Gpdupdate /force```"
+```Gpdupdate /force```"""
 # repeat as needed
 
 
 # View via GUI
 [[GUI.view]]
 img = "/ProcessCreate/WEV.png"
-txt = "To view the process creation log, navigate to the Windows Event Viewer \
-and the security tab. Next, sort or filter the log by Event ID **4688**.  "
+txt = """To view the process creation log, navigate to the Windows Event Viewer \
+and the security tab. Next, sort or filter the log by Event ID **4688**."""
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
 img = "/ProcessCreate/CLI.png"
-txt = 'To view this event from the command line, launch either \
+txt = """To view this event from the command line, launch either \
 PowerShell or Command Prompt as an administrator and enter the command \
-```wevtutil qe Security "/q:*[System [(EventID=4688)]]"```'
+```wevtutil qe Security "/q:*[System [(EventID=4688)]]"```"""
 # repeat as needed

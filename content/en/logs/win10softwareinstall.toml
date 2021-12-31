@@ -52,12 +52,17 @@ reference.1 = "https://docs.microsoft.com/en-us/windows/win32/msi/event-logging"
 # View via GUI
 [[GUI.view]]
 img = "/SoftwareInstall/WEV.png"
-txt = "Changes made to a security group are automatically logged and can be viewed in the application tab of the Event Viewer. However, it is important to note windows only logs events that are done through the MsiInstaller in this log. To view these logs, sort or filter by event ID 11707."
+txt = """Changes made to a security group are automatically logged and \
+can be viewed in the application tab of the Event Viewer. However, it is \
+important to note windows only logs events that are done through the \
+MsiInstaller in this log. To view these logs, sort or filter by event ID 11707."""
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
 img = "/SoftwareInstall/CLI.png"
-txt = 'To view a group change log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command ```wevtutil qe Application "/q:*[System [(EventID=11707)]]"```'
+txt = """To view a group change log in the command line, launch PowerShell \
+or Command Prompt as an administrator. Enter the command \
+```wevtutil qe Application "/q:*[System [(EventID=11707)]]"```"""
 # repeat as needed

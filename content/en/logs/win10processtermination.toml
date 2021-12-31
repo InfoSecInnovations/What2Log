@@ -50,15 +50,15 @@ reference = ""
 # View via GUI
 [[GUI.view]]
 img = "/ProcessTermination/WEV.png"
-txt = "To view the process creation log, navigate to the Windows Event Viewer \
-and the security tab. Next, sort or filter the log by Event ID **4689**.  "
+txt = """To view the process creation log, navigate to the Windows Event Viewer \
+and the security tab. Next, sort or filter the log by Event ID **4689**."""
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
 img = "/ProcessTermination/CLI.png"
-txt = 'To view this event from the command line, launch either \
+txt = """To view this event from the command line, launch either \
 PowerShell or Command Prompt as an administrator and enter the command \
-```wevtutil qe Security "/q:*[System [(EventID=4689)]]"```'
+```wevtutil qe Security "/q:*[System [(EventID=4689)]]"```"""
 # repeat as needed
