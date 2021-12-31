@@ -49,7 +49,7 @@ reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/E
 
 
 # Additional References Go Here
-reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+#reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
 # repeat as needed
 
 

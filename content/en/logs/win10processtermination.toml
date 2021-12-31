@@ -34,9 +34,10 @@ disable_logging = """auditpol /set /subcategory:"Process Termination" /Success:D
 
 # Format is compliance.name.level and compliance.name.reference.
 # Only include relevant frameworks
-[compliance]
+[compliance.HIPAA]
 level = "Recommended" # Compliance requirement
 reference = "" # Reference for compliance
+[compliance.PCIDSS]
 level = "Recommended" # Compliance requirement
 reference = ""
 # repeat as needed

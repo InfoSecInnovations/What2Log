@@ -54,6 +54,7 @@ txt = """By default, process creation is not logged in Windows 10 \
 professional and has to be turned on in the Group Policy Editor. To do so, \
 navigate to the audit policy tab under local policies, security settings, and \
 the windows settings folder. Select audit process tracking, as shown in the photo."""
+[[GUI.enable]]
 img = "/ProcessCreate/GPE2.png"
 txt = """Click on the check box next to success in order to ensure that \
 process creation is logged. Then click Apply and Ok to close the pop-up window and \

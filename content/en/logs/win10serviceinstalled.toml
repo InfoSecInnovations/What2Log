@@ -77,6 +77,6 @@ txt = "To view this log, enter the Event Viewer as an administrator and navigate
 # View via CLI
 [[CLI.view]]
 img = "/ServiceInstalled/CLI.png"
-txt = 'To view a group deletion log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command
-wevtutil qe System "/q:*[System [(EventID=7045)]]"'
+txt = '''To view a group deletion log in the command line, launch PowerShell or Command Prompt as an administrator. Enter the command
+wevtutil qe System "/q:*[System [(EventID=7045)]]"'''
 # repeat as needed

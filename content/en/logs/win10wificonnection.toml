@@ -58,22 +58,22 @@ reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hi
 # View via GUI
 [[GUI.view]]
 img = "/WiFiConnection/WEVMenu.png"
-txt = "When a user connects to WiFi, a log is made in the Operational
-log of the WLAN-AutoConfig folder.
-This folder can be found under the Applications and Services Logs folder, and
-then the Microsoft and Windows folder, respectively."
+txt = """When a user connects to WiFi, a log is made in the Operational\
+log of the WLAN-AutoConfig folder.This folder can be found under the \
+Applications and Services Logs folder, and then the Microsoft and \
+Windows folder, respectively."""
 [[GUI.enable]]
 img = "/WiFiConnection/WEV.png"
-txt = "This log is buried near the bottom, but it holds all the
-information about internet connections made from a machine.
-Event ID 8001 is a successful connection to a wireless network."
+txt = """This log is buried near the bottom, but it holds all the\
+information about internet connections made from a machine.\
+Event ID 8001 is a successful connection to a wireless network."""
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
 img = "/WiFiConnection/CLI.png"
-txt = '''To view a Wireless disconnection log in the command line, launch PowerShell or Command Prompt as an administrator.
+txt = """To view a Wireless disconnection log in the command line, launch PowerShell or Command Prompt as an administrator.
 Because this is an application log, there are two commands that are required to view it from the command line. The first command is
 <pre><code>
 $xml = @'
@@ -88,6 +88,6 @@ After this command is run, the second command to view the log can be run. This c
 <pre><code>Get-WinEvent -FilterXM: $xml | select -first 1 | Format-Table -wrap</code></pre>
 The "select -first 1" section of this command returns only the most recent log to save space and can be dropped to view more logs.
 However, the "Format-Table -wrap" part of this command is what shows the full log in the command line and should not be dropped.
-'''
+"""
 
 # repeat as needed
