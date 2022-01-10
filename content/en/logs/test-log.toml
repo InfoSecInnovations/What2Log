@@ -2,7 +2,10 @@
 title = "Test Log" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 author = "Sebastian Boutin Blomfield" #Your name
-credits = [ "" ] #Any special callouts
+credits = [ 
+  "Additional research by Joe Loggs",
+  "Images by John Smith"
+] #Any special callouts
 release.version = 0.1
 release.date = 2021-05-21 #Todays date
 
@@ -15,6 +18,25 @@ source.log = "Test channel" #Log file or channel
 default_enabled = true #true or false
 collect_reason = """
 This isn't the best log in the world, it's just a tribute"""
+
+# Additional References Go Here
+references = [
+  "blah",
+  "blah2"
+]
+
+# Compliance & framework information
+
+# Format is compliance.name.level and compliance.name.reference.
+# Only include relevant frameworks
+[compliance.XXXX]
+level = "Required" # Compliance requirement
+reference = "URL here" # Reference for compliance
+
+[compliance.YYYY]
+level = "Recommended" # Compliance requirement
+reference = "URL here" # Reference for compliance
+# repeat as needed
 
 # Log Pile
 [log_pile]

@@ -28,7 +28,7 @@ Event Forwarding Guidance.
 language = "Powershell" #Language for Log Pile
 view_logs = """wevtutil qe Security "/q:*[System [(EventID=4735)]]" /f:text /c:1""" #How to view log
 check_status = 'auditpol /get /subcategory:"security group management"' #How to check if log is enabled
-enable_logging = """auditpol /get /subcategory:"security group management"""" #How to enable log
+enable_logging = """auditpol /get /subcategory:"security group management""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"security group management" /Success:Disable /Failure:Disable""" #How to disable log
 
 
