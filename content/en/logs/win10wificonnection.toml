@@ -42,16 +42,12 @@ disable_logging = """Unfortunately, due to current limitations, we do not yet ha
 
 # Compliance & framework information
 
-# Format is compliance.name.level and compliance.name.reference.
+# Format is level and reference under the header [compliance.name]
 # Only include relevant frameworks
-[complianceHIPAA]
+[compliance.HIPAA]
 level = "Recommended" # Compliance requirement
 reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
 
-# repeat as needed
-
-
-# Additional References Go Here
 # repeat as needed
 
 
