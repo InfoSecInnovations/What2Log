@@ -1,0 +1,73 @@
+#This is the template for What2Log Logs entries
+
+# Meta data about this w2l entry
+title = "Failed User Login" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+credits = [ "" ] #Any special callouts
+release.version = 0.1
+release.date = 2022-01-14 #Todays date
+
+# About this log type
+suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.service = "syslog" #Service that generates log
+source.log = "auth.log" #Log file or channel
+default_enabled = true #true or false
+collect_reason = """\
+Failed user logins can show possible password spray and password guessing \
+attacks. Not every failed login is an attack, but they can be early indicators \
+of one. This log is required by the PCI DSS regulation.
+  """
+
+# Additional References Go Here
+
+
+# Compliance & framework information
+
+# Format is compliance.name.level and compliance.name.reference.
+# Only include relevant frameworks
+[compliance.HIPAA]
+level = "Recommended"
+reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es"
+[compliace."PCI DSS"]
+level = "Required"
+reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
+[compliance."NSA Event Forwarding"]
+level = "Recommended"
+reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+[compliance."JPCERT/CC"]
+level = "Recommended"
+reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
+# repeat as needed
+
+# Log Pile
+[log_pile]
+language = "bash" #Language for Log Pile
+view_logs = """grep failure /var/log/auth.log""" #How to view log
+check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
+enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
+disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
+
+
+# Enable via GUI
+
+
+# Enable via CLI
+
+
+
+# View via GUI
+[[GUI.view]]
+img = "/UserLogoff/LinuxViewer.toml"
+txt = "Linux calls this log authentication failure. To view this log in the GNOME logs viewer, search in the security tab for authentication or failure."
+
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = "/UserLogoff/LinuxCLI.toml"
+txt = 'In order to view this log from the command line, enter the command ```grep failure /var/log/auth.log```. If there are other failures in the auth.log, replace failure in the command with “authentication failure”.'
+
+# repeat as needed

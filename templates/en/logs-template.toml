@@ -6,7 +6,7 @@ W2L_schema = 1
 author = "" #Your name
 credits = [ "" ] #Any special callouts
 release.version = 0.1
-release.date = 2021-05-21 #Todays date
+release.date = 2022-01-14 #Todays date
 
 # About this log type
 suggested_log_level = "" #Minimum, Ideal, Extreme, or Special Case
@@ -26,7 +26,7 @@ references = [
 
 # Compliance & framework information
 
-# Format is compliance.name.level and compliance.name.reference.
+# Format is level and reference under the header [compliance.name]
 # Only include relevant frameworks
 [compliance.XXXX]
 level = " " # Compliance requirement
@@ -77,6 +77,6 @@ txt = " "
 # View via CLI
 [[CLI.view]]
 img = " "
-txt = " "
+txt = ' '
 
 # repeat as needed

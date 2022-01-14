@@ -1,0 +1,63 @@
+#This is the template for What2Log Logs entries
+
+# Meta data about this w2l entry
+title = "Software Updated" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+credits = [ "" ] #Any special callouts
+release.version = 0.1
+release.date = 2022-01-14 #Todays date
+
+# About this log type
+suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.service = "syslog" #Service that generates log
+source.log = "dpkg.log" #Log file or channel
+default_enabled = true #true or false
+collect_reason = """\
+Software updates are not always a sign of an attack, but often contain \
+patches for known vulnerabilities. An update may also introduce vulnerabilities \
+and it is important to know if and when that was installed.
+  """
+
+# Additional References Go Here
+
+
+# Compliance & framework information
+# Format is level and reference under the header [compliance.name]
+# Only include relevant frameworks
+[compliance.HIPAA]
+level = "Recommended" # Compliance requirement
+reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
+[compliance."PCI DSS"]
+level = "Recommended" # Compliance requirement
+reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
+# repeat as needed
+
+# Log Pile
+[log_pile]
+language = "bash" #Language for Log Pile
+view_logs = """grep "upgrade " /var/log/dpkg.log""" #How to view log
+check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
+enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
+disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
+
+
+# Enable via GUI
+# repeat as needed
+
+# Enable via CLI
+# repeat as needed
+
+
+# View via GUI
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = "/SoftwareUpdated/LinuxCLI.png"
+txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line.
+Linux calls this software upgraded. In order to view this log, enter the command ```grep "upgrade " /var/log/dpkg.log```.'
+
+# repeat as needed

@@ -1,0 +1,55 @@
+#This is the template for What2Log Logs entries
+
+# Meta data about this w2l entry
+title = "Group Deletion" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Flynn Weeks" #Your name
+credits = [ "" ] #Any special callouts
+release.version = 0.1
+release.date = 2022-01-14 #Todays date
+
+# About this log type
+suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.service = "syslog" #Service that generates log
+source.log = "auth.log" #Log file or channel
+default_enabled = true #true or false
+collect_reason = """\
+Group deletion may signal the cleanup of an attack or someone trying to \
+inconvenience a group of users in a network. It is also good to know what \
+groups are active.
+  """
+
+# Additional References Go Here
+
+# Compliance & framework information
+
+# Log Pile
+[log_pile]
+language = "bash" #Language for Log Pile
+view_logs = """grep " groupdel" /var/log/auth.log""" #How to view log
+check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
+enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
+disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
+
+
+# Enable via GUI
+# repeat as needed
+
+
+# Enable via CLI
+# repeat as needed
+
+
+# View via GUI
+img = "/GroupDel/LinuxViewer.png"
+txt = "To view a group deletion log in the GNOME log viewer, search for removed or groupdel in the Security tab."
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = "/GroupDel/LinuxCLI.png"
+txt = 'To see the log of group creation in Linux, enter the command ```grep " groupdel" /var/log/auth.log```.'
+
+# repeat as needed
