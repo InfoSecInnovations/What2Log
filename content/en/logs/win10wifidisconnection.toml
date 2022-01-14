@@ -50,11 +50,6 @@ reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hi
 
 # repeat as needed
 
-
-# Additional References Go Here
-# repeat as needed
-
-
 # View via GUI
 [[GUI.view]]
 img = "/WiFiConnection/WEVMenu.png"

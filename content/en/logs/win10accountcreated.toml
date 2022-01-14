@@ -25,6 +25,15 @@ This log is required by NIST SP 800-53, HIPAA and PCI DSS regulations. \
 It is also recommended under the NSA Cyber Event Forwarding Guidance.
   """
 
+# Additional References Go Here
+references = [
+"https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+"https://static1.squarespace.com/static/552092d5e4b0661088167e5c/t/5c586681f4e1fced3ce1308b/1549297281905/Windows+Logging+Cheat+Sheet_ver_Feb_2019.pdf"
+]
+# repeat as needed
+
+
+
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
@@ -36,23 +45,20 @@ disable_logging = """auditpol /set /subcategory:"computer account management" /S
 
 # Compliance & framework information
 
-# Format is compliance.name.level and compliance.name.reference.
+# Format is level and reference under the header [compliance.name]
 # Only include relevant frameworks
-[compliance]
-HIPAA.level = "Recommended" # Compliance requirement
-HIPAA.reference = "URL here" # Reference for compliance
-PCI_DSS.level = "Required"
-PCI_DSS.reference = "URL here"
-NSA_event_forwarding.level = "Recommended"
-NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
-NISTSP800-53.level = "Recommended"
-NISTSP800-53.reference = "URL here"
-# repeat as needed
-
-
-# Additional References Go Here
-reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
-reference.2 = "https://static1.squarespace.com/static/552092d5e4b0661088167e5c/t/5c586681f4e1fced3ce1308b/1549297281905/Windows+Logging+Cheat+Sheet_ver_Feb_2019.pdf"
+[compliance.HIPAA]
+level = "Recommended" # Compliance requirement
+reference = "URL here" # Reference for compliance
+[compliance. PCI DSS]
+level = "Required"
+reference = "https://www.pcisecuritystandards.org/document_library?category=pcidss&document=pci_dss"
+[compliace."NSA Event Forwarding"]
+level = "Recommended"
+reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+[compliance."NIST SP 800-53"]
+level = "Recommended"
+reference = "URL here"
 # repeat as needed
 
 

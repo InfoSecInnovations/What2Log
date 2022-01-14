@@ -21,6 +21,11 @@ Groups allow for multiple user accounts to be managed as one and an attacker \
 may try and create a group with escalated privileges.
   """
 
+# Additional References Go Here
+references = [
+"https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+]# repeat as needed
+
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
@@ -30,21 +35,17 @@ enable_logging = """auditpol /set /subcategory:"security group management" /Succ
 disable_logging = """auditpol /set /subcategory:"security group management" /Success:Disable /Failure:Disable""" #How to disable log
 
 # Compliance & framework information
-
-# Format is compliance.name.level and compliance.name.reference.
+# Format is level and reference under the header [compliance.name]
 # Only include relevant frameworks
-[compliance]
-HIPAA.level = "Recommended"
-HIPAA.reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es"
-PCI_DSS.level = "Recommended"
-PCI_DSS.reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
-NSA_event_forwarding.level = "Recommended"
-NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
-# repeat as needed
-
-
-# Additional References Go Here
-reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+[compliance.HIPAA]
+level = "Recommended"
+reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es"
+[compliance."PCI DSS"]
+level = "Recommended"
+reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
+[compliance"NSA Event Forwarding]
+level = "Recommended"
+reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed
 
 

@@ -22,6 +22,11 @@ inconvenience a group of users in a network. It is also good to know what \
 groups are present in a system.
   """
 
+# Additional References Go Here
+references = [
+"https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+]# repeat as needed
+
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
@@ -32,13 +37,8 @@ disable_logging = """auditpol /set /subcategory:"security group management" /Suc
 
 
 # Compliance & framework information
-
+# Format is level and reference under the header [compliance.name]
 #No compliance I could find recommends or requires this log
-
-
-# Additional References Go Here
-reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
-# repeat as needed
 
 
 #Enabled by default-section removed

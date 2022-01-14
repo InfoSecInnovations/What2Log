@@ -23,6 +23,12 @@ are known and not over reaching. This log is recommended by the NSA Cyber \
 Event Forwarding Guidance.
   """
 
+
+# Additional References Go Here
+references = [
+"https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+]# repeat as needed
+
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
@@ -33,18 +39,14 @@ disable_logging = """auditpol /set /subcategory:"security group management" /Suc
 
 
 # Compliance & framework information
-
-# Format is compliance.name.level and compliance.name.reference.
+# Format is level and reference under the header [compliance.name]
 # Only include relevant frameworks
-[compliance]
-NSA_event_forwarding.level = "Recommended"
-NSA_event_forwarding.reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+[compliance."NSA Event Forwarding"]
+level = "Recommended"
+reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed
 
 
-# Additional References Go Here
-reference.1 = "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
-# repeat as needed
 
 
 #Enabled by default-section removed
