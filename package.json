@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "@ltd/j-toml": "^1.12.2",
-    "@nuxt/content": "^1.14.0",
+    "@nuxt/content": "^1.15.1",
     "@nuxtjs/markdownit": "^2.0.0",
     "core-js": "^3.9.1",
-    "nuxt": "^2.15.3",
+    "fs-extra": "^10.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-i18n": "^6.27.0",
     "remark": "^13.0.0",
     "remark-unwrap-images": "^2.0.0",

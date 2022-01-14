@@ -32,6 +32,14 @@ $ npm run generate
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
+To output the files from the `generate` command to a different directory, create a file called `w2lconfig.json` in the project root directory and use the `dir` property.
+
+```
+{
+  "dir": "C:/some/test/dir"
+}
+```
+
 ## Contributing
 
 While we welcome contributions to the code side of things, the easiest and most useful way to get started is by adding content. The directory structure of the `content` directory closely mirrors the routes present on the website, so for example if you want to add a new log page, create your file in `content/en/logs` (in the future you'll be able to create files in other languages, but for now please stick with English). The file should be a `.toml` file that follows the [TOML 1.0.0 spec](https://toml.io/en/v1.0.0). Please follow the templates provided in the `templates` directory. Place any images used by your page (each section requires an image to go with the text) in `static/images`. The path you specify for images will be relative to this directory.
