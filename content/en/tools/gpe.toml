@@ -1,0 +1,37 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Group Policy Editor"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-28
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 10", "Windows 7"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+The Local Group Policy Editor is a feature of Windows 10 Professional and \
+allows for configuration of group policy objects. It is importnat to note \
+that the Group Policy Editor is not included in the Home version of Windows 10, \
+due to the fact they don't support groups in the same way. This includes the \
+ability to determine what is logged on a system. To navigate to the group policy \
+editor, enter “gpedit” or “group policy editor” into the start menu.
+"""
+img = "/GPE/Start.png"
+
+[[app.info]]
+txt = """
+Upon launching, the group policy editor will look similar to this. From here, \
+you can toggle certain events to be logged if there are not logged automatically. \
+It is important to note that this app is not available in Windows 10 Home \
+versions and the logs in that are done by default.
+"""
+img = "/GPE/MainScreen.png"
+#continue as necessary
