@@ -43,7 +43,7 @@ reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administr
 [compliance."PCI DSS"]
 level = "Recommended"
 reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
-[compliance."NSA Event Forwarding]
+[compliance."NSA Event Forwarding"]
 level = "Recommended"
 reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed

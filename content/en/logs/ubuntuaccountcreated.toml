@@ -39,7 +39,7 @@ disable_logging = """Unfortunately, due to current limitations, we do not yet ha
 [compliance.HIPAA]
 level = "Recommended" # Compliance requirement
 reference = "URL here" # Reference for compliance
-[compliance. PCI DSS]
+[compliance."PCI DSS"]
 level = "Required"
 reference = "https://www.pcisecuritystandards.org/document_library?category=pcidss&document=pci_dss"
 [compliace."NSA Event Forwarding"]

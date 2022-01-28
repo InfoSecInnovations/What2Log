@@ -5,7 +5,7 @@ title = "User Logoff"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
-credits = [ "Mick Douglas", "Tee Leigh" ]
+##credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = 0.1
 release.date = 2021-05-28
 
@@ -56,7 +56,7 @@ reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.p
 
 # Enable via GUI
 [[GUI.enable]]
-img = "/UserLogoff/GPE.png"
+img = "/UserLogin/GPE.png"
 txt = """Similar to User logon, Windows 10 professional does not \
 log user logoffs of users automatically. To turn this on, follow the steps \
 outlined in “[User Login](../windows10professional-userlogon/)” to toggle \

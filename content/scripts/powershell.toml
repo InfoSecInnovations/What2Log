@@ -1,28 +1,16 @@
 name="Powershell"
 extension=".ps1"
 enable.header='''
-This is where the multiline
-header could go'''
+'''
 enable.footer='''
-We could also add a multiline
-footer if we
-wanted to'''
+'''
 disable.header='''
-This is where a different multiline
-header could go'''
+'''
 check.header='''
-This is where the multiline
-header could go
-on the check script'''
+'''
 check.footer='''
-We could also add a multiline
-footer
-
-to the check script
-
-if we
-wanted to'''
+'''
 view.header='''
-short header here'''
+'''
 view.footer='''
-and a short footer'''
+'''

@@ -59,13 +59,13 @@ reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/E
 
 # View via GUI
 [[GUI.view]]
-img = "/AuditPol/WEV.png"
+img = "/AuditPolChange/WEV.png"
 txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4719**."
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
-img = "/AuditPol/CLI.png"
+img = "/AuditPolChange/CLI.png"
 txt = 'To view this log in the command line, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4719)]]"```'
 # repeat as needed

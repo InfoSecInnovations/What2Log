@@ -5,7 +5,7 @@ title = "Failed User Logon"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
-credits = [ "Mick Douglas", "Tee Leigh" ]
+##credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = 0.1
 release.date = 2021-05-27
 
@@ -50,6 +50,7 @@ reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?a
 level = "Recommended"
 reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 [compliance."JPCERT/CC"]
+level = "Recommended"
 reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 

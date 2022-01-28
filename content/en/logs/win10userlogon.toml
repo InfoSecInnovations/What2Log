@@ -5,7 +5,7 @@ title = "User Logon"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
-credits = [ "Mick Douglas", "Tee Leigh" ]
+##credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = 0.1
 release.date = 2021-05-27
 
@@ -50,6 +50,7 @@ reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?a
 level = "Recommended"
 reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 [compliance."JPCERT/CC"]
+level = "Recommended"
 reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
@@ -58,7 +59,7 @@ reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.p
 
 # Enable via GUI
 [[GUI.enable]]
-img = "/images/UserLogin/GPE.png"
+img = "/UserLogin/GPE.png"
 txt = """Windows 10 Professional does not log this by default. To enable \
 logging of this activity, launch the Group Policy Editor. From here, expand \
 the Windows settings folder and open the Security Settings tab. Finally, expand \
@@ -66,7 +67,7 @@ the Local Policies tab and click to enter the Audit Policy header. In order to \
 turn on login auditing, double click "Audit login events". Clicking the Success \
 box will allow for the auditing of all successful login attempts."""
 [[GUI.enable]]
-img = "/images/UserLogin/AuditEvents.png"
+img = "/UserLogin/AuditEvents.png"
 txt = "Windows 10 Home does not require login auditing be turned on and is done by default."
 # repeat as needed
 
