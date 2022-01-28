@@ -22,14 +22,14 @@ of and enable or disable logs in Windows environments. It can be used in both \
 Powershell and the Command prompt, but all of our examples utilize Powershell. \
 Entering the command ```auditpol``` will return a list of the available commands.
 """
-img = "/Auditpol/auditpol.png"
+img = "/AuditPol/auditpol.png"
 
 [[app.info]]
 txt = """
 With the ```auditpol /list /category``` command, the user can see the list of \
 categories they can edit with the auditpol command, of which there are 10.
 """
-img = "/Auditpol/auditpolcategories.png"
+img = "/AuditPol/auditpolcategories.png"
 
 [[app.info]]
 txt = """
@@ -38,7 +38,7 @@ which are what is edited when changing the audit policy. These subcategories \
 can be viewed with the command ```auditpol /list /subcategory:*``` Our screenshot \
 only shows a portion of the output.
 """
-img = "/Auditpol/auditpollist.png"
+img = "/AuditPol/auditpollist.png"
 
 [[app.info]]
 txt = """
@@ -49,7 +49,7 @@ settings, as shown with the command ```auditpol /get /category:System``` \
 Replacing the name of the category with * will show all of the categories and \
 subcategories with their current setting.
 """
-img = "/Auditpol/auditpolgetcategory.png"
+img = "/AuditPol/auditpolgetcategory.png"
 
 [[app.info]]
 txt = """
@@ -57,7 +57,7 @@ Using the auditpol /get command with /subcategory, however, will only return \
 the setting of a specific singular subcategory. For subcategories longer than 1 \
 word, the name must be placed inside parentheses for it to be read correctly.
 """
-img = "/Auditpol/auditpolgetcategory.png"
+img = "/AuditPol/auditpolgetcategory.png"
 
 [[app.info]]
 txt = """
@@ -68,7 +68,7 @@ success or failure, and then if you want to enable or disable them; both do not 
 have to be changed. The auditpol command will then look something like \
 ```auditpol /set /subcategory:"Other System Events" /Success:Enable /Failure:Enable```
 """
-img = "/Auditpol/auditpolenabledisable.png"
+img = "/AuditPol/auditpolenabledisable.png"
 
 [[app.info]]
 txt = """
@@ -78,6 +78,6 @@ the group policy editor under Computer Configuration -> Windows Settings -> \
 Security Settings -> Advanced Audit Policy Configuration -> System Audit \
 Policies, as pictured.
 """
-img = "/Auditpol/gpe.png"
+img = "/AuditPol/gpe.png"
 
 #continue as necessary

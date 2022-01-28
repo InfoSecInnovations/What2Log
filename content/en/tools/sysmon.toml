@@ -18,7 +18,6 @@ Sysmon is a very useful Windows tool that can provide a few extra and more in \
 depth logs. To install, visit https://docs.microsoft.com/en-us/sysinternals/ to \
 get the newest version of Sysinternals.
 """
-url = "https://docs.microsoft.com/en-us/sysinternals/"
 
 [[app.install]]
 txt = """

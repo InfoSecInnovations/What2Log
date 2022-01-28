@@ -17,7 +17,7 @@
           <div class="column">
             <h2 class="home">Tools</h2>
             <p>Click here to learn more about the tools of our supported Operating Systems.</p>
-            <NuxtLink to="tools/test-tool/" class="button">Learn More</NuxtLink>
+            <NuxtLink to="tools/win10note/" class="button">Learn More</NuxtLink>
           </div>
           <div class="column">
             <h2 class="home">The Log Pile</h2>
