@@ -9,7 +9,7 @@
           <h1 class="home">What2Log</h1>
           <h2 class="home">Logging made easy</h2>
           <NuxtLink to="about/" class="button">Learn More</NuxtLink>
-          <NuxtLink to="logs/test-log/" class="button">View the Logs</NuxtLink>
+          <NuxtLink to="logs/win10accountchanged/" class="button">View the Logs</NuxtLink>
         </div>
 
         <!-- Three column layout-->

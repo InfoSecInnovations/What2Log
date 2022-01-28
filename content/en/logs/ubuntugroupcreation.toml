@@ -59,7 +59,6 @@ disable_logging = """Unfortunately, due to current limitations, we do not yet ha
 # View via CLI
 [[CLI.view]]
 img = "/GroupCreation/LinuxCLI.toml"
-txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line.
-To see the log of group creation in Linux, enter the command ```grep "new group" /var/log/auth.log```.'
+txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line. To see the log of group creation in Linux, enter the command ```grep "new group" /var/log/auth.log```.'
 
 # repeat as needed
