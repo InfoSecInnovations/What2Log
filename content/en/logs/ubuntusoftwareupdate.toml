@@ -57,7 +57,6 @@ disable_logging = """Unfortunately, due to current limitations, we do not yet ha
 # View via CLI
 [[CLI.view]]
 img = "/SoftwareUpdated/LinuxCLI.png"
-txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line.
-Linux calls this software upgraded. In order to view this log, enter the command ```grep "upgrade " /var/log/dpkg.log```.'
+txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line. Linux calls this software upgraded. In order to view this log, enter the command ```grep "upgrade " /var/log/dpkg.log```.'
 
 # repeat as needed

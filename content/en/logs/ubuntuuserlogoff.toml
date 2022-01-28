@@ -9,7 +9,7 @@ release.version = 0.1
 release.date = 2021-05-21 #Todays date
 
 # About this log type
-suggested_log_level = "" #Minimum, Ideal, Extreme, or Special Case
+suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "syslog" #Service that generates log
 source.log = "auth.log" #Log file or channel

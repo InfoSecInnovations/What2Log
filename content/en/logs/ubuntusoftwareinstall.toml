@@ -55,8 +55,6 @@ disable_logging = """Unfortunately, due to current limitations, we do not yet ha
 # View via CLI
 [[CLI.view]]
 img = "/SoftwareInstall/LinuxCLI.png"
-txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line.
-
-To view this log in the command line, enter the command ```grep "install " /var/log/dpkg.log```. '
+txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line. To view this log in the command line, enter the command ```grep "install " /var/log/dpkg.log```. '
 
 # repeat as needed
