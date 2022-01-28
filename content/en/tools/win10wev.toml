@@ -1,0 +1,86 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Windows Event Viewer"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-28
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 10"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+A feature of Windows systems, the Event Viewer is a GUI interface for the \
+logs of a windows system. This allows the user to interact and easily sort \
+through the logs on a system. To navigate to the Event Viewer, simply type \
+“Event Viewer” in the start menu.  The command **eventvwr** can also be entered \
+ into a command prompt to open the event viewer.
+"""
+img = "/WEV/Start.png"
+
+[[app.info]]
+txt = """
+Most of the information relevant to log auditing will be stored under the \
+Windows Logs heading in the left column.  Furthermore, most of the logs on \
+interest are inside of the Security tab.
+"""
+img = "/WEV/LeftTab.png"
+
+[[app.info]]
+txt = """
+The general tab, number 1, shows a baseline of information on any log event and \
+can be useful to get a quick understanding. In the image, the general tab is selected.
+"""
+img = "/WEV/Numbered.png"
+
+[[app.info]]
+txt = """
+The details tab, number 2, can provide more details on a particular log. The \
+details tab displays information in XML view and is shown below.
+"""
+img = "/WEV/XML.png"
+
+[[app.info]]
+txt = """
+From here, the find function, number 3, is useful for quickly looking through \
+logs. This can be useful to quickly look for a particular log number or to help \
+combat the sheer volume of logs. Clicking the icon brings up a text field to \
+enter information you wish to sort by, shown below.
+"""
+img = "/WEV/Find.png"
+
+
+[[app.info]]
+txt = """
+Like most programs, Event Viewer includes a sort function, number 4. This can \
+be useful to view all the logs of a particular value quickly, although it can \
+take time to sort them due to the volume of the log file.
+"""
+img = "/WEV/Sort.png"
+
+
+[[app.info]]
+txt = """
+The ability to filter the selected log, number 5, is also built into the event \
+viewer and can allow the user to pick out exactly what logs they wish to see. \
+This is a great way to look for a specific log or logs quickly and can allow for \
+more advanced searching. This is the popup window for the filter function.
+"""
+img = "/WEV/Filter.png"
+
+
+[[app.info]]
+txt = """
+For the screenshots shown for each event, Computer Name refers to the computer \
+that the event occurred on and the username refers to the account that created \
+the event. For example, if user Temp logs in, the log will say that Temp \
+created the event.
+"""
+#continue as necessary

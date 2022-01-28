@@ -1,0 +1,65 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Windows WevtUtil"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-28
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 10", "Windows 7"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Since Windows Vista, Windows has used WevtUtil.exe to view logs via the command \
+line or powershell. Before this, eventquery.vbs was used. To gain more \
+information about wevtutil, use the command ```wevtutil /?```
+"""
+img = "/WevtUtil/Manual.png"
+
+[[app.info]]
+txt = """
+When using WevtUtil, there are identifiers that can be added to make the output \
+more readable and easier to look through. Below is an example command and \
+output from the WevtUtil command \
+```wevtutil qe Security “/q:*[System [(EventID=4624)]]” /c:1 /f:text ``` \
+In this command, “Security” denotes which log should be queried. The string \
+```“q:*[System [(EventID=4624)]]”``` is specifying to look for instances of the \
+4624 event. Furthermore, ```“/c:1”``` tells WevtUtil to only return 1 log, \
+but this can be supplemented with any number or dropped completely. \
+```“/f:text”``` specifies that the output be put in an easily human readable \
+format instead of the standard XML output.
+"""
+img = "/WevtUtil/FirstLog.png"
+
+[[app.info]]
+txt = """
+Without the ```/f:text``` command, the output is in XML.
+"""
+img = "/WevtUtil/XML.png"
+
+[[app.info]]
+txt = """
+Furthermore, if you wish to view logs from a particular date, the wevtutil \
+command can be used for that. In order to view all Login logs from the 24th \
+of April, the command \
+```wevtutil qe Security "/q:*[System [(EventID=4624)][TimeCreated[@SystemTime>='2020-04-24T00:00:00' \
+and @SystemTime<'2020-04-24T23:59:59']]]" /f:text ``` When using this command, \
+it’s important to know that the date format in Windows is YYYY-MM-DD and the time \
+format follows that with T00:00:00.
+"""
+img = "/WevtUtil/DateRange.png"
+
+[[app.info]]
+txt = """
+WevtUtil automatically tries to resolve the SID's that are used in its logs and \
+show the account name. This is often successful and shows the associated account instead of a string.
+"""
+
+#continue as necessary

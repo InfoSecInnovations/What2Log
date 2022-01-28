@@ -1,0 +1,34 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "A Note About the Logs"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-28
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 10"]
+default_installed = true #True or false only
+
+
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Windows only natively logs software installation, software updates, and software \
+deletion if it is done through Windows own MsiInstaller. This is important to \
+note as there may be gaps in the logs and these logs will not account for every \
+install on a device.
+"""
+
+[[app.info]]
+txt = """
+Another important note is the differences between Windows 10 Home and Windows \
+10 Professional. As previously mentioned, Windows 10 Home does not have the \
+group policy editor that is used to toggle certain logs in Windows 10 Professional. \
+The logs (in particular, user login) are logged by default in Home. However, \
+Windows 10 Home does not have user groups and logs such as Group creation, group \
+deletion, etc. will not exist.  
+"""
