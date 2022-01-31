@@ -5,7 +5,7 @@ title = "Group Deletion" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 author = "Flynn Weeks" #Your name
 credits = [ "" ] #Any special callouts
-release.version = 0.1
+release.version = Ash
 release.date = 2022-01-14 #Todays date
 
 # About this log type
