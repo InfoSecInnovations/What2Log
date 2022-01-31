@@ -1,0 +1,25 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "A Note About Linux"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Linux Ubuntu"]
+default_installed = true #True or false only
+
+
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Linux has an automatic cron job (a scheduled job) that auto rotates the log \
+files. This will lead to the creation of log files such as auth.log.1 and is \
+simply just the old logs from the auth.log. This file can be searched the same \
+as the auth.log file and may contain other missing historical information.
+"""
+img = "logs.png"

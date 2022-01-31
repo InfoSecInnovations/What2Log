@@ -1,0 +1,38 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Less Command"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Linux Ubuntu"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+An example of how diverse the options in the Linux command line are for viewing \
+logs, the less command can also be used to show a parsed output of the log file. \
+Less allows for the file to be opened and searched from the command line in two \
+different ways. When the command ```less /var/log/auth.log``` is entered, the \
+auth.log file is opened and can be searched through by entering /”string” \
+(such as /session opened) and the results will be highlighted. You can scroll \
+or navigate through the results with N or n.
+"""
+img = "/Less/Less1.png"
+
+[[app.info]]
+txt = """
+The auth.log can also be launched with the desired results highlighted directly \
+from the command line by entering the command ```less -p “string” /var/log/auth.log``` \
+(such as less -p “session opened” /var/log/auth.log) and this will open the \
+file with the matching string highlighted.
+"""
+img = "/Less/Less2.png"
+#continue as necessary

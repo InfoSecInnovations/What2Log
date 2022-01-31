@@ -1,0 +1,36 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Grep Command"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Linux Ubuntu"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+The grep command is a useful command line tool in Linux and allows for parts of \
+a file matching a certain string to be returned. \
+```grep “string” /var/log/auth.log``` will return the string from the auth.log; \
+both of these values can be replaced as needed (for example, \
+```grep “session opened” /var/log/auth.log``` will return the session opened \
+events from the auth.log).
+"""
+img = "/Grep/grep1.png"
+
+[[app.info]]
+txt = """
+In order to make the process faster, it is recommended that the user enter the \
+command ```cd /var/log``` if this is done, it will remove the need to add the \
+file path in the command, allowing for  a command such as grep “string” auth.log.
+"""
+img = "/Grep/cd.png"
+#continue as necessary

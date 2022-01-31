@@ -1,0 +1,43 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Windows Event Viewer"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 7"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Identical to Windows 10, the Event viewer can be accessed from the start menu \
+by typing “event viewer” into the search field.
+"""
+img = "/Win7WEV/Start.png"
+
+[[app.info]]
+txt = """
+In order to launch the event viewer, right click on it and select “Run as administrator”.
+"""
+img = "/Win7WEV/RunAsAdmin.png"
+
+[[app.info]]
+txt = """
+Upon launch, the event viewer will look similar to this.
+"""
+img = "/Win7WEV/WEV.png"
+
+[[app.info]]
+txt = """
+In order to view most of the logs listed in this guide, navigate to the Security \
+tab on the right hand side of the Event Viewer window. It is under the Windows \
+Logs dropdown menu.
+"""
+#continue as necessary

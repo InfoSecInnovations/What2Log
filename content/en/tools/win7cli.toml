@@ -1,0 +1,63 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Windows Command Prompt"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 7"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+The Windows command prompt allows for a straightforward way to view and filter \
+logs without a graphic user interface. To navigate to the command prompt, open \
+the start menu and search for “command” or “cmd”.
+"""
+img = "/Win7CLI/Start.png"
+
+[[app.info]]
+txt = """
+It is required to enter the command prompt as an administrator to ensure that \
+you have complete access to the system and all the logs. In order to do this, \
+right click the Command Prompt (highlighted in blue) and select “Run as \
+Administrator”. This launches what is known as an elevated command prompt.
+"""
+img = "/Win7CLI/AllowAccess.png"
+
+
+[[app.info]]
+txt = """
+Upon opening, the command prompt displays this screen, which does not display \
+much information to the user.
+"""
+img = "/Win7CLI/CLI1.png"
+
+[[app.info]]
+txt = """
+First, for logging purposes, a user should ensure they are located in the right \
+directory by entering the command ```cd C:\WINDOWS\system32``` If you are not \
+already in the correct folder, the command prompt will move you there and the \
+command line will now begin with C:\WINDOWS\system32>
+"""
+img = "/Win7CLI/CD.png"
+
+
+[[app.info]]
+txt = """
+The Command Prompt should be run as an administrator because the files that \
+hold the logs require administrator access. If the command prompt is run without \
+administrator access, the return of the commands will not give a user an information.
+"""
+img = "/Win10CLI/CLI2.png"
+
+
+
+#continue as necessary

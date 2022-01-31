@@ -1,0 +1,26 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "A Note About the Logs"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 7"]
+default_installed = true #True or false only
+
+
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Officially, support for Windows 7 ended on January 14, 2020 and it is \
+recommended that users upgrade to Windows 10. However, the logging process is \
+identical in Windows 10 and Windows 7, and links have been included to the \
+Windows 10 section for each specific issue instead of a repeat of the above \
+sections. There may be minor visual differences between the two OS’s but overall, \
+the process and logs are the same.
+"""

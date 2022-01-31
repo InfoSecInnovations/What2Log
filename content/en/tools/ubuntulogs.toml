@@ -1,0 +1,35 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Logs in Linux"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Linux Ubuntu"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Linux stores its logs be fault in the /var/log folder. This folder is only \
+accessible to those on the system with root or sudo access. In this folder, a \
+user can find several very important log files as well as specialized folders \
+that may be used by certain applications. The main logs that are of interest in \
+this guide are the auth.log, sys.log, and dpkg.log for a couple of particular logs.
+"""
+img = "LinuxLogs.png"
+
+[[app.info]]
+txt = """
+If you wish to view logs in a text editor, that can be done from this folder by \
+double clicking on any of the files. This method of looking at logs is not \
+covered on this site, but can be done by applying the same principles \
+discussed.
+"""
+#continue as necessary

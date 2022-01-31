@@ -1,0 +1,33 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Group Policy Editor"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 7"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+The Local Group Policy Editor is a feature of Windows 7 and \
+allows for configuration of group policy objects. To navigate to the group policy \
+editor, enter “gpedit” or “group policy editor” into the search field.
+"""
+img = "/Win7GPE/Start.png"
+
+[[app.info]]
+txt = """
+When you open the link highlighted in the above image, “Edit group policy”, the \
+Local Group Policy Editor will launch. In the local group policy editor, certain \
+auditing changes can be made in order to make sure certain events are logged.
+"""
+img = "/Win7GPE/GPE.png"
+#continue as necessary

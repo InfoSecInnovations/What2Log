@@ -18,7 +18,7 @@ default_installed = true #True or false only
 [[app.info]]
 txt = """
 The Local Group Policy Editor is a feature of Windows 10 Professional and \
-allows for configuration of group policy objects. It is importnat to note \
+allows for configuration of group policy objects. It is important to note \
 that the Group Policy Editor is not included in the Home version of Windows 10, \
 due to the fact they don't support groups in the same way. This includes the \
 ability to determine what is logged on a system. To navigate to the group policy \

@@ -1,0 +1,51 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Terminal"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Linux Ubuntu"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+The terminal is a command line interface way to view logs in Linux and allows \
+for filtering, sorting, removing, and other features. The method provided is \
+only one of many ways to view logs and can be varied based on the basic criteria \
+of what to look for in each log. To access the terminal, either select the icon \
+that is in the dock (it is pinned by default in Ubuntu).
+"""
+img = "/Terminal/Icon.png"
+
+[[app.info]]
+txt = """
+If the terminal is not pinned to the users dock, select Show Applications \
+from the dock and search for “terminal”.
+"""
+img = "/Terminal/Search.png"
+
+[[app.info]]
+txt = """
+Line any command line, the Linux Terminal does not give off a lot of information \
+when it first loads but is a powerful tool that can be used for a variety of \
+things within the system.
+"""
+img = "/Terminal/Launch.png"
+
+[[app.info]]
+txt = """
+Unlike Windows dependence on WevtUtil, Linux logs do not require a specific \
+command to view or sort. In fact, there are a variety of commands that can be \
+used and combined to sort and view the log files.  This site uses the grep \
+command to sort and filter the log file, but the less or tail commands can also \
+be used.
+"""
+#continue as necessary

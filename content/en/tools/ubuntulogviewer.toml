@@ -1,0 +1,78 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "GNOME Log Viewer"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Linux Ubuntu"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Linux versions that are Ubuntu based have a built in GUI application for viewing \
+logs. This app is simply called Logs in the Ubuntu interface and is very similar \
+to the one that is used by Mac but often lacks a lot of the controls that are \
+useful when it comes to logging. To navigate to the logs application in Ubuntu, \
+select the Show Applications icon in the dock.
+"""
+img = "/GNOME/Apps.png"
+
+[[app.info]]
+txt = """
+From here, type in “logs” and select the logs application.
+"""
+img = "/GNOME/Logs.png"
+
+[[app.info]]
+txt = """
+Upon launching, the logs main/home screen will show. The log application \
+interface is fairly straightforward and simple. The application generally \
+launches on the important tab, which will show only the few most important \
+logs, such as major errors.
+"""
+img = "/GNOME/Launch.png"
+
+[[app.info]]
+txt = """
+The “All” tab is a list of all the events from the logs compiled and then \
+sorted in order of time. This is a good way to see all the events at a particular \
+time. The Applications, System, Security, and Hardware tabs are all a list of \
+the events that relate to that particular topic. For example, the Applications \
+tab shows information relating to the computers applications such as launching \
+and minor tasks they do.
+"""
+img = "/GNOME/Left.png"
+
+[[app.info]]
+txt = """
+The top of the logs window displays a drop down option. This option allows the \
+user to select which logs they want to view from which boot of the machine. By \
+default, this is set to the current machine boot log.
+"""
+img = "/GNOME/ChooseLog.png"
+
+[[app.info]]
+txt = """
+In the top right of the application window, there are three options. Number 1 \
+is the search function and allows a user to search for a particular string in \
+the log file. You can also press control and F to activate the search function.
+"""
+img = "/GNOME/Search.png"
+
+[[app.info]]
+txt = """
+Number 2 gives the user the option to export the logs to a file. Finally, \
+Number 3 gives the user the option to open a new window, get help, or gain \
+info about the application. The logs application is not a great application \
+for viewing logs due to restrictions such as not being able to search for a \
+term that has spaces in it.
+ """
+#continue as necessary

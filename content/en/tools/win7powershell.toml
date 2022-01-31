@@ -1,0 +1,69 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Windows PowerShell"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-31
+release.version = 0.1
+
+# About this app
+operating_system = ["Windows 7"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Windows logs can be viewed either in the Command Prompt or in the. PowerShell \
+allows for a script to be written in order to automate the log process. To \
+navigate to PowerShell, type “powershell” in the start menu. To enter the \
+correct PowerShell app, the Windows PowerShell that is highlighted in blue \
+should be selected.
+"""
+img = "/Win7Powershell/Start.png"
+
+[[app.info]]
+txt = """
+In order to be able to view the log files, Windows PowerShell needs \
+administrator access. To launch PowerShell, right-click on the Windows \
+PowerShell option and select run as administrator. This is called an elevated \
+PowerShell.
+"""
+img = "/Win7Powershell/RunAsAdmin.png"
+
+[[app.info]]
+txt = """
+If prompted with this pop-up, click yes in order to continue and launch PowerShell.
+"""
+img = "/Win7Powershell/AllowAccess.png"
+
+[[app.info]]
+txt = """
+Upon opening, Powershell displays this screen, which does not display \
+much information to the user.
+"""
+img = "/Win7Powershell/CLI1.png"
+
+[[app.info]]
+txt = """
+In order to navigate to the correct location for the log files, enter the \
+command ```cd C:\WINDOWS\system32```
+"""
+img = "/Win7Powershell/CD.png"
+
+
+[[app.info]]
+txt = """
+Windows PowerShell should be launched as an administrator in order to view logs \
+as the location of the logs requires administrator access. If the PowerShell is \
+launched without permissions, the output will not actually give the user \
+any information.
+"""
+img = "/Win7Powershell/CLI2.png"
+
+
+
+#continue as necessary
