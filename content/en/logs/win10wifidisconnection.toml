@@ -6,7 +6,7 @@ W2L_schema = 1
 author = "Flynn Weeks" #Your name
 ##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
-release.version = Ash
+release.version = "Ash"
 release.date = 2021-11-22 #Todays date
 
 
