@@ -5,7 +5,7 @@ title = "User Logoff" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 author = "Flynn Weeks" #Your name
 credits = [ "Linux Ubuntu" ] #Any special callouts
-release.version = Ash
+release.version = "Ash"
 release.date = 2021-05-21 #Todays date
 
 # About this log type

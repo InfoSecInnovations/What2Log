@@ -5,7 +5,7 @@ title = "Group Policy Editor"
 author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-28
-release.version = Ash
+release.version = "Ash"
 
 # About this app
 operating_system = ["Windows 10"]
