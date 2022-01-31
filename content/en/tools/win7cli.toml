@@ -41,9 +41,9 @@ img = "/Win7CLI/CLI1.png"
 
 [[app.info]]
 txt = '''
-First, for logging purposes, a user should ensure they are located in the right \
-directory by entering the command ```cd C:\WINDOWS\system32``` If you are not \
-already in the correct folder, the command prompt will move you there and the \
+First, for logging purposes, a user should ensure they are located in the right
+directory by entering the command ```cd C:\WINDOWS\system32``` If you are not
+already in the correct folder, the command prompt will move you there and the 
 command line will now begin with **C:\WINDOWS\system32>**
 '''
 img = "/Win7CLI/CD.png"
