@@ -48,10 +48,10 @@ much information to the user.
 img = "/Win7Powershell/CLI1.png"
 
 [[app.info]]
-txt = """
+txt = '''
 In order to navigate to the correct location for the log files, enter the \
-command 
-"""
+command cd C:\WINDOWS\system32
+'''
 img = "/Win7Powershell/CD.png"
 
 
