@@ -22,6 +22,7 @@ deletion if it is done through Windows own MsiInstaller. This is important to \
 note as there may be gaps in the logs and these logs will not account for every \
 install on a device.
 """
+img = ""
 
 [[app.info]]
 txt = """
@@ -30,5 +31,5 @@ Another important note is the differences between Windows 10 Home and Windows \
 group policy editor that is used to toggle certain logs in Windows 10 Professional. \
 The logs (in particular, user login) are logged by default in Home. However, \
 Windows 10 Home does not have user groups and logs such as Group creation, group \
-deletion, etc. will not exist.  
+deletion, etc. will not exist.
 """
