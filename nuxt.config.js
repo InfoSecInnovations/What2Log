@@ -86,7 +86,15 @@ export default async () => {
 
     // markdownit configuration
     markdownit: {
-      linkify: true
+      linkify: true,
+      use: [
+        [
+          'markdown-it-link-attributes', 
+          {
+            attrs: {target: '_blank'}
+          }
+        ]
+      ]
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
