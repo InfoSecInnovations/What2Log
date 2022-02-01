@@ -1,0 +1,70 @@
+# Meta data about this w2l entry
+title = "Delete Me" #Name of the log (i.e. User Logon)
+W2L_schema = 1
+author = "Sebastian Boutin Blomfield" #Your name
+credits = [ "" ] #Any special callouts
+release.version = "Ash"
+release.date = 2022-01-14 #Todays date
+
+# About this log type
+suggested_log_level = "Delete Me" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Delete Me" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.service = "syslog" #Service that generates log
+source.log = "auth.log" #Log file or channel
+default_enabled = true #true or false
+collect_reason = """\
+This is just a test log to demonstrate what happens if you have text without an image
+  """
+
+# Additional References Go Here
+
+
+# Log Pile
+[log_pile]
+language = "bash" #Language for Log Pile
+view_logs = """grep "new user" /var/log/auth.log""" #How to view log
+
+# Compliance & framework information
+# Format is level and reference under the header [compliance.name]
+# Only include relevant frameworks
+[compliance.HIPAA]
+level = "Recommended" # Compliance requirement
+reference = "URL here" # Reference for compliance
+[compliance."PCI DSS"]
+level = "Required"
+reference = "https://www.pcisecuritystandards.org/document_library?category=pcidss&document=pci_dss"
+[compliace."NSA Event Forwarding"]
+level = "Recommended"
+reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+[compliance."NIST SP 800-53"]
+level = "Recommended"
+reference = "URL here"
+# repeat as needed
+
+# Enable via GUI
+# repeat as needed
+
+
+# Enable via CLI
+# repeat as needed
+
+
+# View via GUI
+[[GUI.view]]
+txt = """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi blandit dui vitae aliquet sollicitudin. Etiam ac velit pulvinar, tristique diam a, pharetra felis. Aliquam varius eros a tempus placerat. Nulla facilisi. Morbi gravida luctus arcu at accumsan. Duis eros lorem, posuere sed aliquam eu, porttitor non dolor. In hac habitasse platea dictumst. Donec tristique turpis non venenatis suscipit. Donec vehicula sem ac nulla dapibus, nec efficitur leo tempus. Vivamus rhoncus dui ipsum, sit amet finibus turpis placerat quis.
+Integer in vestibulum dui. Phasellus vel placerat massa, ac ultrices est. Quisque tempus libero tortor, efficitur tincidunt sem commodo a. Ut commodo purus tempus, scelerisque sem id, dignissim lectus. Ut ac efficitur ex. Nulla feugiat elit nec gravida rutrum. Phasellus tincidunt ipsum eget tortor maximus facilisis. Cras vestibulum ut turpis eu egestas. Suspendisse nec orci pharetra, mattis nisl sed, tincidunt velit. Aliquam varius nunc vitae porta bibendum. Quisque at convallis sapien. Sed nibh dui, porta in ipsum sit amet, feugiat interdum eros. Etiam viverra laoreet mauris nec bibendum. """
+
+[[GUI.view]]
+txt = """
+Nulla volutpat in sem eu gravida. Donec et egestas odio. Nunc sit amet neque dictum, placerat ante et, porta nunc. Phasellus sagittis orci vel odio hendrerit, a posuere dui scelerisque. Nullam id consequat quam. Proin sit amet nunc eleifend nisl consequat lobortis non id leo. Ut quis lorem quis purus venenatis dapibus. Nullam bibendum lacus et odio ullamcorper aliquet ac quis elit. Vivamus non quam in tellus scelerisque consectetur. Etiam et augue at lectus vulputate pulvinar. Maecenas pulvinar egestas pellentesque. Integer aliquet, sem id porttitor scelerisque, elit ligula malesuada augue, sed lacinia lorem ligula lacinia sapien.
+Mauris quis turpis venenatis, cursus massa tincidunt, condimentum libero. Vivamus sollicitudin sapien a suscipit mollis. Vivamus egestas eget lectus nec dapibus. Nam condimentum augue mollis, sagittis sem quis, finibus quam. Sed a metus semper, suscipit nisl nec, commodo lorem. Nam auctor neque molestie, tristique purus quis, pellentesque nunc. Fusce interdum nisl est, sed tempor libero pulvinar eu. Aliquam pharetra est sed diam malesuada ornare. Donec ut ex efficitur, ultrices ante quis, euismod tellus. Duis gravida vestibulum placerat. Proin ultrices pharetra diam vitae feugiat. Nam nec varius metus."""
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = "/AccountCreated/LinuxCLI.png"
+txt = 'In order to find the log of a user account creation, enter the command ```grep "new user" /var/log/auth.log```.'
+
+# repeat as needed

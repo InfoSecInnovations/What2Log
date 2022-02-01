@@ -28,8 +28,9 @@
     </div>
     <div class="columns">
       <template v-for="(section, index) of content">
-        <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)"></div>
-        <img :key="`enable-img-${index}`" :src="`/images/${section.img}`">
+        <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)" :class="!section.img ? 'wide' : ''"></div>
+        <img v-if="section.img" :key="`enable-img-${index}`" :src="`/images/${section.img}`">
+        <div v-else :key="`enable-img-placeholder-${index}`" hidden></div>
       </template>
     </div>
     <div class="info-block" v-if="article.references && article.references.length">
@@ -38,9 +39,13 @@
     </div>
     <div v-if="article.log_pile.view_logs || article.log_pile.check_status || article.log_pile.enable_logs || article.log_pile.disable_logs" class="logpile-section">
       <LogpileScript v-if="article.log_pile.view_logs" :script="article.log_pile.view_logs" script_type="view" :script_language="article.log_pile.language" :oses="article.source.os" :slug="article.slug"/>
+      <MissingLogpileScript v-else script_type="view"/>
       <LogpileScript v-if="article.log_pile.check_status" :script="article.log_pile.check_status" script_type="check" :script_language="article.log_pile.language" :oses="article.source.os" :slug="article.slug"/>
+      <MissingLogpileScript v-else script_type="check"/>
       <LogpileScript v-if="article.log_pile.disable_logging" :script="article.log_pile.disable_logging" script_type="disable" :script_language="article.log_pile.language" :oses="article.source.os" :slug="article.slug"/>
+      <MissingLogpileScript v-else script_type="disable"/>
       <LogpileScript v-if="article.log_pile.enable_logging" :script="article.log_pile.enable_logging" script_type="enable" :script_language="article.log_pile.language" :oses="article.source.os" :slug="article.slug"/>
+      <MissingLogpileScript v-else script_type="enable"/>
       <div class="script-info">
         <div class="script-language">Language: {{article.log_pile.language}}</div>
         <NuxtLink class="button" to="/logpile/">View Log Pile</NuxtLink>

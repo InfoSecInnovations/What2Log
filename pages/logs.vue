@@ -5,10 +5,10 @@
     <div id="container">
       <div id="sidebar">
         <div v-for="(levels, os) of sidebar" :key="os">
-          <input type="checkbox" :id="os" checked="true">
+          <input type="checkbox" :id="os">
           <label :for="os" class="top-level sidebar-element">{{os}}</label>
           <div v-for="{logs, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
-            <input type="checkbox" :id="`${os}-${level}`" checked="true">
+            <input type="checkbox" :id="`${os}-${level}`">
             <label :for="`${os}-${level}`" class="mid-level sidebar-element">{{level}}</label>
             <NuxtLink :to="`/logs/${log.slug}/`" v-for="log of logs" :key="`${os}-${level}-${log.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
           </div>

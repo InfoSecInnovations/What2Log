@@ -19,26 +19,38 @@
           <template v-for="(levels, os) of categories">
             <div class="logpile-row top-level" :key="os">
               <div class="logpile-category">{{os}}</div>
-              <input type="checkbox" v-on:change="check('enable', levels, os, $event)" :checked="checked('enable', os, levels)" :indeterminate.prop="indeterminate('enable', os, levels)">
-              <input type="checkbox" v-on:change="check('disable', levels, os, $event)" :checked="checked('disable', os, levels)" :indeterminate.prop="indeterminate('disable', os, levels)">
-              <input type="checkbox" v-on:change="check('view', levels, os, $event)" :checked="checked('view', os, levels)" :indeterminate.prop="indeterminate('view', os, levels)">
-              <input type="checkbox" v-on:change="check('check', levels, os, $event)" :checked="checked('check', os, levels)" :indeterminate.prop="indeterminate('check', os, levels)">
+              <input type="checkbox" v-if="Object.values(levels).some(level => level.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.enable_logging))" v-on:change="check('enable', levels, os, $event)" :checked="checked('enable', os, levels)" :indeterminate.prop="indeterminate('enable', os, levels)">
+              <div v-else></div>
+              <input type="checkbox" v-if="Object.values(levels).some(level => level.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.disable_logging))" v-on:change="check('disable', levels, os, $event)" :checked="checked('disable', os, levels)" :indeterminate.prop="indeterminate('disable', os, levels)">
+              <div v-else></div>
+              <input type="checkbox" v-if="Object.values(levels).some(level => level.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.view_logs))" v-on:change="check('view', levels, os, $event)" :checked="checked('view', os, levels)" :indeterminate.prop="indeterminate('view', os, levels)">
+              <div v-else></div>
+              <input type="checkbox" v-if="Object.values(levels).some(level => level.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.check_status))" v-on:change="check('check', levels, os, $event)" :checked="checked('check', os, levels)" :indeterminate.prop="indeterminate('check', os, levels)">
+              <div v-else></div>
             </div>
             <template v-for="{level, scripts} of sortLevels(levels)">
               <div class="logpile-row second-level" :key="`${os}-${level}`">
                 <div class="logpile-category">{{level}}</div>
-                <input type="checkbox" v-on:change="check('enable', scripts, os, $event)" :checked="checked('enable', os, scripts)" :indeterminate.prop="indeterminate('enable', os, scripts)">
-                <input type="checkbox" v-on:change="check('disable', scripts, os, $event)" :checked="checked('disable', os, scripts)" :indeterminate.prop="indeterminate('disable', os, scripts)">
-                <input type="checkbox" v-on:change="check('view', scripts, os, $event)" :checked="checked('view', os, scripts)" :indeterminate.prop="indeterminate('view', os, scripts)">
-                <input type="checkbox" v-on:change="check('check', scripts, os, $event)" :checked="checked('check', os, scripts)" :indeterminate.prop="indeterminate('check', os, scripts)">
+                <input type="checkbox" v-if="scripts.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.enable_logging)" v-on:change="check('enable', scripts, os, $event)" :checked="checked('enable', os, scripts)" :indeterminate.prop="indeterminate('enable', os, scripts)">
+                <div v-else></div>
+                <input type="checkbox" v-if="scripts.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.disable_logging)" v-on:change="check('disable', scripts, os, $event)" :checked="checked('disable', os, scripts)" :indeterminate.prop="indeterminate('disable', os, scripts)">
+                <div v-else></div>
+                <input type="checkbox" v-if="scripts.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.view_logs)" v-on:change="check('view', scripts, os, $event)" :checked="checked('view', os, scripts)" :indeterminate.prop="indeterminate('view', os, scripts)">
+                <div v-else></div>
+                <input type="checkbox" v-if="scripts.some(script => scriptLookup[script].log_pile && scriptLookup[script].log_pile.check_status)" v-on:change="check('check', scripts, os, $event)" :checked="checked('check', os, scripts)" :indeterminate.prop="indeterminate('check', os, scripts)">
+                <div v-else></div>
               </div>
               <template v-for="script of scripts">
                 <div class="logpile-row child" :key="`${os}-${level}-${script}`">
                   <div class="logpile-category">{{scriptLookup[script].title}}</div>
-                  <input type="checkbox" v-on:change="check('enable', script, os, $event)" :checked="checked('enable', os, script)">
-                  <input type="checkbox" v-on:change="check('disable', script, os, $event)" :checked="checked('disable', os, script)">
-                  <input type="checkbox" v-on:change="check('view', script, os, $event)" :checked="checked('view', os, script)">
-                  <input type="checkbox" v-on:change="check('check', script, os, $event)" :checked="checked('check', os, script)">
+                  <input type="checkbox" v-if="scriptLookup[script].log_pile && scriptLookup[script].log_pile.enable_logging" v-on:change="check('enable', script, os, $event)" :checked="checked('enable', os, script)">
+                  <div v-else></div>
+                  <input type="checkbox" v-if="scriptLookup[script].log_pile && scriptLookup[script].log_pile.disable_logging" v-on:change="check('disable', script, os, $event)" :checked="checked('disable', os, script)">
+                  <div v-else></div>
+                  <input type="checkbox" v-if="scriptLookup[script].log_pile && scriptLookup[script].log_pile.view_logs" v-on:change="check('view', script, os, $event)" :checked="checked('view', os, script)">
+                  <div v-else></div>
+                  <input type="checkbox" v-if="scriptLookup[script].log_pile && scriptLookup[script].log_pile.check_status" v-on:change="check('check', script, os, $event)" :checked="checked('check', os, script)">
+                  <div v-else></div>
                 </div>
               </template>
             </template>
