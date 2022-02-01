@@ -11,7 +11,8 @@
     <div class="columns">
       <template v-for="(section, index) of content">
         <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)"></div>
-        <img :key="`enable-img-${index}`" :src="`/images/${section.img}`">
+        <img v-if="section.img" :key="`enable-img-${index}`" :src="`/images/${section.img}`">
+        <div v-else :key="`enable-img-placeholder-${index}`" hidden></div>
       </template>
     </div>
   </div>
