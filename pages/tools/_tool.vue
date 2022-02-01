@@ -10,7 +10,7 @@
     </div>
     <div class="columns">
       <template v-for="(section, index) of content">
-        <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)"></div>
+        <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)" :class="!section.img ? 'wide' : ''"></div>
         <img v-if="section.img" :key="`enable-img-${index}`" :src="`/images/${section.img}`">
         <div v-else :key="`enable-img-placeholder-${index}`" hidden></div>
       </template>
