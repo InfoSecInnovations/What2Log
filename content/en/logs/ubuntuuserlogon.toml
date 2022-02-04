@@ -42,9 +42,7 @@ reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.p
 [log_pile]
 language = "bash" #Language for Log Pile
 view_logs = """grep "session opened" /var/log/auth.log""" #How to view log
-check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
-enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
-disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
+
 
 
 # Enable via GUI

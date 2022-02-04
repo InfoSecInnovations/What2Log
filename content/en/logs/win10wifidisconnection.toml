@@ -34,9 +34,7 @@ view_logs = """$xml = @'
 </QueryList>
 '@
 Get-WinEvent -FilterXM: $xml | select -first 1 | Format-Table -wrap """ #How to view log
-check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
-enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
-disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
+
 
 
 

@@ -39,9 +39,7 @@ reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/E
 [log_pile]
 language = "bash" #Language for Log Pile
 view_logs = """grep "new group" /var/log/auth.log""" #How to view log
-check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
-enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
-disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
+
 
 
 # Enable via GUI

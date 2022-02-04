@@ -29,9 +29,6 @@ SP 800-53, HIPAA and PCI DSS regulations.
 [log_pile]
 language = "bash" #Language for Log Pile
 view_logs = """grep "new user" /var/log/auth.log""" #How to view log
-check_status = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to check if log is enabled
-enable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to enable log
-disable_logging = """Unfortunately, due to current limitations, we do not yet have this command. Stay tuned for updates!""" #How to disable log
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]
