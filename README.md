@@ -1,6 +1,6 @@
 # What2Log
 
-!(What2Log)(/static/W2L.png)
+![What2Log](/static/W2L.png)
 
 An InfoSec Innovations project to collect information on how to set up logging on various platforms, all in one convenient place: https://what2log.com/.
 
