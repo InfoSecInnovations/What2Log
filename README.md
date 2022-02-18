@@ -1,5 +1,7 @@
 # What2Log
 
+!(What2Log)(/static/W2L.png)
+
 An InfoSec Innovations project to collect information on how to set up logging on various platforms, all in one convenient place: https://what2log.com/.
 
 We use the [Nuxt Content](https://content.nuxtjs.org/) module to transform [TOML](https://toml.io/) files into HTML pages.
