@@ -4,7 +4,7 @@
 
 An InfoSec Innovations project to collect information on how to set up logging on various platforms, all in one convenient place: https://what2log.com/.
 
-We use the [Nuxt Content](https://content.nuxtjs.org/) module to transform [TOML](https://toml.io/) files into HTML pages.
+We use the [Nuxt Content](https://content.nuxtjs.org/) module to transform [TOML](https://toml.io/) files into HTML pages. We push updates as different versions and we are currently in version 3, better known as version Ash. This was created on February 19, 2022.
 
 Join the discussion on [Discord](https://discord.gg/B9yRpw9tYd), [Twitter](https://twitter.com/What2Log) and [Reddit](https://www.reddit.com/r/What2Log/)
 
@@ -24,11 +24,6 @@ If you are new to using TOML, Visual Studio code has a "Even Better TOML" extens
 Once you're happy with your work, submit a GitHub Pull Request, and we will review your work and update the site if we like what you've done.
 
 
-
-## Planned features
-
-- Select scripts based on compliance frameworks
-- Translation support
 
 ## Build Setup
 
@@ -58,3 +53,9 @@ To output the files from the `generate` command to a different directory, create
   "dir": "C:/some/test/dir"
 }
 ```
+
+
+## Planned features
+
+- Select scripts based on compliance frameworks
+- Translation support
