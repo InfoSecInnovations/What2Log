@@ -4,8 +4,8 @@
 title = "" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 author = "" #Your name
-credits = [ "" ] #Any special callouts
-release.version = 0.1
+#credits = [ "" ] #Any special callouts
+release.version = "Ash"
 release.date = 2022-01-14 #Todays date
 
 # About this log type
@@ -38,6 +38,7 @@ reference = "URL here" # Reference for compliance
 # repeat as needed
 
 # Log Pile
+#Completely delete any section there is no code for
 [log_pile]
 language = "" #Language for Log Pile
 view_logs = """ """ #How to view log
