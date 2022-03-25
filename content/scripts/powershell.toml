@@ -1,5 +1,5 @@
 name="Powershell"
-extension=".ps1"
+file_extension=".ps1"
 enable.header='''
 '''
 enable.footer='''

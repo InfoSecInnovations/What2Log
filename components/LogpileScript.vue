@@ -61,11 +61,11 @@ export default {
       return getScriptBlob(this.content)
     },
     getScriptName() {
-      if (!this.scriptData) return ''
-      return `what2log-${this.script_type}-${this.$route.params.log.toLowerCase()}${this.scriptData.extension}`
+      return `what2log-${this.script_type}-${this.$route.params.log.toLowerCase()}${(this.scriptData && this.scriptData.file_extension) || '.txt'}`
     },
     enable() {
-      this.oses.forEach(os => this.$store.commit('logpile/setScriptStatus', {os, slug: this.slug, script_type: this.script_type, status: !this.enabled}))
+      const enabled = this.enabled
+      this.oses.forEach(os => this.$store.commit('logpile/setScriptStatus', {os, slug: this.slug, script_type: this.script_type, status: !enabled}))
     }
   }
 }

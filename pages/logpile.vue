@@ -66,7 +66,7 @@
                 <div class="script-label">{{`${getScriptTypeDescription(script.type)} of selected items for ${script.os}. Language: ${script.language}`}}</div>  
                 <div class="script-controls">
                 <img class="icon-button" src='/images/copy.svg' v-on:click="copy(script.content)">             
-                <a :href="getScriptBlob(script.content)" :download="getScriptName(script.language, script.os, script.type)">
+                <a :href="getScriptBlob(script.content)" :download="getScriptName(script.languageKey, script.os, script.type)">
                   <img class="icon-button" src='/images/download.svg'>
                 </a>
                 </div>
@@ -94,7 +94,7 @@ export default {
     }
   },
   async asyncData({$content, app}) {
-    const scriptData = await $content('/scripts').fetch().then(res => res.reduce((result, item) => ({...result, [item.name]: item}), {}))
+    const scriptData = await $content('/scripts').fetch().then(res => res.reduce((result, item) => ({...result, [item.name.toLowerCase()]: item}), {}))
     const log = await $content(`${app.i18n.locale}/logs`).sortBy('title').only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title']).fetch()
     return {
       categories: log.reduce((result, script) => {
@@ -139,12 +139,14 @@ export default {
         const scripts = []
         const os = category[0]
         const language = this.scriptLookup[script].log_pile.language
+        const languageKey = language.toLowerCase()
         const handleScript = script_type => {
           if (this.$store.getters['logpile/getScriptStatus'](os, script, script_type)) scripts.push({
             content: this.scriptLookup[script].log_pile[script_type == 'enable' ? 'enable_logging' : script_type == 'disable' ? 'disable_logging' : script_type == 'view' ? 'view_logs' : 'check_status'], 
             os, 
             type: script_type, 
-            language
+            language,
+            languageKey
           })
         }
         handleScript('enable')
@@ -155,15 +157,15 @@ export default {
       })))
       .flat(4)
       .reduce((result, item) => {
-        const entry = result.find(r => r.os == item.os && r.language == item.language && r.type == item.type)
+        const entry = result.find(r => r.os == item.os && r.languageKey == item.languageKey && r.type == item.type)
         if (entry) entry.content = `${entry.content}\n\n${item.content}`
         else result.push(item)
         return result
       }, [])
       .map(item => {
-        if (this.scriptData[item.language][item.type]) {
-          if (this.scriptData[item.language][item.type].header) item.content = `${this.scriptData[item.language][item.type].header}\n\n${item.content}`
-          if (this.scriptData[item.language][item.type].footer) item.content = `${item.content}\n\n${this.scriptData[item.language][item.type].footer}`
+        if (this.scriptData[item.languageKey] && this.scriptData[item.languageKey][item.type]) {
+          if (this.scriptData[item.languageKey][item.type].header) item.content = `${this.scriptData[item.languageKey][item.type].header}\n\n${item.content}`
+          if (this.scriptData[item.languageKey][item.type].footer) item.content = `${item.content}\n\n${this.scriptData[item.languageKey][item.type].footer}`
         }
         return item
       })
@@ -174,8 +176,8 @@ export default {
     getScriptBlob(script) {
       return getScriptBlob(script)
     },
-    getScriptName(language, os, script_type) {
-      return `what2log-${script_type}-${os.replace(/\s/g, '').toLowerCase()}${this.scriptData[language].extension}`
+    getScriptName(languageKey, os, script_type) {
+      return `what2log-${script_type}-${os.replace(/\s/g, '').toLowerCase()}${(this.scriptData[languageKey] && this.scriptData[languageKey].file_extension) || '.txt'}`
     },
     getScriptTypeDescription(script_type) {
       if (script_type == 'enable') return 'Enable logging'
