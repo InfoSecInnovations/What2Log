@@ -3,9 +3,10 @@
 # Meta data about this App entry
 title = ""
 author = ""
-#credits = []
+credits = [ "" ]
 release.date = 2021-05-21
 release.version = "Ash"
+tags = [ "" ]
 
 # About this app
 operating_system = [""]
