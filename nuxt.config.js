@@ -68,7 +68,8 @@ export default async () => {
       },
       markdown: {
         remarkPlugins: ['remark-unwrap-images']
-      }
+      },
+      fullTextSearchFields: ['title', 'slug', 'collect_reason', 'text']
     },
 
     // i18n configuration: https://i18n.nuxtjs.org/options-reference

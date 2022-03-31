@@ -80,8 +80,18 @@ body
     padding: small_padding
     gap: medium_padding
     font-size: navbar_font_size
+    position: relative
     a
       color: secondary_font_color
+    .search-result-dropdown
+      position: absolute
+      top: 100%
+      background-color: secondary_font_color
+      list-style: none
+      margin: 0
+      padding: small_padding
+      a
+        color: main_font_color
 
   #container
     display: flex
