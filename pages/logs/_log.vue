@@ -10,6 +10,7 @@
         <div v-if="article.credits && article.credits.length" class="credits">
           <p v-for="(credit, index) of article.credits" :key="`credits-${index}`">{{credit}}</p>
         </div>
+        <Tags :tags="article.tags"/>
       </div>
       <div class="info-block">
         <h4>{{article.default_enabled ? 'Enabled by default' : 'Disabled by default'}}</h4>
