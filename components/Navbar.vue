@@ -5,7 +5,7 @@
     <NuxtLink to="/about/">About Us</NuxtLink>
     <NuxtLink to="/logpile/">The Log Pile</NuxtLink>
     <NuxtLink to="/blog/">Log Blog</NuxtLink>
-    <input v-model="query" type="search" autocomplete="off" v-on:click.stop="searchFocus = !searchFocus"/>
+    <input v-model="query" type="search" autocomplete="off" v-on:click.stop="searchFocus = !searchFocus" v-on:keyup="onEnter"/>
     <ul class="search-result-dropdown" v-if="searchFocus" id="result-dropdown">
       <li v-for="result of results" :key="result.path">
         <NuxtLink :to="result.path.replace(`${$i18n.locale}/`, '')" v-on:click.native="resetQuery">
@@ -52,6 +52,13 @@ export default {
     resetQuery() {
       this.query = ''
       this.searchFocus = false
+    },
+    onEnter(e) {
+      if (e.key == 'Enter') {
+        if (this.query) this.$router.push({path: '/search', query: { query: this.query }})
+        else this.$router.push("/tags")
+        this.resetQuery()
+      } 
     }
   },
   mounted () {

@@ -6,7 +6,7 @@
       <div id="inner-container">
         <div class="page-feed">
           <h1>Search Results</h1>
-          <div class="blog-posts">
+          <div class="search-results">
             <PageCard v-for="result of results" :key="result.path" :article="result" :link="result.path.replace(`${$i18n.locale}/`, '')"/>
           </div>
           <div v-if="lastPage" class="feed-nav">

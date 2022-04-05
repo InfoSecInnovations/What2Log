@@ -209,11 +209,12 @@ body
           display: flex
           gap: extra_padding
           justify-content: center
-      .blog-posts
+      .blog-posts, .search-results
         display: grid
         grid-template-columns: 1fr 1fr
         gap: main_padding
         align-items: start
+      .blog-posts
         .page-card
           &:first-child, &:nth-child(even):last-child
             grid-column: 1 / 3
@@ -223,6 +224,7 @@ body
           &:first-child
             img
               max-height: page_card_max_image_height
+
     #sidebar
       display: flex
       flex-direction: column
