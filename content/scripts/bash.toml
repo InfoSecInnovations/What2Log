@@ -1,0 +1,16 @@
+name="Bash"
+file_extension=".sh"
+enable.header='''
+'''
+enable.footer='''
+'''
+disable.header='''
+'''
+check.header='''
+'''
+check.footer='''
+'''
+view.header='''
+'''
+view.footer='''
+'''
