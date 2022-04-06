@@ -156,6 +156,7 @@ export default {
         return scripts
       })))
       .flat(4)
+      .filter(item => item.content)
       .reduce((result, item) => {
         const entry = result.find(r => r.os == item.os && r.languageKey == item.languageKey && r.type == item.type)
         if (entry) entry.content = `${entry.content}\n\n${item.content}`
