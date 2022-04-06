@@ -115,6 +115,14 @@ export default async () => {
         }
         if (document.extension === '.toml') {
           if (document.collect_reason) document.excerpt = document.collect_reason.length < excerptLength ? document.collect_reason : document.collect_reason.substr(0, document.collect_reason.lastIndexOf(' ', excerptLength))
+          if (document.source && document.source.os) {
+            if (!document.tags) document.tags = []
+            document.tags.unshift(...document.source.os)
+          }
+          if (document.operating_system) {
+            if (!document.tags) document.tags = []
+            document.tags.unshift(...document.operating_system)
+          }
         }
       }
     }

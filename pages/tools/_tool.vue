@@ -5,8 +5,7 @@
       <div>
         <h2 v-for="os of article.operating_system" :key="os">{{os}}</h2>
       </div>
-      <AuthorCard :author="article.author" :date="article.createdAt" />
-      <Tags :tags="article.tags"/>
+      <AuthorCard :author="article.author" :date="article.createdAt" :tags="article.tags"/>
       <p v-if="article.description" class="info">{{article.description}}</p>
     </div>
     <div class="columns">
