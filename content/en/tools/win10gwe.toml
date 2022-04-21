@@ -1,0 +1,53 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = "Get-WinEvent"
+author = "Flynn Weeks"
+credits = []
+release.date = 2022-01-28
+release.version = "Ash"
+
+# About this app
+operating_system = ["Windows 10"]
+default_installed = true #True or false only
+
+#Installation Info (install info is optional, some tools are part of base os)
+#continue as necessary
+
+# App Info
+[[app.info]]
+txt = """
+Get-WinEvent is a Powershell Module that is a powerful tool that can be used\
+to view and gather more information about logs in Windows. This function can\
+be used to return a large variety of logs and can be tuned to provide a highly\
+streamlined output. Powershell must be run as an administrator in order to\
+successfully use the Get-WinEvent function. What2Log uses this as the primary\
+command line tool for Windows Logs in the Log Pile.
+"""
+img = "/GWE/GWEMan.png"
+
+[[app.info]]
+txt = """
+The FilterHashTable function is the best way to specify what you want the\
+command to return. FilterHashTable can be used to specify specific channels\
+and EventId's as well as specify date and time ranges.
+"""
+img = "/GWE/GWEfht.png"
+
+[[app.info]]
+txt = """
+Another function that is useful is the -MaxEvents tag, which lets the user\
+specify the number of events it wants returned. Without this tag, Get-WinEvent\
+will return every matching record. For brevity sake, screenshots provided of logs\
+will include this tag, but it is optional on the users end.
+"""
+img = "/GWE/GWELogEvents.png"
+
+[[app.info]]
+txt = """
+In order to get a full log and its related info, add the function of Format-List\
+and Get-WinEvent will print the entire log.
+"""
+img = "/GWE/GWEformatlist.png"
+
+#continue as necessary

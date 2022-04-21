@@ -7,7 +7,7 @@ author = "Flynn Weeks" #Your name
 ##organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = "Ash"
-release.date = 2021-09-08 #Todays date
+release.date = 2022-04-20 #Todays date
 
 
 # About this log type
@@ -30,7 +30,7 @@ references = [
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
-view_logs = """wevtutil qe Security "/q:*[System [(EventID=4738)]]" /f:text /c:1""" #How to view log
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4738'}""" #How to view log
 check_status = 'auditpol /get /subcategory:"computer account management"'#How to check if log is enabled
 enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
@@ -48,10 +48,6 @@ level = "Required" # Compliance requirement
 reference = "https://www.pcisecuritystandards.org/document_library?category=pcidss&document=pci_dss" # Reference for compliance
 # repeat as needed
 
-
-
-
-
 #Enabled by default-section removed
 
 # View via GUI
@@ -60,9 +56,12 @@ img = "/AccountChanged/WEV.png"
 txt = "Changes made to an account are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4738**."
 # repeat as needed
 
+[[CLI.view]]
+img = "/AccountChanged/CLI-GWE.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4738'}"```"""
 
 # View via CLI
 [[CLI.view]]
-img = "/AccountChanged/CLI.png"
-txt = 'To view this log in the command line, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4738)]]"```'
+img = "/AccountChanged/CLI-wevtutil.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4738)]]"```'
 # repeat as needed
