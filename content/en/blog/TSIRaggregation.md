@@ -1,5 +1,5 @@
 ---
-title: The Struggle is Real: To Aggregate or Not to Aggregate
+title: "The Struggle is Real: To Aggregate or Not to Aggregate"
 description: Log Aggregation is a critical step in log management for most orgs, but how necessary is it?
 author: Flynn Weeks
 ---

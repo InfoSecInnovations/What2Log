@@ -1,5 +1,5 @@
 ---
-title: What2Log Update: Alder
+title: "What2Log Update: Alder"
 description: What2Log's newest update and the changes it brings!
 author: Flynn Weeks
 ---

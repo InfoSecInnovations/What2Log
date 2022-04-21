@@ -1,5 +1,5 @@
 ---
-title: The Struggle Is Real: Event Correlation with Logs
+title: "The Struggle Is Real: Event Correlation with Logs"
 description: This blog explores event correlation and the importance of it
 author: Flynn Weeks
 ---

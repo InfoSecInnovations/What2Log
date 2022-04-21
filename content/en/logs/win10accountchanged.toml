@@ -57,7 +57,7 @@ txt = "Changes made to an account are logged by default in Windows 10 Profession
 # repeat as needed
 
 [[CLI.view]]
-img = "/AccountChanged/CLI-GWE.png"
+img = "/AccountChanged/CLI-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4738'}"```"""
 
 # View via CLI

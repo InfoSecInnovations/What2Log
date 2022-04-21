@@ -1,5 +1,5 @@
 ---
-title: Event ID 4672: Special Privileges Assigned to a New Logon
+title: "Event ID 4672: Special Privileges Assigned to a New Logon"
 description: What is event 4672 and why do we care?
 author: Flynn Weeks
 ---

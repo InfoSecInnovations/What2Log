@@ -1,5 +1,5 @@
 ---
-title: EventRecordID: A Hidden XML Tag
+title: "EventRecordID: A Hidden XML Tag"
 description: Event Record ID is a hidden feature in the Windows Event Logs that serves to further enrich the information of logs.
 author: Flynn Weeks
 ---
