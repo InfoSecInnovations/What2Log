@@ -17,7 +17,7 @@ default_installed = true #True or false only
 # App Info
 [[app.info]]
 txt = """
-Get-WinEvent is a Powershell Module that is a powerful tool that can be used \
+Get-WinEvent is a Powershell Module and powerful tool that can be used \
 to view and gather more information about logs in Windows. This function can \
 be used to return a large variety of logs and can be tuned to provide a highly \
 streamlined output. Powershell must be run as an administrator in order to \
@@ -29,8 +29,8 @@ img = "/GWE/GWEMan.png"
 [[app.info]]
 txt = """
 The FilterHashTable function is the best way to specify what you want the \
-command to return. FilterHashTable can be used to specify specific channels \
-and Event Id's as well as specify date and time ranges.
+command to return. FilterHashTable can be used to specify specific log channels \
+and Event Id's as well as specify date and time ranges. 
 """
 img = "/GWE/GWEfht.png"
 
@@ -46,7 +46,8 @@ img = "/GWE/GWELogEvents.png"
 [[app.info]]
 txt = """
 In order to get a full log and its related info, add the function of Format-List \
-and Get-WinEvent will print the entire log.
+and Get-WinEvent will print the entire log. This qualifier is added to logs shown \
+in What2Log to allow for a further education on the logs.
 """
 img = "/GWE/GWEformatlist.png"
 
