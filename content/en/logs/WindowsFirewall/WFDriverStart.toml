@@ -11,16 +11,16 @@ release.date = 2022-04-27
 
 
 # About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
+suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = true
 collect_reason = """\
 The Windows Firewall driver starting successfully is an indication that the \
-service is functioning correctly and has started for a particular time period. \
-Knowing that the service successfully came on line can help ensure that Windows \
-Firewall is working as intended.
+driver for the Windows Firewall is functioning correctly and has started for a \
+particular time period. Knowing that the service successfully came on line can \
+help ensure that Windows Firewall is working as intended.
   """
 
 # Additional References Go Here
@@ -53,7 +53,7 @@ disable_logging =
 # View via GUI
 [[GUI.view]]
 img = "/WindowsFirewall/WFDriverStart/WEV.png"
-txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4624** , or filter the log for the ID **4624**."
+txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **5033** , or filter the log for the ID **5033**."
 # repeat as needed
 
 
