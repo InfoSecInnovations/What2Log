@@ -12,7 +12,7 @@ release.date = 2022-04-27
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
+app.os = [ "Windows Firewall" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = true
@@ -33,9 +33,6 @@ references = [
 [log_pile]
 language = "PowerShell"
 view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='5024'} -MaxEvents 1 | Format-List"""
-check_status =
-enable_logging =
-disable_logging =
 
 
 # Compliance & framework information
