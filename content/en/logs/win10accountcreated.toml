@@ -37,7 +37,7 @@ references = [
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
-view_logs = """wevtutil qe Security "/q:*[System [(EventID=4720)]]" /f:text /c:1""" #How to view log
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4720'}""" #How to view log
 check_status = 'auditpol /get /subcategory:"computer account management" ' #How to check if log is enabled
 enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
@@ -61,7 +61,6 @@ level = "Recommended"
 reference = "URL here"
 # repeat as needed
 
-
 #Enabled by default-section removed
 
 # View via GUI
@@ -70,9 +69,12 @@ img = "/AccountCreated/WEV.png"
 txt = "Windows 10 Professional logs this by default. To view, navigate to the security tab of the Windows Event Viewer. Sort or filter the logs for event ID **4720**."
 # repeat as needed
 
-
 # View via CLI
 [[CLI.view]]
-img = "/AccountCreated/CLI.png"
-txt = 'To view this log in the command line, run the command prompt or powershell as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4720)]]"```'
+img = "/AccountCreated/CLI-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, run powershell as an administrator. Enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4720'}```"""
+
+[[CLI.view]]
+img = "/AccountCreated/CLI-wevt.png"
+txt = 'To view this log in the command line with wevt, run the command prompt or powershell as an administrator. Enter the command ```wevtutil qe Security "/q:*[System [(EventID=4720)]]"```'
 # repeat as needed

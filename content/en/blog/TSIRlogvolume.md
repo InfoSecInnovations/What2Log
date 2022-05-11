@@ -1,5 +1,5 @@
 ---
-title: The Struggle is Real: Log Volume
+title: "The Struggle is Real: Log Volume"
 description: Managing log volume
 author: Flynn Weeks
 ---

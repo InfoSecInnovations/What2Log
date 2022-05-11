@@ -65,7 +65,7 @@ Event ID 8001 is a successful connection to a wireless network."""
 # View via CLI
 [[CLI.view]]
 img = "/WiFiConnection/CLI.png"
-txt = """To view a Wireless disconnection log in the command line, launch PowerShell or Command Prompt as an administrator.
+txt = """To view a Wireless disconnection log in the command line, launch PowerShell as an administrator.
 Because this is an application log, there are two commands that are required to view it from the command line. The first command is
 <pre><code>
 $xml = @'

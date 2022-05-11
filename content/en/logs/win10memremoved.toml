@@ -30,7 +30,7 @@ references = [
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
-view_logs = """wevtutil qe Security "/q:*[System [(EventID=4733)]]" /f:text /c:1""" #How to view log
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4733'} -MaxEvents 1 | Format-List""" #How to view log
 check_status = 'auditpol /get /subcategory:"security group management"' #How to check if log is enabled
 enable_logging = """auditpol /set /subcategory:"security group management" /Success:Enable /Failure:Enable""" #How to enable log
 disable_logging = """auditpol /set /subcategory:"security group management" /Success:Disable /Failure:Disable""" #How to disable log
@@ -60,6 +60,10 @@ txt = "Windows 10 Professional logs group membership changes by default. To view
 
 # View via CLI
 [[CLI.view]]
-img = "/GroupMemChange/CLI2.png"
-txt = 'To view this log, launch PowerShell or the command prompt as an administrator. To view a member being removed from a security group enter the command ```wevtutil qe Security "/q:*[System [(EventID=4733)]]" ```'
+img = "/GroupMemChange/CLI2-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4733'} -MaxEvents 1 | Format-List```"""
+
+[[CLI.view]]
+img = "/GroupMemChange/CLI2-wevt.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4733)]]"```'
 # repeat as needed

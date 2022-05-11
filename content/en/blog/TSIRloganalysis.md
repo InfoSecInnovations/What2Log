@@ -1,5 +1,5 @@
 ---
-title: The Struggle is Real: Log Analysis
+title: "The Struggle is Real: Log Analysis"
 description: Why is Log analysis such a struggle
 author: Flynn Weeks
 ---
