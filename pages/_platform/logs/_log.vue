@@ -56,9 +56,8 @@
 
 <script>
 export default {
-  async asyncData(context) {
-    const { $content, app, params} = context;
-    const article = await $content(`${app.i18n.locale}/logs/${params.log}`).fetch();
+  async asyncData({ $content, app, params}) {
+    const article = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs/${params.log}`).fetch();
     let content = []
     if (article.GUI && article.GUI.enable) content = [...content, ...article.GUI.enable]
     if (article.CLI && article.CLI.enable) content = [...content, ...article.CLI.enable]

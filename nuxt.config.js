@@ -15,6 +15,7 @@ const stripMarkdown = markdown => new Promise((resolve, reject) => {
 
 export default async () => { 
   const config = await fs.readJSON('w2lconfig.json').catch(() => null)
+  const platforms = await fs.readdir('content/en/platforms')
   return {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
@@ -116,6 +117,10 @@ export default async () => {
           if (document.collect_reason) document.excerpt = document.collect_reason.length < excerptLength ? document.collect_reason : document.collect_reason.substr(0, document.collect_reason.lastIndexOf(' ', excerptLength))
         }
       }
+    },
+
+    publicRuntimeConfig: {
+      platforms
     }
   }
 }

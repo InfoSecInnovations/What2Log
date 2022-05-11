@@ -9,7 +9,7 @@
           <h1 class="home">What2Log</h1>
           <h2 class="home">Logging made easy</h2>
           <NuxtLink to="about/" class="button">Learn More</NuxtLink>
-          <NuxtLink to="logs/win10accountchanged/" class="button">View the Logs</NuxtLink>
+          <NuxtLink to="windows/logs/win10accountchanged/" class="button">View the Logs</NuxtLink>
         </div>
 
         <!-- Three column layout-->
@@ -17,7 +17,7 @@
           <div class="column">
             <h2 class="home">Tools</h2>
             <p>Click here to learn more about the tools of our supported Operating Systems.</p>
-            <NuxtLink to="tools/win10note/" class="button">Learn More</NuxtLink>
+            <NuxtLink to="windows/tools/win10note/" class="button">Learn More</NuxtLink>
           </div>
           <div class="column">
             <h2 class="home">The Log Pile</h2>

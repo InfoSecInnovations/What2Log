@@ -7,7 +7,7 @@
         <div v-for="(tools, os) of sidebar" :key="os">
           <input type="checkbox" :id="os">
           <label :for="os" class="top-level sidebar-element">{{os}}</label>
-          <NuxtLink :to="`/tools/${tool.slug}/`" v-for="tool of tools" :key="`${os}-${tool.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
+          <NuxtLink :to="`/${$route.params.platform}/tools/${tool.slug}/`" v-for="tool of tools" :key="`${os}-${tool.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
         </div>
       </div>
       <NuxtChild />
@@ -17,8 +17,8 @@
 
 <script>
 export default {
-  async asyncData({$content, app}) {
-    const sidebarData = await $content(`${app.i18n.locale}/tools`).sortBy('title').only(['operating_system', 'title', 'slug']).fetch()
+  async asyncData({$content, app, params}) {
+    const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/tools`).sortBy('title').only(['operating_system', 'title', 'slug']).fetch()
     const sidebar = sidebarData.reduce((result, data) => {
       data.operating_system.forEach(os => {
         if (!result[os]) result[os] = []
