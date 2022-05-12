@@ -1,6 +1,7 @@
 <template>
   <div>
     <W2LHeader />
+    <Navbar />
     <div id="container">
       <div id="inner-container">
 
@@ -8,17 +9,17 @@
 
         <div class="row">
           <div class="column">
-            <h2 class="home">Logs</h2>
+            <h2>Logs</h2>
             <p>Click here to learn more about what you should be logging and how to do so.</p>
             <NuxtLink to="logs/" class="button">Learn More</NuxtLink>
           </div>
           <div class="column">
-            <h2 class="home">Tools</h2>
+            <h2>Tools</h2>
             <p>Click here to learn more about the tools of this platform.</p>
             <NuxtLink to="tools/" class="button">Learn More</NuxtLink>
           </div>
           <div class="column">
-            <h2 class="home">The Log Pile</h2>
+            <h2>The Log Pile</h2>
             <p>Click here to learn more about The Log Pile and build custom scripts for your system.</p>
             <NuxtLink to="logpile/" class="button">Learn More</NuxtLink>
           </div>

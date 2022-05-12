@@ -1,15 +1,17 @@
 <template>
   <div>
     <W2LHeader />
+    <HomeNavbar />
     <div id="container">
       <div id="inner-container">
 
-      <div>insert some text here</div>
+        <h1>Logs, Tools and The Log Pile</h1>
+        <h3>Select a platform to view the relevant What2Log data.</h3>
 
         <!-- Platform links -->
         <div class="row">
           <div class="column" v-for="platform of $config.platforms" :key="platform">
-            <h2 class="home">{{(platformData[platform] && platformData[platform].name) || platform}}</h2>
+            <h2>{{(platformData[platform] && platformData[platform].name) || platform}}</h2>
             <NuxtLink :to="`/${platform}/`" class="button">Learn More</NuxtLink>
           </div>
         </div>

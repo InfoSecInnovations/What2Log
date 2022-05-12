@@ -15,7 +15,7 @@
         <!-- Three column layout-->
         <div class="row">
           <div class="column">
-            <h2 class="home">Log Blog</h2>
+            <h2>Log Blog</h2>
             <p>Click here to learn more about what you should be logging. </p>
             <NuxtLink to="blog/" class="button">Learn More</NuxtLink>
           </div>

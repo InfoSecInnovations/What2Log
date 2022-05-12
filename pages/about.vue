@@ -1,7 +1,7 @@
 <template>
   <div>
     <W2LHeader />
-    <Navbar />
+    <HomeNavbar />
     <div class="about-section">
       <h2 class="home">What2Log</h2>
       <p> What2Log was a project that began when we saw a noticeable gap in
