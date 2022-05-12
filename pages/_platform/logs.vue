@@ -32,7 +32,7 @@ export default {
       })
       return result
     }, {})
-    if (!params.log) app.router.push(sidebarData[0].slug)
+    if (!params.log) app.router.push(`/${params.platform}/logs/${sidebarData[0].slug}`)
     return {
       sidebar
     }

@@ -26,6 +26,7 @@ export default {
       })
       return result
     }, {})
+    if (!params.tool) app.router.push(`/${params.platform}/tools/${sidebarData[0].slug}`)
     return {
       sidebar
     }
