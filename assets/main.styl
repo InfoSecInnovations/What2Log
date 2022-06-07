@@ -16,6 +16,7 @@ body
     text-decoration: none
     color: secondary_color
     cursor: pointer
+    overflow-wrap: anywhere
   h1
   h2
   h3
@@ -217,6 +218,8 @@ body
       display: flex
       flex-direction: column
       min-width: sidebar_width
+      @media (max-width: 768px)
+        display: none
       input[type="checkbox"]
         display: none
         & ~ label:after
@@ -251,6 +254,7 @@ body
       align-items: center
       padding: main_padding
       gap: main_padding
+      min-width: 0
       .columns
         display: grid
         grid-template-columns: 1fr 1fr
@@ -364,9 +368,10 @@ body
       align-items: flex-start
       gap: medium_padding
       pre
-        flex: 1
+        flex-grow: 1
         padding: code_padding
       .quick-script-controls
+        flex-shrink: 0
         flex-basis: logpile_controls_size
         display: flex
         flex-direction: column
