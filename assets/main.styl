@@ -214,12 +214,20 @@ body
           &:first-child
             img
               max-height: page_card_max_image_height
+    .sidebar-toggle, .sidebar-toggle-label
+      display: none
+    @media (max-width: 768px)
+      .sidebar-toggle-label
+        display: block
+      .sidebar-toggle:checked ~ #sidebar
+        display: flex
     #sidebar
       display: flex
       flex-direction: column
       min-width: sidebar_width
       @media (max-width: 768px)
         display: none
+        position: absolute
       input[type="checkbox"]
         display: none
         & ~ label:after
