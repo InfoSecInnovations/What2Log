@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="w2l-container">
     <W2LHeader />
     <div id="container">
       <div id="inner-container">
@@ -15,17 +15,17 @@
         <!-- Three column layout-->
         <div class="row">
           <div class="column">
-            <h2 class="home">Tools</h2>
+            <h3 class="home">Tools</h3>
             <p>Click here to learn more about the tools of our supported Operating Systems.</p>
             <NuxtLink to="tools/win10note/" class="button">Learn More</NuxtLink>
           </div>
           <div class="column">
-            <h2 class="home">The Log Pile</h2>
+            <h3 class="home">The Log Pile</h3>
             <p>Click here to learn more about The Log Pile and build custom scripts for your system.</p>
             <NuxtLink to="logpile/" class="button">Learn More</NuxtLink>
           </div>
           <div class="column">
-            <h2 class="home">Log Blog</h2>
+            <h3 class="home">Log Blog</h3>
             <p>Click here to learn more about what you should be logging. </p>
             <NuxtLink to="blog/" class="button">Learn More</NuxtLink>
           </div>

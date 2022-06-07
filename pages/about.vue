@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="w2l-container">
     <W2LHeader />
     <Navbar />
     <div class="about-section">

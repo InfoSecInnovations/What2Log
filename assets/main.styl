@@ -7,6 +7,11 @@ body
   font-size: main_font_size
   color: main_font_color
 
+  #w2l-container
+    max-width: main_page_width
+    position: relative
+    margin: auto
+
   a, .nav-link
     text-decoration: none
     color: secondary_color
@@ -57,6 +62,7 @@ body
     justify-content: space-between
     align-items: center
     padding: small_padding header_padding
+    flex-wrap: wrap
     .header-link
       display: flex
       align-items: center
@@ -85,7 +91,6 @@ body
 
   #container
     display: flex
-    justify-content: center
     #inner-container
       flex-basis: container_width
       display: flex
@@ -96,7 +101,6 @@ body
         flex-direction: column
         align-items: center
         justify-content: center
-        flex-basis: splash_height
         background-image: url("https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
         background-position: center
         background-size: cover
@@ -212,7 +216,7 @@ body
     #sidebar
       display: flex
       flex-direction: column
-      width: sidebar_width
+      min-width: sidebar_width
       input[type="checkbox"]
         display: none
         & ~ label:after
