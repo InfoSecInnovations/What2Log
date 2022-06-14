@@ -3,7 +3,7 @@
     <W2LHeader />
     <Navbar />
     <div id="container">
-      <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox">
+      <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox" @input="resetScroll">
       <label for="sidebar-toggle-button" class="sidebar-toggle-label"><img src="/images/menu.svg" /></label>
       <div id="sidebar">
         <div v-for="(levels, os) of sidebar" :key="os">
@@ -44,6 +44,9 @@ export default {
     },
     linkClick() {
       document.getElementById('sidebar-toggle-button').checked = false
+    },
+    resetScroll(e) {
+      e.target.labels[0].scrollIntoView()
     }
   }
 }
