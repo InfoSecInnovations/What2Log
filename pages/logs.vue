@@ -12,7 +12,7 @@
           <div v-for="{logs, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
             <input type="checkbox" :id="`${os}-${level}`">
             <label :for="`${os}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink :to="`/logs/${log.slug}/`" v-for="log of logs" :key="`${os}-${level}-${log.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
+            <NuxtLink :to="`/logs/${log.slug}/`" @click.native="linkClick" v-for="log of logs" :key="`${os}-${level}-${log.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
           </div>
         </div>
       </div>
@@ -41,6 +41,9 @@ export default {
   methods: {
     sortLevels(levels) { 
       return Object.entries(levels).sort((a, b) => compareLevels(a[0], b[0])).map(level => ({level: level[0], logs: level[1]})) 
+    },
+    linkClick() {
+      document.getElementById('sidebar-toggle-button').checked = false
     }
   }
 }
