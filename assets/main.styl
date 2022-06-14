@@ -92,6 +92,8 @@ body
 
   #container
     display: flex
+    @media (max-width: media_breakpoint)
+      display: block
     #inner-container
       flex-basis: container_width
       display: flex
@@ -226,7 +228,8 @@ body
       .sidebar-toggle:checked ~ #sidebar
         display: flex
       .sidebar-container
-        position: absolute
+        position: sticky
+        top: 0
     #sidebar
       display: flex
       flex-direction: column
