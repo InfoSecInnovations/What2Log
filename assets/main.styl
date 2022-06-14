@@ -216,18 +216,23 @@ body
               max-height: page_card_max_image_height
     .sidebar-toggle, .sidebar-toggle-label
       display: none
-    @media (max-width: 768px)
+    @media (max-width: media_breakpoint)
       .sidebar-toggle-label
         display: block
+        height: menu_button_size
+        img
+          width: menu_button_size
+          height: menu_button_size
       .sidebar-toggle:checked ~ #sidebar
         display: flex
+      .sidebar-container
+        position: absolute
     #sidebar
       display: flex
       flex-direction: column
       min-width: sidebar_width
-      @media (max-width: 768px)
+      @media (max-width: media_breakpoint)
         display: none
-        position: absolute
       input[type="checkbox"]
         display: none
         & ~ label:after
@@ -375,9 +380,12 @@ body
       display: flex
       align-items: flex-start
       gap: medium_padding
+      flex-wrap: wrap
+      justify-content: center
       pre
         flex-grow: 1
         padding: code_padding
+        flex-basis: logpile_script_size
       .quick-script-controls
         flex-shrink: 0
         flex-basis: logpile_controls_size

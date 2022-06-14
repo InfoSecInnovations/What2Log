@@ -5,7 +5,7 @@
     <div id="container">
       <div class="sidebar-container">
         <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox">
-        <label for="sidebar-toggle-button" class="sidebar-toggle-label">MENU</label>
+        <label for="sidebar-toggle-button" class="sidebar-toggle-label"><img src="/images/menu.svg" /></label>
         <div id="sidebar">
           <div v-for="(levels, os) of sidebar" :key="os">
             <input type="checkbox" :id="os">
