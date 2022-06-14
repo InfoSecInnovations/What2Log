@@ -1,13 +1,13 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-title = "Windows Firewall Rule Deleted"
+title = "Windows Firewall Restored to Default"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
 ##credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = "Ash"
-release.date = 2022-05-02
+release.date = 2022-05-05
 
 
 # About this log type
@@ -17,10 +17,9 @@ source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
 collect_reason = """\
-This log indicates that a rule has been been deleted and can indicate \
-both malicious and non malicious behavior. It could be a simple \
-change to reflect a security policy change or it could be an attacker \
-attempting to allow themselves into a network.
+This log indicates that the Windows Firewall has been restored to its \
+out of the box default. This log could be a huge indicator that an attacker \
+is attempting to bypass the Windows Firewall.
   """
 
 # Additional References Go Here
@@ -32,7 +31,7 @@ references = [
 # Log Pile
 [log_pile]
 language = "PowerShell"
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4948'} -MaxEvents 1 | Format-List"""
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4949'} -MaxEvents 1 | Format-List"""
 check_status = '''auditpol /get /subcategory:"MPSSVC Rule-Level Policy Change"'''
 enable_logging = '''auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /Success:Enable /Failure:Enable'''
 disable_logging = '''auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /Success:Disable /Failure:Disable'''
@@ -42,6 +41,7 @@ disable_logging = '''auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change
 # Format is level and reference under the header [compliance.name]
 
 # repeat as needed
+
 
 
 # Enable via GUI
@@ -68,19 +68,20 @@ txt = '''Windows 10 does not log this by default. To enable logging of this acti
 #End of Enable section
 
 
+
 # View via GUI
 [[GUI.view]]
-img = "/WindowsFirewall/4948/WEV.png"
-txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4948** , or filter the log for the ID **4948**."
+img = "/WindowsFirewall/4949/WEV.png"
+txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4949** , or filter the log for the ID **4949**."
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
-img = "/WindowsFirewall/4948/CLI-gwe.png"
-txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4948'} -MaxEvents 1 | Format-List```"""
+img = "/WindowsFirewall/4949/CLI-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4949'} -MaxEvents 1 | Format-List```"""
 
 [[CLI.view]]
-img = "/WindowsFirewall/4948/CLI-wevt.png"
-txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4948)]]" /f:text /c:1```'
+img = "/WindowsFirewall/4949/CLI-wevt.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4949)]]" /f:text /c:1```'
 # repeat as needed
