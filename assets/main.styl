@@ -56,7 +56,6 @@ body
     overflow-x: auto
   code
     margin: small_padding 0
-    display: block
 
   #header-bar
     display: flex
@@ -283,11 +282,18 @@ body
         place-items: center
         gap: main_padding
         width: 100%
-        img
-          max-width: 100%
-        p
+        .section
+          min-width: 0
+          width: 100%
           background-color: secondary_background
           padding: extra_padding
+          display: flex
+          flex-direction: column
+          gap: medium_padding
+          pre
+            background-color: alternate_background
+        img
+          max-width: 100% 
         &>*:nth-child(4n - 1)
           grid-column: 2
         &>*:nth-child(4n)
