@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div id="w2l-container">
     <W2LHeader />
     <Navbar />
     <div id="container">
+      <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox" @input="resetScroll">
+      <label for="sidebar-toggle-button" class="sidebar-toggle-label"><img src="/images/menu.svg" /></label>
       <div id="sidebar">
         <div v-for="(levels, os) of sidebar" :key="os">
           <input type="checkbox" :id="os">
@@ -10,7 +12,7 @@
           <div v-for="{logs, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
             <input type="checkbox" :id="`${os}-${level}`">
             <label :for="`${os}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink :to="`/${$route.params.platform}/logs/${log.slug}/`" v-for="log of logs" :key="`${os}-${level}-${log.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
+            <NuxtLink :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick" v-for="log of logs" :key="`${os}-${level}-${log.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
           </div>
         </div>
       </div>
@@ -40,6 +42,12 @@ export default {
   methods: {
     sortLevels(levels) { 
       return Object.entries(levels).sort((a, b) => compareLevels(a[0], b[0])).map(level => ({level: level[0], logs: level[1]})) 
+    },
+    linkClick() {
+      document.getElementById('sidebar-toggle-button').checked = false
+    },
+    resetScroll(e) {
+      e.target.labels[0].scrollIntoView()
     }
   }
 }
