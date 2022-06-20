@@ -16,7 +16,6 @@ body
     text-decoration: none
     color: secondary_color
     cursor: pointer
-    overflow-wrap: anywhere
   h1
   h2
   h3
@@ -69,6 +68,7 @@ body
       gap: medium_padding
       font-size: header_title_size
       font-weight: bold
+      flex-wrap: wrap
       img
         width: header_icon_size
         height: header_icon_size
@@ -275,6 +275,8 @@ body
       padding: main_padding
       gap: main_padding
       min-width: 0
+      a
+        overflow-wrap: anywhere
       .columns
         display: grid
         grid-template-columns: 1fr 1fr
@@ -477,6 +479,7 @@ body
       object-fit: cover
   .author-block
     display: flex
+    flex-wrap: wrap
     align-items: center
     width: info_width
     gap: medium_padding
