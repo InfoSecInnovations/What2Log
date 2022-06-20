@@ -9,16 +9,16 @@
     <input v-model="query" type="search" autocomplete="off" v-on:click.stop="searchFocus = !searchFocus" v-on:keyup="onEnter"/>
     <ul class="search-result-dropdown" v-if="searchFocus" id="result-dropdown">
       <li v-for="result of results" :key="result.path">
-        <NuxtLink :to="result.path.replace(`${$i18n.locale}/`, '')" v-on:click.native="resetQuery">
+        <NuxtLink :to="result.path.replace(`${$i18n.locale}/platforms/`, '')" v-on:click.native="resetQuery">
           <p>{{result.title}}</p>
           <p class="search-meta">{{`${result.dir.endsWith('logs') ? `${result.source.os.join(' / ')} Logs` : `${result.operating_system.join('/ ')} Tools`}`}}</p>
         </NuxtLink>
       </li>
       <li v-if="results.length">
-        <NuxtLink :to="{path: '/search', query: { query }}" v-on:click.native="resetQuery">See all results...</NuxtLink>  
+        <NuxtLink :to="{path: `/${$route.params.platform}/search`, query: { query }}" v-on:click.native="resetQuery">See all results...</NuxtLink>  
       </li>
       <li>
-        <NuxtLink to="/tags" v-on:click.native="resetQuery">Browse tags...</NuxtLink>  
+        <NuxtLink :to="`/${$route.params.platform}/tags`" v-on:click.native="resetQuery">Browse tags...</NuxtLink>  
       </li>
     </ul>
   </div>
@@ -40,13 +40,12 @@ export default {
         return
       }
 
-      this.results = await this.$content(`${this.$i18n.locale}`, {deep: true})
-      .where({dir: {$in: [`/${this.$i18n.locale}/logs`, `/${this.$i18n.locale}/tools`]}})
+      this.results = await this.$content(`${this.$i18n.locale}/platforms/${this.$route.params.platform}`, {deep: true})
+      .where({dir: {$in: [`/${this.$i18n.locale}/platforms/${this.$route.params.platform}/logs`, `/${this.$i18n.locale}/platforms/${this.$route.params.platform}/tools`]}})
       .sortBy('createdAt', 'asc')
       .limit(12)
       .search(query)
       .fetch()
-
     }
   },
   methods: {

@@ -1,14 +1,13 @@
 <template>
-  <div>
+  <div id="w2l-container">
     <W2LHeader />
     <Navbar />
     <div id="container">
       <div id="inner-container">
         <div class="page-feed">
-          <h1>Browse Tags</h1>
-          <Tags :tags="tags"/>
+          <h1>Search Results</h1>
           <div class="search-results">
-            <PageCard v-for="result of results" :key="result.path" :article="result" :link="result.path.replace(`${$i18n.locale}/`, '')"/>
+            <PageCard v-for="result of results" :key="result.path" :article="result" :link="result.path.replace(`${$i18n.locale}/platforms/`, '')"/>
           </div>
           <div v-if="lastPage" class="feed-nav">
             <div v-if="currentPage < lastPage" v-on:click="setPage(currentPage + 1)" class="nav-link">Previous</div>
@@ -23,31 +22,19 @@
 <script>
 export default {
   head() {
-    return { title: 'Tags' }
+    return { title: 'Search' }
   },
   data() {
     return {
-      tags: [],
       results: [],
       currentPage: 0,
       lastPage: 0,
       itemsPerPage: 10
     }
   },
-  async asyncData({$content, app}) {
-    return {
-      tags: await $content(`${app.i18n.locale}`, {deep: true})
-      .where({dir: {$in: [`/${app.i18n.locale}/logs`, `/${app.i18n.locale}/tools`]}})
-      .only('tags')
-      .fetch()
-      .then(res => [...new Set(res.filter(item => item.tags && item.tags.length).map(item => item.tags).flat())])
-    }
-  },
   methods: {
     async updateSearch(query) {
-      const search = this.$content(`${this.$i18n.locale}`, {deep: true})
-      .where({dir: {$in: [`/${this.$i18n.locale}/logs`, `/${this.$i18n.locale}/tools`]}})
-      .where({tags: {$contains: query}})
+      const search = this.$content(`${this.$i18n.locale}/platforms/${this.$route.params.platform}`, {deep: true}).where({dir: {$in: [`/${this.$i18n.locale}/platforms/${this.$route.params.platform}/logs`, `/${this.$i18n.locale}/platforms/${this.$route.params.platform}/tools`]}}).search(query)
       this.lastPage = await search.fetch().then(res => Math.floor((res.length - 1) / this.itemsPerPage))
       this.results = await search
       .sortBy('createdAt', 'asc')

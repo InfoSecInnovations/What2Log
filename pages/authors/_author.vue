@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="w2l-container">
     <W2LHeader />
     <HomeNavbar />
     <div id="container">
@@ -28,6 +28,9 @@ export default {
     return {
       author
     }
+  },  
+  head() {
+    return { title: (this.author && this.author.name) || '' }
   }
 }
 </script>
