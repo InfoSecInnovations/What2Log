@@ -1,5 +1,5 @@
 <template>
-  <div id="main-content">
+  <div id="main-content" v-if="article">
     <div class="title-block">
       <h1>{{article.title}}</h1>
       <div>

@@ -12,7 +12,7 @@
           <div v-for="{logs, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
             <input type="checkbox" :id="`${os}-${level}`">
             <label :for="`${os}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick" v-for="log of logs" :key="`${os}-${level}-${log.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
+            <NuxtLink v-for="log of logs" :key="`${os}-${level}-${log.title}`" :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick"  :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
 <script>
 import compareLevels from '~/assets/compareLevels'
 export default {
-  async asyncData({$content, app, params}) {
+  async asyncData({$content, app, params, redirect}) {
     const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`).sortBy('title').only(['source', 'suggested_log_level', 'title', 'slug']).fetch()
     const sidebar = sidebarData.reduce((result, data) => {
       data.source.os.forEach(os => {
@@ -34,10 +34,14 @@ export default {
       })
       return result
     }, {})
-    if (!params.log) app.router.push(`/${params.platform}/logs/${sidebarData[0].slug}`)
     return {
       sidebar
     }
+  },
+  async mounted () {
+    if (!this.$route.params.log) {
+      this.$router.push(`/${this.$route.params.platform}/logs/${Object.values(Object.values(this.sidebar)[0])[0][0].slug}`)
+    } 
   },
   methods: {
     sortLevels(levels) { 

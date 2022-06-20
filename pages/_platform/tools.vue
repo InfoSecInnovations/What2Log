@@ -28,10 +28,14 @@ export default {
       })
       return result
     }, {})
-    if (!params.tool) app.router.push(`/${params.platform}/tools/${sidebarData[0].slug}`)
     return {
       sidebar
     }
+  },
+  async mounted () {
+    if (!this.$route.params.tool) {
+      this.$router.push(`/${this.$route.params.platform}/tools/${Object.values(this.sidebar)[0][0].slug}`)
+    } 
   },
   methods: {
     linkClick() {

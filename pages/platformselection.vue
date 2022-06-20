@@ -29,7 +29,6 @@ export default {
   async asyncData({$content, app, params, $config}) {
     const platformData = await Promise.all($config.platforms.map(async platform => ({platform, info: await $content(`${app.i18n.locale}/platforms/${platform}/info`).only('name').fetch()})))
     .then(info => info.reduce((result, value) => ({...result, [value.platform]: value.info}), {}))
-    console.log(platformData)
     return {platformData}
   }
 }
