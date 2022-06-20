@@ -4,9 +4,10 @@
 title = "" #Name of the log (i.e. User Logon)
 W2L_schema = 1
 author = "" #Your name
-#credits = [ "" ] #Any special callouts
+credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2022-04-27 #Todays date
+tags = [ "" ] #Tags by which people can group pages
 
 # About this log type
 suggested_log_level = "" #Minimum, Ideal, Extreme, or Special Case

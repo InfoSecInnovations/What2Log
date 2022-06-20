@@ -6,7 +6,7 @@
         <h2 v-for="os of article.source.os" :key="os">{{os}}</h2>
       </div>
       <div class="info-block">
-        <AuthorCard :author="article.author" :date="article.createdAt" />
+        <AuthorCard :author="article.author" :date="article.createdAt" :tags="article.tags"/>
         <div v-if="article.credits && article.credits.length" class="credits">
           <p v-for="(credit, index) of article.credits" :key="`credits-${index}`">{{credit}}</p>
         </div>

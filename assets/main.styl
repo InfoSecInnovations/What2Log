@@ -86,8 +86,24 @@ body
     padding: small_padding
     gap: medium_padding
     font-size: navbar_font_size
+    position: relative
     a
       color: secondary_font_color
+    .search-result-dropdown
+      position: absolute
+      top: 100%
+      background-color: secondary_font_color
+      list-style: none
+      margin: 0
+      padding: small_padding
+      li
+        margin: small_padding 0
+      a
+        color: main_font_color
+      .search-meta
+        font-size: small_font_size
+        color: top_level_background
+        font-style: italic
 
   #container
     display: flex
@@ -201,11 +217,12 @@ body
           display: flex
           gap: extra_padding
           justify-content: center
-      .blog-posts
+      .blog-posts, .search-results
         display: grid
         grid-template-columns: 1fr 1fr
         gap: main_padding
         align-items: start
+      .blog-posts
         .page-card
           &:first-child, &:nth-child(even):last-child
             grid-column: 1 / 3
@@ -468,11 +485,12 @@ body
       font-size: main_font_size
     .author-block
       background-color: background
-      flex-direction: column
-      align-items: flex-start
-      gap: small_padding
       padding: medium_padding
       width: 100%
+      .article-info
+        flex-direction: column
+        align-items: flex-start
+        gap: small_padding
     img
       width: 100%
       max-height: page_card_max_image_height
@@ -484,6 +502,10 @@ body
     width: info_width
     gap: medium_padding
     a
+      display: flex
+      align-items: center
+      gap: medium_padding
+    .article-info
       display: flex
       align-items: center
       gap: medium_padding
@@ -501,3 +523,7 @@ body
     flex-direction: column
     padding: main_padding 0
     gap: main_padding
+  .tags
+    display: flex
+    gap: medium_padding
+    justify-content: center
