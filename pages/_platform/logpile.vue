@@ -10,7 +10,7 @@
         </div>
         <div class="logpile-menu">
           <div class="logpile-row">
-            <div class="logpile-header"></div>
+            <div class="button small" @click="reset">Reset Selection</div>
             <div class="logpile-header">Enable</div>
             <div class="logpile-header">Disable</div>
             <div class="logpile-header">View</div>
@@ -119,6 +119,9 @@ export default {
       if (typeof data == 'string') return this.$store.commit('logpile/setScriptStatus', {os, slug: data, script_type, status: event.target.checked})
       if (Array.isArray(data)) return data.forEach(script => this.check(script_type, script, os, event))
       Object.values(data).forEach(value => this.check(script_type, value, os, event))
+    },
+    reset(){
+      this.$store.commit('logpile/reset')
     },
     checked(script_type, os, data) {
       if (typeof data == 'string') return this.$store.getters['logpile/getScriptStatus'](os, data, script_type)

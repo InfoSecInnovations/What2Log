@@ -47,6 +47,9 @@ body
     border-radius: button_radius
     cursor: pointer
     text-align: center
+    &.small
+      padding: small_padding
+      font-size: small_font_size
 
   pre
     padding: small_padding
@@ -148,6 +151,7 @@ body
           gap: small_padding
           padding: logpile_row_padding
           align-items: center
+          justify-items: start
           .logpile-header
             font-weight: bold
           &.top-level
