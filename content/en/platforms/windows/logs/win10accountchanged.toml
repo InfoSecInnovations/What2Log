@@ -8,6 +8,7 @@ author = "Flynn Weeks" #Your name
 credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2022-04-20 #Todays date
+Tags = ["User Account"]
 
 
 # About this log type
@@ -58,14 +59,14 @@ txt = "Changes made to an account are logged by default in Windows 10 Profession
 
 [[CLI.view]]
 img = "/AccountChanged/CLI-gwe.png"
-txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command 
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command
 
     Get-WinEvent -FilterHashTable @{LogName='Security';ID='4738'}"""
 
 # View via CLI
 [[CLI.view]]
 img = "/AccountChanged/CLI-wevtutil.png"
-txt = """To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command 
+txt = """To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command
 
     wevtutil qe Security "/q:*[System [(EventID=4738)]]"""""
 # repeat as needed
