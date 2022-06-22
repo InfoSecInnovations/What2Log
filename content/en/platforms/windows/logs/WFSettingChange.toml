@@ -12,7 +12,7 @@ tags = ["Windows Firewall Change"]
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-asource.os = [ "Windows Firewall" ] # App.os if application logs
+source.os = [ "Windows Firewall" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
