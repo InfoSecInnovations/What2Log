@@ -1,0 +1,64 @@
+#This is the template for What2Log entries
+
+# Meta data about this w2l entry
+title = "Windows Firewall Driver Started"
+W2L_schema = 1
+author = "Flynn Weeks"
+##author.organization = "InfoSec Innovations"
+##credits = [ "Mick Douglas", "Tee Leigh" ]
+release.version = "Aspen"
+release.date = 2022-04-27
+tags = ["Windows Firewall Application"]
+
+# About this log type
+suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Windows Firewall" ] # App.os if application logs
+source.service = "Microsoft Windows security auditing"
+source.log = "Security"
+default_enabled = true
+collect_reason = """\
+The Windows Firewall driver starting successfully is an indication that the \
+driver for the Windows Firewall is functioning correctly and has started for a \
+particular time period. Knowing that the service successfully came on line can \
+help ensure that Windows Firewall is working as intended.
+  """
+
+# Additional References Go Here
+references = [
+"https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+]# repeat as needed
+
+
+# Log Pile
+[log_pile]
+language = "PowerShell"
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='5033'} -MaxEvents 1 | Format-List"""
+
+# Compliance & framework information
+# Format is level and reference under the header [compliance.name]
+
+# repeat as needed
+
+
+
+# Enable via GUI
+# repeat as needed
+
+
+
+# View via GUI
+[[GUI.view]]
+img = "/WindowsFirewall/5033/WEV.png"
+txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **5033** , or filter the log for the ID **5033**."
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = "/WindowsFirewall/5033/CLI-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='5033'} -MaxEvents 1 | Format-List```"""
+
+[[CLI.view]]
+img = "/WindowsFirewall/5033/CLI-wevt.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command```wevtutil qe Security "/q:*[System [(EventID=5033)]]" /f:text /c:1```'
+# repeat as needed
