@@ -6,6 +6,7 @@ author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-31
 release.version = "Ash"
+tags = ["Default Tools", "Command Line Tools"]
 
 # About this app
 operating_system = ["Linux Ubuntu"]
