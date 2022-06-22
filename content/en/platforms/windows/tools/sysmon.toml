@@ -6,7 +6,7 @@ author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-28
 release.version = "Ash"
-tags = ["A Tag About Tools", "Some Tag"]
+tags = ["Installed Tools", "Command Line Tools"]
 
 # About this app
 operating_system = ["Windows 10"]
