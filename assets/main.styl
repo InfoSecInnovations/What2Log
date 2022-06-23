@@ -531,7 +531,15 @@ body
     padding: main_padding 0
     gap: main_padding
   .tags
-    display: flex
-    flex-wrap: wrap
+    display: grid
+    grid-template-columns: 1fr 1fr
     gap: medium_padding
-    justify-content: center
+    justify-items: center
+    width: info_width
+    align-self: center
+    @media (max-width: media_breakpoint)
+      display: flex
+      flex-direction: column
+      width: 100%
+      align-items: center
+
