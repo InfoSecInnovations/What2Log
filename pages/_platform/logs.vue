@@ -12,7 +12,7 @@
           <div v-for="{logs, level} of sortLevels(levels)" :key="`sidebar-${category}-${level}`" class="sidebar-list">
             <input type="checkbox" :id="`${category}-${level}`">
             <label :for="`${category}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink v-for="log of logs" :key="`sidebar-${category}-${level}-${log.title}`" :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick"  :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
+            <NuxtLink v-for="log of logs" :key="`sidebar-${category}-${level}-${log.slug}`" :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick"  :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
           </div>
         </div>
       </div>

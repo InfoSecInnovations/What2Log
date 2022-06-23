@@ -9,7 +9,7 @@
         <div v-for="(tools, category) of sidebar" :key="`sidebar-${category}`">
           <input type="checkbox" :id="category">
           <label :for="category" class="top-level sidebar-element">{{category}}</label>
-          <NuxtLink :to="`/${$route.params.platform}/tools/${tool.slug}/`" @click.native="linkClick" v-for="tool of tools" :key="`sidebar-${category}-${tool.title}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
+          <NuxtLink :to="`/${$route.params.platform}/tools/${tool.slug}/`" @click.native="linkClick" v-for="tool of tools" :key="`sidebar-${category}-${tool.slug}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
         </div>
       </div>
       <NuxtChild />
