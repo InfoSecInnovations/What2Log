@@ -7,6 +7,7 @@
         <div class="page-feed">
           <h1>Browse Tags</h1>
           <Tags :tags="tags"/>
+          <h2 v-if="$route.query.query">{{$route.query.query}}</h2>
           <div class="search-results">
             <PageCard v-for="result of results" :key="result.path" :article="result" :link="result.path.replace(`${$i18n.locale}/platforms/`, '')"/>
           </div>
