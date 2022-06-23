@@ -8,7 +8,7 @@ author = "Flynn Weeks" #Your name
 credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2021-09-08 #Todays date
-
+Tags = ["User Account"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case

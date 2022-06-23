@@ -8,6 +8,7 @@ author = "Flynn Weeks" #Your name
 credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2021-09-17 #Todays date
+tags = ["Group Activity"]
 
 
 # About this log type

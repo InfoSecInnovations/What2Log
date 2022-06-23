@@ -6,6 +6,8 @@ author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-31
 release.version = "Ash"
+tags = ["Default Tools", "Command Line Tools", "Recommended Tool"]
+
 
 # About this app
 operating_system = ["Windows 10"]
@@ -51,7 +53,7 @@ img = "/Win10Powershell/CLI1.png"
 
 [[app.info]]
 txt = '''
-In order to navigate to the correct location for the log files, enter the 
+In order to navigate to the correct location for the log files, enter the
 command ```cd C:\WINDOWS\system32```
 '''
 img = "/Win10Powershell/CLI2.png"

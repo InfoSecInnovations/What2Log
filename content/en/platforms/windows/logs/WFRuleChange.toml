@@ -8,11 +8,11 @@ author = "Flynn Weeks"
 ##credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = "Aspen"
 release.date = 2022-05-02
-
+tags = ["Windows Firewall Rules"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-app.os = [ "Windows Firewall" ] # App.os if application logs
+source.os = [ "Windows Firewall" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false

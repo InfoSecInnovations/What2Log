@@ -8,7 +8,7 @@ author = "Flynn Weeks"
 ##credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = "Ash"
 release.date = 2021-05-28
-
+tags = ["User Activity"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case

@@ -6,6 +6,8 @@ author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-28
 release.version = "Ash"
+tags = ["Default Tools", "Command Line Tools", "Recommended Tool"]
+
 
 # About this app
 operating_system = ["Windows 10"]
@@ -30,7 +32,7 @@ img = "/GWE/GWEMan.png"
 txt = """
 The FilterHashTable function is the best way to specify what you want the \
 command to return. FilterHashTable can be used to specify specific log channels \
-and Event Id's as well as specify date and time ranges. 
+and Event Id's as well as specify date and time ranges.
 """
 img = "/GWE/GWEfht.png"
 
