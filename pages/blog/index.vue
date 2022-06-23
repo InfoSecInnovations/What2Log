@@ -1,7 +1,7 @@
 <template>
   <div id="w2l-container">
     <W2LHeader />
-    <Navbar />
+    <HomeNavbar />
     <div id="container">
       <div id="inner-container" class="blog">
         <h1>Log Blog</h1>
