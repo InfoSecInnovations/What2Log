@@ -8,6 +8,7 @@ author = "Flynn Weeks"
 ##credits = [ "Mick Douglas", "Tee Leigh" ]
 release.version = "Aspen"
 release.date = 2022-04-27
+category = "Windows Firewall"
 tags = ["Windows Firewall Rules"]
 
 # About this log type

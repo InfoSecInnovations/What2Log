@@ -2,9 +2,6 @@
   <div id="main-content" v-if="article">
     <div class="title-block">
       <h1>{{article.title}}</h1>
-      <div>
-        <h2 v-for="os of article.source.os" :key="os">{{os}}</h2>
-      </div>
       <div class="info-block">
         <AuthorCard :author="article.author" :date="article.createdAt" :tags="article.tags"/>
         <div v-if="article.credits && article.credits.length" class="credits">
