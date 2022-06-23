@@ -1,1 +1,5 @@
 name = "Windows"
+category_ordering = [
+  "Security",
+  "Windows Firewall"
+]
