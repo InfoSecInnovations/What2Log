@@ -148,6 +148,7 @@ export default {
     },
     getScripts() {
       this.results = Object.entries(this.categories)
+      .sort(([categoryA, itemsA], [categoryB, itemsB]) => compareCategories(categoryA, categoryB, this.platformInfo && this.platformInfo.category_ordering))
       .map(([category, categoryItems]) => Object.values(categoryItems).map(level => level.map(script => {
         const scripts = []
         const language = this.scriptLookup[script].log_pile.language
