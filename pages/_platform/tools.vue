@@ -9,7 +9,7 @@
         <div v-for="entry of orderedSidebar" :key="`sidebar-${entry.category}`">
           <input type="checkbox" :id="entry.category">
           <label :for="entry.category" class="top-level sidebar-element">{{entry.category}}</label>
-          <NuxtLink :to="`/${$route.params.platform}/tools/${tool.slug}/`" @click.native="linkClick" v-for="tool of tools" :key="`sidebar-${entry.category}-${tool.slug}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
+          <NuxtLink v-for="tool of entry.items" :to="`/${$route.params.platform}/tools/${tool.slug}/`" @click.native="linkClick" :key="`sidebar-${entry.category}-${tool.slug}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
         </div>
       </div>
       <NuxtChild />
@@ -22,7 +22,7 @@ import compareCategories from '~/assets/compareCategories'
 export default {
   async asyncData({$content, app, params}) {
     const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/tools`).sortBy('title').only(['operating_system', 'title', 'slug', 'category']).fetch()
-    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).only('category_ordering').fetch()
+    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = sidebarData.reduce((result, data) => {
       if (!result[data.category]) result[data.category] = []
       result[data.category].push(data)
