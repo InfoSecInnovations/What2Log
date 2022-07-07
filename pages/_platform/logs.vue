@@ -27,14 +27,13 @@ import compareCategories from '~/assets/compareCategories'
 export default {
   async asyncData({$content, app, params}) {
     const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`).sortBy('title').only(['source', 'suggested_log_level', 'title', 'slug', 'category']).fetch()
-    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).only('category_ordering').fetch()
+    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = sidebarData.reduce((result, data) => {
       if (!result[data.category]) result[data.category] = {}
       if (!result[data.category][data.suggested_log_level]) result[data.category][data.suggested_log_level] = []
       result[data.category][data.suggested_log_level].push(data)
       return result
     }, {})
-    console.log(platformInfo)
     return {
       sidebar,
       platformInfo
