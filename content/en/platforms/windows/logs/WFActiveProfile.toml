@@ -8,7 +8,7 @@ author = "Flynn Weeks"
 ##credits = [ "Mick Douglas", "Tee Cure" ]
 release.version = "Aspen"
 release.date = 2022-06-14
-category = "Windows Firewall"
+category = "Security"
 tags = ["Windows Firewall Change"]
 
 # About this log type
