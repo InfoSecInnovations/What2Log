@@ -129,10 +129,16 @@ body
         color: secondary_font_color
         gap: splash_spacing
         padding: splash_spacing
-        .button
-          background-color: splash_button_background 
-          color: secondary_font_color
-          font-size: splash_button_font_size
+        .row 
+          .column
+            color: secondary_font_color
+            &:nth-child(odd)
+              background-color: unset
+            .button
+              background-color: splash_button_background 
+              color: secondary_font_color
+              font-size: splash_button_font_size
+              min-width: 70%
         h1
         h2
         h3
@@ -393,10 +399,15 @@ body
       gap: main_padding
       &:nth-child(odd)
         background-color: secondary_background
-      h2
-        color: title_color
+      .link
+        color: secondary_color
       p
         flex: 1
+  .platform-grid
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+    padding: main_padding
+    gap: main_padding
   .logpile-section
     display: flex
     flex-direction: column

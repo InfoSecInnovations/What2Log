@@ -1,7 +1,7 @@
 <template>
   <div id="w2l-container">
     <W2LHeader />
-    <Navbar />
+    <Navbar :platform="(platformInfo && platformInfo.name) || $route.params.platform"/>
     <div id="container">
       <div id="inner-container">
         <div class="page-feed">
@@ -31,6 +31,10 @@ export default {
       lastPage: 0,
       itemsPerPage: 10
     }
+  },
+  async asyncData({$content, app, params}) {
+    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).only('category_ordering').fetch()
+    return {platformInfo}
   },
   methods: {
     async updateSearch(query) {

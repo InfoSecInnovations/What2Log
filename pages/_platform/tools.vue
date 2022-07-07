@@ -1,7 +1,7 @@
 <template>
   <div id="w2l-container">
     <W2LHeader />
-    <Navbar />
+    <Navbar :platform="(platformInfo && platformInfo.name) || $route.params.platform"/>
     <div id="container">
       <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox" @input="resetScroll">
       <label for="sidebar-toggle-button" class="sidebar-toggle-label"><img src="/images/menu.svg" /></label>
