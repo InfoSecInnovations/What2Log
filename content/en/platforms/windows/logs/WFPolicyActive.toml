@@ -5,10 +5,10 @@ title = "Windows Firewall Policy Active"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
-##credits = [ "Mick Douglas", "Tee Leigh" ]
+##credits = [ "Mick Douglas", "Tee Cure" ]
 release.version = "Aspen"
 release.date = 2022-04-29
-category = "Windows Firewall"
+category = "Security"
 tags = ["Windows Firewall Application"]
 
 # About this log type
