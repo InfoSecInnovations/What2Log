@@ -103,6 +103,12 @@ export default async () => {
     build: {
     },
 
+    router: {
+      scrollBehavior() {
+        return {x: 0, y: 0}
+      }
+    },
+
     generate: {
       dir: (config && config.dir) || 'dist'
     },
