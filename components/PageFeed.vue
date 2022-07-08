@@ -27,7 +27,6 @@ export default {
     this.lastPage = await query.fetch().then(res => Math.floor((res.length - 1) / this.items_per_page))
     query = query.sortBy('createdAt', 'desc').skip(this.currentPage * this.items_per_page).limit(this.items_per_page)
     this.pages = await query.fetch()
-    console.log(this.pages)
   },
   watch: {
     currentPage(value) {
