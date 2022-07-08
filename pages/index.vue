@@ -25,7 +25,6 @@
         </div>
         <div class="platform-grid">
           <NuxtLink v-for="platform of $config.platforms" :key="platform" :to="`/${platform}/`" class="button">{{(platformData[platform] && platformData[platform].name) || platform}}</NuxtLink>
-          <div v-for="i in 3" :key="`dummy-element-${i}`" class="button">Dummy Element</div>
         </div>
       </div>
     </div>

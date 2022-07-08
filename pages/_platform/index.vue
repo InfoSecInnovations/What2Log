@@ -6,7 +6,7 @@
       <div id="inner-container" class="logpile">
         <div class="title-block">
           <h1>{{platformName}}</h1>
-          <div class="info">There will be optional text here providing some general information about the platform.</div>
+          <div v-if="platformInfo.info" class="info">{{platformInfo.info}}</div>
           <div class="row">
             <div class="column">
               <NuxtLink :to="`/${$route.params.platform}/tools/`" class="button">Tools</NuxtLink>
