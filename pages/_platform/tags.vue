@@ -42,7 +42,7 @@ export default {
       .only('tags')
       .fetch()
       .then(res => [...new Set(res.filter(item => item.tags && item.tags.length).map(item => item.tags).flat())]),
-      platformInfo: await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).only('category_ordering').fetch()
+      platformInfo: await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     }
   },
   methods: {
