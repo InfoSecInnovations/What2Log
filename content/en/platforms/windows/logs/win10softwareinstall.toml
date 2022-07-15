@@ -5,9 +5,10 @@ title = "Software Installed"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
-##credits = [ "Mick Douglas", "Tee Leigh" ]
+##credits = [ "Mick Douglas", "Tee Cure" ]
 release.version = "Ash"
 release.date = 2021-09-08
+category = "Application"
 tags = ["Application Activity"]
 
 

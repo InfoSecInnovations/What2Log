@@ -1,18 +1,18 @@
 <template>
   <div id="w2l-container">
     <W2LHeader />
-    <Navbar />
+    <Navbar :platform="(platformInfo && platformInfo.name) || $route.params.platform" />
     <div id="container">
       <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox" @input="resetScroll">
       <label for="sidebar-toggle-button" class="sidebar-toggle-label"><img src="/images/menu.svg" /></label>
-      <div id="sidebar">
-        <div v-for="(levels, os) of sidebar" :key="os">
-          <input type="checkbox" :id="os">
-          <label :for="os" class="top-level sidebar-element">{{os}}</label>
-          <div v-for="{logs, level} of sortLevels(levels)" :key="`${os}-${level}`" class="sidebar-list">
-            <input type="checkbox" :id="`${os}-${level}`">
-            <label :for="`${os}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink v-for="log of logs" :key="`${os}-${level}-${log.title}`" :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick"  :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
+      <div id="sidebar" v-if="sidebar">
+        <div v-for="entry of orderedSidebar" :key="`sidebar-${entry.category}`">
+          <input type="checkbox" :id="entry.category">
+          <label :for="entry.category" class="top-level sidebar-element">{{entry.category}}</label>
+          <div v-for="{logs, level} of sortLevels(entry.items)" :key="`sidebar-${entry.category}-${level}`" class="sidebar-list">
+            <input type="checkbox" :id="`${entry.category}-${level}`">
+            <label :for="`${entry.category}-${level}`" class="mid-level sidebar-element">{{level}}</label>
+            <NuxtLink v-for="log of logs" :key="`sidebar-${entry.category}-${level}-${log.slug}`" :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick"  :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
           </div>
         </div>
       </div>
@@ -23,25 +23,35 @@
 
 <script>
 import compareLevels from '~/assets/compareLevels'
+import compareCategories from '~/assets/compareCategories'
 export default {
-  async asyncData({$content, app, params, redirect}) {
-    const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`).sortBy('title').only(['source', 'suggested_log_level', 'title', 'slug']).fetch()
+  async asyncData({$content, app, params}) {
+    const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`).sortBy('title').only(['source', 'suggested_log_level', 'title', 'slug', 'category']).fetch()
+    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = sidebarData.reduce((result, data) => {
-      data.source.os.forEach(os => {
-        if (!result[os]) result[os] = {}
-        if (!result[os][data.suggested_log_level]) result[os][data.suggested_log_level] = []
-        result[os][data.suggested_log_level].push(data)
-      })
+      if (!result[data.category]) result[data.category] = {}
+      if (!result[data.category][data.suggested_log_level]) result[data.category][data.suggested_log_level] = []
+      result[data.category][data.suggested_log_level].push(data)
       return result
     }, {})
     return {
-      sidebar
+      sidebar,
+      platformInfo
     }
   },
   async mounted () {
     if (!this.$route.params.log) {
       this.$router.push(`/${this.$route.params.platform}/logs/${Object.values(Object.values(this.sidebar)[0])[0][0].slug}`)
     } 
+  },
+  computed: {
+    orderedSidebar() {
+      return Object.entries(this.sidebar)
+      .sort(
+        ([categoryA, itemsA], [categoryB, itemsB]) => compareCategories(categoryA, categoryB, this.platformInfo && this.platformInfo.category_ordering)
+      )
+      .map(([category, items]) => ({category, items}))
+    }
   },
   methods: {
     sortLevels(levels) { 

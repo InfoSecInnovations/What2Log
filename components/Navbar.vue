@@ -1,9 +1,8 @@
 <template>
   <div id="navbar">
+    <NuxtLink v-if="platform" :to="`/${$route.params.platform}/`">Back to {{platform}}</NuxtLink>
     <NuxtLink to="/">Home</NuxtLink>
-    <NuxtLink :to="`/${$route.params.platform}/logs/`">The Logs</NuxtLink>
     <NuxtLink :to="`/${$route.params.platform}/tools/`">Tools</Nuxtlink>
-    <NuxtLink :to="`/${$route.params.platform}/logpile/`">The Log Pile</NuxtLink>
     <NuxtLink to="/about/">About Us</NuxtLink>
     <NuxtLink to="/blog/">Log Blog</NuxtLink>
     <input v-model="query" type="search" autocomplete="off" v-on:click.stop="searchFocus = !searchFocus" v-on:keyup="onEnter"/>
@@ -26,6 +25,7 @@
 
 <script>
 export default {
+  props: ['platform'],
   data () {
     return {
       query: '',
@@ -48,6 +48,7 @@ export default {
       .fetch()
     }
   },
+  
   methods: {
     resetQuery() {
       this.query = ''

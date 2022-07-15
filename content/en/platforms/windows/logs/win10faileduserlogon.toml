@@ -5,9 +5,10 @@ title = "Failed User Logon"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
-##credits = [ "Mick Douglas", "Tee Leigh" ]
+##credits = [ "Mick Douglas", "Tee Cure" ]
 release.version = "Ash"
 release.date = 2021-05-27
+category = "Security"
 tags = ["User Activity"]
 
 # About this log type

@@ -7,8 +7,10 @@
       </NuxtLink>
       <p v-else>{{author}}</p>
       <p>{{date | formatDate}}</p>
+      <template v-if="tags && tags.length">
+        <NuxtLink v-for="tag of tags" :key="`article-tag-${tag}`" :to="{ path: `/${$route.params.platform}/tags`, query: { query: tag }}">{{tag}}</NuxtLink>
+      </template>
     </div>
-    <div class="tags" v-if="tags && tags.length"><NuxtLink v-for="tag of tags" :key="tag" :to="{ path: `/${$route.params.platform}/tags`, query: { query: tag }}">{{tag}}</NuxtLink></div>
   </div>
 </template>
 

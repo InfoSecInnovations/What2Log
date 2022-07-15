@@ -8,6 +8,7 @@ author = "Flynn Weeks" #Your name
 credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2021-11-22 #Todays date
+category = "System"
 tags = ["WiFi Logs"]
 
 # About this log type

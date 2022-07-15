@@ -8,27 +8,24 @@
         <div id="splash-container">
           <h1 class="home">What2Log</h1>
           <h2 class="home">Logging made easy</h2>
-          <NuxtLink to="about/" class="button">Learn More</NuxtLink>
-          <NuxtLink to="platformselection/" class="button">View the Logs</NuxtLink>
-        </div>
-
-        <!-- Three column layout-->
-        <div class="row">
-          <div class="column">
-            <h2>Log Blog</h2>
-            <p>Click here to learn more about what you should be logging. </p>
-            <NuxtLink to="blog/" class="button">Learn More</NuxtLink>
+          <div class="row">
+            <div class="column">
+              <NuxtLink to="about/" class="button">About</NuxtLink>
+              <p>Find out more about What2Log and InfoSec Innovations.</p>
+            </div>
+            <div class="column">
+              <NuxtLink to="blog/" class="button">Log Blog</NuxtLink>
+              <p>Get updates about what's going on at What2Log and read our thoughts about logging.</p>
+            </div>     
+            <div class="column">
+              <NuxtLink to="contributing/" class="button">Contributing</NuxtLink>
+              <p>There are many ways you can help out with this project, click here to find out how!</p>
+            </div>
           </div>
         </div>
-
-        <div id="contributing-guide">
-          <h3>Contributing</h3>
-          <p>We welcome contributions to the project, either directly or via feedback.</p>
-          <p>If you wish to create an article yourself, please visit <a href="https://github.com/InfoSecInnovations/What2Log" target="_blank">our GitHub</a> and follow the contributing guide there. The What2Log pages are generated from the <a href="https://toml.io" target="_blank">TOML file format</a>, so you'll want to be familiar with that first.</p>
-          <p>If you have any feedback, bug reports, or feature/content requests, you can head over to <a href="https://github.com/InfoSecInnovations/What2Log/issues" target="_blank">our GitHub issues page</a> and post these there.</p>
-          <p>Feel free to join <a href="https://discord.gg/B9yRpw9tYd" target="_blank">the InfoSec Innovations Discord</a> too if you want to chat!</p>
+        <div class="platform-grid">
+          <NuxtLink v-for="platform of $config.platforms" :key="platform" :to="`/${platform}/`" class="button">{{(platformData[platform] && platformData[platform].name) || platform}}</NuxtLink>
         </div>
-
       </div>
     </div>
   </div>
@@ -38,6 +35,11 @@
 export default {
   head() {
     return { title: 'Home' }
+  },
+  async asyncData({$content, app, params, $config}) {
+    const platformData = await Promise.all($config.platforms.map(async platform => ({platform, info: await $content(`${app.i18n.locale}/platforms/${platform}/info`).only('name').fetch()})))
+    .then(info => info.reduce((result, value) => ({...result, [value.platform]: value.info}), {}))
+    return {platformData}
   }
 }
 </script>

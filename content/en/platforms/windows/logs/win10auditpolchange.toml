@@ -8,6 +8,7 @@ author = "Flynn Weeks" #Your name
 credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2021-09-14 #Todays date
+category = "Security"
 tags = ["Audit Updates"]
 
 # About this log type

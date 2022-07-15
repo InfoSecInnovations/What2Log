@@ -129,10 +129,16 @@ body
         color: secondary_font_color
         gap: splash_spacing
         padding: splash_spacing
-        .button
-          background-color: splash_button_background 
-          color: secondary_font_color
-          font-size: splash_button_font_size
+        .row 
+          .column
+            color: secondary_font_color
+            &:nth-child(odd)
+              background-color: unset
+            .button
+              background-color: splash_button_background 
+              color: secondary_font_color
+              font-size: splash_button_font_size
+              min-width: 70%
         h1
         h2
         h3
@@ -393,10 +399,23 @@ body
       gap: main_padding
       &:nth-child(odd)
         background-color: secondary_background
-      h2
-        color: title_color
+      .link
+        color: secondary_color
       p
         flex: 1
+  .platform-grid
+    display: grid
+    grid-template-columns: repeat(6, 1fr)
+    padding: main_padding
+    gap: main_padding
+    &>*
+      grid-column: span 2
+      &:last-child:nth-child(3n - 1)
+        grid-column-end: -2
+      &:nth-last-child(2):nth-child(3n + 1)
+        grid-column-end: 4
+      &:last-child:nth-child(3n - 2)
+        grid-column-end: 5
   .logpile-section
     display: flex
     flex-direction: column
@@ -493,10 +512,6 @@ body
       background-color: background
       padding: medium_padding
       width: 100%
-      .article-info
-        flex-direction: column
-        align-items: flex-start
-        gap: small_padding
     img
       width: 100%
       max-height: page_card_max_image_height
@@ -532,7 +547,7 @@ body
     gap: main_padding
   .tags
     display: grid
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: repeat(2, 1fr)
     gap: medium_padding
     justify-items: center
     width: info_width

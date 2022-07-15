@@ -5,9 +5,10 @@ title = "Windows Firewall Restored to Default"
 W2L_schema = 1
 author = "Flynn Weeks"
 ##author.organization = "InfoSec Innovations"
-##credits = [ "Mick Douglas", "Tee Leigh" ]
+##credits = [ "Mick Douglas", "Tee Cure" ]
 release.version = "Aspen"
 release.date = 2022-05-05
+category = "Security"
 tags = ["Windows Firewall Change"]
 
 # About this log type

@@ -7,6 +7,7 @@ author = "" #Your name
 credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2022-04-27 #Todays date
+category = "" #Top level sidebar heading this page will appear under
 tags = [ "" ] #Tags by which people can group pages
 
 # About this log type

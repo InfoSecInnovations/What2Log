@@ -27,7 +27,7 @@ export default {
   async fetch() {
     this.scriptData = await this.$content('/scripts').where({name: this.script_language}).fetch().then(res => res[0])
   },
-  props: ['script', 'script_type', 'script_language', 'oses', 'slug'],
+  props: ['script', 'script_type', 'script_language', 'category', 'slug'],
   computed: {
     label() {
       if (this.script_type == 'enable') return 'Enable Logging'
@@ -44,10 +44,7 @@ export default {
       return content
     },
     enabled() {
-      for (let os of this.oses) {
-        if (this.$store.getters['logpile/getScriptStatus'](os, this.slug, this.script_type)) return true
-      }
-      return false
+      return this.$store.getters['logpile/getScriptStatus'](this.category, this.slug, this.script_type)
     }
   },
   mounted() {
@@ -65,7 +62,7 @@ export default {
     },
     enable() {
       const enabled = this.enabled
-      this.oses.forEach(os => this.$store.commit('logpile/setScriptStatus', {os, slug: this.slug, script_type: this.script_type, status: !enabled}))
+      this.$store.commit('logpile/setScriptStatus', {category: this.category, slug: this.slug, script_type: this.script_type, status: !enabled})
     }
   }
 }

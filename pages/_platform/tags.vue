@@ -1,7 +1,7 @@
 <template>
   <div id="w2l-container">
     <W2LHeader />
-    <Navbar />
+    <Navbar :platform="(platformInfo && platformInfo.name) || $route.params.platform"/>
     <div id="container">
       <div id="inner-container">
         <div class="page-feed">
@@ -41,7 +41,8 @@ export default {
       .where({dir: {$in: [`/${app.i18n.locale}/platforms/${params.platform}/logs`, `/${app.i18n.locale}/platforms/${params.platform}/tools`]}})
       .only('tags')
       .fetch()
-      .then(res => [...new Set(res.filter(item => item.tags && item.tags.length).map(item => item.tags).flat())])
+      .then(res => [...new Set(res.filter(item => item.tags && item.tags.length).map(item => item.tags).flat())]),
+      platformInfo: await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     }
   },
   methods: {
