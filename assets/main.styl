@@ -416,6 +416,9 @@ body
         grid-column-end: 4
       &:last-child:nth-child(3n - 2)
         grid-column-end: 5
+    @media (max-width: media_breakpoint)
+      display: flex
+      flex-direction: column
   .logpile-section
     display: flex
     flex-direction: column
