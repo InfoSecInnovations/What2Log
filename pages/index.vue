@@ -6,7 +6,7 @@
 
         <!-- Main page image container-->
         <div id="splash-container">
-          <h1 class="home">What2Log</h1>
+          <h1 class="home splash-title">What2Log</h1>
           <h2 class="home">Logging made easy</h2>
           <div class="row">
             <div class="column">
