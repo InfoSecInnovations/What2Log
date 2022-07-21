@@ -15,6 +15,7 @@ suggested_log_level = "" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "" #Service that generates log
 source.log = "" #Log file or channel
+source.event_id = 0 #Windows Event ID, remove this for other platforms
 default_enabled = true #true or false
 collect_reason = """\
 
