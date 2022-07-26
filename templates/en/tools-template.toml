@@ -13,6 +13,12 @@ tags = [ "" ]
 operating_system = [""]
 default_installed = true #True or false only
 
+# Additional References Go Here
+references = [
+  "blah",
+  "blah2"
+]
+
 #Installation Info (install info is optional, some tools are part of base os)
 [[app.install]]
 txt = """

@@ -10,6 +10,7 @@
         <div v-else :key="`enable-img-placeholder-${index}`" hidden></div>
       </template>
     </div>
+    <References :article="article"/>
   </div>
 </template>
 

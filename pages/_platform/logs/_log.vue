@@ -41,10 +41,7 @@
         <div v-else :key="`enable-img-placeholder-${index}`" hidden></div>
       </template>
     </div>
-    <div class="info-block" v-if="article.references && article.references.length">
-      <h3>Additional References</h3>
-      <p v-for="(ref, index) of article.references" :key="`reference-${index}`"><a :href="ref" target="_blank">{{ref}}</a></p>
-    </div>
+    <References :article="article"/>
   </div>
 </template>
 
