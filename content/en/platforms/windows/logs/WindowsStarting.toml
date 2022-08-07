@@ -62,7 +62,7 @@ txt = "In order to enable auditing on Windows starting events, navigate to the S
 #Enable via CLI
 [[CLI.enable]]
 img = "/WindowsStart/auditpol.png"
-txt = '''This is not logged by default on the Windows system and falls under the "Other Logon/Logoff Events" category. In order to turn on auditing for this event, enter the command ```auditpol /set /subcategory:"Security State Change" /Success:Enable /Failure:Enable```'''
+txt = '''This is not logged by default on the Windows system and falls under the "Security State Change" category. In order to turn on auditing for this event, enter the command ```auditpol /set /subcategory:"Security State Change" /Success:Enable /Failure:Enable```'''
 
 
 
