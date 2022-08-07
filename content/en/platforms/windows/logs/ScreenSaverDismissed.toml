@@ -1,13 +1,13 @@
 #This is the template for What2Log entries
 
 # Meta data about this w2l entry
-title = "Workstation Unlocked" #Name of the log (i.e. User Logon)
+title = "Screen Saver Dismissed" #Name of the log (i.e. User Logon)
 schema = 1
 author = "Flynn Weeks" #Your name
 ##author.organization = "InfoSec Innovations" #Your organization
 credits = [ "" ] #Any special callouts
 release.version = "Aspen"
-release.date = 2022-08-06 #Todays date
+release.date = 2022-08-07 #Todays date
 category = "Security"
 tags = ["System"]
 
@@ -18,10 +18,9 @@ source.service = "Microsoft Windows Security Auditing" #Service that generates l
 source.log = "Security" #Log file or channel
 default_enabled = false #true or false
 collect_reason = """\
-A workstation being unlocked can often be a normal function and not any cause for \
-concern. However, this could also be a sign that an attacker has made changes or \
-could be attempting to hide something. This could also be used to tie events together \
-and create a timeline.
+A screen saver being dismisssed is often tied to the event of a workstation being locked. \
+This event can help trace a series of attacks and track the course of events. It could \
+also prove that changes were made, especially if a screen saver was not default on a system.
   """
 
 # Additional References Go Here
@@ -32,7 +31,7 @@ references = [
 # Log Pile
 [log_pile]
 language = "Powershell" #Language for Log Pile
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4801'} -MaxEvents 1 | Format-List""" #How to view log
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4803'} -MaxEvents 1 | Format-List""" #How to view log
 check_status = """auditpol /get /subcategory:"Other Logon/Logoff Events""""
 enable_logging = """auditpol /set /subcategory:"Other Logon/Logoff Events" /Sucess:Enable /Failure:Enable""""
 enable_logging = """auditpol /set /subcategory:"Other Logon/Logoff Events" /Sucess:Disable /Failure:Disable""""
@@ -54,17 +53,17 @@ txt = '''This is not logged by default on the Windows system and falls under the
 
 # View via GUI
 [[GUI.view]]
-img = "/WorkstationUnlocked/WEV.png"
-txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4801**."
+img = "/ScreenSaverDismissed/WEV.png"
+txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4803**."
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
-img = "/WorkstatioUnlocked/CLI-gwe.png"
-txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4801'} -MaxEvents 1 | Format-List```"""
+img = "/ScreenSaverDismissed/CLI-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4803'} -MaxEvents 1 | Format-List```"""
 
 [[CLI.view]]
-img = "/WorkstationUnlocked/CLI-wevt.png"
-txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4801)]]"```'
+img = "/ScreenSaverDismissed/CLI-wevt.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4803)]]"```'
 # repeat as needed
