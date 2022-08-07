@@ -34,7 +34,7 @@ language = "Powershell" #Language for Log Pile
 view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4802'} -MaxEvents 1 | Format-List""" #How to view log
 check_status = 'auditpol /get /subcategory:"Other Logon/Logoff Events"'
 enable_logging = 'auditpol /set /subcategory:"Other Logon/Logoff Events" /Sucess:Enable /Failure:Enable'
-enable_logging = 'auditpol /set /subcategory:"Other Logon/Logoff Events" /Sucess:Disable /Failure:Disable'
+disable_logging = 'auditpol /set /subcategory:"Other Logon/Logoff Events" /Sucess:Disable /Failure:Disable'
 
 
 # Compliance & framework information
