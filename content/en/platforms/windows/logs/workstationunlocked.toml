@@ -1,0 +1,70 @@
+#This is the template for What2Log entries
+
+# Meta data about this w2l entry
+title = "Workstation Unlocked" #Name of the log (i.e. User Logon)
+schema = 1
+author = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
+credits = [ "" ] #Any special callouts
+release.version = "Aspen"
+release.date = 2022-08-06 #Todays date
+category = "Security"
+tags = ["System"]
+
+# About this log type
+suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.service = "Microsoft Windows Security Auditing" #Service that generates log
+source.log = "Security" #Log file or channel
+default_enabled = false #true or false
+collect_reason = """\
+A workstation being unlocked can often be a normal function and not any cause for \
+concern. However, this could also be a sign that an attacker has made changes or \
+could be attempting to hide something. This could also be used to tie events together \
+and create a timeline.
+  """
+
+# Additional References Go Here
+references = [
+"https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+]# repeat as needed
+
+# Log Pile
+[log_pile]
+language = "Powershell" #Language for Log Pile
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4801'} -MaxEvents 1 | Format-List""" #How to view log
+check_status = 'auditpol /get /subcategory:"Other Logon/Logoff Events"'
+enable_logging = 'auditpol /set /subcategory:"Other Logon/Logoff Events" /Sucess:Enable /Failure:Enable'
+disable_logging = 'auditpol /set /subcategory:"Other Logon/Logoff Events" /Sucess:Disable /Failure:Disable'
+
+
+# Compliance & framework information
+
+# Format is level and reference under the header [compliance.name]
+#Enable via GUI
+[[GUI.enable]]
+img = "/WorkstationLocked/gpe.png"
+txt = "In order to enable auditing on workstation unlocked events, navigate to the System Audit Policies in the group policy editor. Enable 'Other Logon/Logoff Events' under the Logon/Logoff tab."
+
+#Enable via CLI
+[[CLI.enable]]
+img = "/WorkstationLocked/auditpol.png"
+txt = '''This is not logged by default on the Windows system and falls under the "Other Logon/Logoff Events" category. In order to turn on auditing for this event, enter the command ```auditpol /set /subcategory:"Other Logon/Logoff Events" /Success:Enable /Failure:Enable```'''
+
+
+# View via GUI
+[[GUI.view]]
+img = "/WorkstationUnlocked/WEV.png"
+txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4801**."
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = "/WorkstatioUnlocked/CLI-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4801'} -MaxEvents 1 | Format-List```"""
+
+[[CLI.view]]
+img = "/WorkstationUnlocked/CLI-wevt.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4801)]]"```'
+# repeat as needed

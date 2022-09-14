@@ -1,0 +1,84 @@
+#This is the template for What2Log entries
+
+# Meta data about this w2l entry
+title = "Windows Starting Up" #Name of the log (i.e. User Logon)
+schema = 1
+author = "Flynn Weeks" #Your name
+##author.organization = "InfoSec Innovations" #Your organization
+credits = [ "" ] #Any special callouts
+release.version = "Aspen"
+release.date = 2021-09-14 #Todays date
+category = "Security"
+tags = ["System"]
+
+# About this log type
+suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
+source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
+source.service = "Microsoft Windows Security Auditing" #Service that generates log
+source.log = "Security" #Log file or channel
+default_enabled = true #true or false
+collect_reason = """\
+The Windows System Starting up is self explanatory in name. It may indicate \
+a system being restarted after an attack or to load malicious software. In \
+general, it is good to know when systems are being started.
+  """
+
+# Additional References Go Here
+references = [
+"https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
+]# repeat as needed
+
+# Log Pile
+[log_pile]
+language = "Powershell" #Language for Log Pile
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4608'} -MaxEvents 1 | Format-List""" #How to view log
+check_status = 'auditpol /get /subcategory:"Security State Change"' #How to check if log is enabled
+enable_logging = """auditpol /set /subcategory:"Security State Change" /Success:Enable /Failure:Enable""" #How to enable log
+disable_logging = """auditpol /set /subcategory:"Security State Change" /Success:Disable /Failure:Disable""" #How to disable log
+
+
+# Compliance & framework information
+
+# Format is level and reference under the header [compliance.name]
+# Only include relevant frameworks
+[compliance.HIPAA]
+level = "Recommended" # Compliance requirement
+reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administrative/combined/hipaa-simplification-201303.pdf?language=es" # Reference for compliance
+[compliance."PCI DSS"]
+level = "Required"
+reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?agreement=true&time=1631643252599"
+[compliance."NSA Event Forwarding"]
+level = "Recommended"
+reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
+# repeat as needed
+
+
+
+#Enable via GUI
+[[GUI.enable]]
+img = "/WindowsStart/gpe.png"
+txt = "In order to enable auditing on Windows starting events, navigate to the System Audit Policies in the group policy editor. Enable 'Security State Change' under the System tab."
+
+#Enable via CLI
+[[CLI.enable]]
+img = "/WindowsStart/auditpol.png"
+txt = '''This is not logged by default on the Windows system and falls under the "Security State Change" category. In order to turn on auditing for this event, enter the command ```auditpol /set /subcategory:"Security State Change" /Success:Enable /Failure:Enable```'''
+
+
+
+# View via GUI
+[[GUI.view]]
+img = "/WindowsStart/WEV.png"
+txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4608**."
+# repeat as needed
+
+
+# View via CLI
+[[CLI.view]]
+img = "/WindowsStart/CLI-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4608'} -MaxEvents 1 | Format-List```"""
+
+[[CLI.view]]
+img = "/WindowsStart/CLI-wevt.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4608)]]"```'
+# repeat as needed
