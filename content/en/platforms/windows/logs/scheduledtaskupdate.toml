@@ -12,16 +12,15 @@ category = "Security"
 tags = ["Scheduled Tasks"]
 
 # About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
+suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
 collect_reason = """\
-Scheduled tasks serve a lot of purposes on the Windows system, including both \
-innocuous, everyday tasks or potentially malicious activity on a machine. The \
-creation of a scheduled task may indicate an attacker attempting to establish \
-persistence on a machine.
+Scheduled task updates can provide an insight to a potential attack and an \
+attacker attempting to establish persistence on a machine. An attacker may \
+attempt to update a pre-exisiting scheduled task to hide malicious activity.
 """
 
 # Additional References Go Here
@@ -33,7 +32,7 @@ references = [
 # Log Pile
 [log_pile]
 language = "PowerShell"
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4698'} -MaxEvents 1 | Format-List"""
+view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4702'} -MaxEvents 1 | Format-List"""
 
 
 # Compliance & framework information
@@ -45,16 +44,17 @@ view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4698'} -Ma
 
 # View via GUI
 [[GUI.view]]
-img = "/ScheduledTasks/Created/WEV.png"
-txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4698** , or filter the log for the ID **4698**."
+img = "/ScheduledTasks/Updated/WEV.png"
+txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4702** , or filter the log for the ID **4702**."
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
-img = "/ScheduledTasks/Created/CLI-gwe.png"
-txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4698'} -MaxEvents 1 | Format-List```"""
+img = "/ScheduledTasks/Updated/CLI-gwe.png"
+txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4702'} -MaxEvents 1 | Format-List```"""
 
 [[CLI.view]]
-txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4698)]]" /f:text /c:1```'
+img = "/ScheduledTasks/Updated/CLI-wevt.png"
+txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4702)]]" /f:text /c:1```'
 # repeat as needed

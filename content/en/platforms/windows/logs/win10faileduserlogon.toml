@@ -68,7 +68,7 @@ txt = 'Windows 10 Professional does not log this by default. To enable logging o
 # View via GUI
 [[GUI.view]]
 img = "/FailedLogin/WEV.png"
-txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4624** , or filter the log for the ID **4624**."
+txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4625** , or filter the log for the ID **4625**."
 # repeat as needed
 
 
