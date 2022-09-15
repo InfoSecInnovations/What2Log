@@ -17,6 +17,7 @@ suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
+source.event_id = 4738
 default_enabled = true #true or false
 collect_reason = """\
 Account changes, such as password and username changes may \

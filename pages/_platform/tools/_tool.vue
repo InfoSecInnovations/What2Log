@@ -1,10 +1,8 @@
 <template>
   <div id="main-content" v-if="article">
-    <div class="title-block">
-      <h1>{{article.title}}</h1>
-      <AuthorCard :author="article.author" :date="article.createdAt" :tags="article.tags"/>
-      <p v-if="article.description" class="info">{{article.description}}</p>
-    </div>
+    <h1>{{article.title}}</h1>
+    <Tags :tags="article.tags"/>
+    <p v-if="article.description" class="info">{{article.description}}</p>
     <div class="columns">
       <template v-for="(section, index) of content">
         <div :key="`enable-txt-${index}`" v-html="$md.render(section.txt)" :class="`section ${!section.img ? 'wide' : ''}`"></div>
@@ -12,6 +10,7 @@
         <div v-else :key="`enable-img-placeholder-${index}`" hidden></div>
       </template>
     </div>
+    <References :article="article"/>
   </div>
 </template>
 
