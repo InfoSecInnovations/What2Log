@@ -58,7 +58,7 @@ view_logs = """grep "new group" /var/log/auth.log""" #How to view log
 
 # View via CLI
 [[CLI.view]]
-img = "/GroupCreation/LinuxCLI.toml"
+img = "/GroupCreation/LinuxCLI.png"
 txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line. To see the log of group creation in Linux, enter the command ```grep "new group" /var/log/auth.log```.'
 
 # repeat as needed
