@@ -57,7 +57,7 @@ view_logs = """grep failure /var/log/auth.log""" #How to view log
 
 # View via GUI
 [[GUI.view]]
-img = "/UserLogoff/LinuxViewer.toml"
+img = "/UserLogoff/LinuxViewer.png"
 txt = "Linux calls this log authentication failure. To view this log in the GNOME logs viewer, search in the security tab for authentication or failure."
 
 # repeat as needed
@@ -65,7 +65,7 @@ txt = "Linux calls this log authentication failure. To view this log in the GNOM
 
 # View via CLI
 [[CLI.view]]
-img = "/UserLogoff/LinuxCLI.toml"
+img = "/UserLogoff/LinuxCLI.png"
 txt = 'In order to view this log from the command line, enter the command ```grep failure /var/log/auth.log```. If there are other failures in the auth.log, replace failure in the command with “authentication failure”.'
 
 # repeat as needed
