@@ -12,8 +12,6 @@
         </article>
         <div class="author-pages">
           <PageFeed directory="blog" :items_per_page="5" :query="{author: author.name}" title="Blog Posts"/>
-          <PageFeed directory="logs" :items_per_page="5" :query="{author: author.name}" title="Log Pages"/>
-          <PageFeed directory="tools" :items_per_page="5" :query="{author: author.name}" title="Tool Pages"/>
         </div>
       </div>
     </div>
