@@ -50,7 +50,7 @@ view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='5024'} -Ma
 
 # View via GUI
 [[GUI.view]]
-img = "/WindowsFirewall/5024/WEV.png"
+img = "/WindowsFirewall/5024/wev.png"
 txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **5024** , or filter the log for the ID **5024**."
 # repeat as needed
 
