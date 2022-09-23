@@ -40,7 +40,7 @@ txt = """
 Upon opening, the command prompt displays this screen, which does not display \
 much information to the user.
 """
-img = "/Win7CLI/CLI1.png"
+img = "/Win7CLI/CLI.png"
 
 [[app.info]]
 txt = '''
