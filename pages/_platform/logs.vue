@@ -30,9 +30,7 @@ export default {
     const sidebarData = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = sidebarData.reduce((result, data) => {
-      console.log(data.dir)
       const path = data.dir.replace(`/${logPath}/`, '').split('/')
-      console.log(path)
       let currentObj = result
       path.forEach((p, i, arr) => {
         if (!currentObj[p]) currentObj[p] = i < arr.length - 1 ? {} : []

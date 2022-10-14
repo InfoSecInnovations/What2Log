@@ -110,14 +110,19 @@ export default {
     }
   },
   async asyncData({$content, app, params}) {
+    const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
     const scriptData = await $content('/scripts').fetch().then(res => res.reduce((result, item) => ({...result, [item.name.toLowerCase()]: item}), {}))
-    const log = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`).sortBy('title').only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title', 'category']).fetch()
+    const log = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'log_pile', 'slug', 'suggested_log_level', 'title', 'category', 'dir']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     return {
       categories: log.reduce((result, script) => {
-        if (!result[script.category]) result[script.category] = {}
-        if (!result[script.category][script.suggested_log_level]) result[script.category][script.suggested_log_level] = []
-        result[script.category][script.suggested_log_level].push(script.slug)
+        const path = script.dir.replace(`/${logPath}/`, '').split('/')
+        let currentObj = result
+        path.forEach((p, i, arr) => {
+          if (!currentObj[p]) currentObj[p] = i < arr.length - 1 ? {} : []
+          currentObj = currentObj[p] 
+        })
+        currentObj.push(script.slug)
         return result
       }, {}),
       scriptLookup: log.reduce((result, script) => ({...result, [script.slug]: script}), {}),
