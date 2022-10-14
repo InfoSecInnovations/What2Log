@@ -48,7 +48,7 @@
 <script>
 export default {
   async asyncData({ $content, app, params}) {
-    const article = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs/${params.log}`).fetch();
+    const article = (await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`, {deep: true}).where({slug: params.log}).fetch())[0]
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     let content = []
     if (article.GUI && article.GUI.enable) content = [...content, ...article.GUI.enable]

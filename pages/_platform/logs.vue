@@ -26,14 +26,22 @@ import compareLevels from '~/assets/compareLevels'
 import compareCategories from '~/assets/compareCategories'
 export default {
   async asyncData({$content, app, params}) {
-    const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`).sortBy('title').only(['source', 'suggested_log_level', 'title', 'slug', 'category']).fetch()
+    const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
+    const sidebarData = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = sidebarData.reduce((result, data) => {
-      if (!result[data.category]) result[data.category] = {}
-      if (!result[data.category][data.suggested_log_level]) result[data.category][data.suggested_log_level] = []
-      result[data.category][data.suggested_log_level].push(data)
+      console.log(data.dir)
+      const path = data.dir.replace(`/${logPath}/`, '').split('/')
+      console.log(path)
+      let currentObj = result
+      path.forEach((p, i, arr) => {
+        if (!currentObj[p]) currentObj[p] = i < arr.length - 1 ? {} : []
+        currentObj = currentObj[p] 
+      })
+      currentObj.push(data)
       return result
     }, {})
+    console.log(sidebar)
     return {
       sidebar,
       platformInfo
