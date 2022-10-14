@@ -53,7 +53,7 @@ txt = '''This is not logged by default on the Windows system and falls under the
 
 # View via GUI
 [[GUI.view]]
-img = "/ScreenSaverDismissed/WEV.png"
+img = "/ScreenSaverDismissed/wev.png"
 txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4803**."
 # repeat as needed
 
