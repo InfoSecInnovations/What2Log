@@ -1,6 +1,7 @@
 name = "Windows"
-category_ordering = [
+category_ordering.logs = [
   "Security",
-  "Windows Firewall"
+  "System",
+  "Application"
 ]
 info = "Windows is one of the most widely used Operating Systems. Learn about it's logs here. We currently highlight Windows 7 and Windows 10."

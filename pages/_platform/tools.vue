@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import compareCategories from '~/assets/compareCategories'
 import categorizeData from '~/assets/categorizeData'
 import getFirstItem from '~/assets/getFirstItem'
 export default {
@@ -34,15 +33,6 @@ export default {
     if (!this.$route.params.tool) {
       this.$router.push(`/${this.$route.params.platform}/tools/${getFirstItem(this.sidebar).slug}`)
     } 
-  },
-  computed: {
-    orderedSidebar() {
-      return Object.entries(this.sidebar)
-      .sort(
-        ([categoryA, itemsA], [categoryB, itemsB]) => compareCategories(categoryA, categoryB, this.platformInfo && this.platformInfo.category_ordering)
-      )
-      .map(([category, items]) => ({category, items}))
-    }
   },
   methods: {
     linkClick() {
