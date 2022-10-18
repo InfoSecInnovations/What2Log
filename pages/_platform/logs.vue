@@ -6,15 +6,7 @@
       <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox" @input="resetScroll">
       <label for="sidebar-toggle-button" class="sidebar-toggle-label"><img src="/images/menu.svg" /></label>
       <div id="sidebar" v-if="sidebar">
-        <div v-for="entry of orderedSidebar" :key="`sidebar-${entry.category}`">
-          <input type="checkbox" :id="entry.category">
-          <label :for="entry.category" class="top-level sidebar-element">{{entry.category}}</label>
-          <div v-for="{logs, level} of sortLevels(entry.items)" :key="`sidebar-${entry.category}-${level}`" class="sidebar-list">
-            <input type="checkbox" :id="`${entry.category}-${level}`">
-            <label :for="`${entry.category}-${level}`" class="mid-level sidebar-element">{{level}}</label>
-            <NuxtLink v-for="log of logs" :key="`sidebar-${entry.category}-${level}-${log.slug}`" :to="`/${$route.params.platform}/logs/${log.slug}/`"  @click.native="linkClick"  :class="`inner-level sidebar-element sidebar-list ${$route.params.log == log.slug ? 'selected' : ''}`">{{log.title}}</NuxtLink>
-          </div>
-        </div>
+        <SidebarElement v-for="item of sidebar" :key="`sidebar-${item.category || item.slug}`" :content="item" :baseUrl="baseUrl"/>
       </div>
       <NuxtChild />
     </div>
@@ -24,23 +16,16 @@
 <script>
 import compareLevels from '~/assets/compareLevels'
 import compareCategories from '~/assets/compareCategories'
+import categorizeData from '~/assets/categorizeData'
 export default {
   async asyncData({$content, app, params}) {
     const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
-    const sidebarData = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch()
+    const sidebarData = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${logPath}/`, '').split('/')})))
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
-    const sidebar = sidebarData.reduce((result, data) => {
-      const path = data.dir.replace(`/${logPath}/`, '').split('/')
-      let currentObj = result
-      path.forEach((p, i, arr) => {
-        if (!currentObj[p]) currentObj[p] = i < arr.length - 1 ? {} : []
-        currentObj = currentObj[p] 
-      })
-      currentObj.push(data)
-      return result
-    }, {})
+    const sidebar = categorizeData(sidebarData)
     console.log(sidebar)
     return {
+      baseUrl: logPath,
       sidebar,
       platformInfo
     }
