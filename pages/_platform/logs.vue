@@ -27,12 +27,13 @@ export default {
     return {
       baseUrl: `${params.platform}/logs`,
       sidebar,
+      sidebarData,
       platformInfo
     }
   },
   async mounted () {
     if (!this.$route.params.log) {
-      this.$router.push(`/${this.$route.params.platform}/logs/${Object.values(Object.values(this.sidebar)[0])[0][0].slug}`)
+      this.$router.push(`/${this.$route.params.platform}/logs/${this.sidebarData[0].slug}`)
     } 
   },
   computed: {

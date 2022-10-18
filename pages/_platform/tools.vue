@@ -26,12 +26,13 @@ export default {
     return {
       baseUrl: `${params.platform}/tools`,
       sidebar,
+      sidebarData,
       platformInfo
     }
   },
   async mounted () {
     if (!this.$route.params.tool) {
-      this.$router.push(`/${this.$route.params.platform}/tools/${this.sidebar[0].slug}`)
+      this.$router.push(`/${this.$route.params.platform}/tools/${this.sidebarData[0].slug}`)
     } 
   },
   computed: {
