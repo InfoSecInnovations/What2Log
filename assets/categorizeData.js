@@ -1,4 +1,18 @@
-export default data => data.reduce((result, item) => {
+const sortItems = (a, b) => {
+  if (a.category && !b.category) return 1
+  if (!a.category && b.category) return -1
+  return 0
+} // TODO: category ordering
+
+const handleItems = items => {
+  items.sort(sortItems)
+  items.forEach(item => {
+    if (item.items) item.items = handleItems(item.items)
+  })
+  return items
+}
+
+export default data => handleItems(data.reduce((result, item) => {
   let current = result
   item.path.forEach(path => {
     if (!path) return
@@ -11,4 +25,4 @@ export default data => data.reduce((result, item) => {
   })
   current.push(item)
   return result
-}, []) // TODO: ordering
+}, [])) 
