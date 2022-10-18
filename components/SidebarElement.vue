@@ -1,5 +1,5 @@
 <template>
-  <div v-if="content.category">
+  <div v-if="content.category" class="sidebar-list">
     <input type="checkbox" :id="content.category">
     <label :for="content.category" :class="`${topLevel ? 'top-level' : 'mid-level'} sidebar-element`">{{content.category}}</label>
     <SidebarElement v-for="item of content.items" :key="item.category || item.slug" :content="item" :baseUrl="baseUrl"/>
