@@ -21,7 +21,7 @@ export default {
     const toolsPath = `${app.i18n.locale}/platforms/${params.platform}/tools`
     const sidebarData = await $content(toolsPath, {deep: true}).sortBy('title').only(['operating_system', 'title', 'slug', 'dir']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${toolsPath}`, '').split('/')})))
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
-    const sidebar = categorizeData(sidebarData)
+    const sidebar = categorizeData(sidebarData, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering.tools)
     console.log(sidebar)
     return {
       baseUrl: `${params.platform}/tools`,

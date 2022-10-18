@@ -1,0 +1,12 @@
+name = "" # The name of this platform that will be displayed on the site
+category_ordering.logs = [ # The order the sidebar items will be displayed in, each array entry represents a level of nesting
+  [
+    "TopLevelA",
+    "TopLevelB",
+  ],
+  [
+    "NestedA",
+    "NestedB",
+  ]
+]
+info = "" # This text is displayed on the platform's landing page

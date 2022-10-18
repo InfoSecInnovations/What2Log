@@ -114,7 +114,7 @@ export default {
     const log = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'log_pile', 'slug', 'title', 'category', 'dir']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${logPath}`, '').split('/')})))
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     return {
-      categories: categorizeData(log),
+      categories: categorizeData(log, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering.logs),
       scriptLookup: log.reduce((result, script) => ({...result, [script.slug]: script}), {}),
       scriptData,
       platformInfo
