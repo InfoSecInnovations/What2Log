@@ -47,22 +47,16 @@
 
 <script>
 export default {
-  async asyncData({ $content, app, params}) {
-    const article = (await $content(`${app.i18n.locale}/platforms/${params.platform}/logs`, {deep: true}).where({slug: params.log}).fetch())[0]
-    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
+  props: ['article', 'platformInfo'],
+  data() {
     let content = []
-    if (article.GUI && article.GUI.enable) content = [...content, ...article.GUI.enable]
-    if (article.CLI && article.CLI.enable) content = [...content, ...article.CLI.enable]
-    if (article.GUI && article.GUI.view) content = [...content, ...article.GUI.view]
-    if (article.CLI && article.CLI.view) content = [...content, ...article.CLI.view]
+    if (this.article.GUI && this.article.GUI.enable) content = [...content, ...this.article.GUI.enable]
+    if (this.article.CLI && this.article.CLI.enable) content = [...content, ...this.article.CLI.enable]
+    if (this.article.GUI && this.article.GUI.view) content = [...content, ...this.article.GUI.view]
+    if (this.article.CLI && this.article.CLI.view) content = [...content, ...this.article.CLI.view]
     return {
-      article,
-      content,
-      platformInfo
+      content
     }
-  },
-  head() {
-    return { title: this.article ? this.article.title : '' }
   }
 }
 </script>

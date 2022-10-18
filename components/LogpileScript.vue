@@ -58,7 +58,7 @@ export default {
       return getScriptBlob(this.content)
     },
     getScriptName() {
-      return `what2log-${this.script_type}-${this.$route.params.log.toLowerCase()}${(this.scriptData && this.scriptData.file_extension) || '.txt'}`
+      return `what2log-${this.script_type}-${this.$route.params.item.toLowerCase()}${(this.scriptData && this.scriptData.file_extension) || '.txt'}`
     },
     enable() {
       const enabled = this.enabled

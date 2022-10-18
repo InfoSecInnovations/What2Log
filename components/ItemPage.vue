@@ -16,18 +16,14 @@
 
 <script>
 export default {
-  async asyncData({ $content, app, params}) {
-    const article = (await $content(`${app.i18n.locale}/platforms/${params.platform}/tools`, {deep: true}).where({slug: params.log}).fetch())[0]
+  props: ["article", "platformInfo"],
+  data () {
     let content = []
-    if (article.app && article.app.install) content = [...content, ...article.app.install]
-    if (article.app && article.app.info) content = [...content, ...article.app.info]
+    if (this.article.app && this.article.app.install) content = [...content, ...this.article.app.install]
+    if (this.article.app && this.article.app.info) content = [...content, ...this.article.app.info]
     return {
-      article,
       content
     }
-  },
-  head() {
-    return { title: this.article ? this.article.title : '' }
   }
 }
 </script>
