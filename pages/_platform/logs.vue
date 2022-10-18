@@ -20,7 +20,7 @@ import categorizeData from '~/assets/categorizeData'
 export default {
   async asyncData({$content, app, params}) {
     const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
-    const sidebarData = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${logPath}/`, '').split('/')})))
+    const sidebarData = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${logPath}`, '').split('/')})))
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = categorizeData(sidebarData)
     console.log(sidebar)

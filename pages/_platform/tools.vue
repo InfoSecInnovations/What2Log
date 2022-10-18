@@ -6,11 +6,7 @@
       <input id="sidebar-toggle-button" class="sidebar-toggle" type="checkbox" @input="resetScroll">
       <label for="sidebar-toggle-button" class="sidebar-toggle-label"><img src="/images/menu.svg" /></label>
       <div id="sidebar" v-if="sidebar">
-        <div v-for="entry of orderedSidebar" :key="`sidebar-${entry.category}`">
-          <input type="checkbox" :id="entry.category">
-          <label :for="entry.category" class="top-level sidebar-element">{{entry.category}}</label>
-          <NuxtLink v-for="tool of entry.items" :to="`/${$route.params.platform}/tools/${tool.slug}/`" @click.native="linkClick" :key="`sidebar-${entry.category}-${tool.slug}`" :class="`inner-level sidebar-element sidebar-list ${$route.params.tool == tool.slug ? 'selected' : ''}`">{{tool.title}}</NuxtLink>
-        </div>
+        <SidebarElement v-for="item of sidebar" :key="`sidebar-${item.category || item.slug}`" :content="item" :baseUrl="baseUrl" :topLevel="true"/>
       </div>
       <NuxtChild />
     </div>
@@ -19,23 +15,23 @@
 
 <script>
 import compareCategories from '~/assets/compareCategories'
+import categorizeData from '~/assets/categorizeData'
 export default {
   async asyncData({$content, app, params}) {
-    const sidebarData = await $content(`${app.i18n.locale}/platforms/${params.platform}/tools`).sortBy('title').only(['operating_system', 'title', 'slug', 'category']).fetch()
+    const toolsPath = `${app.i18n.locale}/platforms/${params.platform}/tools`
+    const sidebarData = await $content(toolsPath, {deep: true}).sortBy('title').only(['operating_system', 'title', 'slug', 'dir']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${toolsPath}`, '').split('/')})))
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
-    const sidebar = sidebarData.reduce((result, data) => {
-      if (!result[data.category]) result[data.category] = []
-      result[data.category].push(data)
-      return result
-    }, {})
+    const sidebar = categorizeData(sidebarData)
+    console.log(sidebar)
     return {
+      baseUrl: `${params.platform}/tools`,
       sidebar,
       platformInfo
     }
   },
   async mounted () {
     if (!this.$route.params.tool) {
-      this.$router.push(`/${this.$route.params.platform}/tools/${Object.values(this.sidebar)[0][0].slug}`)
+      this.$router.push(`/${this.$route.params.platform}/tools/${this.sidebar[0].slug}`)
     } 
   },
   computed: {
