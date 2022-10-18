@@ -1,7 +1,15 @@
 name = "Windows"
 category_ordering.logs = [
-  "Security",
-  "System",
-  "Application"
+  [
+    "Security",
+    "System",
+    "Application"
+  ],
+  [
+    "Minimum",
+    "Ideal",
+    "Extreme",
+    "Special Case"
+  ]
 ]
 info = "Windows is one of the most widely used Operating Systems. Learn about it's logs here. We currently highlight Windows 7 and Windows 10."

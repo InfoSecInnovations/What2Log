@@ -21,7 +21,7 @@ export default {
     const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
     const sidebarData = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${logPath}`, '').split('/')})))
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
-    const sidebar = categorizeData(sidebarData)
+    const sidebar = categorizeData(sidebarData, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering.logs)
     console.log(sidebar)
     return {
       baseUrl: `${params.platform}/logs`,
