@@ -16,6 +16,7 @@
 <script>
 import compareCategories from '~/assets/compareCategories'
 import categorizeData from '~/assets/categorizeData'
+import getFirstItem from '~/assets/getFirstItem'
 export default {
   async asyncData({$content, app, params}) {
     const toolsPath = `${app.i18n.locale}/platforms/${params.platform}/tools`
@@ -26,13 +27,12 @@ export default {
     return {
       baseUrl: `${params.platform}/tools`,
       sidebar,
-      sidebarData,
       platformInfo
     }
   },
   async mounted () {
     if (!this.$route.params.tool) {
-      this.$router.push(`/${this.$route.params.platform}/tools/${this.sidebarData[0].slug}`)
+      this.$router.push(`/${this.$route.params.platform}/tools/${getFirstItem(this.sidebar).slug}`)
     } 
   },
   computed: {

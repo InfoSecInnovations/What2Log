@@ -17,6 +17,7 @@
 import compareLevels from '~/assets/compareLevels'
 import compareCategories from '~/assets/compareCategories'
 import categorizeData from '~/assets/categorizeData'
+import getFirstItem from '~/assets/getFirstItem'
 export default {
   async asyncData({$content, app, params}) {
     const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
@@ -27,13 +28,12 @@ export default {
     return {
       baseUrl: `${params.platform}/logs`,
       sidebar,
-      sidebarData,
       platformInfo
     }
   },
   async mounted () {
     if (!this.$route.params.log) {
-      this.$router.push(`/${this.$route.params.platform}/logs/${this.sidebarData[0].slug}`)
+      this.$router.push(`/${this.$route.params.platform}/logs/${getFirstItem(this.sidebar).slug}`)
     } 
   },
   computed: {
