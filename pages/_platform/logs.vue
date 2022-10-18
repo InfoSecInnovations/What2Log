@@ -25,7 +25,7 @@ export default {
     const sidebar = categorizeData(sidebarData)
     console.log(sidebar)
     return {
-      baseUrl: logPath,
+      baseUrl: `${params.platform}/logs`,
       sidebar,
       platformInfo
     }
