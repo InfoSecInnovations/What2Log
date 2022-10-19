@@ -2,6 +2,7 @@ import TOML from '@ltd/j-toml'
 import remark from 'remark'
 import strip from 'strip-markdown'
 import fs from 'fs-extra'
+import path from 'path'
 
 const excerptLength = 150
 
@@ -15,7 +16,13 @@ const stripMarkdown = markdown => new Promise((resolve, reject) => {
 
 export default async () => { 
   const config = await fs.readJSON('w2lconfig.json').catch(() => null)
-  const platforms = await fs.readdir('content/en/platforms')
+  const platforms = await fs.readdir('content/en/platforms', {withFileTypes: true}).then(async files => {
+    const result = {}
+    for (const file of files) {
+      result[file.name] = await fs.readdir(path.join('content/en/platforms', file.name), {withFileTypes: true}).then(files => files.filter(file => file.isDirectory()).map(file => file.name))
+    }
+    return result
+  })
   return {
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',

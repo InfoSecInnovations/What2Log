@@ -24,7 +24,7 @@
           </div>
         </div>
         <div class="platform-grid">
-          <NuxtLink v-for="platform of $config.platforms" :key="platform" :to="`/${platform}/`" class="button">{{(platformData[platform] && platformData[platform].name) || platform}}</NuxtLink>
+          <NuxtLink v-for="platform of Object.keys($config.platforms)" :key="platform" :to="`/${platform}/`" class="button">{{(platformData[platform] && platformData[platform].name) || platform}}</NuxtLink>
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@ export default {
     return { title: 'Home' }
   },
   async asyncData({$content, app, params, $config}) {
-    const platformData = await Promise.all($config.platforms.map(async platform => ({platform, info: await $content(`${app.i18n.locale}/platforms/${platform}/info`).only('name').fetch()})))
+    const platformData = await Promise.all(Object.keys($config.platforms).map(async platform => ({platform, info: await $content(`${app.i18n.locale}/platforms/${platform}/info`).only('name').fetch()})))
     .then(info => info.reduce((result, value) => ({...result, [value.platform]: value.info}), {}))
     return {platformData}
   }

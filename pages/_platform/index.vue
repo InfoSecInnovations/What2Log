@@ -56,7 +56,7 @@
                 <div v-else></div>
               </div>
               <template v-for="script of subcategory.items">
-                <div class="logpile-row child" :key="`${entry.category}-${level}-${script}`">
+                <div class="logpile-row child" :key="`${entry.category}-${subcategory.category}-${script.slug}`">
                   <NuxtLink class="logpile-category" :to="`/${$route.params.platform}/logs/${scriptLookup[script.slug].slug}/`">{{scriptLookup[script.slug].title}}</NuxtLink>
                   <input type="checkbox" v-if="scriptLookup[script.slug].log_pile && scriptLookup[script.slug].log_pile.enable_logging" v-on:change="check('enable', script, entry.category, $event)" :checked="checked('enable', entry.category, script)">
                   <div v-else></div>
