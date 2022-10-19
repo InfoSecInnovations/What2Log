@@ -60,7 +60,6 @@ export default {
       .skip(this.currentPage * this.itemsPerPage)
       .limit(this.itemsPerPage)
       .fetch()
-      console.log(this.results)
     },
     setPage(number) {
       this.currentPage = number
