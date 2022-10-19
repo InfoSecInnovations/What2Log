@@ -2,7 +2,7 @@
   <div id="navbar">
     <NuxtLink v-if="platform" :to="`/${$route.params.platform}/`">Back to {{platform}}</NuxtLink>
     <NuxtLink to="/">Home</NuxtLink>
-    <NuxtLink :to="`/${$route.params.platform}/tools/`">Tools</Nuxtlink>
+    <NuxtLink v-for="group of $config.platforms[$route.params.platform].filter(group => group != 'logs')" :key="group" :to="`/${$route.params.platform}/${group}/`">{{`${group[0].toUpperCase()}${group.substring(1)}`}}</NuxtLink>
     <NuxtLink to="/about/">About Us</NuxtLink>
     <NuxtLink to="/blog/">Log Blog</NuxtLink>
     <input v-model="query" type="search" autocomplete="off" v-on:click.stop="searchFocus = !searchFocus" v-on:keyup="onEnter"/>
