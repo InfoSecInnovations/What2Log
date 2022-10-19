@@ -111,7 +111,7 @@ export default {
   async asyncData({$content, app, params}) {
     const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
     const scriptData = await $content('/scripts').fetch().then(res => res.reduce((result, item) => ({...result, [item.name.toLowerCase()]: item}), {}))
-    const log = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'log_pile', 'slug', 'title', 'category', 'dir']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${logPath}`, '').split('/')})))
+    const log = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'log_pile', 'slug', 'title', 'category', 'dir', 'splitPath']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     return {
       categories: categorizeData(log, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering.logs),

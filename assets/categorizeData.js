@@ -25,7 +25,7 @@ const handleItems = (items, ordering, level = 0) => {
 
 export default (data, ordering) => handleItems(data.reduce((result, item) => {
   let current = result
-  item.path.forEach(path => {
+  item.splitPath.forEach(path => {
     if (!path) return
     let container = current.find(other => other.category && other.category == path)
     if (!container) {

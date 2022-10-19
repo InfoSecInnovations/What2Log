@@ -19,10 +19,9 @@ import getFirstItem from '~/assets/getFirstItem'
 export default {
   async asyncData({$content, app, params}) {
     const groupPath = `${app.i18n.locale}/platforms/${params.platform}/${params.group}`
-    const sidebarData = await $content(groupPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug']).fetch().then(items => items.map(item => ({...item, path: item.dir.replace(`/${groupPath}`, '').split('/')})))
+    const sidebarData = await $content(groupPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug', 'splitPath']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = categorizeData(sidebarData, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering[params.group])
-    console.log(sidebar)
     return {
       baseUrl: `${params.platform}/${params.group}`,
       sidebar,

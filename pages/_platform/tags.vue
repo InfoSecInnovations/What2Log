@@ -9,7 +9,7 @@
           <Tags :tags="tags"/>
           <h2 v-if="$route.query.query">{{$route.query.query}}</h2>
           <div class="search-results">
-            <PageCard v-for="result of results" :key="result.path" :article="result" :link="result.path.replace(`${$i18n.locale}/platforms/`, '')"/>
+            <PageCard v-for="result of results" :key="result.path" :article="result" :link="result.path.replace(`${$i18n.locale}/platforms/`, '').replace(`/${result.splitPath && result.splitPath.join('/')}`, '')"/>
           </div>
           <div v-if="lastPage" class="feed-nav">
             <div v-if="currentPage < lastPage" v-on:click="setPage(currentPage + 1)" class="nav-link">Previous</div>
@@ -60,6 +60,7 @@ export default {
       .skip(this.currentPage * this.itemsPerPage)
       .limit(this.itemsPerPage)
       .fetch()
+      console.log(this.results)
     },
     setPage(number) {
       this.currentPage = number

@@ -116,18 +116,23 @@ export default async () => {
         }
         if (document.extension === '.toml') {
           if (document.collect_reason) document.excerpt = document.collect_reason.length < excerptLength ? document.collect_reason : document.collect_reason.substr(0, document.collect_reason.lastIndexOf(' ', excerptLength))
-          if (!document.category) document.category = 'Uncategorized'
           if (document.source && document.source.os) {
             if (!document.tags) document.tags = []
-            document.tags.unshift(document.category)
             document.tags.unshift(...document.source.os)
             document.tags = [...new Set(document.tags)] // remove duplicate tags
           }
-          if (document.operating_system) {
-            if (!document.tags) document.tags = []
-            document.tags.unshift(document.category)
-            document.tags.unshift(...document.operating_system)
-            document.tags = [...new Set(document.tags)] // remove duplicate tags
+          // this might be a bit hacky, open to finding a more reliable way?
+          let level = 0
+          for (const folder of document.dir.split('/')) {
+            if (!folder) continue
+            level++
+            if (level < 4) continue
+            if (level == 4) {
+              document.group = folder
+              continue
+            }
+            if (!document.splitPath) document.splitPath = []
+            document.splitPath.push(folder)
           }
         }
       }
