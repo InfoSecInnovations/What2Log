@@ -1,7 +1,7 @@
 <template>
   <div id="main-content" v-if="article">
     <h1>{{article.title}}</h1>
-    <Tags :tags="article.tags"/>
+    <Tags :tags="article.tags" :dir="$route.params.platform"/>
     <Credits :article="article"/>
     <p v-if="article.description" class="info">{{article.description}}</p>
     <div class="columns">

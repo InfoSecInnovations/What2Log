@@ -1,7 +1,7 @@
 <template>
   <div id="main-content" v-if="article">
     <h1>{{article.title}}</h1>
-    <Tags :tags="article.tags"/>
+    <Tags :tags="article.tags" :dir="$route.params.platform"/>
     <div class="info-block">
       <Credits :article="article"/>
       <h4 v-if="article.source.event_id">Windows Event ID: {{article.source.event_id}}</h4>

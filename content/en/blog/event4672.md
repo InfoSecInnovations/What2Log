@@ -2,6 +2,8 @@
 title: "Event ID 4672: Special Privileges Assigned to a New Logon"
 description: What is event 4672 and why do we care?
 author: Flynn Weeks
+tags:
+  - Test Tag
 ---
 
 In gathering the information for W2L, I noticed the number of things that Windows 10 (in particular) logs and how some of these logs make almost no sense at first. One of these logs in particular was the log that is associated with Event ID 4672. I was curious as there were a lot of these logs, but I was the only person who had access to that particular machine. This lead me down a bit of a rabbit hole into discovering what this log was and why it can be immensely helpful in log analysis.

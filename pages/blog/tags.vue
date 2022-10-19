@@ -1,8 +1,8 @@
 <template>
   <div id="w2l-container">
     <W2LHeader />
-    <Navbar :platform="(platformInfo && platformInfo.name) || $route.params.platform"/>
-    <TagsPage ref="pageChild" :dir="$route.params.platform" :contentDir="`platforms/${$route.params.platform}`" :tags="tags"/>
+    <HomeNavbar/>
+    <TagsPage ref="pageChild" dir="blog" contentDir="blog" :tags="tags"/>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   },
   async asyncData({$content, app, params}) {
     return {
-      tags: await $content(`${app.i18n.locale}/platforms/${params.platform}`, {deep: true})
+      tags: await $content(`${app.i18n.locale}/blog`, {deep: true})
       .only('tags')
       .fetch()
       .then(res => [...new Set(res.filter(item => item.tags && item.tags.length).map(item => item.tags).flat())])
