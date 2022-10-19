@@ -8,7 +8,7 @@
           <h1>{{platformName}}</h1>
           <div v-if="platformInfo.info" class="info">{{platformInfo.info}}</div>
           <div class="row">
-            <div class="column">
+            <div class="column" v-if="$config.platforms[$route.params.platform].includes('tools')">
               <NuxtLink :to="`/${$route.params.platform}/tools/`" class="button">Tools</NuxtLink>
               <p>Read about the various tools you can use with {{platformName}} to assist with logging.</p>
             </div>
