@@ -11,6 +11,7 @@
               <h1 class="home">{{article.title}}</h1>
             </div>
             <AuthorCard :author="article.author" :date="article.createdAt" />
+            <Tags :tags="article.tags" dir="blog"/>
             <p class="info">{{article.description}}</p>
             <img v-if="article.img" :src="`/${article.img}`" :alt="article.alt"/>
           </div>
