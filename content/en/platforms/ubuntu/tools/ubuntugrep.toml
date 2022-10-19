@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 The grep command is a useful command line tool in Linux and allows for parts of \
 a file matching a certain string to be returned. \
@@ -27,7 +27,7 @@ events from the auth.log).
 """
 img = "/Grep/grep1.png"
 
-[[app.info]]
+[[content]]
 txt = """
 In order to make the process faster, it is recommended that the user enter the \
 command ```cd /var/log``` if this is done, it will remove the need to add the \

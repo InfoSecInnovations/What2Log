@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 Linux has an automatic cron job (a scheduled job) that auto rotates the log \
 files. This will lead to the creation of log files such as auth.log.1 and is \

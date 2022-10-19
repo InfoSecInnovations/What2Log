@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 Linux stores its logs be fault in the /var/log folder. This folder is only \
 accessible to those on the system with root or sudo access. In this folder, a \
@@ -26,7 +26,7 @@ this guide are the auth.log, sys.log, and dpkg.log for a couple of particular lo
 """
 img = "LinuxLogs.png"
 
-[[app.info]]
+[[content]]
 txt = """
 If you wish to view logs in a text editor, that can be done from this folder by \
 double clicking on any of the files. This method of looking at logs is not \

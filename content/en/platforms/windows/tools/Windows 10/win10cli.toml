@@ -17,7 +17,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 The Windows command prompt allows for a straightforward way to view and filter \
 logs without a graphic user interface. To navigate to the command prompt, open \
@@ -25,7 +25,7 @@ the start menu and search for “command” or “cmd”.
 """
 img = "/Win10CLI/Start.png"
 
-[[app.info]]
+[[content]]
 txt = """
 It is recommended to enter the command prompt as an administrator to ensure \
 that you have complete access to the system and all the logs. There are 2 ways \
@@ -36,7 +36,7 @@ as an administrator creates what is known as an elevated command prompt.
 """
 img = "/Win10CLI/RunAsAdmin.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Upon launching Command Prompt as an administrator as an administrator, a popup \
 may appear stating “Do you want to allow this app to make changes to your device?”. \
@@ -44,14 +44,14 @@ If prompted with this popup, click yes to continue to allow command prompt to op
 """
 img = "/Win10CLI/MakeChanges.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Upon opening, the command prompt displays this screen, which does not display \
 much information to the user.
 """
 img = "/Win10CLI/CLI1.png"
 
-[[app.info]]
+[[content]]
 txt = '''
 First, for logging purposes, a user should ensure they are located in the right
 directory by entering the command ```cd C:\WINDOWS\system32``` If you are not
@@ -61,7 +61,7 @@ command line will now begin with **C:\WINDOWS\system32>**
 img = "/Win10CLI/CLI2.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 The Command Prompt should be run as an administrator because the files that \
 hold the logs require administrator access. If the command prompt is run without \

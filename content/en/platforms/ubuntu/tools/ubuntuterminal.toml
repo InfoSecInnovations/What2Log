@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 The terminal is a command line interface way to view logs in Linux and allows \
 for filtering, sorting, removing, and other features. The method provided is \
@@ -26,14 +26,14 @@ that is in the dock (it is pinned by default in Ubuntu).
 """
 img = "/Terminal/Icon.png"
 
-[[app.info]]
+[[content]]
 txt = """
 If the terminal is not pinned to the users dock, select Show Applications \
 from the dock and search for “terminal”.
 """
 img = "/Terminal/Search.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Line any command line, the Linux Terminal does not give off a lot of information \
 when it first loads but is a powerful tool that can be used for a variety of \
@@ -41,7 +41,7 @@ things within the system.
 """
 img = "/Terminal/Launch.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Unlike Windows dependence on WevtUtil, Linux logs do not require a specific \
 command to view or sort. In fact, there are a variety of commands that can be \

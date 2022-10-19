@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 Windows logs can be viewed either in the Command Prompt or in the. PowerShell \
 allows for a script to be written in order to automate the log process. To \
@@ -26,7 +26,7 @@ should be selected.
 """
 img = "/Win7Powershell/Start.png"
 
-[[app.info]]
+[[content]]
 txt = """
 In order to be able to view the log files, Windows PowerShell needs \
 administrator access. To launch PowerShell, right-click on the Windows \
@@ -35,20 +35,20 @@ PowerShell.
 """
 img = "/Win7Powershell/RunAsAdmin.png"
 
-[[app.info]]
+[[content]]
 txt = """
 If prompted with this pop-up, click yes in order to continue and launch PowerShell.
 """
 img = "/Win7Powershell/AllowAccess.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Upon opening, Powershell displays this screen, which does not display \
 much information to the user.
 """
 img = "/Win7Powershell/CLI1.png"
 
-[[app.info]]
+[[content]]
 txt = '''
 In order to navigate to the correct location for the log files, enter the
 command ```cd C:\WINDOWS\system32```
@@ -56,7 +56,7 @@ command ```cd C:\WINDOWS\system32```
 img = "/Win7Powershell/CD.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 Windows PowerShell should be launched as an administrator in order to view logs \
 as the location of the logs requires administrator access. If the PowerShell is \

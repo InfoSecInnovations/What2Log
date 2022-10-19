@@ -17,7 +17,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 The Windows command prompt allows for a straightforward way to view and filter \
 logs without a graphic user interface. To navigate to the command prompt, open \
@@ -25,7 +25,7 @@ the start menu and search for “command” or “cmd”.
 """
 img = "/Win7CLI/Start.png"
 
-[[app.info]]
+[[content]]
 txt = """
 It is required to enter the command prompt as an administrator to ensure that \
 you have complete access to the system and all the logs. In order to do this, \
@@ -35,14 +35,14 @@ Administrator”. This launches what is known as an elevated command prompt.
 img = "/Win7CLI/AllowAccess.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 Upon opening, the command prompt displays this screen, which does not display \
 much information to the user.
 """
 img = "/Win7CLI/CLI.png"
 
-[[app.info]]
+[[content]]
 txt = '''
 First, for logging purposes, a user should ensure they are located in the right
 directory by entering the command ```cd C:\WINDOWS\system32``` If you are not
@@ -52,7 +52,7 @@ command line will now begin with **C:\WINDOWS\system32>**
 img = "/Win7CLI/CD.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 The Command Prompt should be run as an administrator because the files that \
 hold the logs require administrator access. If the command prompt is run without \

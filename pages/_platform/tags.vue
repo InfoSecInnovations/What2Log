@@ -38,7 +38,6 @@ export default {
   async asyncData({$content, app, params}) {
     return {
       tags: await $content(`${app.i18n.locale}/platforms/${params.platform}`, {deep: true})
-      .where({dir: {$in: [`/${app.i18n.locale}/platforms/${params.platform}/logs`, `/${app.i18n.locale}/platforms/${params.platform}/tools`]}})
       .only('tags')
       .fetch()
       .then(res => [...new Set(res.filter(item => item.tags && item.tags.length).map(item => item.tags).flat())]),
@@ -54,7 +53,6 @@ export default {
         return
       }
       const search = this.$content(`${this.$i18n.locale}/platforms/${this.$route.params.platform}`, {deep: true})
-      .where({dir: {$in: [`/${this.$i18n.locale}/platforms/${this.$route.params.platform}/logs`, `/${this.$i18n.locale}/platforms/${this.$route.params.platform}/tools`]}})
       .where({tags: {$contains: query}})
       this.lastPage = await search.fetch().then(res => Math.floor((res.length - 1) / this.itemsPerPage))
       this.results = await search

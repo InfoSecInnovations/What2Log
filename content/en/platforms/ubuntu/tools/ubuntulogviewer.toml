@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 Linux versions that are Ubuntu based have a built in GUI application for viewing \
 logs. This app is simply called Logs in the Ubuntu interface and is very similar \
@@ -26,13 +26,13 @@ select the Show Applications icon in the dock.
 """
 img = "/GNOME/Apps.png"
 
-[[app.info]]
+[[content]]
 txt = """
 From here, type in “logs” and select the logs application.
 """
 img = "/GNOME/Logs.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Upon launching, the logs main/home screen will show. The log application \
 interface is fairly straightforward and simple. The application generally \
@@ -41,7 +41,7 @@ logs, such as major errors.
 """
 img = "/GNOME/Launch.png"
 
-[[app.info]]
+[[content]]
 txt = """
 The “All” tab is a list of all the events from the logs compiled and then \
 sorted in order of time. This is a good way to see all the events at a particular \
@@ -52,7 +52,7 @@ and minor tasks they do.
 """
 img = "/GNOME/Left.png"
 
-[[app.info]]
+[[content]]
 txt = """
 The top of the logs window displays a drop down option. This option allows the \
 user to select which logs they want to view from which boot of the machine. By \
@@ -60,7 +60,7 @@ default, this is set to the current machine boot log.
 """
 img = "/GNOME/ChooseLog.png"
 
-[[app.info]]
+[[content]]
 txt = """
 In the top right of the application window, there are three options. Number 1 \
 is the search function and allows a user to search for a particular string in \
@@ -68,7 +68,7 @@ the log file. You can also press control and F to activate the search function.
 """
 img = "/GNOME/Search.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Number 2 gives the user the option to export the logs to a file. Finally, \
 Number 3 gives the user the option to open a new window, get help, or gain \

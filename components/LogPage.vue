@@ -3,9 +3,7 @@
     <h1>{{article.title}}</h1>
     <Tags :tags="article.tags"/>
     <div class="info-block">
-      <div v-if="article.credits && article.credits.length" class="credits">
-        <p v-for="(credit, index) of article.credits" :key="`credits-${index}`">{{credit}}</p>
-      </div>
+      <Credits :article="article"/>
       <h4 v-if="article.source.event_id">Windows Event ID: {{article.source.event_id}}</h4>
       <h4>{{typeof article.default_enabled == 'boolean' ? 'Enabled by default' : 'Disabled by default'}}</h4>
       <h4 v-if="article.source.service">Service: {{article.source.service}}</h4>

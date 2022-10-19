@@ -17,7 +17,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 The Local Group Policy Editor is a feature of Windows 10 Professional and \
 allows for configuration of group policy objects. It is important to note \
@@ -28,7 +28,7 @@ editor, enter “gpedit” or “group policy editor” into the start menu.
 """
 img = "/GPE/Start.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Upon launching, the group policy editor will look similar to this. From here, \
 you can toggle certain events to be logged if there are not logged automatically. \

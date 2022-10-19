@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 The Local Group Policy Editor is a feature of Windows 7 and \
 allows for configuration of group policy objects. To navigate to the group policy \
@@ -24,7 +24,7 @@ editor, enter “gpedit” or “group policy editor” into the search field.
 """
 img = "/Win7GPE/Start.png"
 
-[[app.info]]
+[[content]]
 txt = """
 When you open the link highlighted in the above image, “Edit group policy”, the \
 Local Group Policy Editor will launch. In the local group policy editor, certain \

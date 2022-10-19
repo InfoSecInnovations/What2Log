@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 Windows only natively logs software installation, software updates, and software \
 deletion if it is done through Windows own MsiInstaller. This is important to \
@@ -25,7 +25,7 @@ install on a device.
 """
 
 
-[[app.info]]
+[[content]]
 txt = """
 Another important note is the differences between Windows 10 Home and Windows \
 10 Professional. As previously mentioned, Windows 10 Home does not have the \

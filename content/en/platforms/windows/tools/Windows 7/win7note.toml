@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 Officially, support for Windows 7 ended on January 14, 2020 and it is \
 recommended that users upgrade to Windows 10. However, the logging process is \

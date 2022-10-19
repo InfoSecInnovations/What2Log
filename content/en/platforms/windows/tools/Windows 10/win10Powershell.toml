@@ -17,7 +17,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 The Windows 10 logs can be viewed either in the Command Prompt or in the \
 PowerShell and there is no difference in the commands used. PowerShell, \
@@ -27,7 +27,7 @@ correct PowerShell app, the Windows PowerShell (highlighted in red) should be se
 """
 img = "/Win10Powershell/Start.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Much like the Command Prompt, PowerShell should be entered as an administrator \
 and there are two ways to do so. The first is to click on number 1 (shown below) \
@@ -36,7 +36,7 @@ the right is not shown on your machine, simply use number 2.
 """
 img = "/Win10Powershell/StartAsAdmin.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Upon launching PowerShell as an administrator as an administrator, a popup may \
 appear stating “Do you want to allow this app to make changes to your device?”. \
@@ -44,14 +44,14 @@ If prompted with this popup, click yes to continue.
 """
 img = "/Win10Powershell/AllowAccess.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Upon opening, Powershell displays this screen, which does not display \
 much information to the user.
 """
 img = "/Win10Powershell/CLI1.png"
 
-[[app.info]]
+[[content]]
 txt = '''
 In order to navigate to the correct location for the log files, enter the
 command ```cd C:\WINDOWS\system32```
@@ -59,7 +59,7 @@ command ```cd C:\WINDOWS\system32```
 img = "/Win10Powershell/CLI2.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 Windows PowerShell should be launched as an administrator in order to view logs \
 as the location of the logs requires administrator access. If the PowerShell is \

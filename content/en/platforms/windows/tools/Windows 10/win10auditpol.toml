@@ -17,7 +17,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 Auditpol.exe is the command line tool that What2Log utilizes to check the status \
 of and enable or disable logs in Windows environments. It can be used in both \
@@ -26,14 +26,14 @@ Entering the command ```auditpol``` will return a list of the available commands
 """
 img = "/AuditPol/auditpol.png"
 
-[[app.info]]
+[[content]]
 txt = """
 With the ```auditpol /list /category``` command, the user can see the list of \
 categories they can edit with the auditpol command, of which there are 10.
 """
 img = "/AuditPol/auditpolcategories.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Auditpol then breaks each of these main categories into several subcategories, \
 which are what is edited when changing the audit policy. These subcategories \
@@ -42,7 +42,7 @@ only shows a portion of the output.
 """
 img = "/AuditPol/auditpollist.png"
 
-[[app.info]]
+[[content]]
 txt = """
 In order to get the current status of an audit setting, the command is \
 auditpol /get, which needs to be followed by a /category or /subcategory. Doing \
@@ -53,7 +53,7 @@ subcategories with their current setting.
 """
 img = "/AuditPol/auditpolgetcategory.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Using the auditpol /get command with /subcategory, however, will only return \
 the setting of a specific singular subcategory. For subcategories longer than 1 \
@@ -61,7 +61,7 @@ word, the name must be placed inside parentheses for it to be read correctly.
 """
 img = "/AuditPol/auditpolgetcategory.png"
 
-[[app.info]]
+[[content]]
 txt = """
 In order to enable or disable a log, the command is auditpol /set, which is then \
 followed by a category or subcategory. After this, you must specify what you \
@@ -72,7 +72,7 @@ have to be changed. The auditpol command will then look something like \
 """
 img = "/AuditPol/auditpolenabledisable.png"
 
-[[app.info]]
+[[content]]
 txt = """
 This command can also be applied to all categories at once, although it is not \
 recommended. The changes made through the command line can also be observed in \

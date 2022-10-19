@@ -1,0 +1,25 @@
+#This is the template for What2Log Tools entries
+
+# Meta data about this App entry
+title = ""
+credits = [ "" ]
+tags = [ "" ]
+
+# Additional References Go Here
+references = [
+  "blah",
+  "blah2"
+]
+
+# The text and image pairs that appear in the main body of the page
+[[content]]
+txt = """
+"""
+img = "img0.png" # optional
+
+[[content]]
+txt = """
+"""
+img = "img0.png"
+
+#continue as necessary

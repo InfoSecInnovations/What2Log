@@ -16,7 +16,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 A feature of Windows systems, the Event Viewer is a GUI interface for the \
 logs of a windows system. This allows the user to interact and easily sort \
@@ -26,7 +26,7 @@ through the logs on a system. To navigate to the Event Viewer, simply type \
 """
 img = "/WEV/Start.png"
 
-[[app.info]]
+[[content]]
 txt = """
 Most of the information relevant to log auditing will be stored under the \
 Windows Logs heading in the left column.  Furthermore, most of the logs on \
@@ -34,21 +34,21 @@ interest are inside of the Security tab.
 """
 img = "/WEV/LeftTab.png"
 
-[[app.info]]
+[[content]]
 txt = """
 The general tab, number 1, shows a baseline of information on any log event and \
 can be useful to get a quick understanding. In the image, the general tab is selected.
 """
 img = "/WEV/Numbered.png"
 
-[[app.info]]
+[[content]]
 txt = """
 The details tab, number 2, can provide more details on a particular log. The \
 details tab displays information in XML view and is shown below.
 """
 img = "/WEV/XML.png"
 
-[[app.info]]
+[[content]]
 txt = """
 From here, the find function, number 3, is useful for quickly looking through \
 logs. This can be useful to quickly look for a particular log number or to help \
@@ -58,7 +58,7 @@ enter information you wish to sort by, shown below.
 img = "/WEV/Find.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 Like most programs, Event Viewer includes a sort function, number 4. This can \
 be useful to view all the logs of a particular value quickly, although it can \
@@ -67,7 +67,7 @@ take time to sort them due to the volume of the log file.
 img = "/WEV/Sort.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 The ability to filter the selected log, number 5, is also built into the event \
 viewer and can allow the user to pick out exactly what logs they wish to see. \
@@ -77,7 +77,7 @@ more advanced searching. This is the popup window for the filter function.
 img = "/WEV/Filter.png"
 
 
-[[app.info]]
+[[content]]
 txt = """
 For the screenshots shown for each event, Computer Name refers to the computer \
 that the event occurred on and the username refers to the account that created \

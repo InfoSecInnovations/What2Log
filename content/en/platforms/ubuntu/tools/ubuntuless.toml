@@ -17,7 +17,7 @@ default_installed = true #True or false only
 #continue as necessary
 
 # App Info
-[[app.info]]
+[[content]]
 txt = """
 An example of how diverse the options in the Linux command line are for viewing \
 logs, the less command can also be used to show a parsed output of the log file. \
@@ -29,7 +29,7 @@ or navigate through the results with N or n.
 """
 img = "/Less/Less1.png"
 
-[[app.info]]
+[[content]]
 txt = """
 The auth.log can also be launched with the desired results highlighted directly \
 from the command line by entering the command ```less -p “string” /var/log/auth.log``` \
