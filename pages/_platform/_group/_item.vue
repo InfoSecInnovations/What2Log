@@ -1,15 +1,14 @@
 <template>
-  <Component :is="component" :article="article" :platformInfo="platformInfo"/>
+  <Component :is="component" :article="article" :platformInfo="platformInfo" :scriptCategories="scriptCategories"/>
 </template>
 
 <script>
 export default {
+  props: ['scriptCategories', 'platformInfo'],
   async asyncData({ $content, app, params}) {
     const article = (await $content(`${app.i18n.locale}/platforms/${params.platform}/${params.group}`, {deep: true}).where({slug: params.item}).fetch())[0]
-    const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     return {
-      article,
-      platformInfo
+      article
     }
   },
   computed: {

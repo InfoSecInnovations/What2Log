@@ -8,7 +8,7 @@
       <div id="sidebar" v-if="sidebar">
         <SidebarElement v-for="item of sidebar" :key="`sidebar-${item.category || item.slug}`" :content="item" :baseUrl="baseUrl" :topLevel="true"/>
       </div>
-      <NuxtChild />
+      <NuxtChild :scriptCategories="scriptCategories" :platformInfo="platformInfo"/>
     </div>
   </div>
 </template>
@@ -19,13 +19,15 @@ import getFirstItem from '~/assets/getFirstItem'
 export default {
   async asyncData({$content, app, params}) {
     const groupPath = `${app.i18n.locale}/platforms/${params.platform}/${params.group}`
-    const sidebarData = await $content(groupPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug', 'splitPath']).fetch()
+    const sidebarData = await $content(groupPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug', 'splitPath', 'scripting']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const sidebar = categorizeData(sidebarData, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering[params.group])
+    const scriptCategories = [...new Set(sidebarData.filter(item => item.scripting && item.scripting.tasks).map(item => Object.keys(item.scripting.tasks)).flat())]
     return {
       baseUrl: `${params.platform}/${params.group}`,
       sidebar,
-      platformInfo
+      platformInfo,
+      scriptCategories
     }
   },
   async mounted () {

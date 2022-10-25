@@ -10,15 +10,11 @@
       <h4 v-if="article.source.log">Log type: {{article.source.log}}</h4>
     </div>
     <p v-if="article.collect_reason" class="info">{{article.collect_reason}}</p>
-    <div v-if="article.scripting.view_logs || article.scripting.check_status || article.scripting.enable_logs || article.scripting.disable_logs" class="logpile-section">
-      <LogpileScript v-if="article.scripting.view_logs" :script="article.scripting.view_logs" script_type="view" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
-      <MissingLogpileScript v-else script_type="view"/>
-      <LogpileScript v-if="article.scripting.check_status" :script="article.scripting.check_status" script_type="check" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
-      <MissingLogpileScript v-else script_type="check"/>
-      <LogpileScript v-if="article.scripting.disable_logging" :script="article.scripting.disable_logging" script_type="disable" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
-      <MissingLogpileScript v-else script_type="disable"/>
-      <LogpileScript v-if="article.scripting.enable_logging" :script="article.scripting.enable_logging" script_type="enable" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
-      <MissingLogpileScript v-else script_type="enable"/>
+    <div v-if="scriptCategories && scriptCategories.length" class="logpile-section">
+      <template v-for="task of scriptCategories">
+        <LogpileScript v-if="article.scripting.tasks[task]" :script="article.scripting.tasks[task]" :script_type="task" :script_language="article.scripting.language" :category="article.category" :slug="article.slug" :key="`scripting-${task}`"/>
+        <MissingLogpileScript v-else :script_type="task" :key="`scripting-${task}`"/>
+      </template>
       <div class="script-info">
         <div class="script-language">Language: {{article.scripting.language}}</div>
         <NuxtLink class="button" :to="`/${$route.params.platform}/`">Back to {{platformInfo.name}}</NuxtLink>
@@ -45,7 +41,7 @@
 
 <script>
 export default {
-  props: ['article', 'platformInfo'],
+  props: ['article', 'platformInfo', 'scriptCategories'],
   data() {
     let content = []
     if (this.article.GUI && this.article.GUI.enable) content = [...content, ...this.article.GUI.enable]
