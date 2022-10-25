@@ -1,20 +1,15 @@
-const defaultState = () => ({
-  enable: {},
-  disable: {},
-  view: {},
-  check: {}
-})
-
-export const state = defaultState
+export const state = () => ({})
 
 export const mutations = {
-  setScriptStatus: (state, {category, slug, script_type, status}) => {
-    if (!state[script_type][category]) state[script_type][category] = {}
-    state[script_type] = {...state[script_type], [`${category}-${slug}`]: status}
+  setScriptStatus: (state, {platform, category, slug, script_type, status}) => {
+    if (!state[platform]) state[platform] = {}
+    if (!state[platform][category]) state[platform][category] = {}
+    if (!state[platform][category][slug]) state[platform][category][slug] = {}
+    state[platform][category][slug][script_type] = status
   },
-  reset: state => Object.assign(state, defaultState())
+  reset: state => Object.keys(state).forEach(key => state[key] = undefined)
 }
 
 export const getters = {
-  getScriptStatus: state => (category, slug, script_type) => state[script_type][category] && state[script_type][`${category}-${slug}`]
+  getScriptStatus: state => ({platform, category, slug, script_type}) => state[platform] && state[platform][category] && state[platform][category][slug] && state[platform][category][slug][script_type]
 }

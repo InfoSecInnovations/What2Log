@@ -30,10 +30,7 @@ export default {
   props: ['script', 'script_type', 'script_language', 'category', 'slug'],
   computed: {
     label() {
-      if (this.script_type == 'enable') return 'Enable Logging'
-      if (this.script_type == 'disable') return 'Disable Logging'
-      if (this.script_type == 'view') return 'View Logs'
-      return 'Check Logging Status'
+      return `${this.script_type[0].toUpperCase()}${this.script_type.substring(1)}`
     },
     content() {
       let content = this.script
