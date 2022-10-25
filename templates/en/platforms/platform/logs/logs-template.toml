@@ -40,14 +40,15 @@ level = " " # Compliance requirement
 reference = "URL here" # Reference for compliance
 # repeat as needed
 
-# Log Pile
-#Completely delete any section there is no code for
-[log_pile]
-language = "" #Language for Log Pile
-view_logs = """ """ #How to view log
-check_status = """ """ #How to check if log is enabled
-enable_logging = """ """ #How to enable log
-disable_logging = """ """ #How to disable log
+# Scripts to handle logging
+[scripting]
+language = "" # Scripting language
+[scripting.tasks] # The individual scripts, try to keep the same script types on each item of the platform
+view = """ """
+check = """ """
+enable = """ """
+disable = """ """
+# ... you can have more, but bear in mind it will create more columns on the platform landing page
 
 
 # Enable via GUI

@@ -37,9 +37,10 @@ reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/E
 # repeat as needed
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "bash" #Language for Log Pile
-view_logs = """grep usermod /var/log/auth.log | grep delete""" #How to view log
+[scripting.tasks]
+view = """grep usermod /var/log/auth.log | grep delete""" #How to view log
 
 
 

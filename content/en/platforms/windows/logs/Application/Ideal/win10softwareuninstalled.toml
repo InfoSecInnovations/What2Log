@@ -24,9 +24,10 @@ taken off a machine or an attempt to disrupt the normal workflow.
   """
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "Powershell" #Language for Log Pile
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Application';ID='11724'} -MaxEvents 1 | Format-List""" #How to view log
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='Application';ID='11724'} -MaxEvents 1 | Format-List""" #How to view log
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]

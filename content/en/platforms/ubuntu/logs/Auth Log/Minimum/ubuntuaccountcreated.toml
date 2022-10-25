@@ -28,9 +28,10 @@ SP 800-53, HIPAA and PCI DSS regulations.
 
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "bash" #Language for Log Pile
-view_logs = """grep "new user" /var/log/auth.log""" #How to view log
+[scripting.tasks]
+view = """grep "new user" /var/log/auth.log""" #How to view log
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]

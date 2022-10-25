@@ -38,12 +38,13 @@ references = [
 
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "Powershell" #Language for Log Pile
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4720'}""" #How to view log
-check_status = 'auditpol /get /subcategory:"computer account management" ' #How to check if log is enabled
-enable_logging = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
-disable_logging = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4720'}""" #How to view log
+check = 'auditpol /get /subcategory:"computer account management" ' #How to check if log is enabled
+enable = """auditpol /set /subcategory:"computer account management" /Success:Enable /Failure:Enable""" #How to enable log
+disable = """auditpol /set /subcategory:"computer account management" /Success:Disable /Failure:Disable""" #How to disable log
 
 
 # Compliance & framework information

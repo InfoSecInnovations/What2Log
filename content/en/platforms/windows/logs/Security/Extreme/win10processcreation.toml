@@ -25,12 +25,13 @@ This log allows you to identify if unauthorized or malicious applications were o
   """
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "Powershell" #Language for Log Pile
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4688'} -MaxEvents 1 | Format-List""" #How to view log
-check_status = 'auditpol /get /subcategory:"Process Creation' #How to check if log is enabled
-enable_logging = """auditpol /set /subcategory:"Process Creation" /Success:Enable /Failure:Enable""" #How to enable log
-disable_logging = """auditpol /set /subcategory:"Process Creation" /Success:Disable /Failure:Disable""" #How to disable log
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4688'} -MaxEvents 1 | Format-List""" #How to view log
+check = 'auditpol /get /subcategory:"Process Creation' #How to check if log is enabled
+enable = """auditpol /set /subcategory:"Process Creation" /Success:Enable /Failure:Enable""" #How to enable log
+disable = """auditpol /set /subcategory:"Process Creation" /Success:Disable /Failure:Disable""" #How to disable log
 
 
 # Compliance & framework information

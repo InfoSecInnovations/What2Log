@@ -27,9 +27,10 @@ groups are active.
 # Compliance & framework information
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "bash" #Language for Log Pile
-view_logs = """grep " groupdel" /var/log/auth.log""" #How to view log
+[scripting.tasks]
+view = """grep " groupdel" /var/log/auth.log""" #How to view log
 
 
 

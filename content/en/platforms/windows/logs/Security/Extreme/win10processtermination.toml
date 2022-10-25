@@ -24,12 +24,13 @@ unusual software being closed or give a timeline of events.
   """
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "Powershell" #Language for Log Pile
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4689'} -MaxEvents 1 | Format-List""" #How to view log
-check_status = 'auditpol /get /subcategory:"Process Termination"' #How to check if log is enabled
-enable_logging = """auditpol /set /subcategory:"Process Termination" /Success:Enable /Failure:Enable""" #How to enable log
-disable_logging = """auditpol /set /subcategory:"Process Termination" /Success:Disable /Failure:Disable""" #How to disable log
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4689'} -MaxEvents 1 | Format-List""" #How to view log
+check = 'auditpol /get /subcategory:"Process Termination"' #How to check if log is enabled
+enable = """auditpol /set /subcategory:"Process Termination" /Success:Enable /Failure:Enable""" #How to enable log
+disable = """auditpol /set /subcategory:"Process Termination" /Success:Disable /Failure:Disable""" #How to disable log
 
 
 # Compliance & framework information

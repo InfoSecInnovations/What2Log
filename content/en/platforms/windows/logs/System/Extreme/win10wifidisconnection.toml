@@ -24,9 +24,10 @@ potentially start a time line of events.
   """
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "Powershell" #Language for Log Pile
-view_logs = """$xml = @'
+[scripting.tasks]
+view = """$xml = @'
 <QueryList>
     <Query Id="0" Path="Microsoft-Windows-WLAN-AutoConfig/Operational">
         <Select Path="Microsoft-Windows-WLAN-AutoConfig/Operational">*[System[(EventID=8003)]]

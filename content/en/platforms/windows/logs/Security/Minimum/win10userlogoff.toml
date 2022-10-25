@@ -30,12 +30,13 @@ references = [
 ]# repeat as needed
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "PowerShell"
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4634'} -MaxEvents 1 | Format-List"""
-check_status = """auditpol /get /subcategory:"logoff""""
-enable_logging = """auditpol /set /subcategory:"logoff" /Success:Enable /Failure:Enable"""
-disable_logging = """auditpol /set /subcategory:"logoff" /Success:Disable /Failure:Disable"""
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4634'} -MaxEvents 1 | Format-List"""
+check = """auditpol /get /subcategory:"logoff""""
+enable = """auditpol /set /subcategory:"logoff" /Success:Enable /Failure:Enable"""
+disable = """auditpol /set /subcategory:"logoff" /Success:Disable /Failure:Disable"""
 
 
 # Compliance & framework information

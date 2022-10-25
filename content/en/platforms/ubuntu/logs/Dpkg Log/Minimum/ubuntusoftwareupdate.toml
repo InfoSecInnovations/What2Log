@@ -37,9 +37,10 @@ reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hi
 # repeat as needed
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "bash" #Language for Log Pile
-view_logs = """grep "upgrade " /var/log/dpkg.log""" #How to view log
+[scripting.tasks]
+view = """grep "upgrade " /var/log/dpkg.log""" #How to view log
 
 
 

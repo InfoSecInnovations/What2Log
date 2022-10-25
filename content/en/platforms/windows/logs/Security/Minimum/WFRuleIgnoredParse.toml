@@ -31,12 +31,13 @@ references = [
 
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "PowerShell"
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4953'} -MaxEvents 1 | Format-List"""
-check_status = '''auditpol /get /subcategory:"MPSSVC Rule-Level Policy Change"'''
-enable_logging = '''auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /Success:Enable /Failure:Enable'''
-disable_logging = '''auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /Success:Disable /Failure:Disable'''
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4953'} -MaxEvents 1 | Format-List"""
+check = '''auditpol /get /subcategory:"MPSSVC Rule-Level Policy Change"'''
+enable = '''auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /Success:Enable /Failure:Enable'''
+disable = '''auditpol /set /subcategory:"MPSSVC Rule-Level Policy Change" /Success:Disable /Failure:Disable'''
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]

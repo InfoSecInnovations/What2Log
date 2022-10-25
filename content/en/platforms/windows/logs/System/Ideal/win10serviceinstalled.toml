@@ -25,9 +25,10 @@ malware. This log is recommended by JPCERTCC.
   """
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "Powershell" #Language for Log Pile
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='System';ID='7045'} -MaxEvents 1 | Format-List""" #How to view log
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='System';ID='7045'} -MaxEvents 1 | Format-List""" #How to view log
 #Get-WinEvent -FilterHashTable @{LogName='System';ID='7045'} -MaxEvents 1 | Format-List
 
 

@@ -10,17 +10,17 @@
       <h4 v-if="article.source.log">Log type: {{article.source.log}}</h4>
     </div>
     <p v-if="article.collect_reason" class="info">{{article.collect_reason}}</p>
-    <div v-if="article.log_pile.view_logs || article.log_pile.check_status || article.log_pile.enable_logs || article.log_pile.disable_logs" class="logpile-section">
-      <LogpileScript v-if="article.log_pile.view_logs" :script="article.log_pile.view_logs" script_type="view" :script_language="article.log_pile.language" :category="article.category" :slug="article.slug"/>
+    <div v-if="article.scripting.view_logs || article.scripting.check_status || article.scripting.enable_logs || article.scripting.disable_logs" class="logpile-section">
+      <LogpileScript v-if="article.scripting.view_logs" :script="article.scripting.view_logs" script_type="view" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
       <MissingLogpileScript v-else script_type="view"/>
-      <LogpileScript v-if="article.log_pile.check_status" :script="article.log_pile.check_status" script_type="check" :script_language="article.log_pile.language" :category="article.category" :slug="article.slug"/>
+      <LogpileScript v-if="article.scripting.check_status" :script="article.scripting.check_status" script_type="check" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
       <MissingLogpileScript v-else script_type="check"/>
-      <LogpileScript v-if="article.log_pile.disable_logging" :script="article.log_pile.disable_logging" script_type="disable" :script_language="article.log_pile.language" :category="article.category" :slug="article.slug"/>
+      <LogpileScript v-if="article.scripting.disable_logging" :script="article.scripting.disable_logging" script_type="disable" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
       <MissingLogpileScript v-else script_type="disable"/>
-      <LogpileScript v-if="article.log_pile.enable_logging" :script="article.log_pile.enable_logging" script_type="enable" :script_language="article.log_pile.language" :category="article.category" :slug="article.slug"/>
+      <LogpileScript v-if="article.scripting.enable_logging" :script="article.scripting.enable_logging" script_type="enable" :script_language="article.scripting.language" :category="article.category" :slug="article.slug"/>
       <MissingLogpileScript v-else script_type="enable"/>
       <div class="script-info">
-        <div class="script-language">Language: {{article.log_pile.language}}</div>
+        <div class="script-language">Language: {{article.scripting.language}}</div>
         <NuxtLink class="button" :to="`/${$route.params.platform}/`">Back to {{platformInfo.name}}</NuxtLink>
       </div>
     </div>

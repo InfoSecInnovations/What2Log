@@ -30,9 +30,10 @@ references = [
 
 
 # Log Pile
-[log_pile]
+[scripting]
 language = "PowerShell"
-view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4699'} -MaxEvents 1 | Format-List"""
+[scripting.tasks]
+view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4699'} -MaxEvents 1 | Format-List"""
 
 
 # Compliance & framework information
