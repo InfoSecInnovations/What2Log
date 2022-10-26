@@ -367,7 +367,6 @@ body
       display: flex
       flex-direction: column
       align-items: center
-
   .compliance-block
     display: flex
     flex-direction: column
@@ -441,13 +440,11 @@ body
   .logpile-section
     display: flex
     flex-direction: column
-    width: info_width
+    width: 100%
     background-color: tertiary_color
     padding: medium_padding
     gap: medium_padding
     font-size: small_font_size
-    @media (max-width: media_medium_breakpoint)
-      width: 100%
     .script-language
       font-size: main_font_size
       color: secondary_font_color
@@ -465,7 +462,7 @@ body
       background-color: transparent
     .quick-script
       display: flex
-      align-items: flex-start
+      align-items: center
       gap: medium_padding
       justify-content: center
       @media (max-width: media_medium_breakpoint)
@@ -478,28 +475,20 @@ body
         @media (max-width: media_medium_breakpoint)
           flex-basis: auto
           width: 100%
-      .quick-script-controls
-        flex-shrink: 0
+      .script-label
+        color: secondary_font_color
+        font-size: small_font_size
         flex-basis: logpile_controls_size
+      .quick-script-icon-buttons
         display: flex
-        flex-direction: column
-        align-items: flex-end
         gap: medium_padding
-        @media (max-width: media_medium_breakpoint)
-          flex-basis: auto
-          align-items: center
-        .script-label
-          color: secondary_font_color
-          font-size: main_font_size
-        .quick-script-icon-buttons
-          display: flex
-          gap: medium_padding
-          .icon-button
-            width: logpile_icon_button_size
-            height: logpile_icon_button_size 
-            background-color: background
-            padding: logpile_icon_button_padding
-            cursor: pointer
+        align-items: center
+        .icon-button
+          width: logpile_icon_button_size
+          height: logpile_icon_button_size 
+          background-color: background
+          padding: logpile_icon_button_padding
+          cursor: pointer
   .tooltip
     display: block
     z-index: 10000
