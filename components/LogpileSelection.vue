@@ -3,7 +3,8 @@
     <div :class="`${topLevel ? 'top-level' : 'second-level'} logpile-row`">
       <div class="logpile-category">{{content.category}}</div>
       <template v-for="scriptCategory of scriptCategories">
-        <input type="checkbox" :key="`logpile-selection-${category}-${scriptCategory}`" v-on:change="setStatus(content, scriptCategory, $event)" :checked="checked(content, scriptCategory)" :indeterminate.prop="indeterminate(content, scriptCategory)">
+        <input type="checkbox" v-if="valid(content, scriptCategory)" :key="`logpile-selection-${category}-${scriptCategory}`" v-on:change="setStatus(content, scriptCategory, $event)" :checked="checked(content, scriptCategory)" :indeterminate.prop="indeterminate(content, scriptCategory)">
+        <div v-else :key="`logpile-selection-${category}-${scriptCategory}-${content.slug}`"></div>
       </template>
     </div>
     <LogpileSelection v-for="item of content.items" :key="item.category || item.slug" :content="item" :baseUrl="baseUrl" :category="category" :scriptCategories="scriptCategories" :platform="platform"/>
@@ -11,7 +12,8 @@
   <div v-else class="logpile-row child">
     <NuxtLink :to="`/${baseUrl}/${content.slug}/`" class="logpile-category">{{content.title}}</NuxtLink>
       <template v-for="scriptCategory of scriptCategories">
-        <input type="checkbox" :key="`logpile-selection-${category}-${scriptCategory}-${content.slug}`" v-on:change="setStatus(content, scriptCategory, $event)" :checked="checked(content, scriptCategory)">
+        <input type="checkbox" v-if="valid(content, scriptCategory)" :key="`logpile-selection-${category}-${scriptCategory}-${content.slug}`"  v-on:change="setStatus(content, scriptCategory, $event)" :checked="checked(content, scriptCategory)">
+        <div v-else :key="`logpile-selection-${category}-${scriptCategory}-${content.slug}`"></div>
       </template>
   </div>
 </template>
@@ -31,7 +33,11 @@ export default {
     indeterminate(data, scriptCategory) {
       if (data.slug) return false
       if (!this.checked(data, scriptCategory)) return false
-      return !data.items.every(item => this.checked(item, scriptCategory) && !this.indeterminate(item, scriptCategory))
+      return !data.items.every(item => (this.checked(item, scriptCategory) || !this.valid(item, scriptCategory)) && !this.indeterminate(item, scriptCategory))
+    },
+    valid(data, scriptCategory) {
+      if (data.slug) return data.scripting && data.scripting.tasks && data.scripting.tasks[scriptCategory]
+      return data.items.some(item => this.valid(item, scriptCategory))
     }
   }
 }
