@@ -17,7 +17,7 @@
       </template>
       <div class="script-info">
         <div class="script-language">Language: {{article.scripting.language}}</div>
-        <NuxtLink class="button" :to="`/${$route.params.platform}/`">Back to {{platformInfo.name}}</NuxtLink>
+        <NuxtLink class="button" :to="`/${$route.params.platform}/`">View {{platformInfo.name}} script selection</NuxtLink>
       </div>
     </div>
     <div class="compliance-block" v-if="article.compliance && Object.keys(article.compliance).length">

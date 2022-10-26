@@ -7,7 +7,7 @@
       <a v-if="loaded" :href="getScriptBlob()" :download="getScriptName()" v-tooltip.bottom="'Download script'">
         <img class="icon-button" src="/images/download.svg">
       </a>
-      <img class="icon-button" :src="enabled? '/images/remove.svg' : '/images/basket.svg'" v-on:click="enable"  v-tooltip.bottom="enabled ? 'Remove from Log Pile' : 'Add to Log Pile'">
+      <img class="icon-button" :src="enabled? '/images/remove.svg' : '/images/basket.svg'" v-on:click="enable"  v-tooltip.bottom="enabled ? 'Remove from Selection' : 'Add to Selection'">
     </div>
   </div>
 </template>
