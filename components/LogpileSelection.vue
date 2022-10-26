@@ -3,13 +3,16 @@
     <div :class="`${topLevel ? 'top-level' : 'second-level'} logpile-row`">
       <div class="logpile-category">{{content.category}}</div>
       <template v-for="scriptCategory of scriptCategories">
-        <input type="checkbox" :key="`logpile-selection-${content.category}-${scriptCategory}`" v-on:change="setStatus(content, scriptCategory, $event)">
+        <input type="checkbox" :key="`logpile-selection-${category}-${scriptCategory}`" v-on:change="setStatus(content, scriptCategory, $event)">
       </template>
     </div>
-    <LogpileSelection v-for="item of content.items" :key="item.category || item.slug" :content="item" :baseUrl="baseUrl" :category="category"/>
+    <LogpileSelection v-for="item of content.items" :key="item.category || item.slug" :content="item" :baseUrl="baseUrl" :category="category" :scriptCategories="scriptCategories" :platform="platform"/>
   </div>
   <div v-else class="logpile-row child">
     <NuxtLink :to="`/${baseUrl}/${content.slug}/`" class="logpile-category">{{content.title}}</NuxtLink>
+      <template v-for="scriptCategory of scriptCategories">
+        <input type="checkbox" :key="`logpile-selection-${category}-${scriptCategory}-${content.slug}`" v-on:change="setStatus(content, scriptCategory, $event)">
+      </template>
   </div>
 </template>
 
