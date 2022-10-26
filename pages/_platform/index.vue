@@ -113,11 +113,13 @@ export default {
     const scriptData = await $content('/scripts').fetch().then(res => res.reduce((result, item) => ({...result, [item.name.toLowerCase()]: item}), {}))
     const log = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'scripting', 'slug', 'title', 'category', 'dir', 'splitPath']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
+    const langInfo = await $content(`${app.i18n.locale}/info`).fetch()
     return {
       categories: categorizeData(log, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering.logs),
       scriptLookup: log.reduce((result, script) => ({...result, [script.slug]: script}), {}),
       scriptData,
-      platformInfo
+      platformInfo,
+      langInfo
     }
   },
   watch: {
@@ -198,10 +200,7 @@ export default {
       return `what2log-${script_type}-${category.replace(/\s/g, '').toLowerCase()}${(this.scriptData[languageKey] && this.scriptData[languageKey].file_extension) || '.txt'}`
     },
     getScriptTypeDescription(script_type) {
-      if (script_type == 'enable') return 'Enable logging'
-      if (script_type == 'disable') return 'Disable logging'
-      if (script_type == 'view') return 'View logs'
-      return 'Check logging status'
+      return this.langInfo.script_task_long_names[script_type] || `${script_type[0].toUpperCase()}${script_type.substring(1)}`
     }
   }
 }

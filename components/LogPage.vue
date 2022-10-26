@@ -12,7 +12,7 @@
     <p v-if="article.collect_reason" class="info">{{article.collect_reason}}</p>
     <div v-if="scriptCategories && scriptCategories.length" class="logpile-section">
       <template v-for="task of scriptCategories">
-        <LogpileScript v-if="article.scripting.tasks[task]" :script="article.scripting.tasks[task]" :script_type="task" :script_language="article.scripting.language" :platform="$route.params.platform" :category="article.category" :slug="article.slug" :key="`scripting-${task}`"/>
+        <LogpileScript v-if="article.scripting.tasks[task]" :script="article.scripting.tasks[task]" :script_type="task" :script_language="article.scripting.language" :platform="$route.params.platform" :category="article.category" :slug="article.slug" :langInfo="langInfo" :key="`scripting-${task}`"/>
         <MissingLogpileScript v-else :script_type="task" :key="`scripting-${task}`"/>
       </template>
       <div class="script-info">
@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  props: ['article', 'platformInfo', 'scriptCategories'],
+  props: ['article', 'platformInfo', 'scriptCategories', 'langInfo'],
   data() {
     let content = []
     if (this.article.GUI && this.article.GUI.enable) content = [...content, ...this.article.GUI.enable]

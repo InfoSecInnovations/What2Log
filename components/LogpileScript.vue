@@ -27,10 +27,10 @@ export default {
   async fetch() {
     this.scriptData = await this.$content('/scripts').where({name: this.script_language}).fetch().then(res => res[0])
   },
-  props: ['script', 'script_type', 'script_language', 'platform', 'category', 'slug'],
+  props: ['script', 'script_type', 'script_language', 'platform', 'category', 'slug', 'langInfo'],
   computed: {
     label() {
-      return `${this.script_type[0].toUpperCase()}${this.script_type.substring(1)}`
+      return this.langInfo.script_task_long_names[this.script_type] || `${this.script_type[0].toUpperCase()}${this.script_type.substring(1)}`
     },
     content() {
       let content = this.script

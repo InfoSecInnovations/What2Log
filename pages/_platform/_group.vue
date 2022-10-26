@@ -8,7 +8,7 @@
       <div id="sidebar" v-if="sidebar">
         <SidebarElement v-for="item of sidebar" :key="`sidebar-${item.category || item.slug}`" :content="item" :baseUrl="baseUrl" :topLevel="true"/>
       </div>
-      <NuxtChild :scriptCategories="scriptCategories" :platformInfo="platformInfo"/>
+      <NuxtChild :scriptCategories="scriptCategories" :platformInfo="platformInfo" :langInfo="langInfo"/>
     </div>
   </div>
 </template>
@@ -21,13 +21,15 @@ export default {
     const groupPath = `${app.i18n.locale}/platforms/${params.platform}/${params.group}`
     const sidebarData = await $content(groupPath, {deep: true}).sortBy('title').only(['source', 'title', 'dir', 'slug', 'splitPath', 'scripting']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
+    const langInfo = await $content(`${app.i18n.locale}/info`).fetch()
     const sidebar = categorizeData(sidebarData, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering[params.group])
     const scriptCategories = [...new Set(sidebarData.filter(item => item.scripting && item.scripting.tasks).map(item => Object.keys(item.scripting.tasks)).flat())]
     return {
       baseUrl: `${params.platform}/${params.group}`,
       sidebar,
       platformInfo,
-      scriptCategories
+      scriptCategories,
+      langInfo
     }
   },
   async mounted () {
