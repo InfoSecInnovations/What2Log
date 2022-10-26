@@ -34,37 +34,37 @@
           <template v-for="entry of categories">
             <div class="logpile-row top-level" :key="entry.category">
               <div class="logpile-category">{{entry.category}}</div>
-              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.enable_logging))" v-on:change="check('enable', entry.items, entry.category, $event)" :checked="checked('enable', entry.category, entry.items)" :indeterminate.prop="indeterminate('enable', entry.category, entry.items)">
+              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.enable))" v-on:change="check('enable', entry.items, entry.category, $event)" :checked="checked('enable', entry.category, entry.items)" :indeterminate.prop="indeterminate('enable', entry.category, entry.items)">
               <div v-else></div>
-              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.disable_logging))" v-on:change="check('disable', entry.items, entry.category, $event)" :checked="checked('disable', entry.category, entry.items)" :indeterminate.prop="indeterminate('disable', entry.category, entry.items)">
+              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.disable))" v-on:change="check('disable', entry.items, entry.category, $event)" :checked="checked('disable', entry.category, entry.items)" :indeterminate.prop="indeterminate('disable', entry.category, entry.items)">
               <div v-else></div>
-              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.view_logs))" v-on:change="check('view', entry.items, entry.category, $event)" :checked="checked('view', entry.category, entry.items)" :indeterminate.prop="indeterminate('view', entry.category, entry.items)">
+              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.view))" v-on:change="check('view', entry.items, entry.category, $event)" :checked="checked('view', entry.category, entry.items)" :indeterminate.prop="indeterminate('view', entry.category, entry.items)">
               <div v-else></div>
-              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.check_status))" v-on:change="check('check', entry.items, entry.category, $event)" :checked="checked('check', entry.category, entry.items)" :indeterminate.prop="indeterminate('check', entry.category, entry.items)">
+              <input type="checkbox" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.check))" v-on:change="check('check', entry.items, entry.category, $event)" :checked="checked('check', entry.category, entry.items)" :indeterminate.prop="indeterminate('check', entry.category, entry.items)">
               <div v-else></div>
             </div>
             <template v-for="subcategory of entry.items">
               <div class="logpile-row second-level" :key="`${entry.category}-${subcategory.category}`">
                 <div class="logpile-category">{{subcategory.category}}</div>
-                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.enable_logging)" v-on:change="check('enable', subcategory.items, entry.category, $event)" :checked="checked('enable', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('enable', entry.category, subcategory.items)">
+                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.enable)" v-on:change="check('enable', subcategory.items, entry.category, $event)" :checked="checked('enable', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('enable', entry.category, subcategory.items)">
                 <div v-else></div>
-                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.disable_logging)" v-on:change="check('disable', subcategory.items, entry.category, $event)" :checked="checked('disable', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('disable', entry.category, subcategory.items)">
+                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.disable)" v-on:change="check('disable', subcategory.items, entry.category, $event)" :checked="checked('disable', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('disable', entry.category, subcategory.items)">
                 <div v-else></div>
-                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.view_logs)" v-on:change="check('view', subcategory.items, entry.category, $event)" :checked="checked('view', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('view', entry.category, subcategory.items)">
+                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.view)" v-on:change="check('view', subcategory.items, entry.category, $event)" :checked="checked('view', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('view', entry.category, subcategory.items)">
                 <div v-else></div>
-                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.check_status)" v-on:change="check('check', subcategory.items, entry.category, $event)" :checked="checked('check', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('check', entry.category, subcategory.items)">
+                <input type="checkbox" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.check)" v-on:change="check('check', subcategory.items, entry.category, $event)" :checked="checked('check', entry.category, subcategory.items)" :indeterminate.prop="indeterminate('check', entry.category, subcategory.items)">
                 <div v-else></div>
               </div>
               <template v-for="script of subcategory.items">
                 <div class="logpile-row child" :key="`${entry.category}-${subcategory.category}-${script.slug}`">
                   <NuxtLink class="logpile-category" :to="`/${$route.params.platform}/logs/${scriptLookup[script.slug].slug}/`">{{scriptLookup[script.slug].title}}</NuxtLink>
-                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.enable_logging" v-on:change="check('enable', script, entry.category, $event)" :checked="checked('enable', entry.category, script)">
+                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.enable" v-on:change="check('enable', script.slug, entry.category, $event)" :checked="checked('enable', entry.category, script.slug)">
                   <div v-else></div>
-                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.disable_logging" v-on:change="check('disable', script, entry.category, $event)" :checked="checked('disable', entry.category, script)">
+                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.disable" v-on:change="check('disable', script.slug, entry.category, $event)" :checked="checked('disable', entry.category, script.slug)">
                   <div v-else></div>
-                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.view_logs" v-on:change="check('view', script, entry.category, $event)" :checked="checked('view', entry.category, script)">
+                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.view" v-on:change="check('view', script.slug, entry.category, $event)" :checked="checked('view', entry.category, script.slug)">
                   <div v-else></div>
-                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.check_status" v-on:change="check('check', script, entry.category, $event)" :checked="checked('check', entry.category, script)">
+                  <input type="checkbox" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks.check" v-on:change="check('check', script.slug, entry.category, $event)" :checked="checked('check', entry.category, script.slug)">
                   <div v-else></div>
                 </div>
               </template>
@@ -132,7 +132,8 @@ export default {
   },
   methods: {
     check(script_type, data, category, event) {
-      if (typeof data == 'string') return this.$store.commit('logpile/setScriptStatus', {category, slug: data, script_type, status: event.target.checked})
+      if (data.slug) data = data.slug
+      if (typeof data == 'string') return this.$store.commit('logpile/setScriptStatus', {category, slug: data, script_type, status: event.target.checked, platform: this.$route.params.platform})
       if (Array.isArray(data)) return data.forEach(script => this.check(script_type, script, category, event))
       Object.values(data).forEach(value => this.check(script_type, value, category, event))
     },
@@ -140,7 +141,8 @@ export default {
       this.$store.commit('logpile/reset')
     },
     checked(script_type, category, data) {
-      if (typeof data == 'string') return this.$store.getters['logpile/getScriptStatus'](category, data, script_type)
+      if (data.slug) data = data.slug
+      if (typeof data == 'string') return this.$store.getters['logpile/getScriptStatus']({category, slug: data, script_type, platform: this.$route.params.platform})
       if (Array.isArray(data)) return data.some(script => this.checked(script_type, category, script))
       return Object.values(data).some(value => this.checked(script_type, category, value))
     },
@@ -156,8 +158,8 @@ export default {
         const language = this.scriptLookup[script].scripting.language
         const languageKey = language.toLowerCase()
         const handleScript = script_type => {
-          if (this.$store.getters['logpile/getScriptStatus'](category.category, script, script_type)) scripts.push({
-            content: this.scriptLookup[script].scripting[script_type == 'enable' ? 'enable_logging' : script_type == 'disable' ? 'disable_logging' : script_type == 'view' ? 'view_logs' : 'check_status'], 
+          if (this.$store.getters['logpile/getScriptStatus']({category: category.category, slug: script, script_type, platform: this.$route.params.platform})) scripts.push({
+            content: this.scriptLookup[script].scripting[script_type], 
             category: category.category, 
             type: script_type, 
             language,

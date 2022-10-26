@@ -27,7 +27,7 @@ export default {
   async fetch() {
     this.scriptData = await this.$content('/scripts').where({name: this.script_language}).fetch().then(res => res[0])
   },
-  props: ['script', 'script_type', 'script_language', 'category', 'slug'],
+  props: ['script', 'script_type', 'script_language', 'platform', 'category', 'slug'],
   computed: {
     label() {
       return `${this.script_type[0].toUpperCase()}${this.script_type.substring(1)}`
@@ -41,7 +41,7 @@ export default {
       return content
     },
     enabled() {
-      return this.$store.getters['logpile/getScriptStatus'](this.category, this.slug, this.script_type)
+      return this.$store.getters['logpile/getScriptStatus']({category: this.category, slug: this.slug, script_type: this.script_type, platform: this.platform})
     }
   },
   mounted() {
@@ -59,7 +59,7 @@ export default {
     },
     enable() {
       const enabled = this.enabled
-      this.$store.commit('logpile/setScriptStatus', {category: this.category, slug: this.slug, script_type: this.script_type, status: !enabled})
+      this.$store.commit('logpile/setScriptStatus', {category: this.category, slug: this.slug, script_type: this.script_type, status: !enabled, platform: this.platform})
     }
   }
 }
