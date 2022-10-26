@@ -30,31 +30,6 @@
           </div>
           <template v-for="entry of categories">
             <LogpileSelection :key="`logpile-selection-${entry.category}`" :baseUrl="`${$route.params.platform}/logs`" :content="entry" :topLevel="true" :platform="$route.params.platform" :category="entry.category" :scriptCategories="scriptCategories"/>
-            <div class="logpile-row top-level" :key="entry.category">
-              <div class="logpile-category">{{entry.category}}</div>
-              <template v-for="scriptCategory of scriptCategories">
-                <input type="checkbox" :key="`logpile-${entry.category}-${scriptCategory}`" v-if="Object.values(entry.items).some(level => level.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks[scriptCategory]))" v-on:change="check(scriptCategory, entry.items, entry.category, $event)" :checked="checked(scriptCategory, entry.category, entry.items)" :indeterminate.prop="indeterminate(scriptCategory, entry.category, entry.items)">
-                <div v-else :key="`logpile-${entry.category}-${scriptCategory}`"></div>
-              </template>
-            </div>
-            <template v-for="subcategory of entry.items">
-              <div class="logpile-row second-level" :key="`${entry.category}-${subcategory.category}`">
-                <div class="logpile-category">{{subcategory.category}}</div>
-                <template v-for="scriptCategory of scriptCategories">
-                  <input type="checkbox" :key="`logpile-${entry.category}-${subcategory.category}-${scriptCategory}`" v-if="subcategory.items.some(script => scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks[scriptCategory])" v-on:change="check(scriptCategory, subcategory.items, entry.category, $event)" :checked="checked(scriptCategory, entry.category, subcategory.items)" :indeterminate.prop="indeterminate(scriptCategory, entry.category, subcategory.items)">
-                  <div v-else :key="`logpile-${entry.category}-${subcategory.category}-${scriptCategory}`"></div>
-                </template>
-              </div>
-              <template v-for="script of subcategory.items">
-                <div class="logpile-row child" :key="`${entry.category}-${subcategory.category}-${script.slug}`">
-                  <NuxtLink class="logpile-category" :to="`/${$route.params.platform}/logs/${scriptLookup[script.slug].slug}/`">{{scriptLookup[script.slug].title}}</NuxtLink>
-                  <template v-for="scriptCategory of scriptCategories">
-                    <input type="checkbox" :key="`logpile-${entry.category}-${subcategory.category}-${script.slug}-${scriptCategory}`" v-if="scriptLookup[script.slug].scripting && scriptLookup[script.slug].scripting.tasks && scriptLookup[script.slug].scripting.tasks[scriptCategory]" v-on:change="check(scriptCategory, script.slug, entry.category, $event)" :checked="checked(scriptCategory, entry.category, script.slug)">
-                    <div v-else :key="`logpile-${entry.category}-${subcategory.category}-${script.slug}-${scriptCategory}`"></div>
-                  </template>
-                </div>
-              </template>
-            </template>
           </template>
         </div>
         <div class="button" id="scripts-button" v-on:click="getScripts"> Get My Script(s)!</div>
