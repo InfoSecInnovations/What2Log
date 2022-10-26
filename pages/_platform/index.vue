@@ -26,9 +26,10 @@
         <div class="logpile-menu" v-if="categories">
           <div class="logpile-row">
             <div class="button small" @click="reset">Reset Selection</div>
-            <div v-for="scriptCategory of scriptCategories" class="logpile-header" :key="`script-category-label-${scriptCategory}`">{{scriptCategory}}</div>
+            <div v-for="scriptCategory of scriptCategories" class="logpile-header" :key="`script-category-label-${scriptCategory}`">{{`${scriptCategory[0].toUpperCase()}${scriptCategory.substring(1)}`}}</div>
           </div>
           <template v-for="entry of categories">
+            <LogpileSelection :key="`logpile-selection-${entry.category}`" :baseUrl="`${$route.params.platform}/logs`" :content="entry" :topLevel="true" :platform="$route.params.platform" :category="entry.category" :scriptCategories="scriptCategories"/>
             <div class="logpile-row top-level" :key="entry.category">
               <div class="logpile-category">{{entry.category}}</div>
               <template v-for="scriptCategory of scriptCategories">
