@@ -155,11 +155,11 @@ export default {
       this.results = this.categories
       .map(category => category.items.map(subcategory => subcategory.items.map(script => {
         const scripts = []
-        const language = this.scriptLookup[script].scripting.language
+        const language = this.scriptLookup[script.slug].scripting.language
         const languageKey = language.toLowerCase()
         const handleScript = script_type => {
-          if (this.$store.getters['logpile/getScriptStatus']({category: category.category, slug: script, script_type, platform: this.$route.params.platform})) scripts.push({
-            content: this.scriptLookup[script].scripting[script_type], 
+          if (this.$store.getters['logpile/getScriptStatus']({category: category.category, slug: script.slug, script_type, platform: this.$route.params.platform})) scripts.push({
+            content: this.scriptLookup[script.slug].scripting.tasks[script_type], 
             category: category.category, 
             type: script_type, 
             language,
