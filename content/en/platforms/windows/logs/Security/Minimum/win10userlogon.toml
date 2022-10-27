@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11
 source.service = "Microsoft Windows security auditing."
 source.log = "Security"
 default_enabled = true
-collect_reason = """\
+description = """\
   A users login will likely be the first sign of an attack and can \
   indicate suspicious behavior. It can also give an analyst a starting time to \
   create a timeline of events. This log is recquired in the HIPAA and PCI DSS \

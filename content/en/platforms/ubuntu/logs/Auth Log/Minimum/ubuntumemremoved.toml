@@ -8,15 +8,14 @@ credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2022-01-14 #Todays date
 category = "Auth Log"
-tags = ["Group Activity", "User Account"]
+tags = ["Group Activity", "User Account", "Linux Ubuntu"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "syslog" #Service that generates log
 source.log = "auth.log" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Group membership change can indicate a user removing themselves from an admin \
 group in an effort to clean up after an attack. It is important to monitor the \
 groups that have escalated permissions.

@@ -8,15 +8,14 @@ credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2022-01-14 #Todays date
 category = "Auth Log"
-tags = ["Group Activity"]
+tags = ["Group Activity", "Linux Ubuntu"]
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "syslog" #Service that generates log
 source.log = "auth.log" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Group deletion may signal the cleanup of an attack or someone trying to \
 inconvenience a group of users in a network. It is also good to know what \
 groups are active.

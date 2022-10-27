@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1" ]# App.os if
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 This Log lists every Windows Firewall rule that is active at the time that \
 the service starts. This means that it generates a large number of logs. but \
 it can be a helpful metric to track changes in rules between sessions.\

@@ -19,7 +19,7 @@ source.service = "Microsoft Windows Security auditing" #Service that generates l
 source.log = "Security" #Log file or channel
 source.event_id = 4720
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Account creation logs can indicate a suspicious new account that was \
 created in preparation for an attack or someone trying to do things \
 they necessarily shouldn’t. It is also a good idea to know when there \

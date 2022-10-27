@@ -16,7 +16,7 @@ source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if a
 source.service = "syslog" #Service that generates log
 source.log = "auth.log" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 A users log in will likely be the first sign of an attack and can indicate \
 suspicious behavior. It can also give an analyst a starting time to create a \
 timeline of events. This log is required in the HIPAA and PCI DSS regulations.

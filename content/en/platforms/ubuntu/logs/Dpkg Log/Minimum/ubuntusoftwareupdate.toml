@@ -16,7 +16,7 @@ source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if a
 source.service = "syslog" #Service that generates log
 source.log = "dpkg.log" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Software updates are not always a sign of an attack, but often contain \
 patches for known vulnerabilities. An update may also introduce vulnerabilities \
 and it is important to know if and when that was installed.

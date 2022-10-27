@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11
 source.service = "Microsoft Windows Security Auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 A change to the audit policy can mean that an unauthorized party is trying gain \
 access to a location they shouldn't be or escalate their privilege use. This log \
 is recommended for HIPAA and PCI DSS compliance and is recommended by the NSA \

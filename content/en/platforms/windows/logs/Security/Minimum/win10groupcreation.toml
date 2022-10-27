@@ -18,7 +18,7 @@ source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Groups allow for multiple user accounts to be managed as one and an attacker \
 may try and create a group with escalated privileges.
   """

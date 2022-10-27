@@ -3,6 +3,10 @@
 title = ""
 credits = [ "" ] # Use this for any special shoutouts, bear in mind that we already link to the GitHub history of the page, so please don't use this for contributors.
 tags = [ "" ] # Tags are searchable per platform.
+# Displayed at the top of the page, and also appears as the summary in search results
+description = """\
+
+"""
 
 # Additional References Go Here
 references = [

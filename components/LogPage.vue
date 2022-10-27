@@ -9,7 +9,7 @@
       <h4 v-if="article.source.service">Service: {{article.source.service}}</h4>
       <h4 v-if="article.source.log">Log type: {{article.source.log}}</h4>
     </div>
-    <p v-if="article.collect_reason" class="info">{{article.collect_reason}}</p>
+    <p v-if="article.description" class="info">{{article.description}}</p>
     <div v-if="scriptCategories && scriptCategories.length" class="logpile-section">
       <template v-for="task of scriptCategories">
         <LogpileScript v-if="article.scripting.tasks[task]" :script="article.scripting.tasks[task]" :script_type="task" :script_language="article.scripting.language" :platform="$route.params.platform" :category="article.category" :slug="article.slug" :langInfo="langInfo" :key="`scripting-${task}`"/>

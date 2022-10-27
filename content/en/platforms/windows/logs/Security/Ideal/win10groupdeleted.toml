@@ -18,7 +18,7 @@ source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Group deletion may signal the cleanup of an attack or someone trying to \
 inconvenience a group of users in a network. It is also good to know what \
 groups are present in a system.

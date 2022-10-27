@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 An update to a scheduled task may indicate a malicious attacker enabling their own \
 scheduled task to compromise a system. A new malicious task being enabled may be \
 a part of a trail of evidence in the wake of an attack.

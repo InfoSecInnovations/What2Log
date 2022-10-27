@@ -77,7 +77,7 @@ export default async () => {
       markdown: {
         remarkPlugins: ['remark-unwrap-images']
       },
-      fullTextSearchFields: ['title', 'slug', 'collect_reason', 'text']
+      fullTextSearchFields: ['title', 'slug', 'description', 'text']
     },
 
     // i18n configuration: https://i18n.nuxtjs.org/options-reference
@@ -122,12 +122,7 @@ export default async () => {
           document.excerpt = stripped.length < excerptLength ? stripped : stripped.substr(0, stripped.lastIndexOf(' ', excerptLength))
         }
         if (document.extension === '.toml') {
-          if (document.collect_reason) document.excerpt = document.collect_reason.length < excerptLength ? document.collect_reason : document.collect_reason.substr(0, document.collect_reason.lastIndexOf(' ', excerptLength))
-          if (document.source && document.source.os) {
-            if (!document.tags) document.tags = []
-            document.tags.unshift(...document.source.os)
-            document.tags = [...new Set(document.tags)] // remove duplicate tags
-          }
+          if (document.description) document.excerpt = document.description.length < excerptLength ? document.description : document.description.substr(0, document.description.lastIndexOf(' ', excerptLength))
           // this might be a bit hacky, open to finding a more reliable way?
           let level = 0
           for (const folder of document.dir.split('/')) {

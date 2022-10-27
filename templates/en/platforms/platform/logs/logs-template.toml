@@ -17,7 +17,7 @@ source.service = "" #Service that generates log
 source.log = "" #Log file or channel
 source.event_id = 0 #Windows Event ID, remove this for other platforms
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 
   """
 

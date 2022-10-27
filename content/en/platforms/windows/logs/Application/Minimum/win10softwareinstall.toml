@@ -18,7 +18,7 @@ source.os = [ "Windows 10" , "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing."
 source.log = "Application"
 default_enabled = true
-collect_reason = """\
+description = """\
 Many attacks rely on software being installed and this log \
 can signal who and what installed the software that may cause \
 a vulnerability. It can also be used to make sure that only authorized \

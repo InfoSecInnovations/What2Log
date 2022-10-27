@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1" ]# App.os if
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 This log indicates that a rule has been been deleted and can indicate \
 both malicious and non malicious behavior. It could be a simple \
 change to reflect a security policy change or it could be an attacker \

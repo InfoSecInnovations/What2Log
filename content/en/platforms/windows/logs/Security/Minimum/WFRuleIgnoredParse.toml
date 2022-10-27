@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = true
-collect_reason = """\
+description = """\
 There are two Event Logs that indicate that Windows Firewall has not parsed a rule. \
 This one is particularly important as it means that a rule is set up incorrectly \
 and that Windows Firewall can not use it. This is an indication that a rule may \

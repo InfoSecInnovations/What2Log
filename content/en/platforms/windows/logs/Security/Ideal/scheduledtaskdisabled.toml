@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 A scheduled task being disabled could be an innocuous thing or it could indicate \
 an attacker attempting to either clean up in the wake of an attack or disrupt \
 normal operations on a system.

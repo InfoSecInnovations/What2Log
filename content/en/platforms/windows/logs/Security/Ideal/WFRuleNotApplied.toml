@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1" ]# App.os if
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 This log indicates that the that there is a rule the Windows Firewall is \
 not applying. This log includes the information about what the rule was. \
 This log should be investigated to understand the rule that cannot be applied.

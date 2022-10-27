@@ -19,7 +19,7 @@ source.service = "Microsoft Windows Security auditing" #Service that generates l
 source.log = "Security" #Log file or channel
 source.event_id = 4738
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Account changes, such as password and username changes may \
 indicate a successful breach and a backdoor setup for a user. \
 This log also can be used to track changes for legitimate users.

@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1" ]# App.os if
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = true
-collect_reason = """\
+description = """\
 The Windows Firewall Service starting successfully is an indication that the \
 service is functioning correctly and has started for a particular time period. \
 Knowing that the service successfully came on line can help ensure that Windows \

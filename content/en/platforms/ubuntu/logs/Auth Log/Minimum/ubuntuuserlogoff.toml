@@ -16,7 +16,7 @@ source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if a
 source.service = "syslog" #Service that generates log
 source.log = "auth.log" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 A users log off can indicate the end of an attack or potential system \
 restarts that may have occurred. This can conclude a timeline or give a bit \
 more insight to a users activity.

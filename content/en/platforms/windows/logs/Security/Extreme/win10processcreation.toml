@@ -18,7 +18,7 @@ source.os = ["Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11"
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 While applications being opened is a common occurrence on a computer, \
 this log allows you to see if there were unusual applications being opened. \
 This log allows you to identify if unauthorized or malicious applications were opened.

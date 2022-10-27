@@ -18,7 +18,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Applications being closed is a common thing on a computer but may signal \
 unusual software being closed or give a timeline of events.
   """

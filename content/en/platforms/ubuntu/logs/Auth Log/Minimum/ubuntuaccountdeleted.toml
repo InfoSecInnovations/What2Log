@@ -8,15 +8,14 @@ credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2022-01-14 #Todays date
 category = "Auth Log"
-tags = ["User Account"]
+tags = ["User Account", "Linux Ubuntu"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "syslog" #Service that generates log
 source.log = "auth.log" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 An attacker may attempt to tidy up after themselves by deleting an account \
 or simply disrupt normal workflow by deleting legitimate accounts.
   """

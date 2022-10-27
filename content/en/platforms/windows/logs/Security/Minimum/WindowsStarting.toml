@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #
 source.service = "Microsoft Windows Security Auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 The Windows System Starting up is self explanatory in name. It may indicate \
 a system being restarted after an attack or to load malicious software. In \
 general, it is good to know when systems are being started.

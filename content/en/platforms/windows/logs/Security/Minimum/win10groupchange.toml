@@ -19,7 +19,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Group change can indicate unauthorized privilege escalation of a \
 whole user group. This should be monitored so that user permissions \
 are known and not over reaching. This log is recommended by the NSA Cyber \

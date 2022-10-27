@@ -15,7 +15,7 @@ source.os = [ "Windows Server 2019" ]
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = true
-collect_reason = """\
+description = """\
 A global group comes from a Domain controller server and should be monitored as it \
 extends beyond a single computer. A member being unexpectedly added to this group \
 may indicate a user attempting to escalate privilege or gain access.

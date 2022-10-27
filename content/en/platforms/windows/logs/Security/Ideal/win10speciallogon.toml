@@ -17,7 +17,7 @@ source.os = ["Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11"
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
   A special logon indicates that a user or process with \
   elevated or administrator privileges has logged onto the system. \
   This log is recommended under HIPAA and PCI DSS for compliance and is \

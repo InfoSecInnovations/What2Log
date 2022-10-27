@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1" ]# App.os if
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 This log indicates that a Firewall Group Policy Setting has changed. These can both be \
 innocuous changes made by the correct, authorized people or malicious changes \
 made by an attacker attempting to change Firewall settings to suit their needs.

@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 Scheduled task updates can provide an insight to a potential attack and an \
 attacker attempting to establish persistence on a machine. An attacker may \
 attempt to update a pre-exisiting scheduled task to hide malicious activity.

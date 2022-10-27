@@ -17,7 +17,7 @@ source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1" ]# App.os if
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false
-collect_reason = """\
+description = """\
 This log indicates what rules were active when the Windows Firewall \
 started for a particular session. This can be a good way to know what \
 policies you can expect to see when checking the firewall and may alert \

@@ -17,7 +17,7 @@ source.os = [ "Windows 10" , "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) 
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 It is a good idea to monitor what network you machine may be connected to \
 at any time. Unusual or public connections can introduce vulnerabilities and \
 potentially start a time line of events.

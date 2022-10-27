@@ -16,7 +16,7 @@ source.os = [ "Linux Ubuntu" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if a
 source.service = "syslog" #Service that generates log
 source.log = "dpkg.log" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Many attack rely on software being installed and this log can signal who and \
 what installed the software that may cause a vulnerability. It can also be \
 used to make sure that only authorized apps are being installed.

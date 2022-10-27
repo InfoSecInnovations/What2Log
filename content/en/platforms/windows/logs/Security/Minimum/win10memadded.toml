@@ -18,7 +18,7 @@ source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
-collect_reason = """\
+description = """\
 Group membership change can indicate a user adding themselves to an \
 admin group without permissions. It is important to monitor the groups \
 that have escalated permissions. This log is recommended by the NSA Cyber \
