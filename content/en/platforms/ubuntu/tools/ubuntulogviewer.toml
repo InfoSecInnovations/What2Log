@@ -6,10 +6,9 @@ author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-31
 release.version = "Ash"
-tags = ["Default Tools", "GUI Tools"]
+tags = ["Default Tools", "GUI Tools", "Linux Ubuntu"]
 
 # About this app
-operating_system = ["Linux Ubuntu"]
 default_installed = true #True or false only
 
 #Installation Info (install info is optional, some tools are part of base os)

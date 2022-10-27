@@ -6,10 +6,9 @@ author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-28
 release.version = "Ash"
-tags = ["Note"]
+tags = ["Note", "Windows 10"]
 
 # About this app
-operating_system = ["Windows 10"]
 default_installed = true #True or false only
 
 

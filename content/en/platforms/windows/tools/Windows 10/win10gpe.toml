@@ -6,11 +6,10 @@ author = "Flynn Weeks"
 credits = []
 release.date = 2022-01-28
 release.version = "Ash"
-tags = ["Default Tools", "GUI Tools"]
+tags = ["Default Tools", "GUI Tools", "Windows 10"]
 
 
 # About this app
-operating_system = ["Windows 10"]
 default_installed = true #True or false only
 
 #Installation Info (install info is optional, some tools are part of base os)
