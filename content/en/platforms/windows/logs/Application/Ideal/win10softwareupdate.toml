@@ -9,12 +9,11 @@ credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2021-11-10 #Todays date
 category = "Application"
-tags = ["Application Activity"]
+tags = ["Application Activity", "Windows 10" , "Windows 7"]
 
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10", "Windows 7" ]  #app.os if application logs
 source.service = "Service Control Manager" #Service that generates log
 source.log = "System" #Log file or channel
 default_enabled = true #true or false

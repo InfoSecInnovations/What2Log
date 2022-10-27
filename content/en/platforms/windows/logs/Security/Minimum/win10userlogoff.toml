@@ -9,11 +9,10 @@ author = "Flynn Weeks"
 release.version = "Ash"
 release.date = 2021-05-28
 category = "Security"
-tags = ["User Activity"]
+tags = ["User Activity", "Windows 10", "Windows 8", "Windows 8.1", "Windows 11"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10", "Windows 8", "Windows 8.1", "Windows 11" ] # App.os if application logs
 source.service = "Microsoft Windows security auditing."
 source.log = "Security"
 default_enabled = true

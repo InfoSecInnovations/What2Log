@@ -9,11 +9,10 @@ credits = [ "" ] #Any special callouts
 release.version = "Aspen"
 release.date = 2022-08-06 #Todays date
 category = "Security"
-tags = ["System"]
+tags = ["System", "Windows 10", "Windows 7"]
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "Microsoft Windows Security Auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = false #true or false

@@ -9,12 +9,11 @@ credits = [ "" ] #Any special callouts
 release.version = "Ash"
 release.date = 2021-09-17 #Todays date
 category = "Security"
-tags = ["Group Activity"]
+tags = ["Group Activity", "Windows 10", "Windows 7"]
 
 
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10", "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
 source.service = "Microsoft Windows Security auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false

@@ -9,11 +9,10 @@ author = "Flynn Weeks"
 release.version = "Aspen"
 release.date = 2022-05-05
 category = "Security"
-tags = ["Windows Firewall Change"]
+tags = ["Windows Firewall Change", "Windows 10", "Windows 7", "Windows 8", "Windows 8.1"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1" ]# App.os if application logs
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = false

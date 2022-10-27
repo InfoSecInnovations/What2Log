@@ -7,11 +7,10 @@ author = "Flynn Weeks"
 release.version = "Aspen"
 release.date = 2022-09-14
 category = "Security"
-tags = ["Groups"]
+tags = ["Groups", "Windows Server 2019"]
 
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.os = [ "Windows Server 2019" ]
 source.service = "Microsoft Windows security auditing"
 source.log = "Security"
 default_enabled = true
