@@ -10,7 +10,7 @@
       <li v-for="result of results" :key="result.path">
         <NuxtLink :to="result.path.replace(`${$i18n.locale}/platforms/`, '')" v-on:click.native="resetQuery">
           <p>{{result.title}}</p>
-          <p class="search-meta">{{`${result.dir.endsWith('logs') ? `${result.source.os.join(' / ')} Logs` : `${result.operating_system.join('/ ')} Tools`}`}}</p>
+          <p class="search-meta">{{platform}} {{`${result.group[0].toUpperCase()}${result.group.substring(1)}`}}</p>
         </NuxtLink>
       </li>
       <li v-if="results.length">
@@ -41,7 +41,6 @@ export default {
       }
 
       this.results = await this.$content(`${this.$i18n.locale}/platforms/${this.$route.params.platform}`, {deep: true})
-      .where({dir: {$in: [`/${this.$i18n.locale}/platforms/${this.$route.params.platform}/logs`, `/${this.$i18n.locale}/platforms/${this.$route.params.platform}/tools`]}})
       .sortBy('createdAt', 'asc')
       .limit(12)
       .search(query)

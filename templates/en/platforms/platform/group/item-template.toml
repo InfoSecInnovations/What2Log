@@ -1,9 +1,8 @@
-#This is the template for What2Log Tools entries
+#This is the template for What2Log pages
 
-# Meta data about this App entry
 title = ""
-credits = [ "" ]
-tags = [ "" ]
+credits = [ "" ] # Use this for any special shoutouts, bear in mind that we already link to the GitHub history of the page, so please don't use this for contributors.
+tags = [ "" ] # Tags are searchable per platform.
 
 # Additional References Go Here
 references = [
@@ -22,4 +21,4 @@ txt = """
 """
 img = "img0.png"
 
-#continue as necessary
+#... continue as necessary
