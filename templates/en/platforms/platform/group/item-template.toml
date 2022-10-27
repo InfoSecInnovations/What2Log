@@ -1,20 +1,57 @@
-#This is the template for What2Log pages
+# This is the template for What2Log pages
+
+# Please see https://toml.io/en/ if you're unsure how to fill in a TOML document
+
+# If a field isn't optional, it's mandatory!
+# Please think long and hard before not including an optional recommended field!
 
 title = ""
-credits = [ "" ] # Use this for any special shoutouts, bear in mind that we already link to the GitHub history of the page, so please don't use this for contributors.
-tags = [ "" ] # Tags are searchable per platform.
-# Displayed at the top of the page, and also appears as the summary in search results
+credits = [ "" ] # Optional, use this for any special callouts, bear in mind that we already link to the GitHub history of the page, so please don't use this for contributors.
+tags = [ "" ] # Optional but recommended, tags are searchable per platform.
+# Optional but recommended, displayed at the top of the page, and also appears as the summary in search results
 description = """\
 
 """
 
-# Additional References Go Here
+# Optional, additional references go here, these should be valid URLs
 references = [
   "blah",
   "blah2"
 ]
 
-# The text and image pairs that appear in the main body of the page
+# Optional, Compliance & framework information
+
+# Format is level and reference under the header [compliance.name], you can use quotes if needed like [compliance."Name with spaces and special chars.#!"]
+# Only include relevant frameworks
+[compliance.XXXX]
+level = " " # Compliance requirement
+reference = "URL here" # Reference for compliance
+
+[compliance.YYYY]
+level = " " # Compliance requirement
+reference = "URL here" # Reference for compliance
+# repeat as needed
+
+# Optional, fill this in if your page concerns an application
+[application]
+default_installed = true # true or false values only
+
+# Optional, fill this in if your page concerns a log. This will only display on pages in the log directory.
+[logging]
+service = "" # Service that generates log
+channel = "" # Log file or channel
+event_id = 0 # Optional, Windows Event ID, only use this on Windows logs
+default_enabled = true # true or false values only
+[logging.scripting]
+language = "" # Scripting language, check the scripts directory and script-template.toml for adding script language metadata (you should do this if your scripting language hasn't been added)
+[logging.scripting.tasks] # The individual scripts, try to keep the same script names on each item of the platform otherwise you'll get empty spots in the grid. In the language info.toml (e.g. en/info.toml) you can set display names for these
+view = """ """
+check = """ """
+enable = """ """
+disable = """ """
+#... you can add or remove so long as you keep it consistent across the platform
+
+# Optional but strongly recommended, the text and image pairs that appear in the main body of the page
 [[content]]
 txt = """
 """
@@ -23,6 +60,6 @@ img = "img0.png" # optional
 [[content]]
 txt = """
 """
-img = "img0.png"
+img = "img1.png"
 
 #... continue as necessary
