@@ -36,7 +36,7 @@ export default {
       return !data.items.every(item => (this.checked(item, scriptCategory) || !this.valid(item, scriptCategory)) && !this.indeterminate(item, scriptCategory))
     },
     valid(data, scriptCategory) {
-      if (data.slug) return data.scripting && data.scripting.tasks && data.scripting.tasks[scriptCategory]
+      if (data.slug) return data.logging && data.logging.scripting && data.logging.scripting.tasks && data.logging.scripting.tasks[scriptCategory]
       return data.items.some(item => this.valid(item, scriptCategory))
     }
   }

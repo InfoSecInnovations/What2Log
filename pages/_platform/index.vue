@@ -72,10 +72,10 @@ export default {
   async asyncData({$content, app, params}) {
     const logPath = `${app.i18n.locale}/platforms/${params.platform}/logs`
     const scriptData = await $content('/scripts').fetch().then(res => res.reduce((result, item) => ({...result, [item.name.toLowerCase()]: item}), {}))
-    const logPages = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'scripting', 'slug', 'title', 'dir', 'splitPath']).fetch()
+    const logPages = await $content(logPath, {deep: true}).sortBy('title').only(['source', 'logging', 'slug', 'title', 'dir', 'splitPath']).fetch()
     const platformInfo = await $content(`${app.i18n.locale}/platforms/${params.platform}/info`).fetch()
     const langInfo = await $content(`${app.i18n.locale}/info`).fetch()
-    const scriptCategories = [...new Set(logPages.filter(item => item.scripting && item.scripting.tasks).map(item => Object.keys(item.scripting.tasks)).flat())]
+    const scriptCategories = [...new Set(logPages.filter(item => item.logging && item.logging.scripting && item.logging.scripting.tasks).map(item => Object.keys(item.logging.scripting.tasks)).flat())]
     return {
       categories: categorizeData(logPages, platformInfo && platformInfo.category_ordering && platformInfo.category_ordering.logs),
       scriptLookup: logPages.reduce((result, script) => ({...result, [script.slug]: script}), {}),
@@ -120,11 +120,11 @@ export default {
       this.results = this.categories
       .map(category => category.items.map(subcategory => subcategory.items.map(script => {
         const scripts = []
-        const language = this.scriptLookup[script.slug].scripting.language
+        const language = this.scriptLookup[script.slug].logging.scripting.language
         const languageKey = language.toLowerCase()
         const handleScript = script_type => {
           if (this.$store.getters['logpile/getScriptStatus']({category: category.category, slug: script.slug, script_type, platform: this.$route.params.platform})) scripts.push({
-            content: this.scriptLookup[script.slug].scripting.tasks[script_type], 
+            content: this.scriptLookup[script.slug].logging.scripting.tasks[script_type], 
             category: category.category, 
             type: script_type, 
             language,
