@@ -2,30 +2,21 @@
 
 # Meta data about this w2l entry
 title = "WiFi Disconnection" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-##author.organization = "InfoSec Innovations" #Your organization
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2021-11-22 #Todays date
-category = "System"
 tags = ["WiFi Logs", "Windows 10" , "Windows 7"]
 
-# About this log type
-suggested_log_level = "Extreme" #Minimum, Ideal, Extreme, or Special Case
-source.service = "Microsoft Windows Security auditing" #Service that generates log
-source.log = "Security" #Log file or channel
-default_enabled = true #true or false
 description = """\
 It is a good idea to monitor what network you machine may be connected to \
 at any time. Unusual or public connections can introduce vulnerabilities and \
 potentially start a time line of events.
   """
 
-# Log Pile
-[scripting]
+[logging]
+service = "Microsoft Windows Security auditing" #Service that generates log
+channel = "Security" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "Powershell" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """$xml = @'
 <QueryList>
     <Query Id="0" Path="Microsoft-Windows-WLAN-AutoConfig/Operational">
@@ -36,9 +27,6 @@ view = """$xml = @'
 '@
 Get-WinEvent -FilterXM: $xml | select -first 1 | Format-Table -wrap """ #How to view log
 
-
-
-
 # Compliance & framework information
 
 # Format is compliance.name.level and compliance.name.reference.
@@ -46,24 +34,20 @@ Get-WinEvent -FilterXM: $xml | select -first 1 | Format-Table -wrap """ #How to 
 [compliance.HIPAA]
 level = "Recommended" # Compliance requirement
 reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
-
 # repeat as needed
 
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/WiFiConnection/WEVMenu.png"
 txt = """When a user disconnects from WiFi, a log is made in the Operational \
 log of the WLAN-AutoConfig folder. This folder can be found under the \
 Applications and Services Logs folder, and then the Microsoft and Windows \
 folder, respectively."""
-[[GUI.enable]]
+
+[[content]]
 img = "/WiFiConnection/WEV2.png"
 txt = "Event ID 8003 is a successful disconnection to a wireless network."
-# repeat as needed
 
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/WiFiConnection/CLI2.png"
 txt = """To view a Wireless disconnection log in the command line, launch PowerShell as an administrator.
 Because this is an application log, there are two commands that are required to view it from the command line. The first command is

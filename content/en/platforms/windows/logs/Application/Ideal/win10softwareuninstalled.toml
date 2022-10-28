@@ -2,30 +2,20 @@
 
 # Meta data about this w2l entry
 title = "Software Uninstalled" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-##author.organization = "InfoSec Innovations" #Your organization
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2021-11-22 #Todays date
-category = "Application"
 tags = ["Application Activity", "Windows 10" , "Windows 7"]
 
-
-# About this log type
-suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.service = "Service Control Manager" #Service that generates log
-source.log = "System" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Software removal may indicate previously used malicious software being \
 taken off a machine or an attempt to disrupt the normal workflow.
   """
 
-# Log Pile
-[scripting]
+[logging]
+service = "Service Control Manager" #Service that generates log
+channel = "System" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "Powershell" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Application';ID='11724'} -MaxEvents 1 | Format-List""" #How to view log
 
 # Compliance & framework information
@@ -36,25 +26,19 @@ level = "Recommended" # Compliance requirement
 reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
 # repeat as needed
 
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/SoftwareDel/WEV.png"
 txt = """
 Software removal is logged automatically by windows and logs can \
 be viewed in the application tab of the Event Viewer. However, it is important to note \
 windows only logs events that are done through the MSInstaller in this log. To view these \
 logs, sort or filter by event ID **11724**."""
-# repeat as needed
 
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/SoftwareDel/CLI-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Application';ID='11724'} -MaxEvents 1 | Format-List```"""
 
-[[CLI.view]]
+[[content]]
 img = "/SoftwareDel/CLI-wevt.png"
 txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command```wevtutil qe Application "/q:*[System [(EventID=11724)]]" /f:text /c:1```'
 # repeat as needed

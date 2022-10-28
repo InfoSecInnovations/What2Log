@@ -2,26 +2,13 @@
 
 # Meta data about this w2l entry
 title = "Member Added to Group" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2022-01-14 #Todays date
-category = "Auth Log"
 tags = ["Group Activity", "User Account", "Linux Ubuntu"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "syslog" #Service that generates log
-source.log = "auth.log" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Group membership change can indicate a user adding themselves to an admin \
 group without permissions. It is important to monitor the groups that \
 have escalated permissions.
   """
-
-# Additional References Go Here
 
 # Compliance & framework information
 
@@ -35,28 +22,17 @@ level = "Recommended"
 reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed
 
-# Log Pile
-[scripting]
+[logging]
+service = "syslog" #Service that generates log
+channel = "auth.log" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "bash" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """grep usermod /var/log/auth.log | grep add""" #How to view log
 
-
-
-# Enable via GUI
-# repeat as needed
-
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
-# repeat as needed
-
-
 # View via CLI
-[[CLI.view]]
+[[content]]
 img = "/GroupMemChange/LinuxCLI1.png"
 txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line. The auth.log tracks when a user is added to a group. To see the logs of a user being added to a group, enter the command ```grep usermod /var/log/auth.log | grep add```.'
 

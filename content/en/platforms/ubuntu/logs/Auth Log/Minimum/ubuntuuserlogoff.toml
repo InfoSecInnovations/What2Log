@@ -2,26 +2,13 @@
 
 # Meta data about this w2l entry
 title = "User Logoff" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-credits = [] #Any special callouts
-release.version = "Ash"
-release.date = 2021-05-21 #Todays date
-category = "Auth Log"
 tags = ["User Activity", "Linux Ubuntu"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "syslog" #Service that generates log
-source.log = "auth.log" #Log file or channel
-default_enabled = true #true or false
 description = """\
 A users log off can indicate the end of an attack or potential system \
 restarts that may have occurred. This can conclude a timeline or give a bit \
 more insight to a users activity.
   """
-
-# Additional References Go Here
 
 # Compliance & framework information
 
@@ -41,24 +28,16 @@ level = "Recommended"
 reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
-# Log Pile
-[scripting]
+[logging]
+service = "syslog" #Service that generates log
+channel = "auth.log" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "bash" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """grep "session closed" /var/log/auth.log""" #How to view log
 
-
-
-# Enable via GUI
-# repeat as needed
-
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/UserLogoff/LinuxViewer.png"
 txt = """
 Linux logs call a user logoff event session closed. There may be logs from a \
@@ -69,11 +48,7 @@ restrictions of the GNOME Logs app, there will likely be several logs that \
 contain “closed”, just look for the ones that say session closed for user.
 """
 
-# repeat as needed
-
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/UserLogoff/LinuxCLI.png"
 txt = 'To view this log through the command line, launch the terminal and enter the command```grep "session closed" /var/log/auth.log```.'
 

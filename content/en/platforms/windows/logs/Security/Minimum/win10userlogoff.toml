@@ -2,20 +2,8 @@
 
 # Meta data about this w2l entry
 title = "User Logoff"
-W2L_schema = 1
-author = "Flynn Weeks"
-##author.organization = "InfoSec Innovations"
-##credits = [ "Mick Douglas", "Tee Cure" ]
-release.version = "Ash"
-release.date = 2021-05-28
-category = "Security"
 tags = ["User Activity", "Windows 10", "Windows 8", "Windows 8.1", "Windows 11"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "Microsoft Windows security auditing."
-source.log = "Security"
-default_enabled = true
 description = """\
   A users log off can indicate the end of an attack or potential system \
   restarts that may have occurred. This can conclude a timeline or give a \
@@ -28,15 +16,17 @@ references = [
 "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
 ]# repeat as needed
 
-# Log Pile
-[scripting]
+[logging]
+service = "Microsoft Windows security auditing."
+channel = "Security"
+default_enabled = true
+[logging.scripting]
 language = "PowerShell"
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4634'} -MaxEvents 1 | Format-List"""
-check = """auditpol /get /subcategory:"logoff""""
+check = """auditpol /get /subcategory:"logoff"""
 enable = """auditpol /set /subcategory:"logoff" /Success:Enable /Failure:Enable"""
 disable = """auditpol /set /subcategory:"logoff" /Success:Disable /Failure:Disable"""
-
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]
@@ -54,36 +44,24 @@ level = "Recommended"
 reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
-
-# Enable via GUI
-[[GUI.enable]]
+[[content]]
 img = "/UserLogin/GPE.png"
 txt = """Similar to User logon, Windows 10 professional does not \
 log user logoffs of users automatically. To turn this on, follow the steps \
 outlined in “[User Login](../windows10professional-userlogon/)” to toggle \
 login attempts."""
-# repeat as needed
 
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/UserLogoff/WEV.png"
 txt = """To view this log, navigate to the Event Log Viewer. \
 From there, navigate to the Windows Logs heading and the Security tab. Filter, \
 sort, or find the event log ID **4634** to view this log."""
-# repeat as needed
 
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/UserLogoff/CLI-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4634'} -MaxEvents 1 | Format-List```"""
 
-[[CLI.view]]
+[[content]]
 img = "/UserLogoff/CLI-wevt.png"
 txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command```wevtutil qe Security "/q:*[System [(EventID=4634)]]"```'
 # repeat as needed

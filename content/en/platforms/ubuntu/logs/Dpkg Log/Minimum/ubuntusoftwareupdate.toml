@@ -2,27 +2,13 @@
 
 # Meta data about this w2l entry
 title = "Software Updated" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2022-01-14 #Todays date
-category = "Dpkg Log"
 tags = ["Application Activity", "Linux Ubuntu"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "syslog" #Service that generates log
-source.log = "dpkg.log" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Software updates are not always a sign of an attack, but often contain \
 patches for known vulnerabilities. An update may also introduce vulnerabilities \
 and it is important to know if and when that was installed.
   """
-
-# Additional References Go Here
-
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]
@@ -35,27 +21,16 @@ level = "Recommended" # Compliance requirement
 reference = "https://www.hipaajournal.com/patch-update-computer-software-face-hipaa-sanction/" # Reference for compliance
 # repeat as needed
 
-# Log Pile
-[scripting]
+[logging]
+service = "syslog" #Service that generates log
+channel = "dpkg.log" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "bash" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """grep "upgrade " /var/log/dpkg.log""" #How to view log
 
-
-
-# Enable via GUI
-# repeat as needed
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
-# repeat as needed
-
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/SoftwareUpdated/LinuxCLI.png"
 txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line. Linux calls this software upgraded. In order to view this log, enter the command ```grep "upgrade " /var/log/dpkg.log```.'
 

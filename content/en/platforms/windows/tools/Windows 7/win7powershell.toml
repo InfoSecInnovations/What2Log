@@ -9,6 +9,7 @@ release.version = "Ash"
 tags = ["Default Tools", "Command Line Tools", "Recommended Tool", "Windows 7"]
 
 # About this app
+[application]
 default_installed = true #True or false only
 
 #Installation Info (install info is optional, some tools are part of base os)

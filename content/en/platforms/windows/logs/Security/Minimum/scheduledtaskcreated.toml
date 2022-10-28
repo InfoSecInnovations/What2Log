@@ -2,20 +2,8 @@
 
 # Meta data about this w2l entry
 title = "Scheduled Task Created"
-W2L_schema = 1
-author = "Flynn Weeks"
-##author.organization = "InfoSec Innovations"
-##credits = [ "Mick Douglas", "Tee Cure" ]
-release.version = "Aspen"
-release.date = 2022-07-15
-category = "Security"
 tags = ["Scheduled Tasks", "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "Microsoft Windows security auditing"
-source.log = "Security"
-default_enabled = false
 description = """\
 Scheduled tasks serve a lot of purposes on the Windows system, including both \
 innocuous, everyday tasks or potentially malicious activity on a machine. The \
@@ -28,33 +16,23 @@ references = [
 "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
 ]# repeat as needed
 
-
-# Log Pile
-[scripting]
+[logging]
+service = "Microsoft Windows security auditing"
+channel = "Security"
+default_enabled = false
+[logging.scripting]
 language = "PowerShell"
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4698'} -MaxEvents 1 | Format-List"""
 
-
-# Compliance & framework information
-# Format is level and reference under the header [compliance.name]
-
-# repeat as needed
-
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/ScheduledTasks/Created/wev.png"
 txt = "To view this log in the Event Viewer, open the event viewer and navigate to the Windows Logs heading and then the Security Tab. From here, select the find function and search for the value **4698** , or filter the log for the ID **4698**."
-# repeat as needed
 
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/ScheduledTasks/Created/CLI-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4698'} -MaxEvents 1 | Format-List```"""
 
-[[CLI.view]]
+[[content]]
 txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4698)]]" /f:text /c:1```'
 # repeat as needed

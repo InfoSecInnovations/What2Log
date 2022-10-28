@@ -43,13 +43,8 @@
 export default {
   props: ['article', 'platformInfo', 'scriptCategories', 'langInfo'],
   data() {
-    let content = []
-    if (this.article.GUI && this.article.GUI.enable) content = [...content, ...this.article.GUI.enable]
-    if (this.article.CLI && this.article.CLI.enable) content = [...content, ...this.article.CLI.enable]
-    if (this.article.GUI && this.article.GUI.view) content = [...content, ...this.article.GUI.view]
-    if (this.article.CLI && this.article.CLI.view) content = [...content, ...this.article.CLI.view]
     return {
-      content
+      content: this.article.content
     }
   }
 }

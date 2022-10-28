@@ -2,25 +2,12 @@
 
 # Meta data about this w2l entry
 title = "Group Creation" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2022-01-14 #Todays date
-category = "Auth Log"
 tags = ["Group Activity", "Linux Ubuntu"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "syslog" #Service that generates log
-source.log = "auth.log" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Groups allow for multiple user accounts to be managed as one and an attacker \
 may try and create a group with escalated privileges.
   """
-
-# Additional References Go Here
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]
@@ -36,28 +23,16 @@ level = "Recommended"
 reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed
 
-# Log Pile
-[scripting]
+[logging]
+service = "syslog" #Service that generates log
+channel = "auth.log" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "bash" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """grep "new group" /var/log/auth.log""" #How to view log
 
-
-
-# Enable via GUI
-# repeat as needed
-
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
-# repeat as needed
-
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/GroupCreation/LinuxCLI.png"
 txt = 'Due to the limitations of the GNOME Logs app, we do not currently have a GUI way to view this log. We recommend using the command line. To see the log of group creation in Linux, enter the command ```grep "new group" /var/log/auth.log```.'
 

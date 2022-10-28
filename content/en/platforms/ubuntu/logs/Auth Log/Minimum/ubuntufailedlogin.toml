@@ -2,27 +2,13 @@
 
 # Meta data about this w2l entry
 title = "Failed User Login" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2022-01-14 #Todays date
-category = "Auth Log"
 tags = ["User Activity", "Linux Ubuntu"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "syslog" #Service that generates log
-source.log = "auth.log" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Failed user logins can show possible password spray and password guessing \
 attacks. Not every failed login is an attack, but they can be early indicators \
 of one. This log is required by the PCI DSS regulation.
   """
-
-# Additional References Go Here
-
 
 # Compliance & framework information
 
@@ -42,29 +28,20 @@ level = "Recommended"
 reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
-# Log Pile
-[scripting]
+[logging]
+service = "syslog" #Service that generates log
+channel = "auth.log" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "bash" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """grep failure /var/log/auth.log""" #How to view log
 
-# Enable via GUI
-
-
-# Enable via CLI
-
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/UserLogoff/LinuxViewer.png"
 txt = "Linux calls this log authentication failure. To view this log in the GNOME logs viewer, search in the security tab for authentication or failure."
 
-# repeat as needed
-
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/UserLogoff/LinuxCLI.png"
 txt = 'In order to view this log from the command line, enter the command ```grep failure /var/log/auth.log```. If there are other failures in the auth.log, replace failure in the command with “authentication failure”.'
 

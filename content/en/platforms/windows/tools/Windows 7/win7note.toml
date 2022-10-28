@@ -9,6 +9,7 @@ release.version = "Ash"
 tags = ["Note", "Windows 7"]
 
 # About this app
+[application]
 default_installed = true #True or false only
 
 

@@ -2,19 +2,8 @@
 
 # Meta data about this w2l entry
 title = "Account Created" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2022-01-14 #Todays date
-category = "Auth Log"
 tags = ["User Account", "Linux Ubuntu"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "syslog" #Service that generates log
-source.log = "auth.log" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Account creation logs can indicate a suspicious new account that was created \
 in preparation for an attack or someone trying to do things they necessarily \
@@ -23,13 +12,13 @@ network so you are prepared for their activity.  This log is required by NIST \
 SP 800-53, HIPAA and PCI DSS regulations.
   """
 
-# Additional References Go Here
-
-
-# Log Pile
-[scripting]
+[logging]
+service = "syslog" #Service that generates log
+channel = "auth.log" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "bash" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """grep "new user" /var/log/auth.log""" #How to view log
 
 # Compliance & framework information
@@ -49,16 +38,8 @@ level = "Recommended"
 reference = "URL here"
 # repeat as needed
 
-# Enable via GUI
-# repeat as needed
 
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/AccountCreated/LinuxViewer.png"
 txt = """
 In order to view this event from the Logs application, select the Security tab \
@@ -66,11 +47,7 @@ and search for **user:**. Due to the restrictions of the GNOME Logs app, \
 there will likely be several logs that contain “user”, just look for the ones \
 that specify new user: at the beginning. """
 
-# repeat as needed
-
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/AccountCreated/LinuxCLI.png"
 txt = 'In order to find the log of a user account creation, enter the command ```grep "new user" /var/log/auth.log```.'
 

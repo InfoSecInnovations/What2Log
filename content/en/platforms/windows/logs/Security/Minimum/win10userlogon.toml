@@ -2,20 +2,8 @@
 
 # Meta data about this w2l entry
 title = "User Logon"
-W2L_schema = 1
-author = "Flynn Weeks"
-##author.organization = "InfoSec Innovations"
-##credits = [ "Mick Douglas", "Tee Cure" ]
-release.version = "Ash"
-release.date = 2021-05-27
-category = "Security"
 tags = ["User Activity", "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11"]
 
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "Microsoft Windows security auditing."
-source.log = "Security"
-default_enabled = true
 description = """\
   A users login will likely be the first sign of an attack and can \
   indicate suspicious behavior. It can also give an analyst a starting time to \
@@ -29,15 +17,17 @@ references = [
 "https://static1.squarespace.com/static/552092d5e4b0661088167e5c/t/5c586681f4e1fced3ce1308b/1549297281905/Windows+Logging+Cheat+Sheet_ver_Feb_2019.pdf"
 ]# repeat as needed
 
-# Log Pile
-[scripting]
+[logging]
+service = "Microsoft Windows security auditing."
+channel = "Security"
+default_enabled = true
+[logging.scripting]
 language = "PowerShell"
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4624'} -MaxEvents 1 | Format-List"""
-check = """auditpol /get /subcategory:"logon""""
+check = """auditpol /get /subcategory:"logon"""
 enable = """auditpol /set /subcategory:"logon" /Success:Enable /Failure:Enable"""
 disable = """auditpol /set /subcategory:"logon" /Success:Disable /Failure:Disable"""
-
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]
@@ -55,11 +45,7 @@ level = "Recommended"
 reference = "https://www.jpcert.or.jp/english/pub/sr/20170612ac-ir_research_en.pdf"
 # repeat as needed
 
-
-
-
-# Enable via GUI
-[[GUI.enable]]
+[[content]]
 img = "/UserLogin/GPE.png"
 txt = """Windows 10 Professional does not log this by default. To enable \
 logging of this activity, launch the Group Policy Editor. From here, expand \
@@ -67,31 +53,21 @@ the Windows settings folder and open the Security Settings tab. Finally, expand 
 the Local Policies tab and click to enter the Audit Policy header. In order to \
 turn on login auditing, double click "Audit login events". Clicking the Success \
 box will allow for the auditing of all successful login attempts."""
-[[GUI.enable]]
+[[content]]
 img = "/UserLogin/AuditEvents.png"
 txt = "Windows 10 Home does not require login auditing be turned on and is done by default."
-# repeat as needed
 
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/UserLogin/WEV.png"
 txt = """To view this log in the Event Viewer, open the event viewer and navigate \
 to the Windows Logs heading and then the Security Tab. From here, select the find \
 function and search for the value **4624** , or filter the log for the ID **4624**."""
-# repeat as needed
 
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/UserLogin/CLI-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4624'} -MaxEvents 1 | Format-List```"""
 
-[[CLI.view]]
+[[content]]
 img = "/UserLogin/CLI-wevt.png"
 txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command```wevtutil qe Security "/q:*[System [(EventID=4624)]]"```'
 # repeat as needed

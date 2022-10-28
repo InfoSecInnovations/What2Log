@@ -13,9 +13,9 @@ tags = [ "" ] #Tags by which people can group pages
 # About this log type
 suggested_log_level = "" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
-source.service = "" #Service that generates log
-source.log = "" #Log file or channel
-source.event_id = 0 #Windows Event ID, remove this for other platforms
+service = "" #Service that generates log
+channel = "" #Log file or channel
+event_id = 0 #Windows Event ID, remove this for other platforms
 default_enabled = true #true or false
 description = """\
 
@@ -41,9 +41,9 @@ reference = "URL here" # Reference for compliance
 # repeat as needed
 
 # Scripts to handle logging
-[scripting]
+[logging.scripting]
 language = "" # Scripting language
-[scripting.tasks] # The individual scripts, try to keep the same script types on each item of the platform
+[logging.scripting.tasks] # The individual scripts, try to keep the same script types on each item of the platform
 view = """ """
 check = """ """
 enable = """ """
@@ -52,11 +52,11 @@ disable = """ """
 
 
 # Enable via GUI
-[[GUI.enable]]
+[[content]]
 img = "link to img 1"
 txt = "text for step1 here"
 
-[[GUI.enable]]
+[[content]]
 img = "link to img 2"
 txt = "text for step 2 here"
 
@@ -64,7 +64,7 @@ txt = "text for step 2 here"
 
 
 # Enable via CLI
-[[CLI.enable]]
+[[content]]
 img = " "
 txt = " "
 
@@ -72,7 +72,7 @@ txt = " "
 
 
 # View via GUI
-[[GUI.view]]
+[[content]]
 img = " "
 txt = " "
 
@@ -81,12 +81,12 @@ txt = " "
 
 # View via CLI
 # The first instance should be how to view via Get-WinEvent
-[[CLI.view]]
+[[content]]
 img = " "
 txt = ' '
 
 # This isntance should be how to view via wevtutil
-[[CLI.view]]
+[[content]]
 img = " "
 txt = ' '
 

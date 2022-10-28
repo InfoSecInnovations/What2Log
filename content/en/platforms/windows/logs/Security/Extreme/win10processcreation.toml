@@ -2,31 +2,21 @@
 
 # Meta data about this w2l entry
 title = "Process Creation" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-##author.organization = "InfoSec Innovations" #Your organization
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2021-11-22 #Todays date
-category = "Security"
 tags = ["Application Activity", "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11"]
 
-
-# About this log type
-suggested_log_level = "Extreme" #Minimum, Ideal, Extreme, or Special Case
-source.service = "Microsoft Windows Security auditing" #Service that generates log
-source.log = "Security" #Log file or channel
-default_enabled = true #true or false
 description = """\
 While applications being opened is a common occurrence on a computer, \
 this log allows you to see if there were unusual applications being opened. \
 This log allows you to identify if unauthorized or malicious applications were opened.
   """
 
-# Log Pile
-[scripting]
+[logging]
+service = "Microsoft Windows Security auditing" #Service that generates log
+channel = "Security" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "Powershell" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4688'} -MaxEvents 1 | Format-List""" #How to view log
 check = 'auditpol /get /subcategory:"Process Creation' #How to check if log is enabled
 enable = """auditpol /set /subcategory:"Process Creation" /Success:Enable /Failure:Enable""" #How to enable log
@@ -50,13 +40,13 @@ reference = "https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf?a
 
 
 # Enable via GUI
-[[GUI.enable]]
+[[content]]
 img = "/ProcessCreate/GPE.png"
 txt = """By default, process creation is not logged in Windows 10 \
 professional and has to be turned on in the Group Policy Editor. To do so, \
 navigate to the audit policy tab under local policies, security settings, and \
 the windows settings folder. Select audit process tracking, as shown in the photo."""
-[[GUI.enable]]
+[[content]]
 img = "/ProcessCreate/GPE2.png"
 txt = """Click on the check box next to success in order to ensure that \
 process creation is logged. Then click Apply and Ok to close the pop-up window and \
@@ -67,7 +57,7 @@ in a command prompt, enter
 
 
 # View via GUI
-[[GUI.view]]
+[[content]]
 img = "/ProcessCreate/WEV.png"
 txt = """To view the process creation log, navigate to the Windows Event Viewer \
 and the security tab. Next, sort or filter the log by Event ID **4688**."""
@@ -75,11 +65,11 @@ and the security tab. Next, sort or filter the log by Event ID **4688**."""
 
 
 # View via CLI
-[[CLI.view]]
+[[content]]
 img = "/ProcessCreate/CLI-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4688'} -MaxEvents 1 | Format-List```"""
 
-[[CLI.view]]
+[[content]]
 img = "/ProcessCreate/CLI-wevt.png"
 txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command```wevtutil qe Security "/q:*[System [(EventID=4688)]]"```'
 # repeat as needed

@@ -53,13 +53,15 @@ disable = """ """
 
 # Optional but strongly recommended, the text and image pairs that appear in the main body of the page
 [[content]]
+# use markdown here
 txt = """
-"""
-img = "img0.png" # optional
+""" 
+img = "img0.png" # optional, but images are nice. Please put the image file in /static/images, this path is relative to that
 
 [[content]]
+# use markdown here
 txt = """
 """
-img = "img1.png"
+img = "img1.png" # optional, but images are nice. Please put the image file in /static/images, this path is relative to that
 
 #... continue as necessary

@@ -2,53 +2,28 @@
 
 # Meta data about this w2l entry
 title = "Group Deletion" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2022-01-14 #Todays date
-category = "Auth Log"
 tags = ["Group Activity", "Linux Ubuntu"]
 
-# About this log type
-suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
-source.service = "syslog" #Service that generates log
-source.log = "auth.log" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Group deletion may signal the cleanup of an attack or someone trying to \
 inconvenience a group of users in a network. It is also good to know what \
 groups are active.
-  """
+"""
 
-# Additional References Go Here
-
-# Compliance & framework information
-
-# Log Pile
-[scripting]
+[logging]
+service = "syslog" #Service that generates log
+channel = "auth.log" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "bash" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """grep " groupdel" /var/log/auth.log""" #How to view log
 
-
-
-# Enable via GUI
-# repeat as needed
-
-
-# Enable via CLI
-# repeat as needed
-
-
-# View via GUI
+[[content]]
 img = "/GroupDel/LinuxViewer.png"
 txt = "To view a group deletion log in the GNOME log viewer, search for removed or groupdel in the Security tab."
-# repeat as needed
 
-
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/GroupDel/LinuxCLI.png"
 txt = 'To see the log of group creation in Linux, enter the command ```grep " groupdel" /var/log/auth.log```.'
 

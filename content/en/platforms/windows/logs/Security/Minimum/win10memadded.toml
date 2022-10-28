@@ -2,21 +2,8 @@
 
 # Meta data about this w2l entry
 title = "Member Added to Group" #Name of the log (i.e. User Logon)
-W2L_schema = 1
-author = "Flynn Weeks" #Your name
-##author.organization = "InfoSec Innovations" #Your organization
-credits = [ "" ] #Any special callouts
-release.version = "Ash"
-release.date = 2021-09-14 #Todays date
-category = "Security"
 tags = ["Group Activity", "Windows 10", "Windows 7"]
 
-
-# About this log type
-suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
-source.service = "Microsoft Windows Security auditing" #Service that generates log
-source.log = "Security" #Log file or channel
-default_enabled = true #true or false
 description = """\
 Group membership change can indicate a user adding themselves to an \
 admin group without permissions. It is important to monitor the groups \
@@ -29,15 +16,17 @@ references = [
 "https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
 ]
 
-# Log Pile
-[scripting]
+[logging]
+service = "Microsoft Windows Security auditing" #Service that generates log
+channel = "Security" #Log file or channel
+default_enabled = true #true or false
+[logging.scripting]
 language = "Powershell" #Language for Log Pile
-[scripting.tasks]
+[logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4732'} -MaxEvents 1 | Format-List""" #How to view log
 check = 'auditpol /get /subcategory:"security group management"' #How to check if log is enabled
 enable = """auditpol /set /subcategory:"security group management" /Success:Enable /Failure:Enable""" #How to enable log
 disable = """auditpol /set /subcategory:"security group management" /Success:Disable /Failure:Disable""" #How to disable log
-
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]
@@ -50,22 +39,15 @@ level = "Recommended"
 reference = "https://github.com/nsacyber/Event-Forwarding-Guidance/tree/master/Events"
 # repeat as needed
 
-
-#Enabled by default-section removed
-
-
-# View via GUI
-[[GUI.view]]
+[[content]]
 img = "/GroupMemChange/WEV1.png"
 txt = "Windows 10 Professional logs group membership changes by default. To view this log, navigate to the Event Viewer security tab. To view the group membership change logs, sort or filter by the IDs **4732**. Event ID 4732 is a log of a user being added to a security group."
-# repeat as needed
 
-# View via CLI
-[[CLI.view]]
+[[content]]
 img = "/GroupMemChange/CLI1-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4732'} -MaxEvents 1 | Format-List```"""
 
-[[CLI.view]]
+[[content]]
 img = "/GroupMemChange/CLI1-wevt.png"
 txt = 'To view this log in the command line with wevtutil, open PowerShell or Command Prompt as an administrator. From here, enter the command ```wevtutil qe Security "/q:*[System [(EventID=4732)]]"```'
 # repeat as needed
