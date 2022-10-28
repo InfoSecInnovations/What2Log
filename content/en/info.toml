@@ -1,4 +1,5 @@
-script_task_long_names.enable = "Enable Logging"
-script_task_long_names.disable = "Disable Logging"
-script_task_long_names.view = "View Logs"
-script_task_long_names.check = "Check Logging Status"
+[script_task_long_names]
+enable = "Enable Logging"
+disable = "Disable Logging"
+view = "View Logs"
+check = "Check Logging Status"

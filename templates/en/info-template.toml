@@ -1,0 +1,5 @@
+# set the display names that will be used for script types found in logging.scripting.tasks
+# these longer names are shown on the log page scripting section and in the description of generated scripts
+[script_task_long_names]
+enable = "Enable Logging"
+# repeat for any script types you want to provide a long name for
