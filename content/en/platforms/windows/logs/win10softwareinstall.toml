@@ -15,7 +15,7 @@ tags = ["Application Activity"]
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10" , "Windows 7" ] # App.os if application logs
-source.service = "Microsoft Windows security auditing."
+source.service = "Microsoft Windows Security Auditing."
 source.log = "Application"
 default_enabled = true
 collect_reason = """\
@@ -44,7 +44,7 @@ reference = "https://www.hhs.gov/sites/default/files/ocr/privacy/hipaa/administr
 # repeat as needed
 
 
-#Enabled by default-section removed
+# Enabled by default-section removed
 
 # View via GUI
 [[GUI.view]]

@@ -54,14 +54,14 @@ txt = '''This is not logged by default on the Windows system and falls under the
 
 # View via GUI
 [[GUI.view]]
-img = "/WorkstationUnlocked/WEV.png"
+img = "/WorkstationUnlocked/wevt.png"
 txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4801**."
 # repeat as needed
 
 
 # View via CLI
 [[CLI.view]]
-img = "/WorkstatioUnlocked/CLI-gwe.png"
+img = "/WorkstationUnlocked/CLI-gwe.png"
 txt = """To view this log in the command line with Get-WinEvent, open PowerShell as an administrator. From here, enter the command ```Get-WinEvent -FilterHashTable @{LogName='Security';ID='4801'} -MaxEvents 1 | Format-List```"""
 
 [[CLI.view]]

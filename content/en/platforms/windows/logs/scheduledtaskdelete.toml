@@ -14,7 +14,7 @@ tags = ["Scheduled Tasks"]
 # About this log type
 suggested_log_level = "Ideal" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10", "Windows 7", "Windows 8", "Windows 8.1", "Windows 11" ] # App.os if application logs
-source.service = "Microsoft Windows security auditing"
+source.service = "Microsoft Windows Security Auditing"
 source.log = "Security"
 default_enabled = false
 collect_reason = """\
@@ -33,6 +33,9 @@ references = [
 [log_pile]
 language = "PowerShell"
 view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4699'} -MaxEvents 1 | Format-List"""
+check_status = '''auditpol /get /subcategory:"Other Object Access Events"'''
+enable_logging = '''auditpol /set /subcategory:"Other Object Access Events" /Success:Enable /Failure:Enable'''
+disable_logging = '''auditpol /set /subcategory:"Other Object Access Events" /Success:Disable /Failure:Disable'''
 
 
 # Compliance & framework information

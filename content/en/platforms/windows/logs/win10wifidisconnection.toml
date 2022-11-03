@@ -14,7 +14,7 @@ tags = ["WiFi Logs"]
 # About this log type
 suggested_log_level = "Extreme" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows 10" , "Windows 7" ]  #Applicable OS (i.e Windows 10 Pro) #app.os if application logs
-source.service = "Microsoft Windows Security auditing" #Service that generates log
+source.service = "Microsoft Windows Security Auditing" #Service that generates log
 source.log = "Security" #Log file or channel
 default_enabled = true #true or false
 collect_reason = """\

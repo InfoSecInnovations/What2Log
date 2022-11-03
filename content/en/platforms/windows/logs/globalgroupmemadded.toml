@@ -12,9 +12,9 @@ tags = ["Groups"]
 # About this log type
 suggested_log_level = "Minimum" #Minimum, Ideal, Extreme, or Special Case
 source.os = [ "Windows Server 2019" ]
-source.service = "Microsoft Windows security auditing"
+source.service = "Microsoft Windows Security Auditing"
 source.log = "Security"
-default_enabled = true
+default_enabled = false
 collect_reason = """\
 A global group comes from a Domain controller server and should be monitored as it \
 extends beyond a single computer. A member being unexpectedly added to this group \
@@ -31,7 +31,9 @@ references = [
 [log_pile]
 language = "PowerShell"
 view_logs = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4728'} -MaxEvents 1 | Format-List"""
-
+check_status = '''auditpol /get /subcategory:"Security Group Management"'''
+enable_logging = '''auditpol /set /subcategory:"Security Group Management" /Success:Enable /Failure:Enable'''
+disable_logging = '''auditpol /set /subcategory:"Security Group Management" /Success:Disable /Failure:Disable'''
 
 # Compliance & framework information
 # Format is level and reference under the header [compliance.name]

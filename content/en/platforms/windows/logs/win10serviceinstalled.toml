@@ -68,7 +68,7 @@ enter ```Gpdupdate /force```"""
 
 # View via GUI
 [[GUI.view]]
-img = "/ServiceInstalled/WEV.png"
+img = "/ServiceInstalled/WEV1.png"
 txt = "To view this log, enter the Event Viewer as an administrator and navigate to the Security tab. Sort or filter the logs by Event ID 7045."
 # repeat as needed
 
