@@ -111,7 +111,8 @@ export default async () => {
     },
 
     generate: {
-      dir: (config && config.dir) || 'dist'
+      dir: (config && config.dir) || 'dist',
+      fallback: "404.html"
     },
 
     hooks: {
