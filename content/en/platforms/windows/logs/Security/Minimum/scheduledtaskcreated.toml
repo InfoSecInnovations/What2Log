@@ -17,13 +17,16 @@ references = [
 ]# repeat as needed
 
 [logging]
-service = "Microsoft Windows security auditing"
+service = "Microsoft Windows Security Auditing"
 channel = "Security"
 default_enabled = false
 [logging.scripting]
 language = "PowerShell"
 [logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4698'} -MaxEvents 1 | Format-List"""
+check = '''auditpol /get /subcategory:"Other Object Access Events"'''
+enable = '''auditpol /set /subcategory:"Other Object Access Events" /Success:Enable /Failure:Enable'''
+disable = '''auditpol /set /subcategory:"Other Object Access Events" /Success:Disable /Failure:Disable'''
 
 [[content]]
 img = "/ScheduledTasks/Created/wev.png"

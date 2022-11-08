@@ -37,7 +37,7 @@ img = "/WorkstationLocked/auditpol.png"
 txt = '''This is not logged by default on the Windows system and falls under the "Other Logon/Logoff Events" category. In order to turn on auditing for this event, enter the command ```auditpol /set /subcategory:"Other Logon/Logoff Events" /Success:Enable /Failure:Enable```'''
 
 [[content]]
-img = "/WorkstationUnlocked/WEV.png"
+img = "/WorkstationUnlocked/wevt.png"
 txt = "Changes to the audit policy are logged by default in Windows 10 Professional. To view the logs, navigate to the Event Viewer Security tab and sort of filter by Event ID **4801**."
 
 [[content]]

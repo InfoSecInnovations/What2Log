@@ -16,13 +16,16 @@ references = [
 ]# repeat as needed
 
 [logging]
-service = "Microsoft Windows security auditing"
+service = "Microsoft Windows Security Auditing"
 channel = "Security"
-default_enabled = true
+default_enabled = false
 [logging.scripting]
 language = "PowerShell"
 [logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='4727'} -MaxEvents 1 | Format-List"""
+check = '''auditpol /get /subcategory:"Security Group Management"'''
+enable = '''auditpol /set /subcategory:"Security Group Management" /Success:Enable /Failure:Enable'''
+disable = '''auditpol /set /subcategory:"Security Group Management" /Success:Disable /Failure:Disable'''
 
 [[content]]
 img = "/GlobalGroup/Created/WEV.png"

@@ -17,7 +17,7 @@ references = [
 
 
 [logging]
-service = "Microsoft Windows security auditing"
+service = "Microsoft Windows Security Auditing"
 channel = "Security"
 default_enabled = false
 [logging.scripting]

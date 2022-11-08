@@ -18,13 +18,16 @@ references = [
 
 
 [logging]
-service = "Microsoft Windows security auditing"
+service = "Microsoft Windows Security Auditing"
 channel = "Security"
-default_enabled = true
+default_enabled = false
 [logging.scripting]
 language = "PowerShell"
 [logging.scripting.tasks]
 view = """Get-WinEvent -FilterHashTable @{LogName='Security';ID='5033'} -MaxEvents 1 | Format-List"""
+check = '''auditpol /get /subcategory:"Other System Events"'''
+enable = '''auditpol /set /subcategory:"Other System Events" /Success:Enable /Failure:Enable'''
+disable = '''auditpol /set /subcategory:"Other System Events" /Success:Disable /Failure:Disable'''
 
 [[content]]
 img = "/WindowsFirewall/5033/WEV.png"
