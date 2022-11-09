@@ -19,6 +19,7 @@ references = [
 [logging]
 service = "Microsoft Windows security auditing."
 channel = "Application"
+event_id = 11707
 default_enabled = true
 [logging.scripting]
 language = "Powershell" #Language for Log Pile

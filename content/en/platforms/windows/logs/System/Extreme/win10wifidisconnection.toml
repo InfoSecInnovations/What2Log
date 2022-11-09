@@ -13,6 +13,7 @@ potentially start a time line of events.
 [logging]
 service = "Microsoft Windows Security auditing" #Service that generates log
 channel = "Security" #Log file or channel
+event_id = 8003
 default_enabled = true #true or false
 [logging.scripting]
 language = "Powershell" #Language for Log Pile

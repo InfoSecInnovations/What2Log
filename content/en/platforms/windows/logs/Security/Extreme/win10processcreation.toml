@@ -13,6 +13,7 @@ This log allows you to identify if unauthorized or malicious applications were o
 [logging]
 service = "Microsoft Windows Security auditing" #Service that generates log
 channel = "Security" #Log file or channel
+event_id = 4688
 default_enabled = true #true or false
 [logging.scripting]
 language = "Powershell" #Language for Log Pile

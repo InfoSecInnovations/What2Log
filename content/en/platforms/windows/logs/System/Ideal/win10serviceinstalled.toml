@@ -13,6 +13,7 @@ malware. This log is recommended by JPCERTCC.
 [logging]
 service = "Service Control Manager" #Service that generates log
 channel = "System" #Log file or channel
+event_id = 7045
 default_enabled = true #true or false
 [logging.scripting]
 language = "Powershell" #Language for Log Pile

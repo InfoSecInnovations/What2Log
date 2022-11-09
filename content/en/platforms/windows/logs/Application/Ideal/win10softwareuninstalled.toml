@@ -12,6 +12,7 @@ taken off a machine or an attempt to disrupt the normal workflow.
 [logging]
 service = "Service Control Manager" #Service that generates log
 channel = "System" #Log file or channel
+event_id = 11724
 default_enabled = true #true or false
 [logging.scripting]
 language = "Powershell" #Language for Log Pile

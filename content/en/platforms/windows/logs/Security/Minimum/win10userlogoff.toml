@@ -19,6 +19,7 @@ references = [
 [logging]
 service = "Microsoft Windows security auditing."
 channel = "Security"
+event_id = 4634
 default_enabled = true
 [logging.scripting]
 language = "PowerShell"

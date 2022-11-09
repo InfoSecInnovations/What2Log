@@ -12,6 +12,7 @@ unusual software being closed or give a timeline of events.
 [logging]
 service = "Microsoft Windows Security auditing" #Service that generates log
 channel = "Security" #Log file or channel
+event_id = 4689
 default_enabled = true #true or false
 [logging.scripting]
 language = "Powershell" #Language for Log Pile
