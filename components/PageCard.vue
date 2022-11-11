@@ -6,12 +6,12 @@
       <div class="excerpt">{{article.excerpt}}</div>
       <p class="more">Read more...</p>
     </NuxtLink>
-    <AuthorCard :author="article.author" :date="article.createdAt" :tags="article.tags"/>
+    <AuthorCard :author="author" :date="article.createdAt" :tags="article.tags"/>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['article', 'link']
+  props: ['article', 'link', 'author']
 }
 </script>

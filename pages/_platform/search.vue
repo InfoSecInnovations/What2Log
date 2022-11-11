@@ -41,7 +41,6 @@ export default {
       const search = this.$content(`${this.$i18n.locale}/platforms/${this.$route.params.platform}`, {deep: true}).search(query)
       this.lastPage = await search.fetch().then(res => Math.floor((res.length - 1) / this.itemsPerPage))
       this.results = await search
-      .sortBy('createdAt', 'asc')
       .skip(this.currentPage * this.itemsPerPage)
       .limit(this.itemsPerPage)
       .fetch()

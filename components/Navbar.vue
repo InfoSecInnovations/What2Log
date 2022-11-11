@@ -41,9 +41,8 @@ export default {
       }
 
       this.results = await this.$content(`${this.$i18n.locale}/platforms/${this.$route.params.platform}`, {deep: true})
-      .sortBy('createdAt', 'asc')
-      .limit(12)
       .search(query)
+      .limit(12)
       .fetch()
     }
   },
@@ -55,7 +54,7 @@ export default {
     },
     onEnter(e) {
       if (e.key == 'Enter') {
-        if (this.query) this.$router.push({path: '/search', query: { query: this.query }})
+        if (this.query) this.$router.push({path: `/${this.$route.params.platform}/search/`, query: { query: this.query }})
         else this.$router.push("/tags")
         this.resetQuery()
       } 

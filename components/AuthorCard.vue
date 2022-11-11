@@ -1,14 +1,16 @@
 <template>
   <div class="author-block">
     <div class="article-info">
-      <NuxtLink v-if="authorData" :to="`/authors/${authorData.slug}/`">
-        <img class="author-icon" v-if="authorData.icon" :src="`/images/${authorData.icon}`" :alt="authorData.name" />
-        <p>{{authorData.name}}</p>
-      </NuxtLink>
-      <p v-else>{{author}}</p>
+      <template v-if="author">
+        <NuxtLink v-if="authorData" :to="`/authors/${authorData.slug}/`">
+          <img class="author-icon" v-if="authorData.icon" :src="`/images/${authorData.icon}`" :alt="authorData.name" />
+          <p>{{authorData.name}}</p>
+        </NuxtLink>
+        <p v-else>{{author}}</p>
+      </template>
       <p>{{date | formatDate}}</p>
       <template v-if="tags && tags.length">
-        <NuxtLink v-for="tag of tags" :key="`article-tag-${tag}`" :to="{ path: `/${$route.params.platform}/tags`, query: { query: tag }}">{{tag}}</NuxtLink>
+        <NuxtLink v-for="tag of tags" :key="`article-tag-${tag}`" :to="{ path: `/${$route.params.platform || 'blog'}/tags`, query: { query: tag }}">{{tag}}</NuxtLink>
       </template>
     </div>
   </div>
