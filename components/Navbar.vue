@@ -8,7 +8,7 @@
     <input v-model="query" type="search" autocomplete="off" v-on:click.stop="searchFocus = !searchFocus" v-on:keyup="onEnter"/>
     <ul class="search-result-dropdown" v-if="searchFocus" id="result-dropdown">
       <li v-for="result of results" :key="result.path">
-        <NuxtLink :to="result.path.replace(`${$i18n.locale}/platforms/`, '')" v-on:click.native="resetQuery">
+        <NuxtLink :to="`/${$route.params.platform}/${result.group}/${result.slug}/`" v-on:click.native="resetQuery">
           <p>{{result.title}}</p>
           <p class="search-meta">{{platform}} {{`${result.group[0].toUpperCase()}${result.group.substring(1)}`}}</p>
         </NuxtLink>

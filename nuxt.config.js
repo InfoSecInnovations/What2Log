@@ -77,7 +77,8 @@ export default async () => {
       markdown: {
         remarkPlugins: ['remark-unwrap-images']
       },
-      fullTextSearchFields: ['title', 'slug', 'description', 'text']
+      fullTextSearchFields: ['title', 'slug', 'description', 'text', 'logging.event_id'],
+      nestedProperties: ['logging.event_id']
     },
 
     // i18n configuration: https://i18n.nuxtjs.org/options-reference

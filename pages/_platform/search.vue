@@ -7,7 +7,7 @@
         <div class="page-feed">
           <h1>Search Results</h1>
           <div class="search-results">
-            <PageCard v-for="result of results" :key="result.path" :article="result" :link="result.path.replace(`${$i18n.locale}/platforms/`, '')"/>
+            <PageCard v-for="result of results" :key="result.path" :article="result" :link="`/${$route.params.platform}/${result.group}/${result.slug}/`"/>
           </div>
           <div v-if="lastPage" class="feed-nav">
             <div v-if="currentPage < lastPage" v-on:click="setPage(currentPage + 1)" class="nav-link">Previous</div>
